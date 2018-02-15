@@ -1,4 +1,4 @@
-package com.tqminh.vn.toeicpractice.repositories.entities;
+package com.tqminh.vn.toeicpractice.model;
 
 public class Exercise {
 	

@@ -9,6 +9,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import com.tqminh.vn.toeicpractice.datatype.JSONType;
+import com.tqminh.vn.toeicpractice.model.Exercise;
 
 @Entity
 @TypeDef(name= "json", typeClass= JSONType.class)
