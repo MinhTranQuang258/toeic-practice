@@ -11,11 +11,18 @@ import com.tqminh.vn.toeicpractice.services.QuestionDAO;
 public class QuetionController {
 	
 	@Autowired
-	private QuestionDAO exerciseDAO;
+	private QuestionDAO questionDAO;
 	
 	
-	@RequestMapping(value= "readQuestion", method= RequestMethod.GET)
+	@RequestMapping(value= "/readQuestion", method= RequestMethod.GET)
 	public void readQuestion() {
-		exerciseDAO.readQuestion();
+		questionDAO.readQuestion();
 	}
+	
+	@RequestMapping(value="creatQuestion", method= RequestMethod.POST)
+	public void createQuestion() {
+		questionDAO.createQuestion(null);
+	}
+	
+	
 }

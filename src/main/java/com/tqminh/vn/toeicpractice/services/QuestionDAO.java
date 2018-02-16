@@ -8,4 +8,8 @@ public interface QuestionDAO {
 	void createQuestion(Question question);
 	
 	QuestionWrapper readQuestion();
+	
+	QuestionWrapper updateQuestion(long id);
+	
+	QuestionWrapper deleteQuestion(long id);
 }
