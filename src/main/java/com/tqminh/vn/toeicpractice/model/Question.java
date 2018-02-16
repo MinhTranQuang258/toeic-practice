@@ -1,8 +1,8 @@
 package com.tqminh.vn.toeicpractice.model;
 
-public class Exercise {
+public class Question {
 	
-	private String question;
+	private String detailQuestion;
 	
 	private String answerA;
 	
@@ -14,12 +14,12 @@ public class Exercise {
 	
 	private String answerTrue;
 
-	public Exercise() {
+	public Question() {
 		super();
 	}
 
-	public String getQuestion() {
-		return question;
+	public String getDetailQuestion() {
+		return detailQuestion;
 	}
 
 	public String getAnswerA() {

@@ -9,28 +9,28 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import com.tqminh.vn.toeicpractice.datatype.JSONType;
-import com.tqminh.vn.toeicpractice.model.Exercise;
+import com.tqminh.vn.toeicpractice.model.Question;
 
 @Entity
 @TypeDef(name= "json", typeClass= JSONType.class)
-public class ExerciseWrapper {
+public class QuestionWrapper {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;
 	
 	@Type(type= "json")
-	private Exercise exercise;
+	private Question question;
 
 	public long getId() {
 		return id;
 	}
 
-	public Exercise getExercise() {
-		return exercise;
+	public Question getQuestion() {
+		return question;
 	}
 
-	public ExerciseWrapper() {
+	public QuestionWrapper() {
 		super();
 	}
 
@@ -38,7 +38,7 @@ public class ExerciseWrapper {
 		this.id = id;
 	}
 
-	public void setExercise(Exercise exercise) {
-		this.exercise = exercise;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 }

@@ -1,11 +1,11 @@
 package com.tqminh.vn.toeicpractice.services;
 
-import com.tqminh.vn.toeicpractice.model.Exercise;
-import com.tqminh.vn.toeicpractice.repositories.entities.ExerciseWrapper;
+import com.tqminh.vn.toeicpractice.model.Question;
+import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
 
-public interface ExerciseDAO {
+public interface QuestionDAO {
 	
-	void createExercise(Exercise exercise);
+	void createQuestion(Question question);
 	
-	ExerciseWrapper readExercise();
+	QuestionWrapper readQuestion();
 }
