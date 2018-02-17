@@ -5,24 +5,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import com.tqminh.vn.toeicpractice.datatype.JSONType;
-import com.tqminh.vn.toeicpractice.model.User;
+import com.tqminh.vn.toeicpractice.model.Account;
 
 @Entity
-@TypeDef(name= "json", typeClass= JSONType.class)
-public class UserWrapper {
+@TypeDef(name= "json", typeClass= JSONType.class, parameters= {@Parameter(name= JSONType.CLASS, value= "com.tqminh.vn.toeicpractice.model.Account")})
+public class AccountWrapper {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;
 	
 	@Type(type= "json")
-	private User user;
+	private Account account;
 
-	public UserWrapper() {
+	public AccountWrapper() {
 		super();
 	}
 
@@ -30,15 +31,15 @@ public class UserWrapper {
 		return id;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	public Account getUser() {
+		return account;
+	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(Account account) {
+		this.account = account;
 	}
 }

@@ -1,12 +1,12 @@
 package com.tqminh.vn.toeicpractice.model;
 
-public class User {
+public class Account {
 	
 	private String name;
 	
 	private int age;
 	
-	private String user;
+	private String userName;
 	
 	private String password;
 
@@ -18,15 +18,15 @@ public class User {
 		return age;
 	}
 
-	public String getUser() {
-		return user;
+	public String getUserName() {
+		return userName;
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public User() {
+	public Account() {
 		super();
 	}
 
@@ -38,8 +38,8 @@ public class User {
 		this.age = age;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public void setPassword(String password) {

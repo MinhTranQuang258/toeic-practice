@@ -41,4 +41,28 @@ public class Question {
 	public String getAnswerTrue() {
 		return answerTrue;
 	}
+
+	public void setDetailQuestion(String detailQuestion) {
+		this.detailQuestion = detailQuestion;
+	}
+
+	public void setAnswerA(String answerA) {
+		this.answerA = answerA;
+	}
+
+	public void setAnswerB(String answerB) {
+		this.answerB = answerB;
+	}
+
+	public void setAnswerC(String answerC) {
+		this.answerC = answerC;
+	}
+
+	public void setAnswerD(String answerD) {
+		this.answerD = answerD;
+	}
+
+	public void setAnswerTrue(String answerTrue) {
+		this.answerTrue = answerTrue;
+	}
 }

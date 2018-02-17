@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
@@ -12,7 +13,7 @@ import com.tqminh.vn.toeicpractice.datatype.JSONType;
 import com.tqminh.vn.toeicpractice.model.Question;
 
 @Entity
-@TypeDef(name= "json", typeClass= JSONType.class)
+@TypeDef(name= "json", typeClass= JSONType.class, parameters= {@Parameter(name= JSONType.CLASS, value= "com.tqminh.vn.toeicpractice.model.Question")})
 public class QuestionWrapper {
 	
 	@Id

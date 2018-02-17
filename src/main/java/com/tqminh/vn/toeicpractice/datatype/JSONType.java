@@ -2,36 +2,44 @@ package com.tqminh.vn.toeicpractice.datatype;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.io.StringWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Properties;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.hibernate.HibernateException;
+import org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl;
+import org.hibernate.boot.registry.classloading.spi.ClassLoaderService;
 import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.type.SerializationException;
 import org.hibernate.usertype.DynamicParameterizedType;
 import org.hibernate.usertype.UserType;
+import org.postgresql.util.PGobject;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import antlr.collections.List;
+
 public class JSONType implements UserType, DynamicParameterizedType{
 	
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+	private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static final ClassLoaderService classLoaderService = new ClassLoaderServiceImpl();
 
-    private Class<?> clazz;
+    public static final String JSONB_TYPE = "jsonb";
+    public static final String CLASS = "CLASS";
+    
+    private Class<?> jsonClassType;
 
     @Override
-    public void setParameterValues(Properties params) {
-        String className = params.getProperty("className");
-
-        try {
-            clazz = Class.forName(className);
-        } catch (ClassNotFoundException cnfe) {
-            throw new HibernateException("className not found", cnfe);
-        }
+    public Class<Object> returnedClass() {
+        return Object.class;
     }
 
     @Override
@@ -40,72 +48,63 @@ public class JSONType implements UserType, DynamicParameterizedType{
     }
 
     @Override
-    public Class<?> returnedClass() {
-        return clazz;
-    }
-
-    @Override
-    public boolean equals(Object x, Object y) throws HibernateException {
-        //equality operator (==) will cause extra update during delete
-        //Please see TypeHelper.findDirty()
-        //return x == y;
-        return x.equals(y);
-    }
-
-    @Override
-    public int hashCode(Object x) throws HibernateException {
-        return x.hashCode();
-    }
-
-    @Override
-    public Object nullSafeGet(ResultSet rs, String[] names,
-            SessionImplementor session,
-            Object owner) throws HibernateException, SQLException {
-        String json = rs.getString(names[0]);
-
-        if (json == null) {
-            return null;
-        }
-
+    public Object nullSafeGet(ResultSet resultSet, String[] names, SessionImplementor session, Object owner) throws
+            HibernateException, SQLException {
         try {
-            return MAPPER.readValue(json.getBytes("UTF-8"), returnedClass());
+            final String json = resultSet.getString(names[0]);
+            return json == null ? null : objectMapper.readValue(json, jsonClassType);
         } catch (IOException e) {
-            throw new RuntimeException(
-                    "Failed to convert String to " + returnedClass() + e.getMessage(),
-                    e);
+            throw new HibernateException(e);
         }
     }
 
     @Override
-    public void nullSafeSet(PreparedStatement st, Object value, int index,
-            SessionImplementor session) throws HibernateException, SQLException {
-        if (value == null) {
-            st.setNull(index, Types.OTHER);
-        } else {
-            try {
-                final StringWriter writer = new StringWriter();
-                MAPPER.writeValue(writer, value);
-                writer.flush();
-                st.setObject(index, writer.toString(), Types.OTHER);
-            } catch (IOException e) {
-                throw new RuntimeException(
-                        "Failed to convert " + returnedClass() + " to String " + e.getMessage(),
-                        e);
-            }
+    public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session) throws
+            HibernateException, SQLException {
+        try {
+            final String json = value == null ? null : objectMapper.writeValueAsString(value);
+            PGobject pgo = new PGobject();
+            pgo.setType(JSONB_TYPE);
+            pgo.setValue(json);
+            st.setObject(index, pgo);
+        } catch (JsonProcessingException e) {
+            throw new HibernateException(e);
         }
     }
 
+    @Override
+    public void setParameterValues(Properties parameters) {
+        final String clazz = (String) parameters.get(CLASS);
+        jsonClassType = classLoaderService.classForName(clazz);
+    }
+
+    @SuppressWarnings("unchecked")
     @Override
     public Object deepCopy(Object value) throws HibernateException {
-        if (value != null) {
-            try {
-                return MAPPER.readValue(MAPPER.writeValueAsString(value),
-                        returnedClass());
-            } catch (IOException e) {
-                throw new HibernateException("Failed to deep copy object", e);
+
+        if (!(value instanceof Collection<?>)) {
+            return value;
+        }
+
+        Collection<?> collection = (Collection<?>) value;
+        Collection<Object> collectionClone = CollectionFactory.newInstance(collection.getClass());
+
+        collectionClone.addAll(collection.stream().map(this::deepCopy).collect(Collectors.toList()));
+
+        return collectionClone;
+    }
+
+    static final class CollectionFactory {
+        @SuppressWarnings("unchecked")
+        static <E, T extends Collection<E>> T newInstance(Class<T> collectionClass) {
+            if (List.class.isAssignableFrom(collectionClass)) {
+                return (T) new ArrayList<E>();
+            } else if (Set.class.isAssignableFrom(collectionClass)) {
+                return (T) new HashSet<E>();
+            } else {
+                throw new IllegalArgumentException("Unsupported collection type : " + collectionClass);
             }
         }
-        return null;
     }
 
     @Override
@@ -114,23 +113,42 @@ public class JSONType implements UserType, DynamicParameterizedType{
     }
 
     @Override
-    public Serializable disassemble(Object value) throws HibernateException {
-        try {
-            return MAPPER.writeValueAsString(value);
-        } catch (JsonProcessingException e) {
-            throw new HibernateException("Failed to disassemble object", e);
+    public boolean equals(Object x, Object y) throws HibernateException {
+        if (x == y) {
+            return true;
         }
+
+        if ((x == null) || (y == null)) {
+            return false;
+        }
+
+        return x.equals(y);
     }
 
     @Override
-    public Object assemble(Serializable cached,
-            Object owner) throws HibernateException {
+    public int hashCode(Object x) throws HibernateException {
+        assert (x != null);
+        return x.hashCode();
+    }
+
+    @Override
+    public Object assemble(Serializable cached, Object owner) throws HibernateException {
         return deepCopy(cached);
     }
 
     @Override
-    public Object replace(Object original, Object target,
-            Object owner) throws HibernateException {
+    public Serializable disassemble(Object value) throws HibernateException {
+        Object deepCopy = deepCopy(value);
+
+        if (!(deepCopy instanceof Serializable)) {
+            throw new SerializationException(String.format("%s is not serializable class", value), null);
+        }
+
+        return (Serializable) deepCopy;
+    }
+
+    @Override
+    public Object replace(Object original, Object target, Object owner) throws HibernateException {
         return deepCopy(original);
     }
 }
