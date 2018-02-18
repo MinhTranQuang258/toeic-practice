@@ -28,6 +28,11 @@ public class AccountWrapper {
 	public AccountWrapper() {
 		super();
 	}
+	
+	public AccountWrapper(Account account) {
+		super();
+		this.account = account;
+	}
 
 	public long getId() {
 		return id;

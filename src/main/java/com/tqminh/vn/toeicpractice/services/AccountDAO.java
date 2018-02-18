@@ -4,7 +4,7 @@ import com.tqminh.vn.toeicpractice.model.Account;
 
 public interface AccountDAO {
 	
-	void loginAccount(Account account);
+	String loginAccount(Account account);
 
 	void registerAccount(Account account);
 	
