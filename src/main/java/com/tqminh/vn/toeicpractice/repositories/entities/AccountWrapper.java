@@ -9,11 +9,13 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
+import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.datatype.JSONType;
 import com.tqminh.vn.toeicpractice.model.Account;
 
 @Entity
-@TypeDef(name= "json", typeClass= JSONType.class, parameters= {@Parameter(name= JSONType.CLASS, value= "com.tqminh.vn.toeicpractice.model.Account")})
+@TypeDef(name= "json", typeClass= JSONType.class, parameters= {
+		@Parameter(name= JSONType.CLASS, value= Constant.JSON_ACCOUNT)})
 public class AccountWrapper {
 	
 	@Id

@@ -9,12 +9,13 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
+import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.datatype.JSONType;
 import com.tqminh.vn.toeicpractice.model.Result;
 
 @Entity
 @TypeDef(name= "json", typeClass= JSONType.class, parameters= {
-		@Parameter(name= JSONType.CLASS, value= "com.tqminh.vn.toeicpractice.model.Result")})
+		@Parameter(name= JSONType.CLASS, value= Constant.JSON_RESULT)})
 public class ResultWrapper {
 	
 	@Id
