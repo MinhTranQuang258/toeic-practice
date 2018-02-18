@@ -3,8 +3,10 @@ package com.tqminh.vn.toeicpractice.services;
 import com.tqminh.vn.toeicpractice.model.Account;
 
 public interface AccountDAO {
+	
+	void loginAccount(Account account);
 
-	void createAccount(Account account);
+	void registerAccount(Account account);
 	
 	void updateAccount(long id);
 	
