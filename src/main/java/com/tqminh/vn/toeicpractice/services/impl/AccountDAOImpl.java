@@ -1,5 +1,6 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
+import com.tqminh.vn.toeicpractice.common.Notification;
 import com.tqminh.vn.toeicpractice.model.Account;
 import com.tqminh.vn.toeicpractice.repositories.AccountWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
@@ -11,19 +12,37 @@ public class AccountDAOImpl implements AccountDAO{
 	
 	@Override
 	public String loginAccount(Account account) {
-		if(account.getUserName().equals("admin") && account.getPassword().equals("admin")) {
-			
-		}
-		else {
-			
+		try {
+			String userName= account.getUserName();
+			String password= account.getPassword();
+			if(userName.equals("admin") && password.equals("admin")) {
+				
+			}
+			else {
+				AccountWrapper accountWrapper=  accountWrapperRepository.findAccountByUserAndPassword(userName, password);
+				if(accountWrapper != null) {
+					
+				}
+				else {
+					return Notification.CAN_NOT_FIND_USER;
+				}
+			}
+		}catch (Exception e) {
+			throw e;
 		}
 		return "";
 	}
 
 	@Override
-	public void registerAccount(Account account) {
+	public String registerAccount(Account account) {
 		AccountWrapper accountWrapper= new AccountWrapper(account);
-		accountWrapperRepository.save(accountWrapper);
+		AccountWrapper newAccountWrapper= accountWrapperRepository.save(accountWrapper);
+		if(newAccountWrapper != null) {
+			return Notification.REGISTERED_SUCCESS;
+		}
+		else {
+			return Notification.REGISTRATION_FAILED;
+		}
 	}
 
 	@Override
