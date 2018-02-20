@@ -5,7 +5,7 @@ import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
 
 public interface QuestionDAO {
 	
-	void createQuestion(Question question);
+	String createQuestion(Question question);
 	
 	QuestionWrapper loadQuestion(long index);
 	

@@ -7,9 +7,18 @@ import com.tqminh.vn.toeicpractice.services.QuestionDAO;
 public class QuestionDAOImpl implements QuestionDAO{
 
 	@Override
-	public void createQuestion(Question question) {
-		// TODO Auto-generated method stub
-		
+	public String createQuestion(Question question) {
+		try {
+			if(question != null) {
+				
+			}
+			else {
+				return "";
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return "";
 	}
 
 	@Override

@@ -43,6 +43,11 @@ public class AccountDAOImpl implements AccountDAO{
 	}
 
 	@Override
+	public void logout() {
+		
+	}
+
+	@Override
 	public String registerAccount(Account account) {
 		AccountWrapper accountWrapper= new AccountWrapper(account);
 		AccountWrapper newAccountWrapper= accountWrapperRepository.save(accountWrapper);

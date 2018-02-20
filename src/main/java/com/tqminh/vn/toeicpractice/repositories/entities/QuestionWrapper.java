@@ -37,6 +37,11 @@ public class QuestionWrapper {
 		super();
 	}
 
+	public QuestionWrapper(Question question) {
+		super();
+		this.question = question;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
