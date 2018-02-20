@@ -5,6 +5,8 @@ import com.tqminh.vn.toeicpractice.model.Account;
 public interface AccountDAO {
 	
 	String loginAccount(Account account);
+	
+	void logout();
 
 	String registerAccount(Account account);
 	
