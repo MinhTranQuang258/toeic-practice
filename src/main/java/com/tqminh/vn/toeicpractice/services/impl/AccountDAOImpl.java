@@ -15,7 +15,7 @@ public class AccountDAOImpl implements AccountDAO{
 	private AccountWrapperRepository accountWrapperRepository;
 	
 	@Autowired
-	private Cache cache;
+	private Cache cacheUser;
 	
   	@Override
 	public String loginAccount(Account account) {
@@ -23,12 +23,12 @@ public class AccountDAOImpl implements AccountDAO{
 			String userName= account.getUserName();
 			String password= account.getPassword();
 			if(userName.equals("admin") && password.equals("admin")) {
-				cache.getMap().put(userName, account);
+				cacheUser.getMap().put(userName, account);
 			}
 			else {
 				AccountWrapper accountWrapper=  accountWrapperRepository.findAccountByUserAndPassword(userName, password);
 				if(accountWrapper != null) {
-					cache.getMap().put(userName, account);
+					cacheUser.getMap().put(userName, account);
 				}
 				else {
 					return Notification.CAN_NOT_FIND_USER;
