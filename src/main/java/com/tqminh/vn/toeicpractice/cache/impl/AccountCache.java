@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.tqminh.vn.toeicpractice.cache.Cache;
 import com.tqminh.vn.toeicpractice.model.Account;
 
-@Component
+@Component(value= "AccountCache")
 public class AccountCache implements Cache{
 	
 	private Map<String, Account> map;
