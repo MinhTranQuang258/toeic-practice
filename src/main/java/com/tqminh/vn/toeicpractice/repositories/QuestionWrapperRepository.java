@@ -14,4 +14,5 @@ public interface QuestionWrapperRepository extends CrudRepository<QuestionWrappe
 	
 	@Query(nativeQuery= true, value= "")
 	List<QuestionWrapper> findListQuestionByIndex(long startIndex, long endIndex);
+	
 }

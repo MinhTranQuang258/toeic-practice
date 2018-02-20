@@ -2,7 +2,7 @@ package com.tqminh.vn.toeicpractice.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.tqminh.vn.toeicpractice.common.Cache;
+import com.tqminh.vn.toeicpractice.cache.impl.AccountCache;
 import com.tqminh.vn.toeicpractice.common.Notification;
 import com.tqminh.vn.toeicpractice.model.Account;
 import com.tqminh.vn.toeicpractice.repositories.AccountWrapperRepository;
@@ -15,7 +15,7 @@ public class AccountDAOImpl implements AccountDAO{
 	private AccountWrapperRepository accountWrapperRepository;
 	
 	@Autowired
-	private Cache cacheUser;
+	private AccountCache cacheUser;
 	
   	@Override
 	public String loginAccount(Account account) {
@@ -23,12 +23,12 @@ public class AccountDAOImpl implements AccountDAO{
 			String userName= account.getUserName();
 			String password= account.getPassword();
 			if(userName.equals("admin") && password.equals("admin")) {
-				cacheUser.getMap().put(userName, account);
+				
 			}
 			else {
 				AccountWrapper accountWrapper=  accountWrapperRepository.findAccountByUserAndPassword(userName, password);
 				if(accountWrapper != null) {
-					cacheUser.getMap().put(userName, account);
+					
 				}
 				else {
 					return Notification.CAN_NOT_FIND_USER;
