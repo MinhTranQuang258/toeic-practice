@@ -1,5 +1,8 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.tqminh.vn.toeicpractice.cache.impl.AccountCache;
 import com.tqminh.vn.toeicpractice.common.Notification;
 import com.tqminh.vn.toeicpractice.model.Account;
 import com.tqminh.vn.toeicpractice.repositories.AccountWrapperRepository;
@@ -8,9 +11,13 @@ import com.tqminh.vn.toeicpractice.services.AccountDAO;
 
 public class AccountDAOImpl implements AccountDAO{
 
+	@Autowired
 	private AccountWrapperRepository accountWrapperRepository;
 	
-	@Override
+	@Autowired
+	private AccountCache cacheUser;
+	
+  	@Override
 	public String loginAccount(Account account) {
 		try {
 			String userName= account.getUserName();

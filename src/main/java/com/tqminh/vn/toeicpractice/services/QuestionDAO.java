@@ -7,7 +7,7 @@ public interface QuestionDAO {
 	
 	void createQuestion(Question question);
 	
-	QuestionWrapper readQuestion();
+	QuestionWrapper loadQuestion(long index);
 	
 	QuestionWrapper updateQuestion(long id);
 	

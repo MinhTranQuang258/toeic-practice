@@ -8,5 +8,4 @@ public class Constant {
 	
 	public final static String JSON_RESULT= "h.vn.toeicpractice.model.Result";
 	
-	public final static String CAN_NOT_FIND_USER= "Can't find the user. Please recheck username and password or register a new account.";
 }
