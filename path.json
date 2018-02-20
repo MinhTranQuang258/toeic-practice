@@ -1,0 +1,18 @@
+{
+  "paths": {
+    "source": "src/main/resources/public",
+    "dist": "dist",
+    "assets": [
+      "src/main/resources/public/**/*",
+      "!src/main/resources/public/(js|scss|layout)",
+      "!src/main/resources/public/(js|scss|layout)/**"
+    ],
+    "js": [
+      "./node_modules/jquery/dist/jquery.js",
+      "./node_modules/bootstrap/dist/js/bootstrap.js"
+    ],
+    "css": [
+      "./node_modules/bootstrap/dist/css/bootstrap.css"
+    ]
+  }
+}
