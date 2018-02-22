@@ -19,6 +19,8 @@ public class AccountDAOImpl implements AccountDAO{
 	@Qualifier(value= "AccountCache")
 	private Cache accountCache;
 	
+	private String userName;
+	
   	@Override
 	public String loginAccount(Account account) {
 		try {
@@ -30,6 +32,7 @@ public class AccountDAOImpl implements AccountDAO{
 			else {
 				AccountWrapper accountWrapper=  accountWrapperRepository.findAccountByUserAndPassword(userName, password);
 				if(accountWrapper != null) {
+					setUserName(userName);
 					accountCache.put(userName, account);
 				}
 				else {
@@ -41,10 +44,18 @@ public class AccountDAOImpl implements AccountDAO{
 		}
 		return "";
 	}
+  	
+  	protected void setUserName(String userName) {
+  		this.userName= userName;
+  	}
+  	
+	protected String getUserName() {
+		return userName;
+	}
 
 	@Override
 	public void logout() {
-		
+		accountCache.deteleObject(getUserName());
 	}
 
 	@Override

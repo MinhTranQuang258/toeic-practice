@@ -18,4 +18,10 @@ public class QuestionCache implements Cache{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void deteleObject() {
+		// TODO Auto-generated method stub
+		
+	}
 }

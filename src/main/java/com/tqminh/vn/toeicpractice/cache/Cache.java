@@ -7,4 +7,5 @@ public interface Cache {
 	
 	void put(Object key, Object value);
 	
+	void deteleObject(Object object);
 }

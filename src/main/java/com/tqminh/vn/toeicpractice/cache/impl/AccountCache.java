@@ -1,6 +1,6 @@
 package com.tqminh.vn.toeicpractice.cache.impl;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ public class AccountCache implements Cache{
 
 	public AccountCache() {
 		super();
-		map= new Hashtable<>();
+		map= new HashMap<>();
 	}
 	
 	@Override
@@ -25,8 +25,17 @@ public class AccountCache implements Cache{
 
 	@Override
 	public void put(Object key, Object value) {
-		String k= (String) key;
-		Account account= (Account) value;
-		map.put(k, account);
+		if((key instanceof String) && (value instanceof Account)) {
+			String k= (String) key;
+			Account account= (Account) value;
+			map.put(k, account);
+		}
+	}
+
+	@Override
+	public void deteleObject(Object object) {
+		if(object instanceof String) {
+			map.remove(object);
+		}
 	}
 }
