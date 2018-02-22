@@ -7,4 +7,6 @@ public class Notification {
 	public final static String REGISTERED_SUCCESS= "Sign Up Success";
 	
 	public final static String REGISTRATION_FAILED= "Registration failed";
+	
+	
 }

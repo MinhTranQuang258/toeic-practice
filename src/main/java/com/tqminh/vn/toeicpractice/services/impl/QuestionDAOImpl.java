@@ -1,16 +1,26 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.tqminh.vn.toeicpractice.model.Question;
+import com.tqminh.vn.toeicpractice.repositories.QuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.QuestionDAO;
 
 public class QuestionDAOImpl implements QuestionDAO{
+	
+	@Autowired
+	private QuestionWrapperRepository questionWrapperRepository;
 
 	@Override
 	public String createQuestion(Question question) {
 		try {
 			if(question != null) {
-				
+				QuestionWrapper questionWrapper= new QuestionWrapper(question);
+				QuestionWrapper wrapper= questionWrapperRepository.save(questionWrapper);
+				if(wrapper != null) {
+					return "";
+				}
 			}
 			else {
 				return "";
