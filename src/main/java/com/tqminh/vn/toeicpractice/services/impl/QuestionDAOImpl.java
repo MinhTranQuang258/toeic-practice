@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.tqminh.vn.toeicpractice.model.Question;
 import com.tqminh.vn.toeicpractice.repositories.QuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
-import com.tqminh.vn.toeicpractice.services.QuestionDAO;
+import com.tqminh.vn.toeicpractice.services.QuestionService;
 
-public class QuestionDAOImpl implements QuestionDAO{
+public class QuestionDAOImpl implements QuestionService{
 	
 	@Autowired
 	private QuestionWrapperRepository questionWrapperRepository;

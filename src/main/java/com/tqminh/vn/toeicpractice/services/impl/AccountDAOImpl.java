@@ -8,9 +8,9 @@ import com.tqminh.vn.toeicpractice.common.Notification;
 import com.tqminh.vn.toeicpractice.model.Account;
 import com.tqminh.vn.toeicpractice.repositories.AccountWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
-import com.tqminh.vn.toeicpractice.services.AccountDAO;
+import com.tqminh.vn.toeicpractice.services.AccountService;
 
-public class AccountDAOImpl implements AccountDAO{
+public class AccountDAOImpl implements AccountService{
 
 	@Autowired
 	private AccountWrapperRepository accountWrapperRepository;

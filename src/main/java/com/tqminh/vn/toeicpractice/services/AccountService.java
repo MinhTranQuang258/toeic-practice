@@ -2,7 +2,7 @@ package com.tqminh.vn.toeicpractice.services;
 
 import com.tqminh.vn.toeicpractice.model.Account;
 
-public interface AccountDAO {
+public interface AccountService {
 	
 	String loginAccount(Account account);
 	

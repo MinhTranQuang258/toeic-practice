@@ -16,14 +16,18 @@ public abstract class AbstractDataSourceConfiguration {
 	
 	protected LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean(DataSource dataSource) {
 		LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean= new LocalContainerEntityManagerFactoryBean();
+		
 		localContainerEntityManagerFactoryBean.setPackagesToScan(this.getPackagesToScan());
 		final HibernateJpaVendorAdapter hibernateJpaVendorAdapter= new HibernateJpaVendorAdapter();
 		localContainerEntityManagerFactoryBean.setJpaVendorAdapter(hibernateJpaVendorAdapter);
-//		localContainerEntityManagerFactoryBean.setPersistenceUnitName();
+		localContainerEntityManagerFactoryBean.setPersistenceUnitName(this.getPersistenceUnitName());
 		return localContainerEntityManagerFactoryBean;
+	
 	}
 	
 	public abstract PlatformTransactionManager platformTransactionManager(EntityManagerFactory entityManagerFactory);
 	
 	protected abstract String[] getPackagesToScan();
+	
+	protected abstract String getPersistenceUnitName();
 }
