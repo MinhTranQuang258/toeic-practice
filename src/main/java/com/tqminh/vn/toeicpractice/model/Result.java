@@ -1,79 +1,70 @@
 package com.tqminh.vn.toeicpractice.model;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Result {
 	
 	private String name;
 	
-	private double score;
-	
 	private String date;
 	
-	private boolean multipleChoice;
+	private List<Double> multipleChoices;
 	
-	private boolean sentence;
+	private List<Double> sentences;
 	
-	private boolean photo;
+	private List<Double> photos;
 	
-	private int lastSentence;
+	public Result() {
+		super();
+		multipleChoices= new ArrayList<>();
+		sentences= new ArrayList<>();
+		photos= new ArrayList<>();
+	}
 
 	public String getName() {
 		return name;
-	}
-
-	public double getScore() {
-		return score;
 	}
 
 	public String getDate() {
 		return date;
 	}
 
-	public boolean isMultipleChoice() {
-		return multipleChoice;
-	}
-
-	public boolean isSentence() {
-		return sentence;
-	}
-
-	public boolean isPhoto() {
-		return photo;
-	}
-
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public void setScore(double score) {
-		this.score = score;
 	}
 
 	public void setDate(String date) {
 		this.date = date;
 	}
 
-	public void setMultipleChoice(boolean multipleChoice) {
-		this.multipleChoice = multipleChoice;
+
+	public List<Double> getMultipleChoices() {
+		return multipleChoices;
 	}
 
-	public void setSentence(boolean sentence) {
-		this.sentence = sentence;
+
+	public void setMultipleChoices(List<Double> multipleChoices) {
+		this.multipleChoices = multipleChoices;
 	}
 
-	public void setPhoto(boolean photo) {
-		this.photo = photo;
+
+	public List<Double> getSentences() {
+		return sentences;
 	}
 
-	public Result() {
-		super();
+
+	public void setSentences(List<Double> sentences) {
+		this.sentences = sentences;
 	}
 
-	public int getLastSentence() {
-		return lastSentence;
+
+	public List<Double> getPhotos() {
+		return photos;
 	}
 
-	public void setLastSentence(int lastSentence) {
-		this.lastSentence = lastSentence;
+
+	public void setPhotos(List<Double> photos) {
+		this.photos = photos;
 	}
 }
