@@ -1,7 +1,5 @@
 package com.tqminh.vn.toeicpractice.repositories;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +11,8 @@ public interface QuestionWrapperRepository extends CrudRepository<QuestionWrappe
 	
 	
 	@Query(nativeQuery= true, value= "")
-	List<QuestionWrapper> findListQuestionByIndex(long startIndex, long endIndex);
+	QuestionWrapper findQuestionByIndex(long Index);
 	
+	@Query(nativeQuery= true, value= "")
+	int countQuestionById();
 }

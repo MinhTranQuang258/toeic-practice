@@ -10,7 +10,7 @@ import com.tqminh.vn.toeicpractice.repositories.AccountWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
 import com.tqminh.vn.toeicpractice.services.AccountService;
 
-public class AccountDAOImpl implements AccountService{
+public class AccountServiceImpl implements AccountService{
 
 	@Autowired
 	private AccountWrapperRepository accountWrapperRepository;
