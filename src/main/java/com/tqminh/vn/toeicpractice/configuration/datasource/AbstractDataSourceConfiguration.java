@@ -1,5 +1,8 @@
 package com.tqminh.vn.toeicpractice.configuration.datasource;
 
+import java.util.Map;
+import java.util.Properties;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
@@ -21,13 +24,17 @@ public abstract class AbstractDataSourceConfiguration {
 		final HibernateJpaVendorAdapter hibernateJpaVendorAdapter= new HibernateJpaVendorAdapter();
 		localContainerEntityManagerFactoryBean.setJpaVendorAdapter(hibernateJpaVendorAdapter);
 		localContainerEntityManagerFactoryBean.setPersistenceUnitName(this.getPersistenceUnitName());
+		localContainerEntityManagerFactoryBean.setJpaPropertyMap(this.getProperties());
 		return localContainerEntityManagerFactoryBean;
-	
 	}
+	
+	public abstract LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean();
 	
 	public abstract PlatformTransactionManager platformTransactionManager(EntityManagerFactory entityManagerFactory);
 	
 	protected abstract String[] getPackagesToScan();
 	
 	protected abstract String getPersistenceUnitName();
+	
+	protected abstract Map<String, Properties> getProperties();
 }
