@@ -5,13 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.model.Question;
 import com.tqminh.vn.toeicpractice.repositories.QuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
-
+@Service
 public class QuestionServiceImpl implements QuestionService{
 	
 	@Autowired

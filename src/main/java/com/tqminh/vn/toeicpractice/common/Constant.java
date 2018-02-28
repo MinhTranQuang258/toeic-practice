@@ -12,6 +12,10 @@ public class Constant {
 		
 		public static final String FIND_ACCOUNT_BY_USER_NAME_AND_PASSWORD = "";
 		
+		public static final String FIND_QUESTION_BY_INDEX = "";
+		
+		public static final String COUNT_QUESTION_BY_ID = "";
+		
 	}
 	
 	public static class Notification {
