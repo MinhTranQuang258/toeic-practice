@@ -10,10 +10,6 @@ import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
 @Transactional
 public interface QuestionWrapperRepository extends CrudRepository<QuestionWrapper, Long>{
 	
-	
-	@Query(nativeQuery= true, value= Constant.NativeQuery.FIND_QUESTION_BY_INDEX)
-	QuestionWrapper findQuestionByIndex(long Index);
-	
 	@Query(nativeQuery= true, value= Constant.NativeQuery.FIND_QUESTION_BY_INDEX)
 	int countQuestionById();
 }

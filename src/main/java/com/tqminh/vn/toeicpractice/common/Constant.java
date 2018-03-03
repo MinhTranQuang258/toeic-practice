@@ -14,7 +14,7 @@ public class Constant {
 		
 		public static final String FIND_QUESTION_BY_INDEX = "";
 		
-		public static final String COUNT_QUESTION_BY_ID = "";
+		public static final String COUNT_QUESTION_BY_ID = "SELECT COUNT(id) FROM question_wrapper";
 		
 	}
 	

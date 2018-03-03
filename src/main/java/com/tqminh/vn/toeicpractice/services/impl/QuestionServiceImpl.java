@@ -63,8 +63,8 @@ public class QuestionServiceImpl implements QuestionService{
 			int count = countQuestion();
 			
 			for(int i= 0; i<= 9; i++) {
-				int index= random.nextInt(count);
-				QuestionWrapper questionWrapper= questionWrapperRepository.findQuestionByIndex(index);
+				long index= random.nextInt(count);
+				QuestionWrapper questionWrapper= questionWrapperRepository.findOne(index);
 				questions.add(questionWrapper.getQuestion());
 			}
 		} catch (Exception e) {

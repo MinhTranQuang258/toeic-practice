@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.tqminh.vn.toeicpractice.cache.Cache;
-import com.tqminh.vn.toeicpractice.common.Notification;
+import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.model.Account;
 import com.tqminh.vn.toeicpractice.repositories.AccountWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
@@ -36,7 +36,7 @@ public class AccountServiceImpl implements AccountService{
 					accountCache.put(userName, account);
 				}
 				else {
-					return Notification.CAN_NOT_FIND_USER;
+					return Constant.Notification.CAN_NOT_FIND_USER;
 				}
 			}
 		}catch (Exception e) {
@@ -63,10 +63,10 @@ public class AccountServiceImpl implements AccountService{
 		AccountWrapper accountWrapper= new AccountWrapper(account);
 		AccountWrapper newAccountWrapper= accountWrapperRepository.save(accountWrapper);
 		if(newAccountWrapper != null) {
-			return Notification.REGISTERED_SUCCESS;
+			return Constant.Notification.REGISTERED_SUCCESS;
 		}
 		else {
-			return Notification.REGISTRATION_FAILED;
+			return Constant.Notification.REGISTRATION_FAILED;
 		}
 	}
 
