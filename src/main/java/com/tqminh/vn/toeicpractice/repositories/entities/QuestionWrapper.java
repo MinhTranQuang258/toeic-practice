@@ -10,7 +10,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import com.tqminh.vn.toeicpractice.common.Constant;
-import com.tqminh.vn.toeicpractice.datatype.JSONType;
+import com.tqminh.vn.toeicpractice.josntype.JSONType;
 import com.tqminh.vn.toeicpractice.model.Question;
 
 @Entity
