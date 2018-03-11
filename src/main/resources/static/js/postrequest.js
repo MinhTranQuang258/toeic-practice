@@ -27,7 +27,7 @@ $(document).ready(function () {
         } else {
           $('.main-page').html('<h1>Wrong username or password!</h1>');
         }
-        console.log(result);
+        console.log(result.length);
       },
       error: function(e) {
         alert('Error!');
