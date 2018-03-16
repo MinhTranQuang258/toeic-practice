@@ -15,5 +15,10 @@ public class QuestionCacheImpl implements QuestionCache<Question>{
 	
 	private List<Question> questions= new ArrayList<Question>();
 
+	@Override
+	public void insertQuestion(Question question) {
+		questions.add(question);
+	}
+	
 	
 }

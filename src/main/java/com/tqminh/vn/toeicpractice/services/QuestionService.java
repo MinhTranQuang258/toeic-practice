@@ -2,21 +2,20 @@ package com.tqminh.vn.toeicpractice.services;
 
 
 import com.tqminh.vn.toeicpractice.model.Question;
-import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
 
 public interface QuestionService {
 	
 	String insertQuestion(Question question);
 	
-	QuestionWrapper loadQuestion(long index);
+	Question loadQuestion(long index);
 	
-	QuestionWrapper updateQuestion(long id);
+	Question updateQuestion(long id);
 	
-	QuestionWrapper deleteQuestion(long id);
+	Question deleteQuestion(long id);
 	
 	int countQuestion();
 	
-	QuestionWrapper nextQuestion();
+	Question nextQuestion();
 	
-	QuestionWrapper previousQuestion();
+	Question previousQuestion();
 }

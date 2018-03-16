@@ -1,15 +1,15 @@
 package com.tqminh.vn.toeicpractice.services;
 
-import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
+import com.tqminh.vn.toeicpractice.model.Question;
 
 public abstract class AbstractQuestion {
 
-	protected QuestionWrapper nextQuestion() {
+	protected Question nextQuestion() {
 		
 		return null;
 	}
 	
-	protected QuestionWrapper previousQuestion() {
+	protected Question previousQuestion() {
 		
 		return null;
 	}
