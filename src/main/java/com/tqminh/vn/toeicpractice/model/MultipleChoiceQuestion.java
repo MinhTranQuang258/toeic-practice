@@ -1,6 +1,6 @@
 package com.tqminh.vn.toeicpractice.model;
 
-public class Question {
+public class MultipleChoiceQuestion {
 	
 	private String detailQuestion;
 	
@@ -14,7 +14,7 @@ public class Question {
 	
 	private String answerTrue;
 
-	public Question() {
+	public MultipleChoiceQuestion() {
 		super();
 	}
 

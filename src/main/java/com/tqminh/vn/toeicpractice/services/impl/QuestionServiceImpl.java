@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.cache.QuestionCache;
-import com.tqminh.vn.toeicpractice.model.Question;
+import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.repositories.QuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
@@ -22,20 +22,20 @@ public class QuestionServiceImpl extends AbstractQuestion implements QuestionSer
 	
 	@Autowired
 	@Qualifier("QuestionCache")
-	private QuestionCache<Question> cache;
+	private QuestionCache<MultipleChoiceQuestion> cache;
 	
 	@Override
-	public Question nextQuestion() {
+	public MultipleChoiceQuestion nextQuestion() {
 		return super.nextQuestion();
 	}
 
 	@Override
-	public Question previousQuestion() {
+	public MultipleChoiceQuestion previousQuestion() {
 		return super.previousQuestion();
 	}
 
 	@Override
-	public String insertQuestion(Question question) {
+	public String insertQuestion(MultipleChoiceQuestion question) {
 		try {
 			if(question != null) {
 				QuestionWrapper questionWrapper= new QuestionWrapper(question);
@@ -66,7 +66,7 @@ public class QuestionServiceImpl extends AbstractQuestion implements QuestionSer
 	}
 
 	@Override
-	public Question loadQuestion(long index) {
+	public MultipleChoiceQuestion loadQuestion(long index) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -87,13 +87,13 @@ public class QuestionServiceImpl extends AbstractQuestion implements QuestionSer
 	}
 
 	@Override
-	public Question updateQuestion(long id) {
+	public MultipleChoiceQuestion updateQuestion(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Question deleteQuestion(long id) {
+	public MultipleChoiceQuestion deleteQuestion(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}	

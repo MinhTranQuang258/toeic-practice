@@ -11,7 +11,7 @@ import org.hibernate.annotations.TypeDef;
 
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.jsontype.JSONType;
-import com.tqminh.vn.toeicpractice.model.Question;
+import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 
 @Entity
 @TypeDef(name= "json", typeClass= JSONType.class, parameters= {
@@ -23,13 +23,13 @@ public class QuestionWrapper {
 	private long id;
 	
 	@Type(type= "json")
-	private Question question;
+	private MultipleChoiceQuestion question;
 
 	public long getId() {
 		return id;
 	}
 
-	public Question getQuestion() {
+	public MultipleChoiceQuestion getQuestion() {
 		return question;
 	}
 
@@ -37,7 +37,7 @@ public class QuestionWrapper {
 		super();
 	}
 
-	public QuestionWrapper(Question question) {
+	public QuestionWrapper(MultipleChoiceQuestion question) {
 		super();
 		this.question = question;
 	}
@@ -46,7 +46,7 @@ public class QuestionWrapper {
 		this.id = id;
 	}
 
-	public void setQuestion(Question question) {
+	public void setQuestion(MultipleChoiceQuestion question) {
 		this.question = question;
 	}
 }

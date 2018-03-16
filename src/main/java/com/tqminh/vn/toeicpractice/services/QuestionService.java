@@ -1,21 +1,21 @@
 package com.tqminh.vn.toeicpractice.services;
 
 
-import com.tqminh.vn.toeicpractice.model.Question;
+import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 
 public interface QuestionService {
 	
-	String insertQuestion(Question question);
+	String insertQuestion(MultipleChoiceQuestion question);
 	
-	Question loadQuestion(long index);
+	MultipleChoiceQuestion loadQuestion(long index);
 	
-	Question updateQuestion(long id);
+	MultipleChoiceQuestion updateQuestion(long id);
 	
-	Question deleteQuestion(long id);
+	MultipleChoiceQuestion deleteQuestion(long id);
 	
 	int countQuestion();
 	
-	Question nextQuestion();
+	MultipleChoiceQuestion nextQuestion();
 	
-	Question previousQuestion();
+	MultipleChoiceQuestion previousQuestion();
 }

@@ -10,10 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-/**
- *
- * @author Vu
- */
+
 @Configuration
 @EnableWebMvc
 public class WebConfiguration extends WebMvcConfigurerAdapter {

@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.tqminh.vn.toeicpractice.cache.QuestionCache;
-import com.tqminh.vn.toeicpractice.model.Question;
+import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 
 @Component
 @Qualifier("QuestionCache")
-public class QuestionCacheImpl implements QuestionCache<Question>{
+public class QuestionCacheImpl implements QuestionCache<MultipleChoiceQuestion>{
 	
-	private List<Question> questions= new ArrayList<Question>();
+	private List<MultipleChoiceQuestion> questions= new ArrayList<MultipleChoiceQuestion>();
 
 	@Override
-	public void insertQuestion(Question question) {
+	public void insertQuestion(MultipleChoiceQuestion question) {
 		questions.add(question);
 	}
 	

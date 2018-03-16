@@ -1,15 +1,15 @@
 package com.tqminh.vn.toeicpractice.services;
 
-import com.tqminh.vn.toeicpractice.model.Question;
+import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 
 public abstract class AbstractQuestion {
 
-	protected Question nextQuestion() {
+	protected MultipleChoiceQuestion nextQuestion() {
 		
 		return null;
 	}
 	
-	protected Question previousQuestion() {
+	protected MultipleChoiceQuestion previousQuestion() {
 		
 		return null;
 	}
