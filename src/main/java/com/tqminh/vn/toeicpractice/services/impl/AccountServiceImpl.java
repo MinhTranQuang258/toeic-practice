@@ -3,7 +3,7 @@ package com.tqminh.vn.toeicpractice.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.tqminh.vn.toeicpractice.cache.Cache;
+import com.tqminh.vn.toeicpractice.cache.AccountCache;
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.model.Account;
 import com.tqminh.vn.toeicpractice.repositories.AccountWrapperRepository;
@@ -17,7 +17,7 @@ public class AccountServiceImpl implements AccountService{
 	
 	@Autowired
 	@Qualifier(value= "AccountCache")
-	private Cache accountCache;
+	private AccountCache accountCache;
 	
 	private String userName;
 	

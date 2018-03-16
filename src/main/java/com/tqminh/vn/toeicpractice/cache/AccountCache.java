@@ -1,7 +1,7 @@
 package com.tqminh.vn.toeicpractice.cache;
 
 
-public interface Cache<T> {
+public interface AccountCache<T> {
 	
 	Object getObject(Object key);
 	

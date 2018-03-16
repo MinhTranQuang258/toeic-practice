@@ -5,15 +5,15 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import com.tqminh.vn.toeicpractice.cache.Cache;
+import com.tqminh.vn.toeicpractice.cache.AccountCache;
 import com.tqminh.vn.toeicpractice.model.Account;
 
 @Component(value= "AccountCache")
-public class AccountCache implements Cache{
+public class AccountCacheImpl implements AccountCache<Account>{
 	
 	private Map<String, Account> map;
 
-	public AccountCache() {
+	public AccountCacheImpl() {
 		super();
 		map= new HashMap<>();
 	}

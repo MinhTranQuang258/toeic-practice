@@ -5,18 +5,36 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.tqminh.vn.toeicpractice.cache.AccountCache;
+import com.tqminh.vn.toeicpractice.cache.impl.QuestionCacheImpl;
 import com.tqminh.vn.toeicpractice.model.Question;
 import com.tqminh.vn.toeicpractice.repositories.QuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
+import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Service
-public class QuestionServiceImpl implements QuestionService{
+public class QuestionServiceImpl extends AbstractQuestion implements QuestionService{
 	
 	@Autowired
 	private QuestionWrapperRepository questionWrapperRepository;
+	
+	@Autowired
+	@Qualifier("QuestionCache")
+	private AccountCache<Question> cache;
+	
+	@Override
+	public QuestionWrapper nextQuestion() {
+		return super.nextQuestion();
+	}
+
+	@Override
+	public QuestionWrapper previousQuestion() {
+		return super.previousQuestion();
+	}
 
 	@Override
 	public String insertQuestion(Question question) {
@@ -55,8 +73,7 @@ public class QuestionServiceImpl implements QuestionService{
 		return null;
 	}
 
-	@Override
-	public List<Question> getListQuestion() {
+	private List<Question> getListQuestion() {
 		List<Question> questions= new ArrayList<Question>();
 		Random random= new Random();
 		try {
