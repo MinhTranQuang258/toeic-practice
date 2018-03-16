@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- <link rel="stylesheet" type="text/css" th:href="@{/webjars/node_modules/bootstrap/dist/css/bootstrap.css}"/> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/app.css}" />
+  <title>Index</title>
+</head>
+
+<body>
+  <div class="col-lg-3">
+    <nav class="sidebar">
+      <ul class="sidebar__list">
+        <li class="sidebar__item">
+          <a href="#" class="js-sidebar-item  sidebar__link">
+            <i class="fa fa-user-circle-o sidebar__icon" aria-hidden="true"></i>
+            Chọn phần ôn thi
+          </a>
+          <ul class="sidebar__list sidebar__list--sub">
+
+            <li class="sidebar__item">
+              <a href="/manage_report_admin.html" class="sidebar__link">
+                Nghe
+              </a>
+            </li>
+            <li class="sidebar__item">
+              <a href="/manage_report_staff.html" class="sidebar__link">
+                Ngữ pháp
+              </a>
+            </li>
+            <li class="sidebar__item">
+              <a href="/manage_report_staff.html" class="sidebar__link">
+                Đọc
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="sidebar__item">
+          <a href="#" class="js-sidebar-item sidebar__link">
+            <i class="fa fa-shopping-bag sidebar__icon" aria-hidden="true"></i>
+            Khách Hàng
+          </a>
+          <ul class="sidebar__list sidebar__list--sub">
+            <li class="sidebar__item">
+              <a href="/list_customer.html" class="sidebar__link">
+                Table Khách Hàng
+              </a>
+            </li>
+            <li class="sidebar__item">
+              <a href="/custom.html" class="sidebar__link">
+                Dashboard khách hàng
+              </a>
+            </li>
+            <li class="sidebar__item">
+              <a href="/contact.html" class="sidebar__link">
+                Liên Hệ
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="col-lg-9">
+    <main class="page-main">
+      <div class="main">
+        <div class="container-fluid">
+          <div class="row">
+
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/js/postrequest.js"></script>
+</body>
+
+</html>

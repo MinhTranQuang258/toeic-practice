@@ -1,7 +1,7 @@
 {
   "name": "toeic-practice",
   "version": "1.0.0",
-  "description": "",
+  "description": "TOEIC Practice webapp",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/MinhTranQuang258/toeic-practice.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -18,13 +17,6 @@
   },
   "homepage": "https://github.com/MinhTranQuang258/toeic-practice#readme",
   "dependencies": {
-    "bootstrap": "^4.0.0",
-    "jquery": "^3.3.1"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.23.6",
-    "gulp": "^3.9.1",
-    "gulp-inject": "^4.3.0",
-    "gulp-sass": "^3.1.0"
+    "bootstrap": "^4.0.0"
   }
 }

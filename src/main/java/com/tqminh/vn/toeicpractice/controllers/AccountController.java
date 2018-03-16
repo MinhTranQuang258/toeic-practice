@@ -10,5 +10,15 @@ public class AccountController {
     public String login() {
         return "login";
     }
+    
+    @RequestMapping(value= "/register", method= RequestMethod.GET)
+    public String register() {
+        return "register";
+    }
+    
+    @RequestMapping(value= {"/", "/index"}, method= RequestMethod.GET)
+    public String index() {
+        return "index";
+    }
 	
 }
