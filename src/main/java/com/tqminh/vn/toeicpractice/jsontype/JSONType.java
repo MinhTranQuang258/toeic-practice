@@ -1,4 +1,4 @@
-package com.tqminh.vn.toeicpractice.josntype;
+package com.tqminh.vn.toeicpractice.jsontype;
 
 import java.io.IOException;
 import java.io.Serializable;
