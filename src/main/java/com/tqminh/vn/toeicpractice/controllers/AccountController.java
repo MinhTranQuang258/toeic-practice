@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AccountController {
-    @RequestMapping(value= "/login", method= RequestMethod.GET)
+	
+    @RequestMapping(value= {"/login", "/"}, method= RequestMethod.GET)
     public String login() {
         return "login";
     }
@@ -16,7 +17,7 @@ public class AccountController {
         return "register";
     }
     
-    @RequestMapping(value= {"/", "/index"}, method= RequestMethod.GET)
+    @RequestMapping(value= {"/index"}, method= RequestMethod.GET)
     public String index() {
         return "index";
     }

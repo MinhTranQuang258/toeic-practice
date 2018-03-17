@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.repositories.QuestionWrapperRepository;
-import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
+import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
@@ -35,8 +35,8 @@ public class QuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuestion
 	public String insertQuestion(MultipleChoiceQuestion question) {
 		try {
 			if(question != null) {
-				QuestionWrapper questionWrapper= new QuestionWrapper(question);
-				QuestionWrapper wrapper= questionWrapperRepository.save(questionWrapper);
+				MCQuestionWrapper questionWrapper= new MCQuestionWrapper(question);
+				MCQuestionWrapper wrapper= questionWrapperRepository.save(questionWrapper);
 				if(wrapper != null) {
 					return "";
 				}

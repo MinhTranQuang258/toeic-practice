@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.tqminh.vn.toeicpractice.cache.QuestionCache;
 import com.tqminh.vn.toeicpractice.repositories.QuestionWrapperRepository;
-import com.tqminh.vn.toeicpractice.repositories.entities.QuestionWrapper;
+import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 
 public abstract class AbstractQuestion<T> {
 	
@@ -45,7 +45,7 @@ public abstract class AbstractQuestion<T> {
 			
 			for(int i= 0; i<= 9; i++) {
 				long index= random.nextInt(count);
-				QuestionWrapper questionWrapper= questionWrapperRepository.findOne(index);
+				MCQuestionWrapper questionWrapper= questionWrapperRepository.findOne(index);
 				cache.insertQuestion(questionWrapper.getQuestion());
 			}
 		} catch (Exception e) {
