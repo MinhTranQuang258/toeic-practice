@@ -11,42 +11,42 @@ import org.hibernate.annotations.TypeDef;
 
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.jsontype.JSONType;
-import com.tqminh.vn.toeicpractice.model.Account;
+import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 
 @Entity
 @TypeDef(name= "json", typeClass= JSONType.class, parameters= {
-		@Parameter(name= JSONType.CLASS, value= Constant.JSON_ACCOUNT)})
-public class AccountWrapper {
+		@Parameter(name= JSONType.CLASS, value= Constant.JSON_QUESTION)})
+public class MCQuestionWrapper {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;
 	
 	@Type(type= "json")
-	private Account account;
-
-	public AccountWrapper() {
-		super();
-	}
-	
-	public AccountWrapper(Account account) {
-		super();
-		this.account = account;
-	}
+	private MultipleChoiceQuestion question;
 
 	public long getId() {
 		return id;
 	}
 
+	public MultipleChoiceQuestion getQuestion() {
+		return question;
+	}
+
+	public MCQuestionWrapper() {
+		super();
+	}
+
+	public MCQuestionWrapper(MultipleChoiceQuestion question) {
+		super();
+		this.question = question;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	public Account getUser() {
-		return account;
-	}
 
-	public void setUser(Account account) {
-		this.account = account;
+	public void setQuestion(MultipleChoiceQuestion question) {
+		this.question = question;
 	}
 }
