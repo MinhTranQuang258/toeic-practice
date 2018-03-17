@@ -1,0 +1,38 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+  margin-bottom: 0;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+input {
+  &:focus {
+    border-color: #6db22f !important;
+    box-shadow: 0 0 0 0.2rem #bde49a !important;
+  }
+  &[type="checkbox"],
+  &[type="radio"] {
+    width: 17px;
+    height: 17px;
+  }
+  &[type="radio"]:focus {
+    border: none !important;
+  }
+}
+label {
+  margin-left: 5px;
+}
