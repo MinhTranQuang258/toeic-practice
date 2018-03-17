@@ -17,7 +17,7 @@ public class AccountServiceImpl implements AccountService{
 	
 	@Autowired
 	@Qualifier(value= "AccountCache")
-	private AccountCache accountCache;
+	private AccountCache<Account> accountCache;
 	
 	private String userName;
 	
