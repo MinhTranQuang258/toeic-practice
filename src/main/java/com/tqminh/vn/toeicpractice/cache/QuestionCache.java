@@ -8,4 +8,6 @@ public interface QuestionCache<T> {
 	void insertQuestion(MultipleChoiceQuestion question);
 	
 	T getQuestion(int index);
+	
+	
 }
