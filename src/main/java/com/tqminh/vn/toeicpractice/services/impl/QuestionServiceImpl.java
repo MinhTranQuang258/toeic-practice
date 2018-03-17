@@ -15,8 +15,13 @@ import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Service
-public class QuestionServiceImpl extends AbstractQuestion implements QuestionService{
+public class QuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuestion> implements QuestionService{
 	
+	@Override
+	public void displayQuestion() {
+		super.displayQuestion();
+	}
+
 	@Autowired
 	private QuestionWrapperRepository questionWrapperRepository;
 	
@@ -25,13 +30,13 @@ public class QuestionServiceImpl extends AbstractQuestion implements QuestionSer
 	private QuestionCache<MultipleChoiceQuestion> cache;
 	
 	@Override
-	public MultipleChoiceQuestion nextQuestion() {
-		return super.nextQuestion();
+	public void nextQuestion() {
+		super.nextQuestion();
 	}
 
 	@Override
-	public MultipleChoiceQuestion previousQuestion() {
-		return super.previousQuestion();
+	public void previousQuestion() {
+		super.previousQuestion();
 	}
 
 	@Override
@@ -66,12 +71,17 @@ public class QuestionServiceImpl extends AbstractQuestion implements QuestionSer
 	}
 
 	@Override
-	public MultipleChoiceQuestion loadQuestion(long index) {
-		// TODO Auto-generated method stub
-		return null;
+	public MultipleChoiceQuestion loadQuestion(int index) {
+		try {
+			getListQuestion();
+			MultipleChoiceQuestion question=  cache.getQuestion(index);
+			return question;
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
-	private void loadListQuestion() {
+	private void getListQuestion() {
 		Random random= new Random();
 		try {
 			int count = countQuestion();

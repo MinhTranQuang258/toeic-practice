@@ -19,6 +19,9 @@ public class QuestionCacheImpl implements QuestionCache<MultipleChoiceQuestion>{
 	public void insertQuestion(MultipleChoiceQuestion question) {
 		questions.add(question);
 	}
-	
-	
+
+	@Override
+	public MultipleChoiceQuestion getQuestion(int index) {
+		return questions.get(index);
+	}
 }

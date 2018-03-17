@@ -7,7 +7,7 @@ public interface QuestionService {
 	
 	String insertQuestion(MultipleChoiceQuestion question);
 	
-	MultipleChoiceQuestion loadQuestion(long index);
+	MultipleChoiceQuestion loadQuestion(int index);
 	
 	MultipleChoiceQuestion updateQuestion(long id);
 	
@@ -15,7 +15,9 @@ public interface QuestionService {
 	
 	int countQuestion();
 	
-	MultipleChoiceQuestion nextQuestion();
+	void nextQuestion();
 	
-	MultipleChoiceQuestion previousQuestion();
+	void previousQuestion();
+	
+	void displayQuestion() ;
 }
