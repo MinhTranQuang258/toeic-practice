@@ -15,12 +15,8 @@
 <body>
 
   {{!-- Pages you create in the src/pages/ folder are inserted here when the flattened page is created. --}} 
-  {{> header}}
-  <div class="container-fluid">
-    <div class="row">
-       {{> body}}
-    </div>
-  </div>
+  
+  {{> body}}
 
   <script src="{{root}}assets/js/app.js"></script>
   <script type="text/javascript" th:src="@{/js/app.js}"></script>

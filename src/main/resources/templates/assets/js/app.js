@@ -12461,6 +12461,48 @@ window.$ = _jquery2.default;
 // the line below
 //import './lib/foundation-explicit-pieces';
 
+(0, _jquery2.default)(document).ready(function () {
+
+  (0, _jquery2.default)('.js-sidebar-item').on('click', function (e) {
+    e.preventDefault;
+    (0, _jquery2.default)(this).siblings('ul').slideToggle('fast');
+
+    (0, _jquery2.default)(this).parent('.sidebar__item').siblings().find('ul').slideUp();
+  });
+
+  (0, _jquery2.default)('#loginForm').submit(function (e) {
+    e.preventDefault();
+    login();
+  });
+});
+
+// Function
+
+function login() {
+  var user = {
+    username: (0, _jquery2.default)('#username').val(),
+    password: (0, _jquery2.default)('#passowrd').val()
+  };
+  _jquery2.default.ajax({
+    // type 
+    type: 'POST',
+    // edit API url below
+    url: 'http://www.json-generator.com/api/json/get/cpyfNgFoKq?indent=2',
+    data: JSON.stringify(FormData),
+    dataType: 'json',
+    success: function success(result) {
+
+      // Do something if success
+
+    },
+    error: function error(e) {
+      alert('Error!');
+      console.log('ERROR: ', e);
+    }
+  });
+  resetData();
+}
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
