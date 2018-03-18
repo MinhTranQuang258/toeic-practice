@@ -11,7 +11,7 @@ import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Service
-public class QuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuestion> implements QuestionService<MultipleChoiceQuestion>{
+public class MCQuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuestion> implements QuestionService<MultipleChoiceQuestion>{
 
 	@Autowired
 	private MCQuestionWrapperRepository questionWrapperRepository;

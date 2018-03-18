@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	@RequestMapping(value= {"/login", "/"}, method= RequestMethod.GET)
-        public String login() {
-            return "login";
-        }
+    public String login() {
+        return "login";
+    }
 	
 	@RequestMapping(value= "/register", method= RequestMethod.GET)
 	public String register() {
 		return "register";
 	}
         
-        @RequestMapping(value= "/question", method= RequestMethod.GET)
+    @RequestMapping(value= "/question", method= RequestMethod.GET)
 	public String question() {
 		return "question";
 	}
