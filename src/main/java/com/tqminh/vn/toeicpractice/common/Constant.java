@@ -4,9 +4,11 @@ public class Constant {
 	
 	public final static String JSON_ACCOUNT= "com.tqminh.vn.toeicpractice.model.Account";
 	
-	public final static String JSON_QUESTION= "com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion";
+	public final static String JSON_MULTIPLE_CHOICE_QUESTION= "com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion";
 	
-	public final static String JSON_RESULT= "h.vn.toeicpractice.model.Result";
+	public final static String JSON_PHOTO_QUESTION= "com.tqminh.vn.toeicpractice.model.PhotoQuestion";
+	
+	public final static String JSON_RESULT= "com.tqminh.vn.toeicpractice.model.Result";
 	
 	public static class NativeQuery {
 		

@@ -11,42 +11,42 @@ import org.hibernate.annotations.TypeDef;
 
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.jsontype.JSONType;
-import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
+import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 
 @Entity
 @TypeDef(name= "json", typeClass= JSONType.class, parameters= {
-		@Parameter(name= JSONType.CLASS, value= Constant.JSON_MULTIPLE_CHOICE_QUESTION)})
-public class MCQuestionWrapper {
+		@Parameter(name= JSONType.CLASS, value= Constant.JSON_PHOTO_QUESTION)})
+public class PQuestionWrapper {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@Type(type= "json")
-	private MultipleChoiceQuestion question;
+	private PhotoQuestion photoQuestion;
 
-	public long getId() {
+	public PQuestionWrapper(PhotoQuestion photoQuestion) {
+		super();
+		this.photoQuestion = photoQuestion;
+	}
+
+	public PQuestionWrapper() {
+		super();
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public MultipleChoiceQuestion getQuestion() {
-		return question;
-	}
-
-	public MCQuestionWrapper() {
-		super();
-	}
-
-	public MCQuestionWrapper(MultipleChoiceQuestion question) {
-		super();
-		this.question = question;
-	}
-
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public void setQuestion(MultipleChoiceQuestion question) {
-		this.question = question;
+	public PhotoQuestion getPhotoQuestion() {
+		return photoQuestion;
+	}
+
+	public void setPhotoQuestion(PhotoQuestion photoQuestion) {
+		this.photoQuestion = photoQuestion;
 	}
 }
