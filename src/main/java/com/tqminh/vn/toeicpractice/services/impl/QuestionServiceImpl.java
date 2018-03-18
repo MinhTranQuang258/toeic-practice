@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
-import com.tqminh.vn.toeicpractice.repositories.QuestionWrapperRepository;
+import com.tqminh.vn.toeicpractice.repositories.MCQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
@@ -14,7 +14,7 @@ import com.tqminh.vn.toeicpractice.services.QuestionService;
 public class QuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuestion> implements QuestionService<MultipleChoiceQuestion>{
 
 	@Autowired
-	private QuestionWrapperRepository questionWrapperRepository;
+	private MCQuestionWrapperRepository questionWrapperRepository;
 	
 	@Override
 	public void nextQuestion() {

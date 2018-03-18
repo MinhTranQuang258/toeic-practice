@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.tqminh.vn.toeicpractice.cache.QuestionCache;
-import com.tqminh.vn.toeicpractice.repositories.QuestionWrapperRepository;
+import com.tqminh.vn.toeicpractice.repositories.MCQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 
 public abstract class AbstractQuestion<T> {
 	
 	@Autowired
-	private QuestionWrapperRepository questionWrapperRepository;
+	private MCQuestionWrapperRepository questionWrapperRepository;
 	
 	@Autowired
 	@Qualifier("QuestionCache")

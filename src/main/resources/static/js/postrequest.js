@@ -5,7 +5,13 @@ $(document).ready(function () {
    */
   $('#loginForm').submit(function (e) {
     e.preventDefault();
-    login();
+  });
+  
+  function click(){
+	  
+  }$.ajax({
+	  type: 'POST',
+      url: 'http://localhost:8080/click'
   });
 
 
@@ -16,7 +22,7 @@ $(document).ready(function () {
     }
     $.ajax({
       type: 'POST',
-      url: 'http://www.json-generator.com/api/json/get/cpyfNgFoKq?indent=2',
+      url: 'http://localhost:8080/click',
       data: JSON.stringify(FormData),
       dataType: 'json',
       success: function(result) {

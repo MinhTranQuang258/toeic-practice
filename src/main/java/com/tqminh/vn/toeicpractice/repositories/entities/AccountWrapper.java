@@ -42,11 +42,11 @@ public class AccountWrapper {
 		this.id = id;
 	}
 	
-	public Account getUser() {
+	public Account getAccount() {
 		return account;
 	}
 
-	public void setUser(Account account) {
+	public void setAccount(Account account) {
 		this.account = account;
 	}
 }
