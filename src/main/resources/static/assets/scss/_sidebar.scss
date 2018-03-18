@@ -1,0 +1,102 @@
+$sidebar-link-cl: #495057;
+$sidebar-link-hover-cl: #495057;
+$sidebar-link-sub-cl: #ffffff;
+$sidebar-bg: #ffffff;
+$sidebar-sub-bg: #67ae3d;
+$sidebar-link-bg: transparent;
+$sidebar-link-hover-bg: transparent;
+
+$sidebar-icon-cl: #60c46d;
+$sidebar-item-cl: #479c0e;
+$sidebar-item-bg: #d7ffbd;
+
+.sidebar {
+  $b: &;
+  $line-height: 24px;
+  padding: 0;
+  width: 220px;
+  transition: .5s width;
+  background-color: white;
+  min-height: 100vh;
+  @media (max-width: 767px) {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    min-height: 1vh;
+    border-bottom: 1px solid rgba(73, 80, 87, 0.2);
+  }
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+    @media (max-width: 575px) {
+      width: 100%;
+    }
+    &--sub {
+      display: none;
+      background-color: $sidebar-sub-bg;
+      #{$b}__item {
+
+      }
+      #{$b}__link {
+        color: $sidebar-link-sub-cl;
+      }
+      #{$b}__icon {
+
+      }
+      #{$b}__text {
+
+      }
+    }
+  }
+  &__item {
+    position: relative;
+    &:not(:last-of-type) {
+      border-bottom: 1px solid transparentize($sidebar-link-cl, 0.8);
+    }
+  }
+  &__link {
+    display: flex;
+    font-size: 16px;
+    color: $sidebar-link-cl;
+    background-color: $sidebar-link-bg;
+    position: relative;
+    padding: 16px;
+    line-height: 24px;
+    &:hover {
+      transition: .3s;
+      text-decoration: none;
+      color: $sidebar-link-hover-cl;
+      background-color: $sidebar-link-hover-bg;
+    }
+    @media (max-width: 767px) {
+      padding: 16px 30px;
+    }
+  }
+  &__icon {
+    font-size: 15px;
+    line-height: 22px;
+    margin-right: 8px;
+    // color: $sidebar-icon;
+  }
+  &__item {
+    font-size: 17px;
+    color: $sidebar-item-cl;
+  }
+  &__text{
+    &--sub {
+      display: none;
+      color: #000;
+      background-color: white;
+      padding: 12.5px;
+      text-align: center;
+      @media (max-width: 767px) {
+        display: block;
+      }
+      @media (max-width: 575px) {
+        display: none;
+      }
+    }
+  }
+}

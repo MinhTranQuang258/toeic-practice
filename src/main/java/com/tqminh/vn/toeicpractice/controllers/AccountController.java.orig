@@ -1,0 +1,32 @@
+package com.tqminh.vn.toeicpractice.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class AccountController {
+<<<<<<< HEAD
+    @RequestMapping(value= "/login", method= RequestMethod.GET)
+    public String login() {
+        return "login";
+    }
+    
+    @RequestMapping(value= "/register", method= RequestMethod.GET)
+    public String register() {
+        return "register";
+    }
+    
+    @RequestMapping(value= {"/", "/index"}, method= RequestMethod.GET)
+    public String index() {
+        return "index";
+    }
+=======
+>>>>>>> 79720b4b93c74d07dd8370334d22241610781de1
+	
+//    @RequestMapping(value= "/login", method= RequestMethod.GET)
+//    public String login() {
+//        return "login";
+//    }
+//	
+}

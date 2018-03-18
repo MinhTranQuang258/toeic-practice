@@ -1,0 +1,96 @@
+$question-container-background-cl: #6db22f;
+$question-background-cl: white;
+$question-padding-overall: 50px;
+$question-header-background-cl: #6db22f;
+$question-header-text-cl: white;
+$question-instruction-background-cl: #6db22f;
+$question-instruction-text-cl: white;
+$question-footer-background-cl: #6db22f;
+$question-footer-text-cl: white;
+
+.question {
+  background-color: $question-background-cl;
+  padding: $question-padding-overall;
+  border-radius: 30px;
+  box-shadow: 10px 10px 10px #538824;
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $question-container-background-cl;
+  }
+  &__header {
+    background-color: $question-header-background-cl;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    border-radius: 20px;
+  }
+  &__details {
+    color: $question-header-text-cl;
+  }
+  &__body {
+    min-height: 300px;
+    padding: 30px 50px 50px;
+  }
+  &__instructions {
+    margin-bottom: 20px;
+    &-text {
+      font-style: italic;
+      &--fill {
+        background-color: $question-instruction-background-cl;
+        color: $question-instruction-text-cl;
+        padding: 3px;
+      }
+    }
+  }
+  &__answers {
+    // border: 1px solid #000;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  &__choice {
+    font-size: 17px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__footer {
+    background-color: $question-footer-background-cl;
+    min-height: 50px;
+    position: relative;
+  }
+  &__prev, &__next {
+    position: absolute;
+    min-height: 50px;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    color: #fff;
+    cursor: pointer;
+  }
+  &__prev {
+    left: 0;
+    right: auto;
+  }
+  &__next {
+    position: absolute;
+    left: auto;
+    right: 0;
+  }
+}
