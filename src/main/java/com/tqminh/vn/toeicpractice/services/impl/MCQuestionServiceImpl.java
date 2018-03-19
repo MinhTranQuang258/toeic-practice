@@ -2,6 +2,7 @@ package com.tqminh.vn.toeicpractice.services.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
@@ -11,10 +12,11 @@ import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Service
+@Qualifier("MCQuestionServiceImpl")
 public class MCQuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuestion> implements QuestionService<MultipleChoiceQuestion>{
 
 	@Autowired
-	private MCQuestionWrapperRepository questionWrapperRepository;
+	private MCQuestionWrapperRepository repository;
 	
 	@Override
 	public void nextQuestion() {
@@ -36,13 +38,13 @@ public class MCQuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuesti
 		try {
 			if(question != null) {
 				MCQuestionWrapper questionWrapper= new MCQuestionWrapper(question);
-				MCQuestionWrapper wrapper= questionWrapperRepository.save(questionWrapper);
-				if(wrapper != null) {
-					return "";
+				MCQuestionWrapper wrapper= repository.save(questionWrapper);
+				if(wrapper == null) {
+					throw new NullPointerException("Can't insert the mutilple-choice question.");
 				}
 			}
 			else {
-				return "";
+				throw new NullPointerException();
 			}
 		} catch (Exception e) {
 			throw e;

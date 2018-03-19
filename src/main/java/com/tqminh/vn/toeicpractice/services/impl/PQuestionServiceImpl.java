@@ -1,14 +1,35 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
+import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
+import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 public class PQuestionServiceImpl extends AbstractQuestion<PhotoQuestion> implements QuestionService<PhotoQuestion>{
 
+	@Autowired
+	private PQuestionWrapperRepository repository;
+	
+	
 	@Override
 	public String insertQuestion(PhotoQuestion question) {
-		// TODO Auto-generated method stub
+		try {
+			if(question != null) {
+				PQuestionWrapper questionWrapper= new PQuestionWrapper(question);
+				PQuestionWrapper pQuestionWrapper= repository.save(questionWrapper);
+				if(pQuestionWrapper == null) {
+					throw new NullPointerException("Can't insert the Photo Question.");
+				}
+			}
+			else {
+				throw new NullPointerException();
+			}
+		} catch (Exception e) {
+			throw e;
+		}
 		return null;
 	}
 

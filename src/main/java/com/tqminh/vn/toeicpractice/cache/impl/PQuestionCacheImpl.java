@@ -4,7 +4,7 @@ import com.tqminh.vn.toeicpractice.cache.QuestionCache;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 
-public class PAccountCacheImpl implements QuestionCache<PhotoQuestion>{
+public class PQuestionCacheImpl implements QuestionCache<PhotoQuestion>{
 
 	@Override
 	public void insertQuestion(MultipleChoiceQuestion question) {
