@@ -11,42 +11,42 @@ import org.hibernate.annotations.TypeDef;
 
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.jsontype.JSONType;
-import com.tqminh.vn.toeicpractice.model.Account;
+import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 
 @Entity
 @TypeDef(name= "json", typeClass= JSONType.class, parameters= {
-		@Parameter(name= JSONType.CLASS, value= Constant.JSON_ACCOUNT)})
-public class AccountWrapper {
+		@Parameter(name= JSONType.CLASS, value= Constant.JSON_PHOTO_QUESTION)})
+public class PQuestionWrapper {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@Type(type= "json")
-	private Account account;
+	private PhotoQuestion photoQuestion;
 
-	public AccountWrapper() {
+	public PQuestionWrapper(PhotoQuestion photoQuestion) {
 		super();
-	}
-	
-	public AccountWrapper(Account account) {
-		super();
-		this.account = account;
+		this.photoQuestion = photoQuestion;
 	}
 
-	public long getId() {
+	public PQuestionWrapper() {
+		super();
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	public Account getAccount() {
-		return account;
+
+	public PhotoQuestion getPhotoQuestion() {
+		return photoQuestion;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setPhotoQuestion(PhotoQuestion photoQuestion) {
+		this.photoQuestion = photoQuestion;
 	}
 }

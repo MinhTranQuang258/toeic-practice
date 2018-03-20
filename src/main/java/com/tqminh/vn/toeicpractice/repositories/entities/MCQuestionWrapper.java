@@ -15,7 +15,7 @@ import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 
 @Entity
 @TypeDef(name= "json", typeClass= JSONType.class, parameters= {
-		@Parameter(name= JSONType.CLASS, value= Constant.JSON_QUESTION)})
+		@Parameter(name= JSONType.CLASS, value= Constant.JSON_MULTIPLE_CHOICE_QUESTION)})
 public class MCQuestionWrapper {
 	
 	@Id

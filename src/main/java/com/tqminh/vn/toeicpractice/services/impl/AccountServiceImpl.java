@@ -2,6 +2,7 @@ package com.tqminh.vn.toeicpractice.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.cache.AccountCache;
 import com.tqminh.vn.toeicpractice.common.Constant;
@@ -10,6 +11,7 @@ import com.tqminh.vn.toeicpractice.repositories.AccountWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
 import com.tqminh.vn.toeicpractice.services.AccountService;
 
+@Service
 public class AccountServiceImpl implements AccountService{
 
 	@Autowired
@@ -30,7 +32,8 @@ public class AccountServiceImpl implements AccountService{
 				accountCache.put(userName, account);
 			}
 			else {
-				AccountWrapper accountWrapper=  accountWrapperRepository.findAccountByUserAndPassword(userName, password);
+				AccountWrapper accountWrapper=  
+						accountWrapperRepository.findAccountByUserAndPassword(userName, password);
 				if(accountWrapper != null) {
 					setUserName(userName);
 					accountCache.put(userName, account);
