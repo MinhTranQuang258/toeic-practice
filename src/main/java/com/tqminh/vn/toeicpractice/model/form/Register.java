@@ -6,7 +6,7 @@ public class Register {
 	
 	private String age;
 	
-	private String userName;
+	private String username;
 	
 	private String password;
 	
@@ -29,11 +29,11 @@ public class Register {
 	}
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
