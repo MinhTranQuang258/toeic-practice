@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/bootstrap.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/app.css}" />
+  <title>TOEIC Practice</title>
+</head>
+
+<body>
+  <header class="page-header">
+    <div class="container-fluid">
+      <div class="header row">
+        <div class="header__user col-lg-3">
+          <div class="header__user-avatar">
+            <!-- <img src="" alt=""> -->
+          </div>
+          <div class="header__user-name">
+            <p class="header__user-text">Username</p>
+          </div>
+        </div>
+        <div class="header__setting col-lg-9">
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Settings
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <nav class="sidebar col-lg-3">
+        <ul class="sidebar__list">
+          <li class="sidebar__item">
+            <a href="#" class="js-sidebar-item  sidebar__link">
+              <i class="fa fa-user-circle-o sidebar__icon" aria-hidden="true"></i>
+              Chọn phần ôn thi
+            </a>
+            <ul class="sidebar__list sidebar__list--sub">
+
+              <li class="sidebar__item">
+                <a href="/manage_report_admin.html" class="sidebar__link">
+                  Nghe
+                </a>
+              </li>
+              <li class="sidebar__item">
+                <a href="/manage_report_staff.html" class="sidebar__link">
+                  Ngữ pháp
+                </a>
+              </li>
+              <li class="sidebar__item">
+                <a href="/manage_report_staff.html" class="sidebar__link">
+                  Đọc
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="sidebar__item">
+            <a href="#" class="js-sidebar-item sidebar__link">
+              <i class="fa fa-shopping-bag sidebar__icon" aria-hidden="true"></i>
+              Khách Hàng
+            </a>
+            <ul class="sidebar__list sidebar__list--sub">
+              <li class="sidebar__item">
+                <a href="/list_customer.html" class="sidebar__link">
+                  Table Khách Hàng
+                </a>
+              </li>
+              <li class="sidebar__item">
+                <a href="/custom.html" class="sidebar__link">
+                  Dashboard khách hàng
+                </a>
+              </li>
+              <li class="sidebar__item">
+                <a href="/contact.html" class="sidebar__link">
+                  Liên Hệ
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="page-main col-lg-9">
+        <div class="main">
+          <div class="container-fluid">
+            <div class="row question__container">
+              <div class="question col-lg-8">
+                <div class="question__header">
+                  <h3 class="question__details" id="">Nội dung câu hỏi ABC.</h3>
+                </div>
+                <div class="question__body">
+                  <form id="questionForm">
+                    <div class="question__instructions">
+                      <small class="question__instructions-text">
+                        <span class="question__instructions-text--fill">Hướng dẫn:</span>
+                        Chọn câu trả lời đúng nhất và gửi đáp án bằng cách nhấn vào nút "Xác nhận" bên dưới.
+                      </small>
+                    </div>
+                    <div class="question__answers">
+                      <ul class="question__answers-list">
+                        <li class="question__choice">
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answerGroup" id="answer1" value="value1" />
+                            <label class="form-check-label" for="answer1">
+                              Đáp án A
+                            </label>
+                          </div>
+                        </li>
+                        <li class="question__choice">
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answerGroup" id="answer2" value="value2" />
+                            <label class="form-check-label" for="answer2">
+                              Đáp án B
+                            </label>
+                          </div>
+                        </li>
+                        <li class="question__choice">
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answerGroup" id="answer3" value="value3" />
+                            <label class="form-check-label" for="answer3">
+                              Đáp án C
+                            </label>
+                          </div>
+                        </li>
+                        <li class="question__choice">
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answerGroup" id="answer4" value="value4" />
+                            <label class="form-check-label" for="answer4">
+                              Đáp án D
+                            </label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="question__submit">
+                      <button type="submit" id="btn-submit-answer" class="btn btn-lg btn__default">Xác nhận</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="question__footer">
+                  <div class="question__navigator">
+                    <span class="question__prev js-prev-q">
+                      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                      Câu trước
+                    </span>
+
+                    <span class="question__next  js-next-q">
+                      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                      Câu kế
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+  <script type="text/javascript" th:src="@{/webjars/jquery/jquery-3.3.1.js}"></script>
+  <script type="text/javascript" th:src="@{/js/app.js}"></script>
+</body>
+
+</html>

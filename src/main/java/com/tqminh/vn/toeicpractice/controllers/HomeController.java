@@ -43,5 +43,10 @@ public class HomeController {
 			return "";
 		}
 	}
+        
+        @RequestMapping(value= "/displayQuestion", method= RequestMethod.GET)
+	public String displayQuestion() {
+		return "question";
+	}
     
 }
