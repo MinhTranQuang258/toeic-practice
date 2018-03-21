@@ -10,19 +10,19 @@ public class Account {
 	
 	private String password;
 
-<<<<<<< HEAD
-	public Account(String name, int age, String userName, String password) {
+
+	public Account(String name, int age, String username) {
 		super();
 		this.name = name;
 		this.age = age;
-		this.userName = userName;
-=======
+		this.username = username;
+	}
+
 	public Account(String name, int age, String username, String password) {
 		super();
 		this.name = name;
 		this.age = age;
 		this.username = username;
->>>>>>> origin/add_front-end_content
 		this.password = password;
 	}
 

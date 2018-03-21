@@ -43,13 +43,10 @@ public class HomeController {
 			return "";
 		}
 	}
-<<<<<<< HEAD
-=======
-        
-        @RequestMapping(value= "/displayQuestion", method= RequestMethod.GET)
+    
+    @RequestMapping(value= "/displayQuestion", method= RequestMethod.GET)
 	public String displayQuestion() {
 		return "question";
 	}
->>>>>>> origin/add_front-end_content
     
 }

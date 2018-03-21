@@ -6,11 +6,9 @@ public class Register {
 	
 	private String age;
 	
-<<<<<<< HEAD
 	private String userName;
-=======
+
 	private String username;
->>>>>>> origin/add_front-end_content
 	
 	private String password;
 	
@@ -32,21 +30,21 @@ public class Register {
 		this.age = age;
 	}
 
-<<<<<<< HEAD
+
 	public String getUserName() {
 		return userName;
 	}
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-=======
+	}
+	
 	public String getUsername() {
 		return username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
->>>>>>> origin/add_front-end_content
 	}
 
 	public String getPassword() {
