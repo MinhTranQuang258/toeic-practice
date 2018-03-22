@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tqminh.vn.toeicpractice.model.Account;
-import com.tqminh.vn.toeicpractice.model.form.Register;
 import com.tqminh.vn.toeicpractice.services.impl.AccountServiceImpl;
 
 @Controller
@@ -27,28 +26,10 @@ public class HomeController {
 	
 	@RequestMapping(value= {"/login"}, method= RequestMethod.POST)
     public String login(@ModelAttribute("account") Account account, HttpSession httpSession) {
-//		TODO: handling when the login button was clicked.
+//		TODO: handling httpSession to save username of end user. 
 		String page= accountService.loginAccount(account);
 		return page;
     }
-	
-	@RequestMapping(value= "/displayRegister", method= RequestMethod.GET)
-	public String displayRegister(Model model) {
-		model.addAttribute("register", new Register());
-		return "register";
-	}
-	
-	@RequestMapping(value= "/register", method= RequestMethod.POST)
-	public String register(@ModelAttribute("register")Register register, HttpSession httpSession) {
-		if(register.getPassword().equals(register.getRepassword())) {
-//			TODO: defining register services.
-			return null;
-		}
-		else {
-//			TODO: handling when re-password incorrectly.
-			return "";
-		}
-	}
     
     @RequestMapping(value= "/displayQuestion", method= RequestMethod.GET)
 	public String displayQuestion() {
