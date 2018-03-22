@@ -77,13 +77,12 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public void updateAccount(long id) {
-		// TODO Auto-generated method stub
+		// TODO: This feature will be updated later.
 		
 	}
 
 	@Override
 	public void deleteAccount(long id) {
-		// TODO Auto-generated method stub
-		
+		// TODO: This feature will be updated later.
 	}
 }
