@@ -28,4 +28,14 @@ public class Constant {
 		
 		public final static String REGISTRATION_FAILED= "Registration faile";
 	}
+	
+	public static class Page {
+		
+		public final static String LOGIN_PAGE= "login";
+		
+		public final static String REGISTER_PAGE= "register";
+		
+		public final static String QUESTION_PAGE= "question";
+		
+	}
 }
