@@ -1,6 +1,6 @@
 package com.tqminh.vn.toeicpractice.model;
 
-public class PhotoQuestion {
+public class PhotoQuestion extends AbstractQuestion {
 	
 	private String photo;
 	

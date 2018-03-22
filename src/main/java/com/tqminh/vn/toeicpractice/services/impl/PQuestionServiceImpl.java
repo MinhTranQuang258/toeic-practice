@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
-import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
+import com.tqminh.vn.toeicpractice.services.AbstractQuestionService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
-public class PQuestionServiceImpl extends AbstractQuestion<PhotoQuestion> implements QuestionService<PhotoQuestion>{
+public class PQuestionServiceImpl extends AbstractQuestionService implements QuestionService<PhotoQuestion>{
 
 	@Autowired
 	private PQuestionWrapperRepository repository;

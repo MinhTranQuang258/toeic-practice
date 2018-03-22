@@ -33,11 +33,7 @@ public class AccountServiceImpl implements AccountService{
 			}
 			else {
 				AccountWrapper accountWrapper=  
-<<<<<<< HEAD
-						accountWrapperRepository.findAccountByUserAndPassword(userName, password);
-=======
 						accountWrapperRepository.findAccountByUserAndPassword(username, password);
->>>>>>> origin/add_front-end_content
 				if(accountWrapper != null) {
 					setUsername(username);
 					accountCache.put(username, account);

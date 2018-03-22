@@ -5,15 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.tqminh.vn.toeicpractice.common.TypeDefinition;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.repositories.MCQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
-import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
+import com.tqminh.vn.toeicpractice.services.AbstractQuestionService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Service
 @Qualifier("MCQuestionServiceImpl")
-public class MCQuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuestion> implements QuestionService<MultipleChoiceQuestion>{
+public class MCQuestionServiceImpl extends AbstractQuestionService implements QuestionService<MultipleChoiceQuestion>{
 
 	@Autowired
 	private MCQuestionWrapperRepository repository;
@@ -30,7 +31,7 @@ public class MCQuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuesti
 	
 	@Override
 	public MultipleChoiceQuestion getQuestion(int index) {
-		return super.getQuestion(index);
+		return (MultipleChoiceQuestion) super.getQuestion(index, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 
 	@Override
@@ -54,7 +55,7 @@ public class MCQuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuesti
 	
 	@Override
 	public int countQuestion() {
-		return super.countQuestion();
+		return super.countQuestion(TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 
 	@Override

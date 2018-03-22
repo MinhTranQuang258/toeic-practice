@@ -1,11 +1,10 @@
 package com.tqminh.vn.toeicpractice.cache;
 
+import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 
-import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
+public interface QuestionCache<T extends AbstractQuestion> {
 
-public interface QuestionCache<T> {
-
-	void insertQuestion(MultipleChoiceQuestion question);
+	void insertQuestion(T question);
 	
 	T getQuestion(int index);
 	

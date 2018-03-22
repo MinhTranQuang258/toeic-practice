@@ -1,13 +1,15 @@
 package com.tqminh.vn.toeicpractice.cache.impl;
 
+import org.springframework.stereotype.Component;
+
 import com.tqminh.vn.toeicpractice.cache.QuestionCache;
-import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 
+@Component("PQuestionCache")
 public class PQuestionCacheImpl implements QuestionCache<PhotoQuestion>{
 
 	@Override
-	public void insertQuestion(MultipleChoiceQuestion question) {
+	public void insertQuestion(PhotoQuestion question) {
 		// TODO Auto-generated method stub
 		
 	}

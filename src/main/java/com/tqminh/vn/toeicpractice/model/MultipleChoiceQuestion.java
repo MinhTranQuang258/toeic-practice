@@ -1,6 +1,6 @@
 package com.tqminh.vn.toeicpractice.model;
 
-public class MultipleChoiceQuestion {
+public class MultipleChoiceQuestion extends AbstractQuestion{
 	
 	private String detailQuestion;
 	
