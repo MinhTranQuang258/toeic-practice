@@ -1,15 +1,19 @@
 package com.tqminh.vn.toeicpractice.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.tqminh.vn.toeicpractice.cache.QuestionCache;
+import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
 import com.tqminh.vn.toeicpractice.common.TypeDefinition;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
+import com.tqminh.vn.toeicpractice.model.QuestionList;
 import com.tqminh.vn.toeicpractice.repositories.MCQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
@@ -30,6 +34,9 @@ public abstract class AbstractQuestionService {
 	@Autowired
 	@Qualifier("PQuestionCache")
 	private	QuestionCache<PhotoQuestion> pCache;
+	
+	@Autowired
+	private QuestionListCache<QuestionList> listCache;
 
 	protected void nextQuestion() {
 	}
@@ -84,14 +91,15 @@ public abstract class AbstractQuestionService {
 	
 	private void getListPQuestion(Integer typeQuestion) {
 		Random random= new Random();
+		List<AbstractQuestion> list= new ArrayList<>();
 		try {
 			int count = countQuestion(typeQuestion);
 			for(int i= 0; i<= 9; i++) {
 				long index= random.nextInt(count);
 				PQuestionWrapper questionWrapper= pQuestionWrapperRepository.findOne(index);
-				pCache.insertQuestion(questionWrapper.getPhotoQuestion());
+				list.add(questionWrapper.getPhotoQuestion());
 			}
-			
+			QuestionList questionList= new QuestionList(list); 
 		} catch (Exception e) {
 			throw e;
 		}

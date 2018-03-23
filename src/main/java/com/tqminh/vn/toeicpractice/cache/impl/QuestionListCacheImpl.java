@@ -1,23 +1,26 @@
 package com.tqminh.vn.toeicpractice.cache.impl;
 
-import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.LinkedTransferQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
-import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
+import com.tqminh.vn.toeicpractice.model.QuestionList;
 
-public class QuestionListCacheImpl implements QuestionListCache<List<AbstractQuestion>>{
+public class QuestionListCacheImpl implements QuestionListCache<QuestionList>{
 
-	private Queue<List<AbstractQuestion>> queue= new LinkedTransferQueue<>();
+	private Queue<QuestionList> queue= new ConcurrentLinkedQueue<>();
 
 	@Override
-	public void addQuestionList (List<AbstractQuestion> list) {
-		queue.add(list);
+	public void addQuestionList(QuestionList t) {
+		// TODO Auto-generated method stub
+		
 	}
+
+	@Override
+	public QuestionList pollQuestionList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
-	@Override
-	public List<AbstractQuestion> pollQuestionList(){
-		return queue.poll();
-	}
 }

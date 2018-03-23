@@ -1,5 +1,17 @@
 package com.tqminh.vn.toeicpractice.model;
 
 public abstract class AbstractQuestion {
-	//TODO: this need to be checked with the sub-classes via inheritance in JPA.
+	
+	protected abstract String getQuestion();
+	
+	protected abstract String getAnswerA();
+	
+	protected abstract String getAnswerB();
+	
+	protected abstract String getAnswerC();
+	
+	protected abstract String getAnswerD();
+	
+	protected abstract String getAnswerTrue();
+	
 }

@@ -17,27 +17,37 @@ public class MultipleChoiceQuestion extends AbstractQuestion{
 	public MultipleChoiceQuestion() {
 		super();
 	}
+	
+	@Override
+	protected String getQuestion() {
+		return this.getDetailQuestion();
+	}
 
-	public String getDetailQuestion() {
+	private String getDetailQuestion() {
 		return detailQuestion;
 	}
 
+	@Override
 	public String getAnswerA() {
 		return answerA;
 	}
 
+	@Override
 	public String getAnswerB() {
 		return answerB;
 	}
 
+	@Override
 	public String getAnswerC() {
 		return answerC;
 	}
 
+	@Override
 	public String getAnswerD() {
 		return answerD;
 	}
 
+	@Override
 	public String getAnswerTrue() {
 		return answerTrue;
 	}
@@ -65,4 +75,6 @@ public class MultipleChoiceQuestion extends AbstractQuestion{
 	public void setAnswerTrue(String answerTrue) {
 		this.answerTrue = answerTrue;
 	}
+	
+	
 }
