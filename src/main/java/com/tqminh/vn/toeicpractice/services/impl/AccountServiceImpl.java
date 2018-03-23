@@ -49,7 +49,7 @@ public class AccountServiceImpl implements AccountService{
 		return null;
 	}
   	
-  	private boolean isAdmin(Account account) {
+  	private Boolean isAdmin(Account account) {
   		String username= account.getUsername();
   		String password= account.getPassword();
   		if(username.equals(Admin.USER_NAME) && password.equals(Admin.PASSWORD)) {
