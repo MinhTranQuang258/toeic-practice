@@ -23,8 +23,6 @@ public class AccountServiceImpl implements AccountService{
 	@Qualifier(value= "AccountCache")
 	private AccountCache<Account> accountCache;
 	
-	private String username;
-	
   	@Override
 	public String loginAccount(Account account) throws Exception{
 		try {
@@ -38,7 +36,6 @@ public class AccountServiceImpl implements AccountService{
 				AccountWrapper accountWrapper=  
 						accountWrapperRepository.findAccountByUserAndPassword(username, password);
 				if(accountWrapper != null) {
-					setUsername(username);
 					accountCache.put(username, account);
 					return Page.QUESTION_PAGE;
 				}
@@ -60,17 +57,9 @@ public class AccountServiceImpl implements AccountService{
   		}
   	}
   	
-  	protected void setUsername(String username) {
-  		this.username= username;
-  	}
-  	
-	protected String getUsername() {
-		return username;
-	}
-
 	@Override
 	public void logout() {
-		accountCache.deteleObject(getUsername());
+//		accountCache.deteleObject();
 	}
 
 	@Override

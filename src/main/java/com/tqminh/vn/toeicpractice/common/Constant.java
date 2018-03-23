@@ -43,6 +43,6 @@ public class Constant {
 		
 		public final static String USER_NAME= "admin";
 		
-		public final static String PASSWORD= "password";
+		public final static String PASSWORD= "admin";
 	}
 }
