@@ -38,4 +38,11 @@ public class Constant {
 		public final static String QUESTION_PAGE= "question";
 		
 	}
+	
+	public static class Admin {
+		
+		public final static String USER_NAME= "admin";
+		
+		public final static String PASSWORD= "password";
+	}
 }

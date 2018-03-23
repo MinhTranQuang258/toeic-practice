@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.cache.AccountCache;
 import com.tqminh.vn.toeicpractice.common.Constant;
+import com.tqminh.vn.toeicpractice.common.Constant.Admin;
 import com.tqminh.vn.toeicpractice.common.Constant.Page;
 import com.tqminh.vn.toeicpractice.model.Account;
 import com.tqminh.vn.toeicpractice.repositories.AccountWrapperRepository;
@@ -25,11 +26,11 @@ public class AccountServiceImpl implements AccountService{
 	private String username;
 	
   	@Override
-	public String loginAccount(Account account) {
+	public String loginAccount(Account account) throws Exception{
 		try {
 			String username= account.getUsername();
 			String password= account.getPassword();
-			if(username.equals("admin") && password.equals("admin")) {
+			if(isAdmin(account)) {
 				accountCache.put(username, account);
 				return Page.QUESTION_PAGE;
 			}
@@ -41,14 +42,23 @@ public class AccountServiceImpl implements AccountService{
 					accountCache.put(username, account);
 					return Page.QUESTION_PAGE;
 				}
-				else {
-					return "";
-				}
 			}
 		}catch (Exception e) {
 			throw e;
 		}
+		return null;
 	}
+  	
+  	private boolean isAdmin(Account account) {
+  		String username= account.getUsername();
+  		String password= account.getPassword();
+  		if(username.equals(Admin.USER_NAME) && password.equals(Admin.PASSWORD)) {
+  			return true;
+  		}
+  		else {
+  			return false;
+  		}
+  	}
   	
   	protected void setUsername(String username) {
   		this.username= username;

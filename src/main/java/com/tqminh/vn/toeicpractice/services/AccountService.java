@@ -4,7 +4,7 @@ import com.tqminh.vn.toeicpractice.model.Account;
 
 public interface AccountService {
 	
-	String loginAccount(Account account);
+	String loginAccount(Account account) throws Exception;
 	
 	void logout();
 
