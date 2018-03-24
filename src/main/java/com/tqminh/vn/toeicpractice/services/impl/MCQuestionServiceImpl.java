@@ -31,7 +31,7 @@ public class MCQuestionServiceImpl extends AbstractQuestionService implements Qu
 	
 	@Override
 	public MultipleChoiceQuestion getQuestion(int index) {
-		return (MultipleChoiceQuestion) super.getQuestion(index, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
+		return null;
 	}
 
 	@Override

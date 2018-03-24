@@ -9,11 +9,11 @@ import com.tqminh.vn.toeicpractice.cache.AccountCache;
 import com.tqminh.vn.toeicpractice.model.Account;
 
 @Component(value= "AccountCache")
-public class MCAccountCacheImpl implements AccountCache<Account>{
+public class AccountCacheImpl implements AccountCache<Account>{
 	
 	private Map<String, Account> map;
 
-	public MCAccountCacheImpl() {
+	public AccountCacheImpl() {
 		super();
 		map= new HashMap<>();
 	}
