@@ -16,5 +16,5 @@ public interface QuestionService<T extends AbstractQuestion> {
 	
 	void previousQuestion();
 	
-	T getQuestion(int index) ;
+	T getQuestion(int index) throws Exception;
 }

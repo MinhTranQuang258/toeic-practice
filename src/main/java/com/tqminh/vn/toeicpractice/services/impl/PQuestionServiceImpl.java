@@ -1,6 +1,7 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
@@ -8,6 +9,7 @@ import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.AbstractQuestionService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
+@Service("PQuestionService")
 public class PQuestionServiceImpl extends AbstractQuestionService implements QuestionService<PhotoQuestion>{
 
 	@Autowired

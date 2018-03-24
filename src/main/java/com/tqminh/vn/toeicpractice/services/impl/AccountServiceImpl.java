@@ -1,7 +1,6 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.cache.AccountCache;
@@ -20,7 +19,6 @@ public class AccountServiceImpl implements AccountService{
 	private AccountWrapperRepository accountWrapperRepository;
 	
 	@Autowired
-	@Qualifier(value= "AccountCache")
 	private AccountCache<Account> accountCache;
 	
   	@Override
@@ -58,8 +56,8 @@ public class AccountServiceImpl implements AccountService{
   	}
   	
 	@Override
-	public void logout() {
-//		accountCache.deteleObject();
+	public void logout(String username) {
+		accountCache.removeObject(username);
 	}
 
 	@Override

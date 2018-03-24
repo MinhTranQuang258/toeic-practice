@@ -26,14 +26,8 @@ public class HomeController {
 	
 	@RequestMapping(value= {"/login"}, method= RequestMethod.POST)
     public String login(@ModelAttribute("account") Account account, HttpSession httpSession) throws Exception {
-//		TODO: handling httpSession to save username of end user. 
+		httpSession.setAttribute("username", account.getUsername());
 		String page= accountService.loginAccount(account);
 		return page;
     }
-    
-    @RequestMapping(value= "/displayQuestion", method= RequestMethod.GET)
-	public String displayQuestion() {
-		return "question";
-	}
-    
 }

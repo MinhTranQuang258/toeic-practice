@@ -3,10 +3,12 @@ package com.tqminh.vn.toeicpractice.cache.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
 
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
 import com.tqminh.vn.toeicpractice.model.list.MCQuestionList;
 
+@Component("MCQuestionListCache")
 public class MCQuestionListCacheImpl implements QuestionListCache<MCQuestionList>{
 
 	private Map<String,MCQuestionList> map= new HashMap<>();

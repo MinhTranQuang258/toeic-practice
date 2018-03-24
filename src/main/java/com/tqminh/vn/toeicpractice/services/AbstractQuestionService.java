@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
 import com.tqminh.vn.toeicpractice.common.TypeDefinition;
@@ -27,9 +28,11 @@ public abstract class AbstractQuestionService {
 	private PQuestionWrapperRepository pQuestionRepository;
 	
 	@Autowired
+	@Qualifier("MCQuestionListCache")
 	private QuestionListCache<MCQuestionList> mcCache;
 	
 	@Autowired
+	@Qualifier("PQuestionListCache")
 	private QuestionListCache<PQuestionList> pCache;
 	
 	protected void nextQuestion() {
@@ -38,13 +41,13 @@ public abstract class AbstractQuestionService {
 	protected void previousQuestion() {
 	}
 	
-	protected AbstractQuestion getQuestion(int index, Integer typeQuestion) throws Exception{
+	protected AbstractQuestion getQuestion(String username, int index, Integer typeQuestion) throws Exception{
 		try {
 			if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-//				return loadMCQuestion(index);
+				return loadMCQuestions(username, index);
 			}
 			else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-//				return loadPQuestion(index);
+				return loadPQuestions(username, index);
 			}
 		}
 		catch (Exception e) {

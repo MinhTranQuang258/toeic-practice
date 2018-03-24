@@ -1,8 +1,11 @@
 package com.tqminh.vn.toeicpractice.cache.impl;
 
+import org.springframework.stereotype.Component;
+
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
 import com.tqminh.vn.toeicpractice.model.list.PQuestionList;
 
+@Component("PQuestionListCache")
 public class PQuestionListCacheImpl implements QuestionListCache<PQuestionList>{
 
 	@Override
