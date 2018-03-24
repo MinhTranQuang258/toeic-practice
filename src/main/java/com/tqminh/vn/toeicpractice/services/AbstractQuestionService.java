@@ -53,36 +53,34 @@ public abstract class AbstractQuestionService {
 		return null;
 	}
 	
-//	private MultipleChoiceQuestion loadMCQuestion(int index) throws Exception{
-//		MultipleChoiceQuestion question= (MultipleChoiceQuestion) 
-//					getQuestionList(TypeDefinition.MULTIPLE_CHOICE_QUESTION).getQuestions().get(index);
-//		return question;
-//	}
-//	
-//	private PhotoQuestion loadPQuestion(int index) throws Exception{
-//		PhotoQuestion question= (PhotoQuestion) 
-//					getQuestionList(TypeDefinition.PHOTO_QUESTION).getQuestions().get(index);
-//		return question;
-//	}
+	private MultipleChoiceQuestion loadMCQuestions(String username, int index) throws Exception{
+		MultipleChoiceQuestion question= loadMCQuestionList(username).getQuestions().get(index);
+		return question;
+	}
 	
-		private MCQuestionList loadMCQuestionList() {
-		MCQuestionList questionList= mcCache.pollQuestionList();
+	private PhotoQuestion loadPQuestions(String username, int index) throws Exception{
+		PhotoQuestion question= loadPQuestionList(username).getQuestions().get(index);
+		return question;
+	}
+	
+	private MCQuestionList loadMCQuestionList(String username) {
+		MCQuestionList questionList= mcCache.getQuestionList(username);
 		return questionList;
 	}
 	
-	private PQuestionList loadPQuestionList() {
-		PQuestionList questionList= pCache.pollQuestionList();
+	private PQuestionList loadPQuestionList(String username) {
+		PQuestionList questionList= pCache.getQuestionList(username);
 		return questionList;
 	}
 	
-	protected void saveCache(Integer typeQuestion) throws Exception {
+	protected void saveCache(String username, Integer typeQuestion) throws Exception {
 		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
 			MCQuestionList questionList= getMCQuestionList(typeQuestion);
-			mcCache.addQuestionList(questionList);
+			mcCache.putQuestionList(username, questionList);
 		}
 		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION){
 			PQuestionList questionList= getPQuestionList(typeQuestion);
-			pCache.addQuestionList(questionList);
+			pCache.putQuestionList(username, questionList);
 		}
 		
 	}

@@ -6,15 +6,14 @@ import com.tqminh.vn.toeicpractice.model.list.PQuestionList;
 public class PQuestionListCacheImpl implements QuestionListCache<PQuestionList>{
 
 	@Override
-	public void addQuestionList(PQuestionList t) {
+	public void putQuestionList(String username, PQuestionList t) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public PQuestionList pollQuestionList() {
+	public PQuestionList getQuestionList(String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 }

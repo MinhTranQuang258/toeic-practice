@@ -3,7 +3,7 @@ package com.tqminh.vn.toeicpractice.cache;
 
 public interface QuestionListCache<T> {
 
-	void addQuestionList(T t);
+	void putQuestionList(String username, T t);
 	
-	T pollQuestionList();
+	T getQuestionList(String username);
 }
