@@ -14,7 +14,7 @@ import com.tqminh.vn.toeicpractice.jsontype.JSONType;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 
 @Entity
-@TypeDef(name= "json", typeClass= JSONType.class, parameters= {
+@TypeDef(name= "pjson", typeClass= JSONType.class, parameters= {
 		@Parameter(name= JSONType.CLASS, value= Constant.JSON_PHOTO_QUESTION)})
 public class PQuestionWrapper {
 	
@@ -22,7 +22,7 @@ public class PQuestionWrapper {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
-	@Type(type= "json")
+	@Type(type= "pjson")
 	private PhotoQuestion photoQuestion;
 
 	public PQuestionWrapper(PhotoQuestion photoQuestion) {

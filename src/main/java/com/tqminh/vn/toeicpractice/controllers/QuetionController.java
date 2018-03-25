@@ -1,31 +1,51 @@
 package com.tqminh.vn.toeicpractice.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
+import com.tqminh.vn.toeicpractice.model.Account;
+import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
+import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
+import com.tqminh.vn.toeicpractice.services.AccountService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
-
 @Controller
-@RequestMapping(value= "/question")
 public class QuetionController {
 	
 	@Autowired
-	private QuestionService questionService;
+	@Qualifier("MCQuestionService")
+	private QuestionService<MultipleChoiceQuestion> mcQuestionService;
+
+	@Autowired
+	@Qualifier("PQuestionService")
+	private QuestionService<PhotoQuestion> pQuestionService;
 	
-	@RequestMapping(method= RequestMethod.GET, produces= "application/json")
-	public void readQuestion() {
-		
+	@Autowired
+	private AccountService accountService;
+	
+	@RequestMapping(value= "/displayQuestion", method= RequestMethod.GET)
+	public String displayQuestion(HttpSession session) {
+		return "question";
 	}
 	
-	@RequestMapping(method= RequestMethod.POST)
-	@ModelAttribute()
-	public void createQuestion() {
-	}	
-        
+	@RequestMapping(value= "/logOut", method= RequestMethod.GET)
+	public String logOut(HttpSession session, Model model) {
+		String username= (String) session.getAttribute("username");
+		accountService.logout(username);
+		model.addAttribute("account", new Account());
+		return "login";
+	}
+	
+	@RequestMapping(value= "/grammer", method= RequestMethod.GET)
+	public String getGrammer(Model model) throws Exception {
+		
+		model.addAttribute("question", mcQuestionService.getQuestion(1));
+		return "question";
+	}
 }

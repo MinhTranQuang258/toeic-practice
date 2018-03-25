@@ -14,7 +14,7 @@ import com.tqminh.vn.toeicpractice.jsontype.JSONType;
 import com.tqminh.vn.toeicpractice.model.Result;
 
 @Entity
-@TypeDef(name= "json", typeClass= JSONType.class, parameters= {
+@TypeDef(name= "rsjson", typeClass= JSONType.class, parameters= {
 		@Parameter(name= JSONType.CLASS, value= Constant.JSON_RESULT)})
 public class ResultWrapper {
 	
@@ -22,7 +22,7 @@ public class ResultWrapper {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;
 	
-	@Type(type= "json")
+	@Type(type= "rsjson")
 	private Result result;
 
 	public long getId() {

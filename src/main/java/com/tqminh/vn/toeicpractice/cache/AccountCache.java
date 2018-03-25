@@ -3,9 +3,9 @@ package com.tqminh.vn.toeicpractice.cache;
 
 public interface AccountCache<T> {
 	
-	Object getObject(Object key);
+	T getObject(String key);
 	
-	void put(Object key, Object value);
+	void put(String key, T value);
 	
-	void deteleObject(Object object);
+	void removeObject(String key);
 }

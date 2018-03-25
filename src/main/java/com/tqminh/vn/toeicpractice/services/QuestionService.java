@@ -1,8 +1,8 @@
 package com.tqminh.vn.toeicpractice.services;
 
+import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 
-
-public interface QuestionService<T> {
+public interface QuestionService<T extends AbstractQuestion> {
 	
 	String insertQuestion(T question);
 	
@@ -12,9 +12,11 @@ public interface QuestionService<T> {
 	
 	int countQuestion();
 	
-	void nextQuestion();
+	int nextQuestion(String username) throws Exception;
 	
-	void previousQuestion();
+	int previousQuestion(String username) throws Exception;
 	
-	T getQuestion(int index) ;
+	T getQuestion(int index) throws Exception;
+	
+	void submit(String username);
 }

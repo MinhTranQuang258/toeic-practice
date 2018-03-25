@@ -9,6 +9,17 @@ public class Account {
 	private String username;
 	
 	private String password;
+	
+	public Account() {
+		super();
+	}
+
+	public Account(String name, int age, String username) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.username = username;
+	}
 
 	public Account(String name, int age, String username, String password) {
 		super();
@@ -32,10 +43,6 @@ public class Account {
 
 	public String getPassword() {
 		return password;
-	}
-
-	public Account() {
-		super();
 	}
 
 	public void setName(String name) {

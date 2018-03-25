@@ -1,11 +1,12 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.cache.AccountCache;
 import com.tqminh.vn.toeicpractice.common.Constant;
+import com.tqminh.vn.toeicpractice.common.Constant.Admin;
+import com.tqminh.vn.toeicpractice.common.Constant.Page;
 import com.tqminh.vn.toeicpractice.model.Account;
 import com.tqminh.vn.toeicpractice.repositories.AccountWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
@@ -18,47 +19,45 @@ public class AccountServiceImpl implements AccountService{
 	private AccountWrapperRepository accountWrapperRepository;
 	
 	@Autowired
-	@Qualifier(value= "AccountCache")
 	private AccountCache<Account> accountCache;
 	
-	private String username;
-	
   	@Override
-	public String loginAccount(Account account) {
+	public String loginAccount(Account account) throws Exception{
 		try {
 			String username= account.getUsername();
 			String password= account.getPassword();
-			if(username.equals("admin") && password.equals("admin")) {
+			if(isAdmin(account)) {
 				accountCache.put(username, account);
+				return Page.QUESTION_PAGE;
 			}
 			else {
 				AccountWrapper accountWrapper=  
 						accountWrapperRepository.findAccountByUserAndPassword(username, password);
 				if(accountWrapper != null) {
-					setUsername(username);
 					accountCache.put(username, account);
-				}
-				else {
-					return Constant.Notification.CAN_NOT_FIND_USER;
+					return Page.QUESTION_PAGE;
 				}
 			}
 		}catch (Exception e) {
 			throw e;
 		}
-		return "";
+		return null;
 	}
   	
-  	protected void setUsername(String username) {
-  		this.username= username;
+  	private Boolean isAdmin(Account account) {
+  		String username= account.getUsername();
+  		String password= account.getPassword();
+  		if(username.equals(Admin.USER_NAME) && password.equals(Admin.PASSWORD)) {
+  			return true;
+  		}
+  		else {
+  			return false;
+  		}
   	}
   	
-	protected String getUsername() {
-		return username;
-	}
-
 	@Override
-	public void logout() {
-		accountCache.deteleObject(getUsername());
+	public void logout(String username) {
+		accountCache.removeObject(username);
 	}
 
 	@Override
@@ -75,13 +74,12 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public void updateAccount(long id) {
-		// TODO Auto-generated method stub
+		// TODO: This feature will be updated later.
 		
 	}
 
 	@Override
 	public void deleteAccount(long id) {
-		// TODO Auto-generated method stub
-		
+		// TODO: This feature will be updated later.
 	}
 }

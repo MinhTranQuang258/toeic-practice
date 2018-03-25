@@ -1,8 +1,8 @@
-package com.tqminh.vn.toeicpractice.model;
+package com.tqminh.vn.toeicpractice.model.form;
 
-public class PhotoQuestion extends AbstractQuestion {
+public class Question {
 	
-	private String photo;
+private String detailQuestion;
 	
 	private String answerA;
 	
@@ -13,36 +13,17 @@ public class PhotoQuestion extends AbstractQuestion {
 	private String answerD;
 	
 	private String answerTrue;
-
-	public PhotoQuestion(String photo, String answerA, String answerB, String answerC, String answerD,
-			String answerTrue) {
-		super();
-		this.photo = photo;
-		this.answerA = answerA;
-		this.answerB = answerB;
-		this.answerC = answerC;
-		this.answerD = answerD;
-		this.answerTrue = answerTrue;
-	}
 	
-	public PhotoQuestion() {
-		super();
-	}
-	
-	@Override
-	protected String getQuestion() {
-		return this.getPhoto();
+	private int temporary;
+
+	public String getDetailQuestion() {
+		return detailQuestion;
 	}
 
-	private String getPhoto() {
-		return photo;
+	public void setDetailQuestion(String detailQuestion) {
+		this.detailQuestion = detailQuestion;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
-	@Override
 	public String getAnswerA() {
 		return answerA;
 	}
@@ -51,7 +32,6 @@ public class PhotoQuestion extends AbstractQuestion {
 		this.answerA = answerA;
 	}
 
-	@Override
 	public String getAnswerB() {
 		return answerB;
 	}
@@ -60,7 +40,6 @@ public class PhotoQuestion extends AbstractQuestion {
 		this.answerB = answerB;
 	}
 
-	@Override
 	public String getAnswerC() {
 		return answerC;
 	}
@@ -69,7 +48,6 @@ public class PhotoQuestion extends AbstractQuestion {
 		this.answerC = answerC;
 	}
 
-	@Override
 	public String getAnswerD() {
 		return answerD;
 	}
@@ -78,12 +56,19 @@ public class PhotoQuestion extends AbstractQuestion {
 		this.answerD = answerD;
 	}
 
-	@Override
 	public String getAnswerTrue() {
 		return answerTrue;
 	}
 
 	public void setAnswerTrue(String answerTrue) {
 		this.answerTrue = answerTrue;
+	}
+
+	public int getTemporary() {
+		return temporary;
+	}
+
+	public void setTemporary(int temporary) {
+		this.temporary = temporary;
 	}
 }

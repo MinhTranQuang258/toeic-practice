@@ -6,6 +6,8 @@ public class Register {
 	
 	private String age;
 	
+	private String userName;
+
 	private String username;
 	
 	private String password;
@@ -28,6 +30,15 @@ public class Register {
 		this.age = age;
 	}
 
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 	public String getUsername() {
 		return username;
 	}

@@ -1,14 +1,22 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.tqminh.vn.toeicpractice.common.TypeDefinition;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
-import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
+import com.tqminh.vn.toeicpractice.services.AbstractQuestionService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
-public class PQuestionServiceImpl extends AbstractQuestion<PhotoQuestion> implements QuestionService<PhotoQuestion>{
+@Service("PQuestionService")
+public class PQuestionServiceImpl extends AbstractQuestionService implements QuestionService<PhotoQuestion>{
+
+	@Override
+	public void submit(String username) {
+		super.submit(username, TypeDefinition.PHOTO_QUESTION);
+	}
 
 	@Autowired
 	private PQuestionWrapperRepository repository;
@@ -52,15 +60,13 @@ public class PQuestionServiceImpl extends AbstractQuestion<PhotoQuestion> implem
 	}
 
 	@Override
-	public void nextQuestion() {
-		// TODO Auto-generated method stub
-		
+	public int nextQuestion(String username) throws Exception {
+		return super.nextQuestion(username, TypeDefinition.PHOTO_QUESTION);
 	}
 
 	@Override
-	public void previousQuestion() {
-		// TODO Auto-generated method stub
-		
+	public int previousQuestion(String username) throws Exception {
+		return super.previousQuestion(username, TypeDefinition.PHOTO_QUESTION);
 	}
 
 	@Override

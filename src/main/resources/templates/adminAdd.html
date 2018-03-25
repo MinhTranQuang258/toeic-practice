@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/bootstrap.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/app.css}" />
+  <title>TOEIC Practice</title>
+</head>
+
+<body>
+  <header class="page-header">
+    <div class="container-fluid">
+      <div class="header row">
+        <div class="header__user col-lg-3">
+          <div class="header__user-avatar">
+            <!-- <img src="" alt=""> -->
+          </div>
+          <div class="header__user-name">
+            <p class="header__user-text">Username</p>
+          </div>
+        </div>
+        <div class="header__setting col-lg-9">
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                Settings
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/logOut" class="nav-link">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <nav class="sidebar col-lg-3">
+        <ul class="sidebar__list">
+          <li class="sidebar__item">
+            <a href="#" class="js-sidebar-item  sidebar__link">
+              <i class="fa fa-user-circle-o sidebar__icon" aria-hidden="true"></i>
+              Chọn phần ôn thi
+            </a>
+            <ul class="sidebar__list sidebar__list--sub">
+
+              <li class="sidebar__item">
+                <a href="/manage_report_admin.html" class="sidebar__link">
+                  Nghe
+                </a>
+              </li>
+              <li class="sidebar__item">
+                <a href="/grammer" class="sidebar__link">
+                  Ngữ pháp
+                </a>
+              </li>
+              <li class="sidebar__item">
+                <a href="/manage_report_staff.html" class="sidebar__link">
+                  Đọc
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="sidebar__item">
+            <a href="#" class="js-sidebar-item sidebar__link">
+              <i class="fa fa-shopping-bag sidebar__icon" aria-hidden="true"></i>
+              Quản lý
+            </a>
+            <ul class="sidebar__list sidebar__list--sub">
+              <li class="sidebar__item">
+                <a href="/adminAdd" class="sidebar__link">
+                  Thêm câu hỏi
+                </a>
+              </li>
+              <li class="sidebar__item">
+                <a href="/adminEdit" class="sidebar__link">
+                  Chỉnh sửa câu hỏi
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="page-main col-lg-9">
+        <div class="main">
+          <div class="container-fluid">
+            <div class="row question__container">
+              <div class="admin">
+                <div class="admin__question-option">
+                  <div class="form-group">
+                    <select class="form-control js-question-type">
+                      <option value="grammar">Ngữ pháp</option>
+                      <option value="listening">Nghe</option>
+                      <option value="reading">Đọc</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <select class="form-control js-question-num-answers">
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <select class="form-control js-question-addon">
+                      <option>Âm thanh</option>
+                      <option>Âm thanh + hình ảnh</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="admin__question">
+                  <div class="admin__section">
+                    <div class="form-group">
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Điền câu hỏi mới ..."></textarea>
+                    </div>
+                  </div>
+                  <div class="admin__section">
+                    <div class="admin__answers-list">
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="answerA" placeholder="Đáp án A" />
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                        <label class="form-check-label" for="exampleRadios1">
+                          Đáp án đúng
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="answerB" placeholder="Đáp án B" />
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                        <label class="form-check-label" for="exampleRadios1">
+                          Đáp án đúng
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="answerC" placeholder="Đáp án C" />
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                        <label class="form-check-label" for="exampleRadios1">
+                          Đáp án đúng
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="answerD" placeholder="Đáp án D" />
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"/>
+                        <label class="form-check-label" for="exampleRadios1">
+                          Đáp án đúng
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="admin__section">
+                    <button class="btn btn-lg btn__default">Nhập lại</button>
+
+                    <button class="btn btn-lg btn__default">Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+  <script type="text/javascript" th:src="@{/webjars/jquery/jquery-3.3.1.js}"></script>
+  <script type="text/javascript" th:src="@{/js/app.js}"></script>
+</body>
+
+</html>

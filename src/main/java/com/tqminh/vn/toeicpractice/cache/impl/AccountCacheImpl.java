@@ -8,23 +8,23 @@ import org.springframework.stereotype.Component;
 import com.tqminh.vn.toeicpractice.cache.AccountCache;
 import com.tqminh.vn.toeicpractice.model.Account;
 
-@Component(value= "AccountCache")
-public class MCAccountCacheImpl implements AccountCache<Account>{
+@Component
+public class AccountCacheImpl implements AccountCache<Account>{
 	
 	private Map<String, Account> map;
 
-	public MCAccountCacheImpl() {
+	public AccountCacheImpl() {
 		super();
 		map= new HashMap<>();
 	}
 	
 	@Override
-	public Object getObject(Object key) {
+	public Account getObject(String key) {
 		return map.get(key);
 	}
 
 	@Override
-	public void put(Object key, Object value) {
+	public void put(String key, Account value) {
 		if((key instanceof String) && (value instanceof Account)) {
 			String k= (String) key;
 			Account account= (Account) value;
@@ -33,9 +33,7 @@ public class MCAccountCacheImpl implements AccountCache<Account>{
 	}
 
 	@Override
-	public void deteleObject(Object object) {
-		if(object instanceof String) {
-			map.remove(object);
-		}
+	public void removeObject(String key) {
+		map.remove(key);
 	}
 }

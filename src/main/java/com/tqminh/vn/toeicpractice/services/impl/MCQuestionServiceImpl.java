@@ -2,35 +2,39 @@ package com.tqminh.vn.toeicpractice.services.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.tqminh.vn.toeicpractice.common.TypeDefinition;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.repositories.MCQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
-import com.tqminh.vn.toeicpractice.services.AbstractQuestion;
+import com.tqminh.vn.toeicpractice.services.AbstractQuestionService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
-@Service
-@Qualifier("MCQuestionServiceImpl")
-public class MCQuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuestion> implements QuestionService<MultipleChoiceQuestion>{
+@Service("MCQuestionService")
+public class MCQuestionServiceImpl extends AbstractQuestionService implements QuestionService<MultipleChoiceQuestion>{
+
+	@Override
+	public void submit(String username) {
+		super.submit(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
+	}
 
 	@Autowired
 	private MCQuestionWrapperRepository repository;
 	
 	@Override
-	public void nextQuestion() {
-		super.nextQuestion();
+	public int nextQuestion(String username) throws Exception {
+		return super.nextQuestion(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 
 	@Override
-	public void previousQuestion() {
-		super.previousQuestion();
+	public int previousQuestion(String username) throws Exception {
+		return super.previousQuestion(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 	
 	@Override
-	public MultipleChoiceQuestion getQuestion(int index) {
-		return super.getQuestion(index);
+	public MultipleChoiceQuestion getQuestion(int index) throws Exception {
+		return (MultipleChoiceQuestion) super.getQuestion("admin", index, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 
 	@Override
@@ -54,7 +58,7 @@ public class MCQuestionServiceImpl extends AbstractQuestion<MultipleChoiceQuesti
 	
 	@Override
 	public int countQuestion() {
-		return super.countQuestion();
+		return super.countQuestion(TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 
 	@Override
