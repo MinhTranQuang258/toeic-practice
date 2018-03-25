@@ -18,5 +18,5 @@ public interface QuestionService<T extends AbstractQuestion> {
 	
 	T getQuestion(int index) throws Exception;
 	
-	void submit();
+	void submit(String username);
 }

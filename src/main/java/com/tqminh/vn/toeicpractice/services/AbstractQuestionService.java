@@ -197,7 +197,6 @@ public abstract class AbstractQuestionService {
 				list.add(questionWrapper.getMultipleChoiceQuestion());
 			}
 		}
-		
 		MCQuestionList questions= new MCQuestionList(list);
 		return questions;
 	}
@@ -237,5 +236,20 @@ public abstract class AbstractQuestionService {
 			throw e;
 		}
 		return count;
+	}
+	
+	private void removeCache(String username, Integer typeQuestion) {
+		indexCache.removeIndex(username);
+		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+			mcCache.removeQuestionList(username);
+		}
+		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
+			pCache.removeQuestionList(username);
+		}
+	}
+	
+	protected void submit(String username, Integer typeQuestion) {
+		removeCache(username, typeQuestion);
+		
 	}
 }

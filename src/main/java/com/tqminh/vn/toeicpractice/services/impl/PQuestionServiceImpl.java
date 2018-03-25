@@ -14,9 +14,8 @@ import com.tqminh.vn.toeicpractice.services.QuestionService;
 public class PQuestionServiceImpl extends AbstractQuestionService implements QuestionService<PhotoQuestion>{
 
 	@Override
-	public void submit() {
-		// TODO Auto-generated method stub
-		
+	public void submit(String username) {
+		super.submit(username, TypeDefinition.PHOTO_QUESTION);
 	}
 
 	@Autowired

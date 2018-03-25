@@ -15,9 +15,8 @@ import com.tqminh.vn.toeicpractice.services.QuestionService;
 public class MCQuestionServiceImpl extends AbstractQuestionService implements QuestionService<MultipleChoiceQuestion>{
 
 	@Override
-	public void submit() {
-		// TODO Auto-generated method stub
-		
+	public void submit(String username) {
+		super.submit(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 
 	@Autowired
