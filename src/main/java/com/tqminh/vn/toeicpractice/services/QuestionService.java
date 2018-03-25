@@ -12,9 +12,9 @@ public interface QuestionService<T extends AbstractQuestion> {
 	
 	int countQuestion();
 	
-	int nextQuestion(String username);
+	int nextQuestion(String username) throws Exception;
 	
-	int previousQuestion(String username);
+	int previousQuestion(String username) throws Exception;
 	
 	T getQuestion(int index) throws Exception;
 }

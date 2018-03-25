@@ -45,4 +45,15 @@ public class Constant {
 		
 		public final static String PASSWORD= "admin";
 	}
+	
+	public static class LimitIndex{
+		
+		public final static Integer MAX_MC_QUESTION_INDEX= 9;
+		
+		public final static Integer MAX_PHOTO_QUESTION_INDEX= 9;
+		
+		public final static Integer MIN_MC_QUESTION_INDEX= 9;
+	
+		public final static Integer MIN_PHOTO_QUESTION_INDEX= 9;
+	}
 }

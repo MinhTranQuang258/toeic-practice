@@ -18,13 +18,13 @@ public class MCQuestionServiceImpl extends AbstractQuestionService implements Qu
 	private MCQuestionWrapperRepository repository;
 	
 	@Override
-	public int nextQuestion(String username) {
-		return super.nextQuestion(username);
+	public int nextQuestion(String username) throws Exception {
+		return super.nextQuestion(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 
 	@Override
-	public int previousQuestion(String username) {
-		return super.previousQuestion(username);
+	public int previousQuestion(String username) throws Exception {
+		return super.previousQuestion(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 	
 	@Override

@@ -3,6 +3,7 @@ package com.tqminh.vn.toeicpractice.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tqminh.vn.toeicpractice.common.TypeDefinition;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
@@ -54,15 +55,13 @@ public class PQuestionServiceImpl extends AbstractQuestionService implements Que
 	}
 
 	@Override
-	public int nextQuestion(String username) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int nextQuestion(String username) throws Exception {
+		return super.nextQuestion(username, TypeDefinition.PHOTO_QUESTION);
 	}
 
 	@Override
-	public int previousQuestion(String username) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int previousQuestion(String username) throws Exception {
+		return super.previousQuestion(username, TypeDefinition.PHOTO_QUESTION);
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
+import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.common.TypeDefinition;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
@@ -35,12 +36,86 @@ public abstract class AbstractQuestionService {
 	@Qualifier("PQuestionListCache")
 	private QuestionListCache<PQuestionList> pCache;
 	
-	protected int nextQuestion(String username) {
-		return 0;
+	private Boolean isCheckNextQuestionIndex(int index, Integer typeQuestion) throws NullPointerException{
+		switch (typeQuestion) {
+		case 1:
+			if(index >= Constant.LimitIndex.MAX_MC_QUESTION_INDEX) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		case 2:
+			if(index >= Constant.LimitIndex.MAX_PHOTO_QUESTION_INDEX) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		default:
+			return null;
+		}
 	}
 	
-	protected int previousQuestion(String username) {
-		return 0;
+	private Boolean isCheckPreviousQuestionIndex(int index, Integer typeQuestion) throws NullPointerException{
+		switch (typeQuestion) {
+		case 1:
+			if(index <= Constant.LimitIndex.MIN_MC_QUESTION_INDEX) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		case 2:
+			if(index <= Constant.LimitIndex.MIN_PHOTO_QUESTION_INDEX) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		default:
+			return null;
+		}
+	}
+	
+	protected Integer nextQuestion(String username, Integer typeQuestion) throws Exception{
+		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+			MCQuestionList mcQuestionList= mcCache.getQuestionList(username);
+			int concurrentIndex= mcQuestionList.getConcurrentIndex();
+			
+			if(isCheckNextQuestionIndex(concurrentIndex, typeQuestion)) {
+				return concurrentIndex + 1;
+			}
+		}
+		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
+			PQuestionList pQuestionList= pCache.getQuestionList(username);
+			int concurrentIndex= pQuestionList.getConcurrentIndex();
+			
+			if(isCheckNextQuestionIndex(concurrentIndex, typeQuestion)) {
+				return concurrentIndex + 1;
+			}	
+		}
+		return null;
+	}
+	
+	protected Integer previousQuestion(String username, Integer typeQuestion) throws Exception{
+		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+			MCQuestionList mcQuestionList= mcCache.getQuestionList(username);
+			int concurrentIndex= mcQuestionList.getConcurrentIndex();
+			
+			if(isCheckPreviousQuestionIndex(concurrentIndex, typeQuestion)) {
+				return concurrentIndex + 1;
+			}
+		}
+		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
+			PQuestionList pQuestionList= pCache.getQuestionList(username);
+			int concurrentIndex= pQuestionList.getConcurrentIndex();
+			
+			if(isCheckPreviousQuestionIndex(concurrentIndex, typeQuestion)) {
+				return concurrentIndex + 1;
+			}	
+		}
+		return null;
 	}
 	
 	protected AbstractQuestion getQuestion(String username, int index, Integer typeQuestion) throws Exception{
