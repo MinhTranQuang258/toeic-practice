@@ -10,6 +10,6 @@ import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 @Transactional
 public interface MCQuestionWrapperRepository extends CrudRepository<MCQuestionWrapper, Long>{
 	
-	@Query(nativeQuery= true, value= Constant.NativeQuery.FIND_QUESTION_BY_INDEX)
+	@Query(nativeQuery= true, value= Constant.NativeQuery.COUNT_MCQUESTION_BY_ID)
 	int countQuestionById();
 }

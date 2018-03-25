@@ -44,9 +44,11 @@ public abstract class AbstractQuestionService {
 	protected AbstractQuestion getQuestion(String username, int index, Integer typeQuestion) throws Exception{
 		try {
 			if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+				saveCache(username, typeQuestion);
 				return loadMCQuestions(username, index);
 			}
 			else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
+				saveCache(username, typeQuestion);
 				return loadPQuestions(username, index);
 			}
 		}
@@ -91,9 +93,9 @@ public abstract class AbstractQuestionService {
 	private MCQuestionList getMCQuestionList(Integer typeQuestion) throws Exception{
 		Random random= new Random();
 		int count = countQuestion(typeQuestion);
-		long index= random.nextInt(count);
 		List<MultipleChoiceQuestion> list= new LinkedList<>();
 		for(int i= 0; i<= 9; i++) {
+			long index= random.nextInt(count);
 			if(index != 0) {
 				MCQuestionWrapper questionWrapper= mcQuestionRepository.findOne(index);
 				list.add(questionWrapper.getMultipleChoiceQuestion());
