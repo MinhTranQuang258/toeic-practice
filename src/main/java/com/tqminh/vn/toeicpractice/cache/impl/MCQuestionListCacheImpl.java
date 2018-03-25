@@ -14,15 +14,17 @@ public class MCQuestionListCacheImpl implements QuestionListCache<MCQuestionList
 	private Map<String,MCQuestionList> map= new HashMap<>();
 
 	@Override
-	public void putQuestionList(String username, MCQuestionList t) {
-		// TODO Auto-generated method stub
-		
+	public void putQuestionList(String username, MCQuestionList mcQuestionList) {
+		map.put(username, mcQuestionList);
 	}
 
 	@Override
 	public MCQuestionList getQuestionList(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return map.get(username);
 	}
 
+	@Override
+	public MCQuestionList removeQuestionList(String username) {
+		return map.remove(username);
+	}
 }

@@ -96,7 +96,7 @@ public abstract class AbstractQuestionService {
 		for(int i= 0; i<= 9; i++) {
 			if(index != 0) {
 				MCQuestionWrapper questionWrapper= mcQuestionRepository.findOne(index);
-				list.add(questionWrapper.getQuestion());
+				list.add(questionWrapper.getMultipleChoiceQuestion());
 			}
 		}
 		

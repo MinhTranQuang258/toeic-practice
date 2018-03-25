@@ -16,7 +16,7 @@ public class Constant {
 		
 		public static final String FIND_QUESTION_BY_INDEX = "SELECT * FROM question_wrapper WHERE id = ?1";
 		
-		public static final String COUNT_QUESTION_BY_ID = "SELECT COUNT(id) FROM question_wrapper";
+		public static final String COUNT_MCQUESTION_BY_ID = "SELECT COUNT(id) FROM mcquestion_wrapper";
 		
 	}
 	

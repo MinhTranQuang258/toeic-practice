@@ -19,4 +19,10 @@ public class PQuestionListCacheImpl implements QuestionListCache<PQuestionList>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public PQuestionList removeQuestionList(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
