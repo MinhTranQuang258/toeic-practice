@@ -14,6 +14,12 @@ import com.tqminh.vn.toeicpractice.services.QuestionService;
 @Service("MCQuestionService")
 public class MCQuestionServiceImpl extends AbstractQuestionService implements QuestionService<MultipleChoiceQuestion>{
 
+	@Override
+	public void submit() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@Autowired
 	private MCQuestionWrapperRepository repository;
 	

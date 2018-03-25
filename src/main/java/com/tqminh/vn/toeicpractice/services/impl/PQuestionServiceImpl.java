@@ -13,6 +13,12 @@ import com.tqminh.vn.toeicpractice.services.QuestionService;
 @Service("PQuestionService")
 public class PQuestionServiceImpl extends AbstractQuestionService implements QuestionService<PhotoQuestion>{
 
+	@Override
+	public void submit() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@Autowired
 	private PQuestionWrapperRepository repository;
 	

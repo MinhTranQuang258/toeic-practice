@@ -56,4 +56,10 @@ public class Constant {
 	
 		public final static Integer MIN_PHOTO_QUESTION_INDEX= 9;
 	}
+	
+	public static class QuestionLimit{
+		public final static Integer MC_QUESTION_LIMIT= 9;
+		
+		public final static Integer P_QUESTION_LIMIT= 9;
+	}
 }

@@ -1,12 +1,15 @@
 package com.tqminh.vn.toeicpractice.services;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import com.tqminh.vn.toeicpractice.cache.IndexCache;
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.common.TypeDefinition;
@@ -35,6 +38,10 @@ public abstract class AbstractQuestionService {
 	@Autowired
 	@Qualifier("PQuestionListCache")
 	private QuestionListCache<PQuestionList> pCache;
+	
+	@Autowired
+	@Qualifier("IndexCache")
+	private IndexCache<Long> indexCache;
 	
 	private Boolean isCheckNextQuestionIndex(int index, Integer typeQuestion) throws NullPointerException{
 		switch (typeQuestion) {
@@ -158,14 +165,14 @@ public abstract class AbstractQuestionService {
 	protected void saveCache(String username, Integer typeQuestion, int index) throws Exception {
 		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
 			if(!mcCache.isCheckUsername(username)) {
-				MCQuestionList questionList= getMCQuestionList(typeQuestion);
+				MCQuestionList questionList= getMCQuestionList(username, typeQuestion);
 				questionList.setConcurrentIndex(index);
 				mcCache.putQuestionList(username, questionList);
 			}
 		}
 		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION){
 			if(!pCache.isCheckUsername(username)) {
-				PQuestionList questionList= getPQuestionList(typeQuestion);
+				PQuestionList questionList= getPQuestionList(username, typeQuestion);
 				questionList.setConcurrentIndex(index);
 				pCache.putQuestionList(username, questionList);
 			}
@@ -173,13 +180,19 @@ public abstract class AbstractQuestionService {
 		
 	}
 	
-	private MCQuestionList getMCQuestionList(Integer typeQuestion) throws Exception{
+	private MCQuestionList getMCQuestionList(String username, Integer typeQuestion) throws Exception{
 		Random random= new Random();
-		int count = countQuestion(typeQuestion);
 		List<MultipleChoiceQuestion> list= new LinkedList<>();
-		for(int i= 0; i<= 9; i++) {
+		Set<Long> set= new HashSet<>();
+		int count = countQuestion(typeQuestion);
+		indexCache.setIndex(username, set);
+		
+		while(list.size() <= Constant.QuestionLimit.MC_QUESTION_LIMIT) {
 			long index= random.nextInt(count);
-			if(index != 0) {
+			if(!indexCache.isCheckIndex(username, index)) {
+				continue;
+			}
+			else {
 				MCQuestionWrapper questionWrapper= mcQuestionRepository.findOne(index);
 				list.add(questionWrapper.getMultipleChoiceQuestion());
 			}
@@ -189,17 +202,24 @@ public abstract class AbstractQuestionService {
 		return questions;
 	}
 	
-	private PQuestionList getPQuestionList(Integer typeQuestion) throws Exception{
+	private PQuestionList getPQuestionList(String username, Integer typeQuestion) throws Exception{
 		Random random= new Random();
-		int count = countQuestion(typeQuestion);
-		long index= random.nextInt(count);
 		List<PhotoQuestion> list= new LinkedList<>();
-		for(int i= 0; i<= 9; i++) {
-			if(index != 0) {
+		Set<Long> set= new HashSet<>();
+		int count = countQuestion(typeQuestion);
+		indexCache.setIndex(username, set);
+		
+		while(list.size() == Constant.QuestionLimit.MC_QUESTION_LIMIT) {
+			long index= random.nextInt(count);
+			if(!indexCache.isCheckIndex(username, index)) {
+				continue;
+			}
+			else {
 				PQuestionWrapper questionWrapper= pQuestionRepository.findOne(index);
 				list.add(questionWrapper.getPhotoQuestion());
 			}
 		}
+
 		PQuestionList questions= new PQuestionList(list);
 		return questions;
 	}

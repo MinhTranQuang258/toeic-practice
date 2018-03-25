@@ -48,12 +48,12 @@ public class TestController {
 	
 	@RequestMapping(value= "/get", method= RequestMethod.GET)
 	public MultipleChoiceQuestion getGrammer(Model model) throws Exception {
-//		MCQuestionWrapper questionWrapper=  repo.findQuestionById(1L);
-		MCQuestionWrapper questionWrapper= mCQuestionWrapperRepository.findOne(5L);
-		if(questionWrapper.getMultipleChoiceQuestion() == null) {
+		MultipleChoiceQuestion question=  mcQuestionService.getQuestion(1);
+//		MCQuestionWrapper questionWrapper= mCQuestionWrapperRepository.findOne(5L);
+		if(question == null) {
 			System.out.println("Null");
 		}
-		return questionWrapper.getMultipleChoiceQuestion();
+		return question;
 	}
 	
 	@RequestMapping("/saveA")
