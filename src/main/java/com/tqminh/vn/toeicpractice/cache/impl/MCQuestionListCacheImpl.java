@@ -27,4 +27,9 @@ public class MCQuestionListCacheImpl implements QuestionListCache<MCQuestionList
 	public MCQuestionList removeQuestionList(String username) {
 		return map.remove(username);
 	}
+
+	@Override
+	public Boolean isCheckUsername(String username) {
+		return map.containsKey(username);
+	}
 }

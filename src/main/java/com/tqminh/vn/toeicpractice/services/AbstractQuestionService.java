@@ -35,20 +35,22 @@ public abstract class AbstractQuestionService {
 	@Qualifier("PQuestionListCache")
 	private QuestionListCache<PQuestionList> pCache;
 	
-	protected void nextQuestion() {
+	protected int nextQuestion(String username) {
+		return 0;
 	}
 	
-	protected void previousQuestion() {
+	protected int previousQuestion(String username) {
+		return 0;
 	}
 	
 	protected AbstractQuestion getQuestion(String username, int index, Integer typeQuestion) throws Exception{
 		try {
 			if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-				saveCache(username, typeQuestion);
+				saveCache(username, typeQuestion, index);
 				return loadMCQuestions(username, index);
 			}
 			else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-				saveCache(username, typeQuestion);
+				saveCache(username, typeQuestion, index);
 				return loadPQuestions(username, index);
 			}
 		}
@@ -78,14 +80,20 @@ public abstract class AbstractQuestionService {
 		return questionList;
 	}
 	
-	protected void saveCache(String username, Integer typeQuestion) throws Exception {
+	protected void saveCache(String username, Integer typeQuestion, int index) throws Exception {
 		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-			MCQuestionList questionList= getMCQuestionList(typeQuestion);
-			mcCache.putQuestionList(username, questionList);
+			if(!mcCache.isCheckUsername(username)) {
+				MCQuestionList questionList= getMCQuestionList(typeQuestion);
+				questionList.setConcurrentIndex(index);
+				mcCache.putQuestionList(username, questionList);
+			}
 		}
 		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION){
-			PQuestionList questionList= getPQuestionList(typeQuestion);
-			pCache.putQuestionList(username, questionList);
+			if(!pCache.isCheckUsername(username)) {
+				PQuestionList questionList= getPQuestionList(typeQuestion);
+				questionList.setConcurrentIndex(index);
+				pCache.putQuestionList(username, questionList);
+			}
 		}
 		
 	}
@@ -117,7 +125,6 @@ public abstract class AbstractQuestionService {
 				list.add(questionWrapper.getPhotoQuestion());
 			}
 		}
-		
 		PQuestionList questions= new PQuestionList(list);
 		return questions;
 	}

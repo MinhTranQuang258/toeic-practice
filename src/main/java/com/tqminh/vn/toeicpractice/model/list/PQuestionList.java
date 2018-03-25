@@ -6,6 +6,9 @@ import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 
 
 public class PQuestionList {
+	
+	private int concurrentIndex;
+	
 	private List<PhotoQuestion> questions;
 
 	public PQuestionList() {
@@ -23,5 +26,13 @@ public class PQuestionList {
 
 	public void setQuestions(List<PhotoQuestion> questions) {
 		this.questions = questions;
+	}
+
+	public int getConcurrentIndex() {
+		return concurrentIndex;
+	}
+
+	public void setConcurrentIndex(int concurrentIndex) {
+		this.concurrentIndex = concurrentIndex;
 	}
 }

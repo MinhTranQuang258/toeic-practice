@@ -25,4 +25,10 @@ public class PQuestionListCacheImpl implements QuestionListCache<PQuestionList>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Boolean isCheckUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -6,7 +6,17 @@ import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 
 public class MCQuestionList {
 	
+	private int concurrentIndex;
+	
 	private List<MultipleChoiceQuestion> questions;
+
+	public int getConcurrentIndex() {
+		return concurrentIndex;
+	}
+
+	public void setConcurrentIndex(int concurrentIndex) {
+		this.concurrentIndex = concurrentIndex;
+	}
 
 	public MCQuestionList() {
 		super();
@@ -14,6 +24,12 @@ public class MCQuestionList {
 	
 	public MCQuestionList(List<MultipleChoiceQuestion> questions) {
 		super();
+		this.questions = questions;
+	}
+
+	public MCQuestionList(int concurrentIndex, List<MultipleChoiceQuestion> questions) {
+		super();
+		this.concurrentIndex = concurrentIndex;
 		this.questions = questions;
 	}
 

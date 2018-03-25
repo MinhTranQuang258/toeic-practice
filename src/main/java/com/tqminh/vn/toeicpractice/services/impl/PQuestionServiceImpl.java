@@ -54,15 +54,15 @@ public class PQuestionServiceImpl extends AbstractQuestionService implements Que
 	}
 
 	@Override
-	public void nextQuestion() {
+	public int nextQuestion(String username) {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
 	@Override
-	public void previousQuestion() {
+	public int previousQuestion(String username) {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
 	@Override

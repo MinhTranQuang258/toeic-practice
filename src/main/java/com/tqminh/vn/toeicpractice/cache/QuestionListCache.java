@@ -8,4 +8,6 @@ public interface QuestionListCache<T> {
 	T getQuestionList(String username);
 	
 	T removeQuestionList(String username);
+	
+	Boolean isCheckUsername(String username);
 }
