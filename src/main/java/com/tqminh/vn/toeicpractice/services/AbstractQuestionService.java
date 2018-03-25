@@ -230,7 +230,7 @@ public abstract class AbstractQuestionService {
 				count= mcQuestionRepository.countQuestionById();
 			}
 			else if(typeQuestion == TypeDefinition.PHOTO_QUESTION){
-//				TODO: count number of the question by id.
+				count= pQuestionRepository.countQuestionById();
 			}
 		} catch (Exception e) {
 			throw e;
@@ -250,6 +250,5 @@ public abstract class AbstractQuestionService {
 	
 	protected void submit(String username, Integer typeQuestion) {
 		removeCache(username, typeQuestion);
-		
 	}
 }

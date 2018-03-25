@@ -12,11 +12,13 @@ public class Constant {
 	
 	public static class NativeQuery {
 		
-		public static final String FIND_ACCOUNT_BY_USER_NAME_AND_PASSWORD = "SELECT * FROM account_wrapper WHERE account -> 'userName' = ?1 AND account -> 'password' = ?2";
+		public static final String FIND_ACCOUNT_BY_USER_NAME_AND_PASSWORD = "SELECT * FROM account_wrapper WHERE account -> 'username' = ?1 AND account -> 'password' = ?2";
 		
 		public static final String FIND_QUESTION_BY_INDEX = "SELECT * FROM mcquestion_wrapper WHERE id = ?1";
 		
 		public static final String COUNT_MCQUESTION_BY_ID = "SELECT COUNT(id) FROM mcquestion_wrapper";
+		
+		public static final String COUNT_PQUESTION_BY_ID = "SELECT COUNT(id) FROM pquestion_wrapper";
 		
 	}
 	
@@ -58,6 +60,7 @@ public class Constant {
 	}
 	
 	public static class QuestionLimit{
+		
 		public final static Integer MC_QUESTION_LIMIT= 9;
 		
 		public final static Integer P_QUESTION_LIMIT= 9;
