@@ -91,7 +91,11 @@ public abstract class AbstractQuestionService {
 			int concurrentIndex= mcQuestionList.getConcurrentIndex();
 			
 			if(isCheckNextQuestionIndex(concurrentIndex, typeQuestion)) {
-				return concurrentIndex + 1;
+			    mcQuestionList.setConcurrentIndex(concurrentIndex + 1);
+				return mcQuestionList.getConcurrentIndex();
+			}
+			else {
+			    return mcQuestionList.getConcurrentIndex();
 			}
 		}
 		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
@@ -99,8 +103,12 @@ public abstract class AbstractQuestionService {
 			int concurrentIndex= pQuestionList.getConcurrentIndex();
 			
 			if(isCheckNextQuestionIndex(concurrentIndex, typeQuestion)) {
-				return concurrentIndex + 1;
-			}	
+			    pQuestionList.setConcurrentIndex(concurrentIndex + 1);
+				return pQuestionList.getConcurrentIndex();
+			}
+			else {
+			    return pQuestionList.getConcurrentIndex();
+			}
 		}
 		return null;
 	}
@@ -111,7 +119,11 @@ public abstract class AbstractQuestionService {
 			int concurrentIndex= mcQuestionList.getConcurrentIndex();
 			
 			if(isCheckPreviousQuestionIndex(concurrentIndex, typeQuestion)) {
-				return concurrentIndex + 1;
+			    mcQuestionList.setConcurrentIndex(concurrentIndex - 1);
+				return mcQuestionList.getConcurrentIndex();
+			}
+			else {
+			    return mcQuestionList.getConcurrentIndex();
 			}
 		}
 		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
@@ -119,8 +131,12 @@ public abstract class AbstractQuestionService {
 			int concurrentIndex= pQuestionList.getConcurrentIndex();
 			
 			if(isCheckPreviousQuestionIndex(concurrentIndex, typeQuestion)) {
-				return concurrentIndex + 1;
-			}	
+			    pQuestionList.setConcurrentIndex(concurrentIndex - 1);
+				return pQuestionList.getConcurrentIndex();
+			}
+			else {
+			    return pQuestionList.getConcurrentIndex();
+			}
 		}
 		return null;
 	}
