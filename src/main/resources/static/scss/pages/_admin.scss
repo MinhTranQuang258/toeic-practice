@@ -1,0 +1,18 @@
+.admin {
+  background-color: #fff;
+  border-color: rgba(0, 0, 0, 0.125);
+  box-shadow: 10px 10px 10px #538824;
+  border-radius: 5px;
+  &__question {
+    &-option {
+      border: 3px dashed #6db22f;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+  &__section {
+    margin-top: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ced4da;
+  }
+}
