@@ -62,6 +62,12 @@ public class MCQuestionServiceImpl extends AbstractQuestionService implements Qu
 	}
 
 	@Override
+	public double validateQuestion() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public MultipleChoiceQuestion updateQuestion(long id) {
 		// TODO Auto-generated method stub
 		return null;

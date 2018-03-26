@@ -70,6 +70,12 @@ public class PQuestionServiceImpl extends AbstractQuestionService implements Que
 	}
 
 	@Override
+	public double validateQuestion() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public PhotoQuestion getQuestion(int index) {
 		// TODO Auto-generated method stub
 		return null;

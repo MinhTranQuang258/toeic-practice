@@ -8,6 +8,8 @@ public class MCQuestionList {
 	
 	private int concurrentIndex;
 	
+	private double score;
+	
 	private List<MultipleChoiceQuestion> questions;
 
 	public int getConcurrentIndex() {
@@ -39,5 +41,13 @@ public class MCQuestionList {
 
 	public void setQuestions(List<MultipleChoiceQuestion> questions) {
 		this.questions = questions;
+	}
+
+	public double getScore() {
+		return score;
+	}
+
+	public void setScore(double score) {
+		this.score = score;
 	}
 }

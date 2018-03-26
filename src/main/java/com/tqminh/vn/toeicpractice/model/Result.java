@@ -63,7 +63,6 @@ public class Result {
 		return photos;
 	}
 
-
 	public void setPhotos(List<Double> photos) {
 		this.photos = photos;
 	}

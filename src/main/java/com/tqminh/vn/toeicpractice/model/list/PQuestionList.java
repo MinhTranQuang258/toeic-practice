@@ -9,6 +9,8 @@ public class PQuestionList {
 	
 	private int concurrentIndex;
 	
+	private double score;
+	
 	private List<PhotoQuestion> questions;
 
 	public PQuestionList() {
@@ -34,5 +36,13 @@ public class PQuestionList {
 
 	public void setConcurrentIndex(int concurrentIndex) {
 		this.concurrentIndex = concurrentIndex;
+	}
+
+	public double getScore() {
+		return score;
+	}
+
+	public void setScore(double score) {
+		this.score = score;
 	}
 }
