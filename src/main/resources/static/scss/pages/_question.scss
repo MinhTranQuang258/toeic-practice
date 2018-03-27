@@ -17,7 +17,7 @@ $question-footer-text-cl: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    padding: 3rem 0;
     background-color: $question-container-background-cl;
   }
   &__header {

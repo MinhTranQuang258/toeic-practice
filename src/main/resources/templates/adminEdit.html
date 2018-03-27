@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/bootstrap.css}" />
   <link rel="stylesheet" type="text/css" th:href="@{/css/app.css}" />
-  <title>TOEIC Practice</title>
+  <title>Chỉnh sửa câu hỏi</title>
 </head>
 
 <body>
@@ -94,30 +94,34 @@
         <div class="main">
           <div class="container-fluid">
             <div class="row question__container">
-              <div class="admin">
-                <!-- <div class="admin__question-option">
-                  <div class="form-group">
+              <div class="admin col-lg-11 p-5">
+                <div class="admin__question-option row mb-5">
+                  <div class="form-group col-lg-3">
+                    <label>Loại câu hỏi: </label>
                     <select class="form-control js-question-type">
                       <option value="grammar">Ngữ pháp</option>
                       <option value="listening">Nghe</option>
                       <option value="reading">Đọc</option>
                     </select>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-lg-3">
+                    <label>Số câu trả lời: </label>
                     <select class="form-control js-question-num-answers">
-                      <option>3</option>
-                      <option>4</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
                     </select>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-lg-3 d-none">
+                    <label>Đính kèm: </label>
                     <select class="form-control js-question-addon">
-                      <option>Âm thanh</option>
-                      <option>Âm thanh + hình ảnh</option>
+                      <option value="1">Âm thanh</option>
+                      <option value="2">Âm thanh + hình ảnh</option>
                     </select>
                   </div>
-                </div> -->
+                </div>
                 <div class="admin__question-list">
-                  <table class="list">
+                  <table class="table list">
+                    <caption>Danh sách câu hỏi</caption>
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -161,36 +165,85 @@
                         <td>D</td>
                         <td>A</td>
                       </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>Listen</td>
+                        <td>ABC</td>
+                        <td>A</td>
+                        <td>B</td>
+                        <td>C</td>
+                        <td>D</td>
+                        <td>A</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>Listen</td>
+                        <td>ABC</td>
+                        <td>A</td>
+                        <td>B</td>
+                        <td>C</td>
+                        <td>D</td>
+                        <td>A</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">6</th>
+                        <td>Listen</td>
+                        <td>ABC</td>
+                        <td>A</td>
+                        <td>B</td>
+                        <td>C</td>
+                        <td>D</td>
+                        <td>A</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
                 <div class="admin__question">
                   <div class="admin__section">
                     <div class="form-group">
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Điền câu hỏi mới ..."></textarea>
+                      <textarea class="form-control" rows="3" placeholder="Điền câu hỏi mới ..."></textarea>
+                    </div>
+                  </div>
+                  <div class="admin__section row mx-0 question__media d-none">
+                    <div class="form-group w-50 mb-4 px-1 float-left d-none">
+                      <label>File âm thanh</label>
+                      <input type="file" class="form-control js-question-soundtrack" />
+                    </div>
+                    <div class="form-group w-50 mb-4 px-1 float-right d-none">
+                      <label>File hình</label>
+                      <input type="file" class="form-control js-question-image" />
                     </div>
                   </div>
                   <div class="admin__section">
-                    <div class="admin__answers-list">
-                      <div class="form-group">
-                        <input type="email" class="form-control" id="answerA" placeholder="Đáp án A" />
+                    <div class="admin__answers-list js-new-answers-list">
+                      <div class="form-inline mb-4">
+                        <input type="text" class="form-control w-75 mr-5" id="answerA" placeholder="Đáp án A" />
+                        <input class="form-check-input" type="radio" name="rightAnswer" />
+                        <label class="form-check-label">
+                          Đáp án đúng
+                        </label>
                       </div>
-                      <div class="form-group">
-                        <input type="email" class="form-control" id="answerB" placeholder="Đáp án B" />
+                      <div class="form-inline mb-4">
+                        <input type="text" class="form-control w-75 mr-5" id="answerB" placeholder="Đáp án B" />
+                        <input class="form-check-input" type="radio" name="rightAnswer" />
+                        <label class="form-check-label">
+                          Đáp án đúng
+                        </label>
                       </div>
-                      <div class="form-group">
-                        <input type="email" class="form-control" id="answerC" placeholder="Đáp án C" />
-                      </div>
-                      <div class="form-group">
-                        <input type="email" class="form-control" id="answerD" placeholder="Đáp án D" />
+                      <div class="form-inline mb-4">
+                        <input type="text" class="form-control w-75 mr-5" id="answerC" placeholder="Đáp án C" />
+                        <input class="form-check-input" type="radio" name="rightAnswer" />
+                        <label class="form-check-label">
+                          Đáp án đúng
+                        </label>
                       </div>
                     </div>
                   </div>
-                  <div class="admin__section">
-                    <button class="btn btn-lg btn__default">Nhập lại</button>
+                  <div class="float-right mt-5">
+                    <button type="reset" class="btn btn-lg btn__default">Nhập lại</button>
 
-                    <button class="btn btn-lg btn__default">Sửa</button>
-                    <button class="btn btn-lg btn__default">Xóa câu hỏi này</button>
+                    <button type="submit" class="btn btn-lg btn__default">Sửa</button>
+                    <button type="button" class="btn btn-lg btn__default">Xóa câu hỏi này</button>
                   </div>
                 </div>
               </div>
@@ -203,6 +256,7 @@
 
 
   <script type="text/javascript" th:src="@{/webjars/jquery/jquery-3.3.1.js}"></script>
+  <script type="text/javascript" th:src="@{/js/admin.js}"></script>
   <script type="text/javascript" th:src="@{/js/app.js}"></script>
 </body>
 
