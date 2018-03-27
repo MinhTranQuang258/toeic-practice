@@ -5,14 +5,24 @@ import org.springframework.beans.factory.annotation.Value;
 public class GeneralConfiguration {
     
     @Value("${}")
-    private String filePatch;
+    private String filePath;
     
-    public String getFilePatch() {
-        return filePatch;
+    private String photoPath;
+    
+    public String getPhotoPath() {
+		return photoPath;
+	}
+
+	public void setPhotoPath(String photoPath) {
+		this.photoPath = photoPath;
+	}
+
+	public String getFilePath() {
+        return filePath;
     }
 
-    public void setFilePatch(String filePatch) {
-        this.filePatch = filePatch;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
     
 }

@@ -1,13 +1,12 @@
 package com.tqminh.vn.toeicpractice.services;
 
 import java.io.IOException;
-
-import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
+import java.util.List;
 
 public interface PhotoService {
  
-	void loadFile() throws InvalidPasswordException, IOException;
+	void loadFile();
 	
-	String readFile();
+	List<String> readFile() throws IOException;
 	
 }

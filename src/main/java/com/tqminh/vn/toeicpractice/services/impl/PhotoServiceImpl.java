@@ -12,12 +12,11 @@
  */
 package com.tqminh.vn.toeicpractice.services.impl;
 
-
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tqminh.vn.toeicpractice.configuration.GeneralConfiguration;
@@ -29,22 +28,20 @@ public class PhotoServiceImpl implements PhotoService{
     private GeneralConfiguration configuration;
 
     @Override
-    public void loadFile() throws InvalidPasswordException, IOException {
-        File folder= new File(configuration.getFilePatch());
-        File[] files = folder.listFiles();
+    public void loadFile() {
         
-//        Splitters splitters= new Splitters();
-        
-        for (File file : files) {
-            PDDocument document = PDDocument.load(file);
-//            splitters.splitDocument(document);
-        }
     }
 
     @Override
-    public String readFile() {
-        // TODO Auto-generated method stub
-        return null;
+    public List<String> readFile() throws IOException{
+    	List<String> list= new ArrayList<String>();
+        File[] files= new File(configuration.getPhotoPath()).listFiles();
+        for(File file : files){
+        	if(file.isFile()){
+        		list.add(file.getAbsolutePath());
+        	}
+        }
+        return list;
     }
     
 }
