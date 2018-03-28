@@ -7,6 +7,10 @@ public interface PhotoService {
  
 	void loadFile();
 	
+	void setPatch(String patch);
+	
 	List<String> readFile() throws IOException;
+	
+	int countPhoto() throws IOException;
 	
 }

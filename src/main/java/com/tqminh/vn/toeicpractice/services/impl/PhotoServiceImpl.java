@@ -43,5 +43,15 @@ public class PhotoServiceImpl implements PhotoService{
         }
         return list;
     }
+
+	@Override
+	public void setPatch(String patch) {
+		configuration.setPhotoPath(patch);
+	}
+
+	@Override
+	public int countPhoto() throws IOException {
+		return readFile().size();
+	}
     
 }
