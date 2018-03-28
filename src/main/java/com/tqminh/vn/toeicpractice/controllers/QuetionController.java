@@ -45,7 +45,7 @@ public class QuetionController {
 	@RequestMapping(value= "/grammer", method= RequestMethod.GET)
 	public String getGrammer(Model model) throws Exception {
 		
-		model.addAttribute("question", mcQuestionService.getQuestion(1));
+		model.addAttribute("question", mcQuestionService.getQuestion("",1));
 		return "question";
 	}
 }

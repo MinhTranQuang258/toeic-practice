@@ -59,8 +59,7 @@ public class PQuestionServiceImpl extends AbstractQuestionService implements Que
 
 	@Override
 	public int countQuestion() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.countQuestion(TypeDefinition.PHOTO_QUESTION);
 	}
 
 	@Override
@@ -80,8 +79,11 @@ public class PQuestionServiceImpl extends AbstractQuestionService implements Que
 	}
 
 	@Override
-	public PhotoQuestion getQuestion(int index) {
-		// TODO Auto-generated method stub
-		return null;
+	public PhotoQuestion getQuestion(String username, int index) throws Exception {
+		try {
+			return (PhotoQuestion) super.getQuestion(username, index, TypeDefinition.PHOTO_QUESTION);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 }

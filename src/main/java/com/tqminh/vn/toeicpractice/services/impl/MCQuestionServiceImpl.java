@@ -33,7 +33,7 @@ public class MCQuestionServiceImpl extends AbstractQuestionService implements Qu
 	}
 	
 	@Override
-	public MultipleChoiceQuestion getQuestion(int index) throws Exception {
+	public MultipleChoiceQuestion getQuestion(String username, int index) throws Exception {
 		return (MultipleChoiceQuestion) super.getQuestion("admin", index, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 

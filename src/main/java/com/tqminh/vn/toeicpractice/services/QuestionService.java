@@ -16,7 +16,7 @@ public interface QuestionService<T extends AbstractQuestion> {
 	
 	int previousQuestion(String username) throws Exception;
 	
-	T getQuestion(int index) throws Exception;
+	T getQuestion(String username, int index) throws Exception;
 	
 	double validateQuestion();
 	

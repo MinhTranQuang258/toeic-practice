@@ -48,7 +48,7 @@ public class TestController {
 	
 	@RequestMapping(value= "/get", method= RequestMethod.GET)
 	public MultipleChoiceQuestion getGrammer(Model model) throws Exception {
-		MultipleChoiceQuestion question=  mcQuestionService.getQuestion(1);
+		MultipleChoiceQuestion question=  mcQuestionService.getQuestion("",1);
 //		MCQuestionWrapper questionWrapper= mCQuestionWrapperRepository.findOne(5L);
 		if(question == null) {
 			System.out.println("Null");
