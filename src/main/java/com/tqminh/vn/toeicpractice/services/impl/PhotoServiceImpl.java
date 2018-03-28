@@ -14,8 +14,8 @@ package com.tqminh.vn.toeicpractice.services.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,20 +28,20 @@ public class PhotoServiceImpl implements PhotoService{
     private GeneralConfiguration configuration;
 
     @Override
-    public void loadFile() {
-        
+    public String loadFilePatch() throws IOException {
+        return readFile().poll();
     }
 
     @Override
-    public List<String> readFile() throws IOException{
-    	List<String> list= new ArrayList<String>();
+    public Queue<String> readFile() throws IOException{
+    	Queue<String> queue= new ConcurrentLinkedQueue<String>();
         File[] files= new File(configuration.getPhotoPath()).listFiles();
         for(File file : files){
         	if(file.isFile()){
-        		list.add(file.getAbsolutePath());
+        		queue.add(file.getAbsolutePath());
         	}
         }
-        return list;
+        return queue;
     }
 
 	@Override

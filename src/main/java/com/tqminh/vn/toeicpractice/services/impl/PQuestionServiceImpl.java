@@ -8,11 +8,15 @@ import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.AbstractQuestionService;
+import com.tqminh.vn.toeicpractice.services.PhotoService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Service("PQuestionService")
 public class PQuestionServiceImpl extends AbstractQuestionService implements QuestionService<PhotoQuestion>{
 
+	@Autowired
+	private PhotoService photoService;
+	
 	@Override
 	public void submit(String username) {
 		super.submit(username, TypeDefinition.PHOTO_QUESTION);

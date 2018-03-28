@@ -1,15 +1,15 @@
 package com.tqminh.vn.toeicpractice.services;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Queue;
 
 public interface PhotoService {
  
-	void loadFile();
+	String loadFilePatch() throws IOException;
 	
 	void setPatch(String patch);
 	
-	List<String> readFile() throws IOException;
+	Queue<String> readFile() throws IOException;
 	
 	int countPhoto() throws IOException;
 	
