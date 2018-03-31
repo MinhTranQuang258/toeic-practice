@@ -4,9 +4,7 @@ public class Register {
 	
 	private String name;
 	
-	private String age;
-	
-	private String userName;
+	private int age;
 
 	private String username;
 	
@@ -22,23 +20,14 @@ public class Register {
 		this.name = name;
 	}
 
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	
 	public String getUsername() {
 		return username;
 	}

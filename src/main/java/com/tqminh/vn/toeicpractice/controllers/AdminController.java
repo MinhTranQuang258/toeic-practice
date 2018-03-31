@@ -23,7 +23,8 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value= "/displayAdminAdd", method= RequestMethod.GET)
-	public String displayAdminAddPage() {
+	public String displayAdminAddPage(Model model) {
+		model.addAttribute("question", new Question());
 		return Constant.Page.ADMIN_ADD_PAGE;
 	}
 }

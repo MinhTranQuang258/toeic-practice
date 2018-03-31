@@ -11,6 +11,6 @@ import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
 public interface AccountWrapperRepository extends CrudRepository<AccountWrapper, Long>{
 	
 	@Query(nativeQuery= true, value= Constant.NativeQuery.FIND_ACCOUNT_BY_USER_NAME_AND_PASSWORD)
-	AccountWrapper findAccountByUserAndPassword(String userName, String password);
+	AccountWrapper findAccountByUserAndPassword(String username, String password);
 
 }

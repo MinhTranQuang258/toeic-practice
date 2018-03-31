@@ -111,25 +111,25 @@
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" id="answer1" value="value1" />
-                            <label class="form-check-label" for="answer1" th:text="${question.answerA}"></label>
+                            <label class="form-check-label" for="answer1" th:field="*{question.answerA}"></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" id="answer2" value="value2" />
-                            <label class="form-check-label" for="answer2" th:text="${question.answerB}"></label>
+                            <label class="form-check-label" for="answer2" th:field="${question.answerB}"></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" id="answer3" value="value3" />
-                            <label class="form-check-label" for="answer3" th:text="${question.answerC}"></label>
+                            <label class="form-check-label" for="answer3" th:field="${question.answerC}"></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" id="answer4" value="value4" />
-                            <label class="form-check-label" for="answer4" th:text="${question.answerD}"></label>
+                            <label class="form-check-label" for="answer4" th:field="${question.answerD}"></label>
                           </div>
                         </li>
                       </ul>
