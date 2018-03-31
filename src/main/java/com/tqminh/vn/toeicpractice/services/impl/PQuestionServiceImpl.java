@@ -1,9 +1,15 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.common.TypeDefinition;
+import com.tqminh.vn.toeicpractice.configuration.GeneralConfiguration;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
@@ -12,24 +18,20 @@ import com.tqminh.vn.toeicpractice.services.PhotoService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Service("PQuestionService")
-public class PQuestionServiceImpl extends AbstractQuestionService implements QuestionService<PhotoQuestion>{
-
-	@Autowired
-	private PhotoService photoService;
+public class PQuestionServiceImpl extends AbstractQuestionService 
+implements QuestionService<PhotoQuestion>, PhotoService{
 	
-	@Override
-	public void submit(String username) {
-		super.submit(username, TypeDefinition.PHOTO_QUESTION);
-	}
-
 	@Autowired
 	private PQuestionWrapperRepository repository;
+	
+	@Autowired
+	private GeneralConfiguration configuration;
 	
 	
 	@Override
 	public String insertQuestion(PhotoQuestion question) {
 		try {
-			if(question != null) {
+			if(isCheckQuestionInfo(question)) {
 				PQuestionWrapper questionWrapper= new PQuestionWrapper(question);
 				PQuestionWrapper pQuestionWrapper= repository.save(questionWrapper);
 				if(pQuestionWrapper == null) {
@@ -44,16 +46,32 @@ public class PQuestionServiceImpl extends AbstractQuestionService implements Que
 		}
 		return null;
 	}
+	
+	private boolean isCheckQuestionInfo(PhotoQuestion photoQuestion) {
+		if(photoQuestion != null) {
+			if(photoQuestion.getAnswerA() != null && photoQuestion.getAnswerB() != null && photoQuestion.getAnswerC() != null 
+					&& photoQuestion.getAnswerD() != null && photoQuestion.getAnswerTrue() != null) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+		
+	}
 
 	@Override
 	public PhotoQuestion updateQuestion(long id) {
-		// TODO Auto-generated method stub
+		// TODO: handle to update question if necessary.
 		return null;
 	}
 
 	@Override
 	public PhotoQuestion deleteQuestion(long id) {
-		// TODO Auto-generated method stub
+		// TODO: handle to delete question if necessary.
 		return null;
 	}
 
@@ -85,5 +103,37 @@ public class PQuestionServiceImpl extends AbstractQuestionService implements Que
 		} catch (Exception e) {
 			throw e;
 		}
+	}
+	
+	@Override
+	public String loadFilePatch() throws IOException {
+	        return readFile().poll();
+	}
+
+	@Override
+	public Queue<String> readFile() throws IOException{
+	    	Queue<String> queue= new ConcurrentLinkedQueue<String>();
+	        File[] files= new File(configuration.getPhotoPath()).listFiles();
+	        for(File file : files){
+	        	if(file.isFile()){
+	        		queue.add(file.getAbsolutePath());
+	        	}
+	     }
+	     return queue;
+	 }
+
+	@Override
+	public void setPatch(String patch) {
+		configuration.setPhotoPath(patch);
+	}
+
+	@Override
+	public int countPhoto() throws IOException {
+		return readFile().size();
+	}
+
+	@Override
+	public void submit(String username) {
+		super.submit(username, TypeDefinition.PHOTO_QUESTION);
 	}
 }
