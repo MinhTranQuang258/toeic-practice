@@ -1,10 +1,12 @@
 package com.tqminh.vn.toeicpractice.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GeneralConfiguration {
     
-    @Value("${}")
+    @Value("${app.configuration.photo.patch}")
     private String filePath;
     
     private String photoPath;

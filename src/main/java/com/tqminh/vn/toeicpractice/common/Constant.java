@@ -39,6 +39,12 @@ public class Constant {
 		
 		public final static String QUESTION_PAGE= "question";
 		
+		public final static String ADMIN_PAGE= "admin-question";
+		
+		public final static String ADMIN_EDIT_PAGE= "adminEdit";
+		
+		public final static String ADMIN_ADD_PAGE= "adminAdd";
+		
 	}
 	
 	public static class Admin {

@@ -28,7 +28,7 @@ public class AccountServiceImpl implements AccountService{
 			String password= account.getPassword();
 			if(isAdmin(account)) {
 				accountCache.put(username, account);
-				return Page.QUESTION_PAGE;
+				return Page.ADMIN_PAGE;
 			}
 			else {
 				AccountWrapper accountWrapper=  
