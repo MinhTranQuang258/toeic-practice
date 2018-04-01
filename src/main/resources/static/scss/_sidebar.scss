@@ -36,18 +36,6 @@ $sidebar-item-bg: #d7ffbd;
     &--sub {
       display: none;
       background-color: $sidebar-sub-bg;
-      #{$b}__item {
-
-      }
-      #{$b}__link {
-        color: $sidebar-link-sub-cl;
-      }
-      #{$b}__icon {
-
-      }
-      #{$b}__text {
-
-      }
     }
   }
   &__item {

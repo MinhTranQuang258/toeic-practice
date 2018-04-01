@@ -53,35 +53,36 @@
             <ul class="sidebar__list sidebar__list--sub">
 
               <li class="sidebar__item">
-                <a href="/manage_report_admin.html" class="sidebar__link">
+                <a href="/listening" class="sidebar__link sidebar--sub__link">
                   Nghe
                 </a>
               </li>
               <li class="sidebar__item">
-                <a href="/grammer" class="sidebar__link">
+                <a href="/grammer" class="sidebar__link sidebar--sub__link">
                   Ngữ pháp
                 </a>
               </li>
               <li class="sidebar__item">
-                <a href="/manage_report_staff.html" class="sidebar__link">
+                <a href="/reading" class="sidebar__link sidebar--sub__link">
                   Đọc
                 </a>
               </li>
             </ul>
           </li>
           <li class="sidebar__item">
-            <a href="#" class="js-sidebar-item sidebar__link">
-              <i class="fa fa-shopping-bag sidebar__icon" aria-hidden="true"></i>
+            <a href="#" class="js-sidebar-item  sidebar__link">
+              <i class="fa fa-user-circle-o sidebar__icon" aria-hidden="true"></i>
               Quản lý
             </a>
             <ul class="sidebar__list sidebar__list--sub">
+
               <li class="sidebar__item">
-                <a href="/adminAdd" class="sidebar__link">
+                <a href="/displayAdminAdd" class="sidebar__link sidebar--sub__link">
                   Thêm câu hỏi
                 </a>
               </li>
               <li class="sidebar__item">
-                <a href="/adminEdit" class="sidebar__link">
+                <a href="/displayAdminEdit" class="sidebar__link sidebar--sub__link">
                   Chỉnh sửa câu hỏi
                 </a>
               </li>
@@ -100,12 +101,13 @@
                     <div class="form-group col-lg-3">
                       <label>Loại câu hỏi: </label>
                       <select class="form-control js-question-type">
+                        <option>Chọn</option>
                         <option value="grammar">Ngữ pháp</option>
                         <option value="listening">Nghe</option>
                         <option value="reading">Đọc</option>
                       </select>
                     </div>
-                    <div class="form-group col-lg-3">
+                    <div class="form-group col-lg-3 d-none">
                       <label>Số câu trả lời: </label>
                       <select class="form-control js-question-num-answers">
                         <option value="3">3</option>
@@ -120,7 +122,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="admin__question px-5 py-3">
+                  <div class="admin__question px-5 py-3 d-none">
                     <div class="admin__section">
                       <div class="form-group">
                         <textarea class="form-control" rows="3" placeholder="Điền câu hỏi mới ..."></textarea>

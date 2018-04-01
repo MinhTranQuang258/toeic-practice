@@ -2,7 +2,9 @@ $(document).ready(function () {
 
   $('.js-question-type').on('change', function () {
     current = $(this).val();
-
+    $('.admin__question').removeClass('d-none');
+    $('.js-question-num-answers').closest('.form-group').removeClass('d-none');
+    
     switch (current) {
       case 'grammar':
         $('.js-question-num-answers').closest('.form-group').removeClass('d-none');

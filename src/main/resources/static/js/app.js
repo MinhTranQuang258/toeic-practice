@@ -19,6 +19,13 @@ $(document).ready(function() {
     e.preventDefault();
     login();
   });
+
+
+  $('.sidebar--sub__link').on('click', function(e) {
+    e.preventDefault();
+    $('.question').removeClass('d-none');
+  });
+
 });
 
 // Function
