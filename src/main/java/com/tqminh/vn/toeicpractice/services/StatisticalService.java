@@ -6,8 +6,8 @@ import com.tqminh.vn.toeicpractice.model.Account;
 
 public interface StatisticalService {
 	
-	List<Account> getTopTenScore(String data);
+	List<Account> getTopTenScore(String date);
 	
-	
+	int getCocurrentUser();
 	
 }

@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,12 @@ implements QuestionService<PhotoQuestion>, PhotoService{
 	@Autowired
 	private GeneralConfiguration configuration;
 	
+	private Queue<String> queue;
+	
+	@PostConstruct
+	public void initialize() {
+		queue = new ConcurrentLinkedQueue<>();
+	}
 	
 	@Override
 	public String insertQuestion(PhotoQuestion question) {
@@ -107,12 +115,23 @@ implements QuestionService<PhotoQuestion>, PhotoService{
 	
 	@Override
 	public String loadFilePatch() throws IOException {
-	        return readFile().poll();
+		if(queue.isEmpty()) {
+			readFile();
+		    return queue.poll();		
+		}
+		else{
+			String patch= queue.poll();
+			if(patch != null) {
+				return patch;
+			}
+			else {
+				return null;
+			}
+		}
 	}
 
-	@Override
-	public Queue<String> readFile() throws IOException{
-	    	Queue<String> queue= new ConcurrentLinkedQueue<String>();
+	
+	private Queue<String> readFile() throws IOException{
 	        File[] files= new File(configuration.getPhotoPath()).listFiles();
 	        for(File file : files){
 	        	if(file.isFile()){
@@ -121,11 +140,6 @@ implements QuestionService<PhotoQuestion>, PhotoService{
 	     }
 	     return queue;
 	 }
-
-	@Override
-	public void setPatch(String patch) {
-		configuration.setPhotoPath(patch);
-	}
 
 	@Override
 	public int countPhoto() throws IOException {

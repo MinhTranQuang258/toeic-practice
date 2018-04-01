@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class GeneralConfiguration {
     
-    @Value("${app.configuration.photo.patch}")
     private String filePath;
     
+    @Value("${app.configuration.photo.patch}")
     private String photoPath;
     
     public String getPhotoPath() {
