@@ -4,6 +4,8 @@ public class PhotoQuestion extends AbstractQuestion {
 	
 	private String photo;
 	
+	private String folderName;
+	
 	private String answerA;
 	
 	private String answerB;
@@ -86,4 +88,12 @@ public class PhotoQuestion extends AbstractQuestion {
 	public void setAnswerTrue(String answerTrue) {
 		this.answerTrue = answerTrue;
 	}
+
+    public String getFolderName() {
+        return folderName;
+    }
+
+    public void setFolderName(String folderName) {
+        this.folderName = folderName;
+    }
 }

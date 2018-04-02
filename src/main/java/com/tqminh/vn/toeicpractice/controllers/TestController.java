@@ -1,5 +1,7 @@
 package com.tqminh.vn.toeicpractice.controllers;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
 import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
+import com.tqminh.vn.toeicpractice.services.PhotoService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @RestController
@@ -34,6 +37,9 @@ public class TestController {
 	@Autowired
 	private PQuestionWrapperRepository pQuestionWrapperRepository;
 
+	@Autowired
+	private PhotoService photoService;
+	
 	@RequestMapping("/save")
 	public String save() {
 		MultipleChoiceQuestion question= new MultipleChoiceQuestion();
@@ -87,5 +93,15 @@ public class TestController {
 	@RequestMapping("/getP")
 	public PhotoQuestion getP() {
 		return pQuestionWrapperRepository.findOne(1L).getPhotoQuestion();
+	}
+	
+	@RequestMapping("/getString")
+	public String getString() throws IOException {
+	    try {
+	        return photoService.loadFilePatch();
+        }
+        catch (Exception e) {
+            throw e;
+        }
 	}
 }

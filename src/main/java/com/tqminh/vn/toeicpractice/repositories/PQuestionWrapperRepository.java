@@ -12,4 +12,7 @@ public interface PQuestionWrapperRepository extends CrudRepository<PQuestionWrap
 	
 	@Query(nativeQuery= true, value= Constant.NativeQuery.COUNT_PQUESTION_BY_ID)
 	int countQuestionById();
+	
+	@Query(nativeQuery= true, value= Constant.NativeQuery.COUNT_DUPLICATED_FOLDER)
+	int countDuplicatedFolder(String folderName);
 }

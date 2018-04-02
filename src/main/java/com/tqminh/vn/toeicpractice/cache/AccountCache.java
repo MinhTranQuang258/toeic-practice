@@ -8,4 +8,6 @@ public interface AccountCache<T> {
 	void put(String key, T value);
 	
 	void removeObject(String key);
+	
+	int getSize();
 }

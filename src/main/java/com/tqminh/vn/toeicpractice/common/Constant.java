@@ -20,6 +20,8 @@ public class Constant {
 		
 		public static final String COUNT_PQUESTION_BY_ID = "SELECT COUNT(id) FROM pquestion_wrapper";
 		
+		public static final String COUNT_DUPLICATED_FOLDER= "SELECT COUNT(id) FROM pquestion_wrapper WHERE photo_question ->> 'folderName' = ?1";
+		
 	}
 	
 	public static class Notification {

@@ -113,21 +113,23 @@ implements QuestionService<PhotoQuestion>, PhotoService{
 		}
 	}
 	
+	private boolean isCheckFolderName() {
+	    int count= repository.countDuplicatedFolder(configuration.getPhotoPath());
+	    if(count > 0) {
+	        return false;
+	    }
+	    else {
+            return true;
+        }
+	}
+	
 	@Override
 	public String loadFilePatch() throws IOException {
-		if(queue.isEmpty()) {
+		if(queue.isEmpty() && isCheckFolderName()) {
 			readFile();
-		    return queue.poll();		
 		}
-		else{
-			String patch= queue.poll();
-			if(patch != null) {
-				return patch;
-			}
-			else {
-				return null;
-			}
-		}
+		String patch= queue.poll();
+		return patch;
 	}
 
 	

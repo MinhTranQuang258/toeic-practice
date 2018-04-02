@@ -8,6 +8,6 @@ public interface StatisticalService {
 	
 	List<Account> getTopTenScore(String date);
 	
-	int getCocurrentUser();
+	int getConcurrentUser();
 	
 }

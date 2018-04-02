@@ -36,4 +36,9 @@ public class AccountCacheImpl implements AccountCache<Account>{
 	public void removeObject(String key) {
 		map.remove(key);
 	}
+
+    @Override
+    public int getSize() {
+        return map.size();
+    }
 }
