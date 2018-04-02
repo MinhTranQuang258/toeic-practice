@@ -8,7 +8,7 @@ window.$ = $;
 $(document).ready(function() {
 
   $('.js-sidebar-item').on('click', function(e) {
-    e.preventDefault;
+//    e.preventDefault;
     $(this).siblings('ul').slideToggle('fast');
 
     $(this).parent('.sidebar__item').siblings().find('ul').slideUp();
