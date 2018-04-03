@@ -48,4 +48,24 @@ public class QuetionController {
 		model.addAttribute("question", mcQuestionService.getQuestion("",1));
 		return "question";
 	}
+	
+	@RequestMapping(value= "/photo", method= RequestMethod.GET)
+	public String getPhoto(Model model) {
+	    return null;
+	}
+	
+	@RequestMapping(value= "/nextQuestion", method= RequestMethod.GET)
+	public void nextQuestion() {
+	    
+	}
+	
+	@RequestMapping(value= "/backQuestion", method= RequestMethod.GET)
+    public void backQuestion() {
+        
+    }
+	
+	@RequestMapping(value= "/submit", method= RequestMethod.POST)
+	public void submit() {
+	    
+	}
 }

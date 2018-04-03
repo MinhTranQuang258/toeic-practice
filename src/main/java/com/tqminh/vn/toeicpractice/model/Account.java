@@ -14,7 +14,13 @@ public class Account {
 		super();
 	}
 
-	public Account(String name, int age, String username) {
+	public Account(String username, String password) {
+        super();
+        this.username = username;
+        this.password = password;
+    }
+
+    public Account(String name, int age, String username) {
 		super();
 		this.name = name;
 		this.age = age;
