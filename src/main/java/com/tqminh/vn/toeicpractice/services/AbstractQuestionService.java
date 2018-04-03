@@ -46,14 +46,14 @@ public abstract class AbstractQuestionService {
 	private Boolean isCheckNextQuestionIndex(int index, Integer typeQuestion) throws NullPointerException{
 		switch (typeQuestion) {
 		case 1:
-			if(index >= Constant.LimitIndex.MAX_MC_QUESTION_INDEX) {
+			if(index >= Constant.QuestionLimit.MC_QUESTION_LIMIT) {
 				return false;
 			}
 			else {
 				return true;
 			}
 		case 2:
-			if(index >= Constant.LimitIndex.MAX_PHOTO_QUESTION_INDEX) {
+			if(index >= Constant.QuestionLimit.P_QUESTION_LIMIT) {
 				return false;
 			}
 			else {

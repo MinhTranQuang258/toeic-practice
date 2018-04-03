@@ -58,10 +58,6 @@ public class Constant {
 	
 	public static class LimitIndex{
 		
-		public final static Integer MAX_MC_QUESTION_INDEX= 9;
-		
-		public final static Integer MAX_PHOTO_QUESTION_INDEX= 9;
-		
 		public final static Integer MIN_MC_QUESTION_INDEX= 0;
 	
 		public final static Integer MIN_PHOTO_QUESTION_INDEX= 0;

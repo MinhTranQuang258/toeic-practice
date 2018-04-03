@@ -11,12 +11,10 @@ public class GeneralConfiguration {
     @Value("${app.configuration.photo.patch}")
     private String photoPath;
     
-    private int maxIndexMCQuestion;
-    
-    private int maxIndexPQuestion;
-    
+    @Value("${app.configuration.limited.mc.question}")
     private int maxMCQuestion;
     
+    @Value("${app.configuration.limited.p.question}")
     private int minPQuestion;
     
     public String getPhotoPath() {
@@ -35,22 +33,6 @@ public class GeneralConfiguration {
         this.filePath = filePath;
     }
 
-	public int getMaxIndexMCQuestion() {
-		return maxIndexMCQuestion;
-	}
-
-	public void setMaxIndexMCQuestion(int maxIndexMCQuestion) {
-		this.maxIndexMCQuestion = maxIndexMCQuestion;
-	}
-
-	public int getMaxIndexPQuestion() {
-		return maxIndexPQuestion;
-	}
-
-	public void setMaxIndexPQuestion(int maxIndexPQuestion) {
-		this.maxIndexPQuestion = maxIndexPQuestion;
-	}
-
 	public int getMaxMCQuestion() {
 		return maxMCQuestion;
 	}
@@ -66,5 +48,4 @@ public class GeneralConfiguration {
 	public void setMinPQuestion(int minPQuestion) {
 		this.minPQuestion = minPQuestion;
 	}
-    
 }
