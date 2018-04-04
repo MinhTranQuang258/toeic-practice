@@ -198,16 +198,13 @@ label {
     .sidebar__list--sub {
       display: none;
       background-color: #67ae3d; }
-      /* line 42, ../scss/_sidebar.scss */
-      .sidebar__list--sub .sidebar__link {
-        color: #ffffff; }
-  /* line 53, ../scss/_sidebar.scss */
+  /* line 41, ../scss/_sidebar.scss */
   .sidebar__item {
     position: relative; }
-    /* line 55, ../scss/_sidebar.scss */
+    /* line 43, ../scss/_sidebar.scss */
     .sidebar__item:not(:last-of-type) {
       border-bottom: 1px solid rgba(73, 80, 87, 0.2); }
-  /* line 59, ../scss/_sidebar.scss */
+  /* line 47, ../scss/_sidebar.scss */
   .sidebar__link {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -218,7 +215,7 @@ label {
     position: relative;
     padding: 16px;
     line-height: 24px; }
-    /* line 67, ../scss/_sidebar.scss */
+    /* line 55, ../scss/_sidebar.scss */
     .sidebar__link:hover {
       -webkit-transition: .3s;
       transition: .3s;
@@ -226,19 +223,19 @@ label {
       color: #495057;
       background-color: transparent; }
     @media (max-width: 767px) {
-      /* line 59, ../scss/_sidebar.scss */
+      /* line 47, ../scss/_sidebar.scss */
       .sidebar__link {
         padding: 16px 30px; } }
-  /* line 77, ../scss/_sidebar.scss */
+  /* line 65, ../scss/_sidebar.scss */
   .sidebar__icon {
     font-size: 15px;
     line-height: 22px;
     margin-right: 8px; }
-  /* line 83, ../scss/_sidebar.scss */
+  /* line 71, ../scss/_sidebar.scss */
   .sidebar__item {
     font-size: 17px;
     color: #479c0e; }
-  /* line 88, ../scss/_sidebar.scss */
+  /* line 76, ../scss/_sidebar.scss */
   .sidebar__text--sub {
     display: none;
     color: #000;
@@ -246,11 +243,11 @@ label {
     padding: 12.5px;
     text-align: center; }
     @media (max-width: 767px) {
-      /* line 88, ../scss/_sidebar.scss */
+      /* line 76, ../scss/_sidebar.scss */
       .sidebar__text--sub {
         display: block; } }
     @media (max-width: 575px) {
-      /* line 88, ../scss/_sidebar.scss */
+      /* line 76, ../scss/_sidebar.scss */
       .sidebar__text--sub {
         display: none; } }
 
@@ -434,4 +431,27 @@ label {
     position: absolute;
     left: auto;
     right: 0; }
+
+/* line 1, ../scss/pages/_admin.scss */
+.admin {
+  background-color: #fff;
+  border-color: rgba(0, 0, 0, 0.125);
+  -webkit-box-shadow: 10px 10px 10px #538824;
+          box-shadow: 10px 10px 10px #538824;
+  border-radius: 5px; }
+  /* line 7, ../scss/pages/_admin.scss */
+  .admin__question-option {
+    border: 3px dashed #6db22f;
+    padding-top: 20px;
+    padding-bottom: 20px; }
+  /* line 13, ../scss/pages/_admin.scss */
+  .admin__question-list .list {
+    max-height: 250px;
+    overflow-y: scroll; }
+  /* line 19, ../scss/pages/_admin.scss */
+  .admin__section {
+    margin-top: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ced4da; }
+
 /*# sourceMappingURL=app.css.map */
