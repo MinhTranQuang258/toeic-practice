@@ -2,12 +2,13 @@ package com.tqminh.vn.toeicpractice.services;
 
 import java.util.List;
 
-import com.tqminh.vn.toeicpractice.model.Account;
+import com.tqminh.vn.toeicpractice.model.Result;
 
 public interface StatisticalService {
 	
-	List<Account> getTopTenScore(String date);
+	List<Result> getTopTenScore(String date);
 	
 	int getConcurrentUser();
 	
+	Result getResultByUsername(String username, String date);
 }

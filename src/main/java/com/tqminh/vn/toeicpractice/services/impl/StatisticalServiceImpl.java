@@ -12,20 +12,36 @@
  */
 package com.tqminh.vn.toeicpractice.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.cache.AccountCache;
 import com.tqminh.vn.toeicpractice.model.Account;
+import com.tqminh.vn.toeicpractice.model.Result;
+import com.tqminh.vn.toeicpractice.repositories.ResultWrapperRepository;
+import com.tqminh.vn.toeicpractice.repositories.entities.ResultWrapper;
 import com.tqminh.vn.toeicpractice.services.StatisticalService;
 
+@Service
 public class StatisticalServiceImpl implements StatisticalService{
 
+    @Autowired
     private AccountCache<Account> cache;
     
+    @Autowired
+    private ResultWrapperRepository repository;
+    
     @Override
-    public List<Account> getTopTenScore(String date) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Result> getTopTenScore(String date) {
+        List<ResultWrapper> lists= repository.findResultsByDate(date);
+        List<Result> results= new ArrayList<Result>();
+        for (ResultWrapper resultWrapper : lists) {
+            results.add(resultWrapper.getResult());
+        }
+        return results;
     }
 
     @Override
@@ -33,4 +49,9 @@ public class StatisticalServiceImpl implements StatisticalService{
         return cache.getSize();
     }
 
+    @Override
+    public Result getResultByUsername(String username, String date) {
+        ResultWrapper resultWrapper= repository.findResultByUsername(date, username);
+        return resultWrapper.getResult();
+    }
 }

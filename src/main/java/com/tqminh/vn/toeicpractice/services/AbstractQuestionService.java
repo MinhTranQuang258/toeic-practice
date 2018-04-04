@@ -13,6 +13,7 @@ import com.tqminh.vn.toeicpractice.cache.IndexCache;
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.common.TypeDefinition;
+import com.tqminh.vn.toeicpractice.configuration.GeneralConfiguration;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
@@ -42,6 +43,9 @@ public abstract class AbstractQuestionService {
 	@Autowired
 	@Qualifier("IndexCache")
 	private IndexCache<Long> indexCache;
+	
+	@Autowired
+	private GeneralConfiguration configuration;
 	
 	private Boolean isCheckNextQuestionIndex(int index, Integer typeQuestion) throws NullPointerException{
 		switch (typeQuestion) {
