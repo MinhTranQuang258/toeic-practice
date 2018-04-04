@@ -12,6 +12,7 @@
  */
 package com.tqminh.vn.toeicpractice.services.impl;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class StatisticalServiceImpl implements StatisticalService{
     private ResultWrapperRepository repository;
     
     @Override
-    public List<Result> getTopTenScore(String date) {
+    public List<Result> getTopTenScore(String date) throws SQLException{
         List<ResultWrapper> lists= repository.findResultsByDate(date);
         List<Result> results= new ArrayList<Result>();
         for (ResultWrapper resultWrapper : lists) {
@@ -45,12 +46,12 @@ public class StatisticalServiceImpl implements StatisticalService{
     }
 
     @Override
-    public int getConcurrentUser() {
+    public int getConcurrentUser() throws SQLException{
         return cache.getSize();
     }
 
     @Override
-    public Result getResultByUsername(String username, String date) {
+    public Result getResultByUsername(String username, String date) throws SQLException{
         ResultWrapper resultWrapper= repository.findResultByUsername(date, username);
         return resultWrapper.getResult();
     }
