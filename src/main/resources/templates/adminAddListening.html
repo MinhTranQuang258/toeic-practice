@@ -102,14 +102,21 @@
                       <label>Loại câu hỏi: </label>
                       <select class="form-control js-question-type">
                         <option>Chọn</option>
-                        <option value="/ nhập value mapping ở đây">Ngữ pháp</option>
-                        <option value="nhập value mapping ở đây">Nghe</option>
+                        <option value="nhập value mapping ở đây">Ngữ pháp</option>
+                        <option value="nhập value mapping ở đây" selected="selected">Nghe</option>
                         <option value="nhập value mapping ở đây">Đọc</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-lg-3 d-none">
+                      <label>Đính kèm: </label>
+                      <select class="form-control js-question-addon">
+                        <option value="1">Âm thanh</option>
+                        <option value="2">Âm thanh + hình ảnh</option>
                       </select>
                     </div>
                   </div>
                   <div class="admin__question px-5 py-3 d-none">
-                    <!-- <div class="admin__section">
+                    <div class="admin__section">
                       <div class="form-group">
                         <textarea class="form-control" rows="3" placeholder="Điền câu hỏi mới ..." th:text="${detailQuestion}"></textarea>
                       </div>
@@ -153,7 +160,7 @@
                       <button type="reset" class="btn btn-lg btn__default">Nhập lại</button>
 
                       <button type="submit" class="btn btn-lg btn__default">Thêm</button>
-                    </div> -->
+                    </div>
                   </div>
                 </form>
               </div>
