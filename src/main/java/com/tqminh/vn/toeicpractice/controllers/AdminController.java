@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -35,8 +36,8 @@ public class AdminController {
 		return Constant.Page.ADMIN_EDIT_PAGE;
 	}
 	
-	@RequestMapping(value= "/displayAdminAdd", method= RequestMethod.GET)
-	public String displayAdminAddPage(Model model) {
+	@RequestMapping(value= "/displayAdminAddGrammar", method= RequestMethod.GET)
+	public String displayAdminAddGrammarPage(Model model) {
 		model.addAttribute("question", new Question());
 		return Constant.Page.ADMIN_ADD_PAGE;
 	}
@@ -47,7 +48,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value= "/insertMCQuestion", method= RequestMethod.POST)
-    public void insertMCQuestion() {
-        
+    public void insertMCQuestion(@ModelAttribute("question") Question question) {
+        System.out.println(question.getDetailQuestion());
     }
 }

@@ -47,6 +47,7 @@ public class Constant {
 		
 		public final static String ADMIN_ADD_PAGE= "adminAdd";
 		
+		public final static String ADMIN_ADD_GRAMMAR= "adminAddGrammar";
 	}
 	
 	public static class Admin {
