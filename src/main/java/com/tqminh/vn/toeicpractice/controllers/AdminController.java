@@ -36,10 +36,15 @@ public class AdminController {
 		return Constant.Page.ADMIN_EDIT_PAGE;
 	}
 	
+	@RequestMapping(value= "/displayAdminAdd", method= RequestMethod.GET)
+	public String displayAdminAdd() {
+	    return Constant.Page.ADMIN_ADD_PAGE;
+	}
+	
 	@RequestMapping(value= "/displayAdminAddGrammar", method= RequestMethod.GET)
 	public String displayAdminAddGrammarPage(Model model) {
 		model.addAttribute("question", new Question());
-		return Constant.Page.ADMIN_ADD_PAGE;
+		return Constant.Page.ADMIN_ADD_GRAMMAR;
 	}
 	
 	@RequestMapping(value= "/insertPQuestion", method= RequestMethod.POST)

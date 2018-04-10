@@ -243,6 +243,14 @@ public abstract class AbstractQuestionService {
 		return questions;
 	}
 	
+	protected Long updateQuestion(Long id) {
+	    return null;
+	}
+	
+	protected Long DeteleQuestion(Long id) {
+	    return null;
+	}
+	
 	protected int countQuestion(Integer typeQuestion) {
 		int count = 0;
 		try {

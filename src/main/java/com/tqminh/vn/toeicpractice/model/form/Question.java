@@ -2,7 +2,7 @@ package com.tqminh.vn.toeicpractice.model.form;
 
 public class Question {
 	
-private String detailQuestion;
+    private String detailQuestion;
 	
 	private String answerA;
 	
