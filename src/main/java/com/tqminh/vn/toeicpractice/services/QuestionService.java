@@ -21,4 +21,6 @@ public interface QuestionService<T extends AbstractQuestion> {
 	double validateQuestion();
 	
 	void submit(String username);
+	
+	T findQuestion(String username, long id);
 }

@@ -24,8 +24,14 @@ public class PQuestionWrapper {
 	
 	@Type(type= "pjson")
 	private PhotoQuestion photoQuestion;
+	
+	public PQuestionWrapper(Long id, PhotoQuestion photoQuestion) {
+        super();
+        this.id = id;
+        this.photoQuestion = photoQuestion;
+    }
 
-	public PQuestionWrapper(PhotoQuestion photoQuestion) {
+    public PQuestionWrapper(PhotoQuestion photoQuestion) {
 		super();
 		this.photoQuestion = photoQuestion;
 	}
