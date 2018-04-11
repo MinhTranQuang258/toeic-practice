@@ -29,11 +29,6 @@ public class QuetionController {
 	@Autowired
 	private AccountService accountService;
 	
-	@RequestMapping(value= "/displayQuestion", method= RequestMethod.GET)
-	public String displayQuestion(HttpSession session) {
-		return "question";
-	}
-	
 	@RequestMapping(value= "/logOut", method= RequestMethod.GET)
 	public String logOut(HttpSession session, Model model) {
 		String username= (String) session.getAttribute("username");
@@ -43,9 +38,9 @@ public class QuetionController {
 	}
 	
 	@RequestMapping(value= "/grammer", method= RequestMethod.GET)
-	public String getGrammer(Model model) throws Exception {
-		
-		model.addAttribute("question", mcQuestionService.getQuestion("",1));
+	public String getGrammer(Model model, HttpSession session) throws Exception {
+		String username= (String)session.getAttribute("username");
+		model.addAttribute("question", mcQuestionService.getQuestion(username, 1));
 		return "question";
 	}
 	

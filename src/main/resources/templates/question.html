@@ -81,12 +81,14 @@
                   <h3 class="question__details"></h3>
                 </div>
                 <div class="question__body">
-                  <form method="POST">
+                  <form method="POST" th:object="${question}">
                     <div class="question__instructions">
+                    
                       <small class="question__instructions-text">
                         <span class="question__instructions-text--fill">Hướng dẫn:</span>
                         Chọn câu trả lời đúng nhất và gửi đáp án bằng cách nhấn vào nút "Xác nhận" bên dưới.
                       </small>
+                      
                     </div>
                     <div class="question__answers">
                       <ul class="question__answers-list">

@@ -1,4 +1,4 @@
-package com.tqminh.vn.toeicpractice.configuration.datasource;
+package com.tqminh.vn.toeicpractice.configuration.datasource.core;
 
 import java.util.Map;
 import java.util.Properties;
@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.apache.tomcat.jdbc.pool.ConnectionPool;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -28,9 +29,13 @@ public abstract class AbstractDataSourceConfiguration {
 		return localContainerEntityManagerFactoryBean;
 	}
 	
-	public abstract LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean();
+	protected abstract LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean();
 	
-	public abstract PlatformTransactionManager platformTransactionManager(EntityManagerFactory entityManagerFactory);
+	protected PlatformTransactionManager platformTransactionManager(EntityManagerFactory entityManagerFactory) {
+	    JpaTransactionManager transactionManager= new JpaTransactionManager();
+	    transactionManager.setEntityManagerFactory(entityManagerFactory);
+	    return transactionManager;
+	}
 	
 	protected abstract String[] getPackagesToScan();
 	
