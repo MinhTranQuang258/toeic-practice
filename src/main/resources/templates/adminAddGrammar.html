@@ -113,14 +113,13 @@
                   <form th:object="${question}" method="POST">
                     <div class="admin__section">
                       <div class="form-group">
-                        <!-- <textarea class="form-control" rows="3" th:field="${detailQuestion}"></textarea> -->
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" rows="3" th:field="*{detailQuestion}"></textarea>
                       </div>
                     </div>
                     <div class="admin__section">
                       <div class="admin__answers-list js-new-answers-list">
                         <div class="form-inline mb-4">
-                          <!-- <input type="text" class="form-control w-75 mr-5" th:field="${answerA}"  /> -->
+                          <!-- <input type="text" class="form-control w-75 mr-5" th:field="*{answerA}"  /> -->
                           <input type="text" class="form-control w-75 mr-5"  />
                           <input class="form-check-input" type="radio" name="rightAnswer" />
                           <label class="form-check-label">
@@ -128,7 +127,7 @@
                           </label>
                         </div>
                         <div class="form-inline mb-4">
-                          <!-- <input type="text" class="form-control w-75 mr-5" th:field="${answerB}" /> -->
+                          <!-- <input type="text" class="form-control w-75 mr-5" th:field="*{answerB}" /> -->
                           <input type="text" class="form-control w-75 mr-5"  />
                           <input class="form-check-input" type="radio" name="rightAnswer" />
                           <label class="form-check-label">
@@ -136,7 +135,7 @@
                           </label>
                         </div>
                         <div class="form-inline mb-4">
-                          <!-- <input type="text" class="form-control w-75 mr-5" th:field="${answerC}"/> -->
+                          <!-- <input type="text" class="form-control w-75 mr-5" th:field="*{answerC}"/> -->
                           <input type="text" class="form-control w-75 mr-5"  />
                           <input class="form-check-input" type="radio" name="rightAnswer" />
                           <label class="form-check-label">
@@ -144,7 +143,7 @@
                           </label>
                         </div>
                         <div class="form-inline mb-4">
-                          <!-- <input type="text" class="form-control w-75 mr-5" th:field="${answerD}"/> -->
+                          <!-- <input type="text" class="form-control w-75 mr-5" th:field="*{answerD}"/> -->
                           <input type="text" class="form-control w-75 mr-5"  />
                           <input class="form-check-input" type="radio" name="rightAnswer" />
                           <label class="form-check-label">
@@ -156,12 +155,11 @@
                     <div class="float-right mt-5">
                       <button type="reset" class="btn btn-lg btn__default">Nhập lại</button>
 
-                      <button type="submit" class="btn btn-lg btn__default" formaction="/insertMCQuestion" >Thêm</button>
+                      <button type="submit" class="btn btn-lg btn__default" formaction="/insertMCQuestion" formmethod="post">Thêm</button>
                     </div>
                     </form>
                   </div>
                 </form>
-                
               </div>
             </div>
           </div>
