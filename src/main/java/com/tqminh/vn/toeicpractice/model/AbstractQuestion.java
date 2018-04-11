@@ -2,7 +2,7 @@ package com.tqminh.vn.toeicpractice.model;
 
 public abstract class AbstractQuestion {
 	
-	protected abstract String getQuestion();
+	protected abstract String getDetailQuestion();
 	
 	protected abstract String getAnswerA();
 	

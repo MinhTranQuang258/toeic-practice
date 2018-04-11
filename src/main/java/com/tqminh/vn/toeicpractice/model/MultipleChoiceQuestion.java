@@ -19,11 +19,7 @@ public class MultipleChoiceQuestion extends AbstractQuestion{
 	}
 	
 	@Override
-	protected String getQuestion() {
-		return this.getDetailQuestion();
-	}
-
-	private String getDetailQuestion() {
+	public String getDetailQuestion() {
 		return detailQuestion;
 	}
 

@@ -1,5 +1,7 @@
 package com.tqminh.vn.toeicpractice.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tqminh.vn.toeicpractice.common.Constant;
+import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.model.form.Question;
@@ -52,8 +55,37 @@ public class AdminController {
 	    
 	}
 	
+	private AbstractQuestion prepareQuestion(String radio, Question question) {
+	    MultipleChoiceQuestion multipleChoiceQuestion= new MultipleChoiceQuestion();
+	    multipleChoiceQuestion.setDetailQuestion(question.getDetailQuestion());
+	    multipleChoiceQuestion.setAnswerA(question.getAnswerA());
+	    multipleChoiceQuestion.setAnswerB(question.getAnswerB());
+	    multipleChoiceQuestion.setAnswerC(question.getAnswerC());
+	    multipleChoiceQuestion.setAnswerD(question.getAnswerD());
+	    if(radio.equals("A")) {
+	        multipleChoiceQuestion.setAnswerTrue(question.getAnswerA());
+	        return multipleChoiceQuestion;
+	    }
+	    else if(radio.equals("B")) {
+	        multipleChoiceQuestion.setAnswerTrue(question.getAnswerB());
+            return multipleChoiceQuestion;    
+	    }
+	    else if (radio.equals("C")) {
+	        multipleChoiceQuestion.setAnswerTrue(question.getAnswerC());
+            return multipleChoiceQuestion;
+        }
+	    else {
+	        multipleChoiceQuestion.setAnswerTrue(question.getAnswerD());
+            return multipleChoiceQuestion;
+	    }
+	    
+	}
+	
 	@RequestMapping(value= "/insertMCQuestion", method= RequestMethod.POST)
-    public void insertMCQuestion(@ModelAttribute("question") Question question) {
-        System.out.println(question.getDetailQuestion());
+    public String insertMCQuestion(@ModelAttribute("question") Question question, Model model, HttpServletRequest request) {
+	    String radio= request.getParameter("rightAnswer");
+	    MultipleChoiceQuestion multipleChoiceQuestion= (MultipleChoiceQuestion)prepareQuestion(radio, question);
+	    mcQuestionService.insertQuestion(multipleChoiceQuestion);
+        return displayAdminAddGrammarPage(model);
     }
 }
