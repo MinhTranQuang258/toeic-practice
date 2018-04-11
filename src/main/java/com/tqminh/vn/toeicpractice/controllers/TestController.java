@@ -20,8 +20,9 @@ import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.PhotoService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
+import org.springframework.stereotype.Controller;
 
-@RestController
+@Controller
 public class TestController {
 	
 	@Autowired
@@ -93,6 +94,11 @@ public class TestController {
 	@RequestMapping("/getP")
 	public PhotoQuestion getP() {
 		return pQuestionWrapperRepository.findOne(1L).getPhotoQuestion();
+	}
+        
+        @RequestMapping(value= "/adminq", method= RequestMethod.GET)
+	public String showQ() {
+		return "question";
 	}
 	
 	@RequestMapping("/getString")

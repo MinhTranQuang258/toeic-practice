@@ -49,7 +49,19 @@ public class AdminController {
 		model.addAttribute("question", new Question());
 		return Constant.Page.ADMIN_ADD_GRAMMAR;
 	}
+        
+        @RequestMapping(value= "/displayAdminAddListening", method= RequestMethod.GET)
+	public String displayAdminAddListeningPage(Model model) {
+		model.addAttribute("question", new Question());
+		return Constant.Page.ADMIN_ADD_LISTENING;
+	}
 	
+        @RequestMapping(value= "/displayAdminAddReading", method= RequestMethod.GET)
+	public String displayAdminAddReadingPage(Model model) {
+		model.addAttribute("question", new Question());
+		return Constant.Page.ADMIN_ADD_READING;
+	}
+        
 	@RequestMapping(value= "/insertPQuestion", method= RequestMethod.POST)
 	public void insertPQuestion() {
 	    
