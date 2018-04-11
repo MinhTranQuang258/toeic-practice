@@ -6,8 +6,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class GeneralConfiguration {
     
-    private String filePath;
-    
     @Value("${app.configuration.photo.patch}")
     private String photoPath;
     
@@ -16,7 +14,18 @@ public class GeneralConfiguration {
     
     @Value("${app.configuration.limited.p.question}")
     private int minPQuestion;
-    
+
+    @Value("${app.configuration.pdf.patch}")
+    private String pdfPatch;
+
+    public String getPdfPatch() {
+        return pdfPatch;
+    }
+
+    public void setPdfPatch(String pdfPatch) {
+        this.pdfPatch = pdfPatch;
+    }
+
     public String getPhotoPath() {
 		return photoPath;
 	}
@@ -24,14 +33,6 @@ public class GeneralConfiguration {
 	public void setPhotoPath(String photoPath) {
 		this.photoPath = photoPath;
 	}
-
-	public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
 
 	public int getMaxMCQuestion() {
 		return maxMCQuestion;

@@ -17,10 +17,9 @@ public class PDFServiceImpl implements PDFService{
 
 	@Override
 	public void loadFile() throws InvalidPasswordException, IOException {
-		File folder= new File(configuration.getFilePath());
+		File folder= new File(configuration.getPdfPatch());
         File[] files = folder.listFiles();
         
-//        Splitters splitters= new Splitters();
         
         for (File file : files) {
             PDDocument document = PDDocument.load(file);
