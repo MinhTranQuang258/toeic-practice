@@ -37,7 +37,14 @@ public class MCQuestionWrapper {
 		this.id = id;
 	}
 
-	public MCQuestionWrapper(MultipleChoiceQuestion multipleChoiceQuestion) {
+	public MCQuestionWrapper(long id,
+            MultipleChoiceQuestion multipleChoiceQuestion) {
+        super();
+        this.id = id;
+        this.multipleChoiceQuestion = multipleChoiceQuestion;
+    }
+
+    public MCQuestionWrapper(MultipleChoiceQuestion multipleChoiceQuestion) {
 		super();
 		this.multipleChoiceQuestion = multipleChoiceQuestion;
 	}

@@ -12,4 +12,7 @@ public interface MCQuestionWrapperRepository extends CrudRepository<MCQuestionWr
 	
 	@Query(nativeQuery= true, value= Constant.NativeQuery.COUNT_MCQUESTION_BY_ID)
 	int countQuestionById();
+	
+	@Query(nativeQuery= true, value= "")
+	Long updateQuestionById(long id);
 }

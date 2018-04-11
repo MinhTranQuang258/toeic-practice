@@ -60,8 +60,14 @@ public class MCQuestionServiceImpl extends AbstractQuestionService implements Qu
 	public int countQuestion() {
 		return super.countQuestion(TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
-
+	
 	@Override
+    public MultipleChoiceQuestion findQuestion(String username, long id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
 	public double validateQuestion() {
 		// TODO Auto-generated method stub
 		return 0;

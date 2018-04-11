@@ -243,21 +243,57 @@ public abstract class AbstractQuestionService {
 		return questions;
 	}
 	
-	protected Long updateQuestion(Long id) {
+	protected AbstractQuestion findQuestion(String username, long id, Integer questionType) throws Exception{
+	    if(!isCheckAdmin(username)) {
+	        return null;
+	    }
+	    if(questionType == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+            MCQuestionWrapper mcQuestionWrapper= mcQuestionRepository.findOne(id);
+            return mcQuestionWrapper.getMultipleChoiceQuestion();
+        }
+        else if (questionType == TypeDefinition.PHOTO_QUESTION) {
+            PQuestionWrapper pQuestionWrapper= pQuestionRepository.findOne(id);
+            return pQuestionWrapper.getPhotoQuestion();
+        }
 	    return null;
 	}
 	
-	protected Long DeteleQuestion(Long id) {
-	    return null;
+	private boolean isCheckAdmin(String username) {
+	    if(username.equals(Constant.Admin.USER_NAME)) {
+	        return true;
+	    }
+	    else {
+            return false;
+        }
 	}
 	
-	protected int countQuestion(Integer typeQuestion) {
+	protected void updateQuestion(long id, AbstractQuestion question, String username, int questionType) {
+	    if(!isCheckAdmin(username)) {
+	        return;
+	    }
+	    if(questionType == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+	        MultipleChoiceQuestion multipleChoiceQuestion= (MultipleChoiceQuestion)question;
+	        MCQuestionWrapper questionWrapper= new MCQuestionWrapper(id, multipleChoiceQuestion);
+	        mcQuestionRepository.save(questionWrapper);
+	    }
+        else if (questionType == TypeDefinition.PHOTO_QUESTION) {
+            PhotoQuestion photoQuestion= (PhotoQuestion) question;
+            PQuestionWrapper questionWrapper= new PQuestionWrapper(id, photoQuestion);
+            pQuestionRepository.save(questionWrapper);
+        }
+	}
+	
+	protected void DeteleQuestion(long id) {
+	    
+	}
+	
+	protected int countQuestion(Integer questionType) {
 		int count = 0;
 		try {
-			if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+			if(questionType == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
 				count= mcQuestionRepository.countQuestionById();
 			}
-			else if(typeQuestion == TypeDefinition.PHOTO_QUESTION){
+			else if(questionType == TypeDefinition.PHOTO_QUESTION){
 				count= pQuestionRepository.countQuestionById();
 			}
 		} catch (Exception e) {
