@@ -343,27 +343,57 @@ label {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    padding: 0 30px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 15px 0 30px;
     border-radius: 20px; }
-  /* line 31, ../scss/pages/_question.scss */
+  /* line 32, ../scss/pages/_question.scss */
   .question__details {
-    color: white; }
-  /* line 34, ../scss/pages/_question.scss */
+    color: white;
+    display: block; }
+  /* line 36, ../scss/pages/_question.scss */
+  .question__media {
+    width: 80%;
+    margin-top: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    /* line 42, ../scss/pages/_question.scss */
+    .question__media img {
+      max-height: 200px;
+      border: 3px solid #fff;
+      margin-left: 30px; }
+  /* line 48, ../scss/pages/_question.scss */
+  .question__paragraph {
+    margin-bottom: 30px;
+    padding: 15px 30px; }
+    /* line 51, ../scss/pages/_question.scss */
+    .question__paragraph h5 {
+      color: #fff; }
+  /* line 55, ../scss/pages/_question.scss */
   .question__body {
     min-height: 300px;
     padding: 30px 50px 50px; }
-  /* line 38, ../scss/pages/_question.scss */
+  /* line 59, ../scss/pages/_question.scss */
   .question__instructions {
     margin-bottom: 20px; }
-    /* line 40, ../scss/pages/_question.scss */
+    /* line 61, ../scss/pages/_question.scss */
     .question__instructions-text {
       font-style: italic; }
-      /* line 42, ../scss/pages/_question.scss */
+      /* line 63, ../scss/pages/_question.scss */
       .question__instructions-text--fill {
         background-color: #6db22f;
         color: white;
         padding: 3px; }
-  /* line 49, ../scss/pages/_question.scss */
+  /* line 70, ../scss/pages/_question.scss */
   .question__answers {
     padding: 15px;
     margin-bottom: 20px;
@@ -373,7 +403,7 @@ label {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-  /* line 56, ../scss/pages/_question.scss */
+  /* line 77, ../scss/pages/_question.scss */
   .question__choice {
     font-size: 17px;
     margin-bottom: 15px;
@@ -386,10 +416,10 @@ label {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
-    /* line 62, ../scss/pages/_question.scss */
+    /* line 83, ../scss/pages/_question.scss */
     .question__choice:last-child {
       margin-bottom: 0; }
-  /* line 66, ../scss/pages/_question.scss */
+  /* line 87, ../scss/pages/_question.scss */
   .question__submit {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -400,12 +430,12 @@ label {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-  /* line 71, ../scss/pages/_question.scss */
+  /* line 92, ../scss/pages/_question.scss */
   .question__footer {
     background-color: #6db22f;
     min-height: 50px;
     position: relative; }
-  /* line 76, ../scss/pages/_question.scss */
+  /* line 97, ../scss/pages/_question.scss */
   .question__prev, .question__next {
     position: absolute;
     min-height: 50px;
@@ -422,11 +452,11 @@ label {
     top: 0;
     color: #fff;
     cursor: pointer; }
-  /* line 87, ../scss/pages/_question.scss */
+  /* line 108, ../scss/pages/_question.scss */
   .question__prev {
     left: 0;
     right: auto; }
-  /* line 91, ../scss/pages/_question.scss */
+  /* line 112, ../scss/pages/_question.scss */
   .question__next {
     position: absolute;
     left: auto;

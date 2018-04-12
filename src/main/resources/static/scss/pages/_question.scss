@@ -25,11 +25,32 @@ $question-footer-text-cl: white;
     min-height: 100px;
     display: flex;
     align-items: center;
-    padding: 0 30px;
+    flex-direction: column;
+    padding: 15px 0 30px;
     border-radius: 20px;
   }
   &__details {
     color: $question-header-text-cl;
+    display: block;
+  }
+  &__media {
+    width: 80%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & img {
+      max-height: 200px;
+      border: 3px solid #fff;
+      margin-left: 30px;
+    }
+  }
+  &__paragraph {
+    margin-bottom: 30px;
+    padding: 15px 30px;
+    & h5 {
+      color: #fff;
+    }
   }
   &__body {
     min-height: 300px;

@@ -22,7 +22,8 @@ import com.tqminh.vn.toeicpractice.services.PhotoService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 import org.springframework.stereotype.Controller;
 
-@RestController
+//@RestController
+@Controller
 public class TestController {
 	
 	@Autowired
@@ -100,7 +101,22 @@ public class TestController {
 	public String showQ() {
 		return "question";
 	}
+        
+        @RequestMapping(value= "/admin/grammar", method= RequestMethod.GET)
+	public String showAdminQuestionGrammar() {
+		return "adminQuestionGrammar";
+	}
 	
+        @RequestMapping(value= "/admin/listening", method= RequestMethod.GET)
+	public String showAdminQuestionListening() {
+		return "adminQuestionListening";
+	}
+        
+        @RequestMapping(value= "/admin/reading", method= RequestMethod.GET)
+	public String showAdminQuestionReading() {
+		return "adminQuestionReading";
+	}
+        
 	@RequestMapping("/getString")
 	public String getString() throws IOException {
 	    try {
