@@ -40,8 +40,8 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value= "/displayAdminAdd", method= RequestMethod.GET)
-	public String displayAdminAdd() {
-	    return Constant.Page.ADMIN_ADD_PAGE;
+	public String displayAdminAddPage() {
+	    return Constant.Page.ADMIN_ADD;
 	}
 	
 	@RequestMapping(value= "/displayAdminAddGrammar", method= RequestMethod.GET)
@@ -50,13 +50,13 @@ public class AdminController {
 		return Constant.Page.ADMIN_ADD_GRAMMAR;
 	}
         
-        @RequestMapping(value= "/displayAdminAddListening", method= RequestMethod.GET)
+    @RequestMapping(value= "/displayAdminAddListening", method= RequestMethod.GET)
 	public String displayAdminAddListeningPage(Model model) {
 		model.addAttribute("question", new Question());
 		return Constant.Page.ADMIN_ADD_LISTENING;
 	}
 	
-        @RequestMapping(value= "/displayAdminAddReading", method= RequestMethod.GET)
+    @RequestMapping(value= "/displayAdminAddReading", method= RequestMethod.GET)
 	public String displayAdminAddReadingPage(Model model) {
 		model.addAttribute("question", new Question());
 		return Constant.Page.ADMIN_ADD_READING;

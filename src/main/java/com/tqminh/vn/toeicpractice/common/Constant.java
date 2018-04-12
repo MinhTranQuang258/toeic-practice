@@ -43,16 +43,19 @@ public class Constant {
 		
 		public final static String ADMIN_PAGE= "adminHome";
 		
+		public final static String ADMIN_ADD= "adminAdd";
+		
 		public final static String ADMIN_EDIT_PAGE= "adminEdit";
 		
 		public final static String ADMIN_ADD_PAGE= "adminAdd";
 		
 		public final static String ADMIN_ADD_GRAMMAR= "adminAddGrammar";
                 
-                public final static String ADMIN_ADD_LISTENING= "adminAddListening";
+        public final static String ADMIN_ADD_LISTENING= "adminAddListening";
                 
-                public final static String ADMIN_ADD_READING = "adminAddReading";
+        public final static String ADMIN_ADD_READING = "adminAddReading";
 
+        public final static String USER_PAGE= "";
 	}
 	
 	public static class Admin {

@@ -3,6 +3,7 @@ package com.tqminh.vn.toeicpractice.services;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 import java.util.Set;
 
@@ -196,8 +197,7 @@ public abstract class AbstractQuestionService {
 				questionList.setConcurrentIndex(index);
 				pCache.putQuestionList(username, questionList);
 			}
-		}
-		
+		}	
 	}
 	
 	private MCQuestionList getMCQuestionList(String username, Integer typeQuestion) throws Exception{
@@ -241,6 +241,24 @@ public abstract class AbstractQuestionService {
 
 		PQuestionList questions= new PQuestionList(list);
 		return questions;
+	}
+	
+	protected Queue<AbstractQuestion> loadQuestionList(String username, int typeQuestion){
+	    if(isCheckAdmin(username)) {
+	        return null;
+	    }
+	    List<AbstractQuestion> mcQuestionList= new LinkedList<>();
+	    if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+	        
+	        List<MCQuestionWrapper> list= (List<MCQuestionWrapper>) mcQuestionRepository.findAll();
+	        for (MCQuestionWrapper mcQuestionWrapper : list) {
+                mcQuestionList.add(mcQuestionWrapper.getMultipleChoiceQuestion());
+            }
+	    }
+	    else if (typeQuestion == TypeDefinition.PHOTO_QUESTION) {
+            
+        }
+	    return null;
 	}
 	
 	protected AbstractQuestion findQuestion(String username, long id, Integer questionType) throws Exception{

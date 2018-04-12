@@ -1,6 +1,8 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,6 +59,12 @@ public class MCQuestionServiceImpl extends AbstractQuestionService implements Qu
 	}
 	
 	@Override
+    public List<MultipleChoiceQuestion> loadQuestionList(String username) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
 	public int countQuestion() {
 		return super.countQuestion(TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
