@@ -117,6 +117,21 @@ public class TestController {
 		return "adminQuestionReading";
 	}
         
+        @RequestMapping(value= "/grammar", method= RequestMethod.GET)
+	public String showQuestionGrammar() {
+		return "questionGrammar";
+	}
+	
+        @RequestMapping(value= "/listening", method= RequestMethod.GET)
+	public String showQuestionListening() {
+		return "questionListening";
+	}
+        
+        @RequestMapping(value= "/reading", method= RequestMethod.GET)
+	public String showQuestionReading() {
+		return "questionReading";
+	}
+        
 	@RequestMapping("/getString")
 	public String getString() throws IOException {
 	    try {
