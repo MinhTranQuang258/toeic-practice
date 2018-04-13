@@ -56,6 +56,7 @@ $sidebar-item-bg: #d7ffbd;
   }
   &__link {
     display: flex;
+    align-items: center;
     font-size: 16px;
     color: $sidebar-link-cl;
     background-color: $sidebar-link-bg;
@@ -72,7 +73,9 @@ $sidebar-item-bg: #d7ffbd;
       color: #6db22f;
       background-color: $sidebar-link-hover-bg;
     }
-
+    & i {
+      margin-right: 15px;
+    }
   }
   &__icon {
     font-size: 15px;

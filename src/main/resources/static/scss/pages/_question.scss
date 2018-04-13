@@ -27,7 +27,7 @@ $question-footer-text-cl: white;
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 15px 0 30px;
+    padding: 30px 0;
     border-radius: 20px;
   }
   &__details {
@@ -62,8 +62,9 @@ $question-footer-text-cl: white;
     &-text {
       font-style: italic;
       &--fill {
-        background-color: $question-instruction-background-cl;
-        color: $question-instruction-text-cl;
+        // background-color: $question-instruction-background-cl;
+        font-weight: 700;
+        color: #6db22f;
         padding: 3px;
       }
     }
@@ -99,21 +100,24 @@ $question-footer-text-cl: white;
     width: 100%;
     &-button {
       min-height: 50px;
-      min-width: 100px;
+      min-width: 50px;
+      font-weight: 700;
       color: #fff;
       background-color: #6db22f;
       border: none;
       cursor: pointer;
+      text-align: center;
+      text-transform: uppercase;
     }
     &-prev {
       position: absolute;
-      left: 0;
+      left: 15px;
       right: auto;
     }
     &-next {
       position: absolute;
       left: auto;
-      right: 0;
+      right: 15px;
     }
   }
 }

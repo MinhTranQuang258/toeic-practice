@@ -220,6 +220,9 @@ label {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     font-size: 16px;
     color: #495057;
     background-color: transparent;
@@ -231,23 +234,26 @@ label {
       /* line 57, ../scss/_sidebar.scss */
       .sidebar__link {
         padding: 16px 30px; } }
-    /* line 69, ../scss/_sidebar.scss */
+    /* line 70, ../scss/_sidebar.scss */
     .sidebar__link:hover {
       -webkit-transition: .3s;
       transition: .3s;
       text-decoration: none;
       color: #6db22f;
       background-color: transparent; }
-  /* line 77, ../scss/_sidebar.scss */
+    /* line 76, ../scss/_sidebar.scss */
+    .sidebar__link i {
+      margin-right: 15px; }
+  /* line 80, ../scss/_sidebar.scss */
   .sidebar__icon {
     font-size: 15px;
     line-height: 22px;
     margin-right: 8px; }
-  /* line 83, ../scss/_sidebar.scss */
+  /* line 86, ../scss/_sidebar.scss */
   .sidebar__item {
     font-size: 17px;
     color: #479c0e; }
-  /* line 88, ../scss/_sidebar.scss */
+  /* line 91, ../scss/_sidebar.scss */
   .sidebar__text--sub {
     display: none;
     color: #000;
@@ -255,11 +261,11 @@ label {
     padding: 12.5px;
     text-align: center; }
     @media (max-width: 767px) {
-      /* line 88, ../scss/_sidebar.scss */
+      /* line 91, ../scss/_sidebar.scss */
       .sidebar__text--sub {
         display: block; } }
     @media (max-width: 575px) {
-      /* line 88, ../scss/_sidebar.scss */
+      /* line 91, ../scss/_sidebar.scss */
       .sidebar__text--sub {
         display: none; } }
 
@@ -360,7 +366,7 @@ label {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    padding: 15px 0 30px;
+    padding: 30px 0;
     border-radius: 20px; }
   /* line 33, ../scss/pages/_question.scss */
   .question__details {
@@ -403,10 +409,10 @@ label {
       font-style: italic; }
       /* line 64, ../scss/pages/_question.scss */
       .question__instructions-text--fill {
-        background-color: #6db22f;
-        color: white;
+        font-weight: 700;
+        color: #6db22f;
         padding: 3px; }
-  /* line 71, ../scss/pages/_question.scss */
+  /* line 72, ../scss/pages/_question.scss */
   .question__answers {
     padding: 15px;
     margin-bottom: 20px;
@@ -416,7 +422,7 @@ label {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-  /* line 78, ../scss/pages/_question.scss */
+  /* line 79, ../scss/pages/_question.scss */
   .question__choice {
     font-size: 17px;
     margin-bottom: 15px;
@@ -429,10 +435,10 @@ label {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
-    /* line 84, ../scss/pages/_question.scss */
+    /* line 85, ../scss/pages/_question.scss */
     .question__choice:last-child {
       margin-bottom: 0; }
-  /* line 88, ../scss/pages/_question.scss */
+  /* line 89, ../scss/pages/_question.scss */
   .question__submit {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -443,32 +449,35 @@ label {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-  /* line 93, ../scss/pages/_question.scss */
+  /* line 94, ../scss/pages/_question.scss */
   .question__footer {
     background-color: #6db22f;
     min-height: 50px; }
-  /* line 97, ../scss/pages/_question.scss */
+  /* line 98, ../scss/pages/_question.scss */
   .question__navigator {
     position: relative;
     width: 100%; }
-    /* line 100, ../scss/pages/_question.scss */
+    /* line 101, ../scss/pages/_question.scss */
     .question__navigator-button {
       min-height: 50px;
-      min-width: 100px;
+      min-width: 50px;
+      font-weight: 700;
       color: #fff;
       background-color: #6db22f;
       border: none;
-      cursor: pointer; }
-    /* line 108, ../scss/pages/_question.scss */
+      cursor: pointer;
+      text-align: center;
+      text-transform: uppercase; }
+    /* line 112, ../scss/pages/_question.scss */
     .question__navigator-prev {
       position: absolute;
-      left: 0;
+      left: 15px;
       right: auto; }
-    /* line 113, ../scss/pages/_question.scss */
+    /* line 117, ../scss/pages/_question.scss */
     .question__navigator-next {
       position: absolute;
       left: auto;
-      right: 0; }
+      right: 15px; }
 
 /* line 1, ../scss/pages/_admin.scss */
 .admin {
