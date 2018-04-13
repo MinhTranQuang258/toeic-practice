@@ -7,7 +7,6 @@ $question-instruction-background-cl: #6db22f;
 $question-instruction-text-cl: white;
 $question-footer-background-cl: #6db22f;
 $question-footer-text-cl: white;
-
 .question {
   background-color: $question-background-cl;
   padding: $question-padding-overall;
@@ -92,26 +91,27 @@ $question-footer-text-cl: white;
   &__footer {
     background-color: $question-footer-background-cl;
     min-height: 50px;
+  }
+  &__navigator {
     position: relative;
-  }
-  &__prev, &__next {
-    position: absolute;
-    min-height: 50px;
-    min-width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    color: #fff;
-    cursor: pointer;
-  }
-  &__prev {
-    left: 0;
-    right: auto;
-  }
-  &__next {
-    position: absolute;
-    left: auto;
-    right: 0;
+    width: 100%;
+    &-button {
+      min-height: 50px;
+      min-width: 100px;
+      color: #fff;
+      background-color: #6db22f;
+      border: none;
+      cursor: pointer;
+    }
+    &-prev {
+      position: absolute;
+      left: 0;
+      right: auto;
+    }
+    &-next {
+      position: absolute;
+      left: auto;
+      right: 0;
+    }
   }
 }

@@ -144,19 +144,16 @@
                 </div>
                 <div class="question__footer">
                   <div class="question__navigator">
-
-                    <form action="/backQuestion" method="get">
-                      <span class="question__prev js-prev-q">
-                        <button class="fa fa-chevron-left" aria-hidden="true" formaction="/backQuestion">Câu trước</button>
-                      </span>
-                    </form>
-
-                    <form action="/nextQuestion" method="get">
-                      <span class="question__next  js-next-q">
-                        <button class="fa fa-chevron-right" aria-hidden="true" formaction="/nextQuestion">Câu kế</button>
-                      </span>
-                    </form>
-                    
+                    <div class="question__navigator-prev">
+                      <form action="/backQuestion" method="get">
+                        <button class="question__navigator-button js-prev-q" aria-hidden="true" formaction="/backQuestion">Câu trước</button>
+                      </form>
+                    </div>
+                    <div class="question__navigator-next">
+                      <form action="/nextQuestion" method="get">
+                        <button class="question__navigator-button js-next-q" aria-hidden="true" formaction="/nextQuestion">Câu kế</button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>

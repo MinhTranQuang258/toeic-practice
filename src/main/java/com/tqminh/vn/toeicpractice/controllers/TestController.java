@@ -120,17 +120,17 @@ public class TestController {
     
     @RequestMapping(value= "/grammar", method= RequestMethod.GET)
 	public String showQuestionGrammar() {
-		return "questionGrammar";
+		return "userGrammar";
 	}
 	
     @RequestMapping(value= "/listening", method= RequestMethod.GET)
 	public String showQuestionListening() {
-		return "questionListening";
+		return "userListening";
 	}
         
     @RequestMapping(value= "/reading", method= RequestMethod.GET)
 	public String showQuestionReading() {
-		return "questionReading";
+		return "userReading";
 	}
         
 	@RequestMapping("/getString")
