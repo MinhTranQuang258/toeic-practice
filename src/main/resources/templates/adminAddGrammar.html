@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/bootstrap.css}" />
-  <link rel="stylesheet" type="text/css" th:href="@{/webjars/font-awesome/font-awesome.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"
+  />
   <link rel="stylesheet" type="text/css" th:href="@{/css/app.css}" />
   <title>Thêm câu hỏi</title>
 </head>
@@ -48,22 +49,26 @@
         <ul class="sidebar__list">
           <li class="sidebar__item">
             <a href="#" class="js-sidebar-item  sidebar__link">
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
               Chọn phần ôn thi
             </a>
             <ul class="sidebar__list sidebar__list--sub">
 
               <li class="sidebar__item">
-                <a href="/listening" class="sidebar__link sidebar--sub__link">
+                <a href="/admin/listening" class="sidebar__link sidebar--sub__link">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
                   Nghe
                 </a>
               </li>
               <li class="sidebar__item">
-                <a href="/grammer" class="sidebar__link sidebar--sub__link">
+                <a href="/admin/grammar" class="sidebar__link sidebar--sub__link">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
                   Ngữ pháp
                 </a>
               </li>
               <li class="sidebar__item">
-                <a href="/reading" class="sidebar__link sidebar--sub__link">
+                <a href="/admin/reading" class="sidebar__link sidebar--sub__link">
+                  <i class="fa fa-book" aria-hidden="true"></i>
                   Đọc
                 </a>
               </li>
@@ -71,17 +76,20 @@
           </li>
           <li class="sidebar__item">
             <a href="#" class="js-sidebar-item  sidebar__link">
+              <i class="fa fa-wrench" aria-hidden="true"></i>
               Quản lý
             </a>
             <ul class="sidebar__list sidebar__list--sub">
 
               <li class="sidebar__item">
                 <a href="/displayAdminAdd" class="sidebar__link sidebar--sub__link">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
                   Thêm câu hỏi
                 </a>
               </li>
               <li class="sidebar__item">
                 <a href="/displayAdminEdit" class="sidebar__link sidebar--sub__link">
+                  <i class="fa fa-eraser" aria-hidden="true"></i>
                   Chỉnh sửa câu hỏi
                 </a>
               </li>
@@ -95,8 +103,8 @@
           <div class="container-fluid">
             <div class="row question__container">
               <div class="admin col-lg-11 p-5">
-              
-                <form action="" >
+
+                <form action="">
                   <div class="admin__question-option row">
                     <!-- <div class="form-group col-lg-3">
                       <label>Loại câu hỏi: </label>
@@ -109,51 +117,51 @@
                     </div> -->
                   </div>
                   <div class="admin__question px-5 py-3">
-                  <form th:object="${question}" method="POST">
-                    <div class="admin__section">
-                      <div class="form-group">
-                        <textarea class="form-control" rows="3" th:field="*{detailQuestion}"></textarea>
+                    <form th:object="${question}" method="POST">
+                      <div class="admin__section">
+                        <div class="form-group">
+                          <textarea class="form-control" rows="3" th:field="*{detailQuestion}"></textarea>
+                        </div>
                       </div>
-                    </div>
-                    <div class="admin__section">
-                      <div class="admin__answers-list js-new-answers-list">
-                       
-                        <div class="form-inline mb-4">
-                          <input type="text" class="form-control w-75 mr-5" th:field="*{answerA}"  />
-                          <input class="form-check-input" type="radio" name="rightAnswer" value="A"/>
-                          <label class="form-check-label">
-                            Đáp án đúng
-                          </label>
-                        </div>
-                        <div class="form-inline mb-4">
-                          <input type="text" class="form-control w-75 mr-5" th:field="*{answerB}" />
-                          <input class="form-check-input" type="radio" name="rightAnswer" value="B"/>
-                          <label class="form-check-label">
-                            Đáp án đúng
-                          </label>
-                        </div>
-                        <div class="form-inline mb-4">
-                          <input type="text" class="form-control w-75 mr-5" th:field="*{answerC}"/>
-                          <input class="form-check-input" type="radio" name="rightAnswer" value="C"/>
-                          <label class="form-check-label">
-                            Đáp án đúng
-                          </label>
-                        </div>
-                        <div class="form-inline mb-4">
-                          <input type="text" class="form-control w-75 mr-5" th:field="*{answerD}"/>
-                          <input class="form-check-input" type="radio" name="rightAnswer" value="D"/>
-                          <label class="form-check-label">
-                            Đáp án đúng
-                          </label>
-                        </div>
-                      
-                      </div>
-                    </div>
-                    <div class="float-right mt-5">
-                      <button type="reset" class="btn btn-lg btn__default" >Nhập lại</button>
+                      <div class="admin__section">
+                        <div class="admin__answers-list js-new-answers-list">
 
-                      <button type="submit" class="btn btn-lg btn__default" formaction="/insertMCQuestion" formmethod="post">Thêm</button>
-                    </div>
+                          <div class="form-inline mb-4">
+                            <input type="text" class="form-control w-75 mr-5" th:field="*{answerA}" />
+                            <input class="form-check-input" type="radio" name="rightAnswer" value="A" />
+                            <label class="form-check-label">
+                              Đáp án đúng
+                            </label>
+                          </div>
+                          <div class="form-inline mb-4">
+                            <input type="text" class="form-control w-75 mr-5" th:field="*{answerB}" />
+                            <input class="form-check-input" type="radio" name="rightAnswer" value="B" />
+                            <label class="form-check-label">
+                              Đáp án đúng
+                            </label>
+                          </div>
+                          <div class="form-inline mb-4">
+                            <input type="text" class="form-control w-75 mr-5" th:field="*{answerC}" />
+                            <input class="form-check-input" type="radio" name="rightAnswer" value="C" />
+                            <label class="form-check-label">
+                              Đáp án đúng
+                            </label>
+                          </div>
+                          <div class="form-inline mb-4">
+                            <input type="text" class="form-control w-75 mr-5" th:field="*{answerD}" />
+                            <input class="form-check-input" type="radio" name="rightAnswer" value="D" />
+                            <label class="form-check-label">
+                              Đáp án đúng
+                            </label>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="float-right mt-5">
+                        <button type="reset" class="btn btn-lg btn__default">Nhập lại</button>
+
+                        <button type="submit" class="btn btn-lg btn__default" formaction="/insertMCQuestion" formmethod="post">Thêm</button>
+                      </div>
                     </form>
                   </div>
                 </form>

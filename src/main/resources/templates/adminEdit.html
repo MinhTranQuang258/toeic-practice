@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/bootstrap.css}" />
-  <link rel="stylesheet" type="text/css" th:href="@{/webjars/font-awesome/font-awesome.min.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"
+  />
   <link rel="stylesheet" type="text/css" th:href="@{/css/app.css}" />
   <title>Chỉnh sửa câu hỏi</title>
 </head>
@@ -48,22 +49,26 @@
         <ul class="sidebar__list">
           <li class="sidebar__item">
             <a href="#" class="js-sidebar-item  sidebar__link">
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
               Chọn phần ôn thi
             </a>
             <ul class="sidebar__list sidebar__list--sub">
 
               <li class="sidebar__item">
-                <a href="/listening" class="sidebar__link sidebar--sub__link">
+                <a href="/admin/listening" class="sidebar__link sidebar--sub__link">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
                   Nghe
                 </a>
               </li>
               <li class="sidebar__item">
-                <a href="/grammer" class="sidebar__link sidebar--sub__link">
+                <a href="/admin/grammar" class="sidebar__link sidebar--sub__link">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
                   Ngữ pháp
                 </a>
               </li>
               <li class="sidebar__item">
-                <a href="/reading" class="sidebar__link sidebar--sub__link">
+                <a href="/admin/reading" class="sidebar__link sidebar--sub__link">
+                  <i class="fa fa-book" aria-hidden="true"></i>
                   Đọc
                 </a>
               </li>
@@ -71,17 +76,20 @@
           </li>
           <li class="sidebar__item">
             <a href="#" class="js-sidebar-item  sidebar__link">
+              <i class="fa fa-wrench" aria-hidden="true"></i>
               Quản lý
             </a>
             <ul class="sidebar__list sidebar__list--sub">
 
               <li class="sidebar__item">
                 <a href="/displayAdminAdd" class="sidebar__link sidebar--sub__link">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
                   Thêm câu hỏi
                 </a>
               </li>
               <li class="sidebar__item">
                 <a href="/displayAdminEdit" class="sidebar__link sidebar--sub__link">
+                  <i class="fa fa-eraser" aria-hidden="true"></i>
                   Chỉnh sửa câu hỏi
                 </a>
               </li>
