@@ -39,9 +39,7 @@ public class Constant {
 		
 		public final static String REGISTER_PAGE= "register";
 		
-		public final static String QUESTION_PAGE= "question";
-		
-		public final static String ADMIN_PAGE= "adminHome";
+		public final static String ADMIN_HOME_PAGE= "adminHome";
 		
 		public final static String ADMIN_ADD= "adminAdd";
 		
@@ -55,7 +53,10 @@ public class Constant {
                 
         public final static String ADMIN_ADD_READING = "adminAddReading";
 
-        public final static String USER_PAGE= "";
+        public final static String USER_HOME_PAGE= "userHome";
+        
+        public final static String USER_GRAMMER_PAGE= "userGrammar";
+        
 	}
 	
 	public static class Admin {

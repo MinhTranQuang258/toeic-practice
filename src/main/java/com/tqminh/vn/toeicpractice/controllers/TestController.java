@@ -22,8 +22,8 @@ import com.tqminh.vn.toeicpractice.services.PhotoService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 import org.springframework.stereotype.Controller;
 
-//@RestController
-@Controller
+@RestController
+//@Controller
 public class TestController {
 	
 	@Autowired
@@ -45,11 +45,11 @@ public class TestController {
 	@RequestMapping("/save")
 	public String save() {
 		MultipleChoiceQuestion question= new MultipleChoiceQuestion();
-		question.setAnswerA("a");
-		question.setAnswerB("b");
-		question.setAnswerC("c");
-		question.setAnswerD("d");
-		question.setDetailQuestion("abcd");
+		question.setAnswerA("1");
+		question.setAnswerB("2");
+		question.setAnswerC("3");
+		question.setAnswerD("4");
+		question.setDetailQuestion("12345");
 		mcQuestionService.insertQuestion(question);
 		return "Done";
 	}
@@ -97,37 +97,38 @@ public class TestController {
 		return pQuestionWrapperRepository.findOne(1L).getPhotoQuestion();
 	}
         
-        @RequestMapping(value= "/adminq", method= RequestMethod.GET)
+    @RequestMapping(value= "/adminq", method= RequestMethod.GET)
 	public String showQ() {
 		return "question";
 	}
         
-        @RequestMapping(value= "/admin/grammar", method= RequestMethod.GET)
+    @RequestMapping(value= "/admin/grammar", method= RequestMethod.GET)
 	public String showAdminQuestionGrammar() {
 		return "adminQuestionGrammar";
 	}
 	
-        @RequestMapping(value= "/admin/listening", method= RequestMethod.GET)
+    @RequestMapping(value= "/admin/listening", method= RequestMethod.GET)
 	public String showAdminQuestionListening() {
 		return "adminQuestionListening";
 	}
         
-        @RequestMapping(value= "/admin/reading", method= RequestMethod.GET)
+    @RequestMapping(value= "/admin/reading", method= RequestMethod.GET)
 	public String showAdminQuestionReading() {
 		return "adminQuestionReading";
 	}
         
-        @RequestMapping(value= "/grammar", method= RequestMethod.GET)
+    
+    @RequestMapping(value= "/grammar", method= RequestMethod.GET)
 	public String showQuestionGrammar() {
 		return "questionGrammar";
 	}
 	
-        @RequestMapping(value= "/listening", method= RequestMethod.GET)
+    @RequestMapping(value= "/listening", method= RequestMethod.GET)
 	public String showQuestionListening() {
 		return "questionListening";
 	}
         
-        @RequestMapping(value= "/reading", method= RequestMethod.GET)
+    @RequestMapping(value= "/reading", method= RequestMethod.GET)
 	public String showQuestionReading() {
 		return "questionReading";
 	}

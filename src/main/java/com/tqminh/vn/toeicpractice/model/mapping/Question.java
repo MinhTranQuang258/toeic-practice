@@ -1,4 +1,4 @@
-package com.tqminh.vn.toeicpractice.model.form;
+package com.tqminh.vn.toeicpractice.model.mapping;
 
 public class Question {
 	

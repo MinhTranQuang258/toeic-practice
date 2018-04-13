@@ -14,7 +14,7 @@ import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
-import com.tqminh.vn.toeicpractice.model.form.Question;
+import com.tqminh.vn.toeicpractice.model.mapping.Question;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Controller
@@ -31,7 +31,7 @@ public class AdminController {
 	@RequestMapping(value= "/displayAdmin", method= RequestMethod.GET)
 	public String displayAdminPage(Model model) {
 		model.addAttribute("question", new Question());
-		return Constant.Page.ADMIN_PAGE;
+		return Constant.Page.ADMIN_HOME_PAGE;
 	}
 	
 	@RequestMapping(value= "/displayAdminEdit", method= RequestMethod.GET)

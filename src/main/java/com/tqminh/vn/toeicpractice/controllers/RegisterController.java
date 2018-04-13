@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tqminh.vn.toeicpractice.model.Account;
-import com.tqminh.vn.toeicpractice.model.form.Register;
+import com.tqminh.vn.toeicpractice.model.mapping.Register;
 import com.tqminh.vn.toeicpractice.services.AccountService;
 
 @Controller
