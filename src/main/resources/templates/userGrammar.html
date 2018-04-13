@@ -77,11 +77,11 @@
           <div class="container-fluid">
             <div class="row question__container">
               <div class="question col-lg-8">
-              <form method="GET">
-                <div class="question__header">
-                  <h3 class="question__details" th:text= "${question.detailQuestion}"></h3>
-                </div>
-                <div class="question__body">
+                <form method="GET">
+                  <div class="question__header">
+                    <h3 class="question__details" th:text="${question.detailQuestion}"></h3>
+                  </div>
+                  <div class="question__body">
                     <div class="question__instructions">
                       <small class="question__instructions-text">
                         <span class="question__instructions-text--fill">Hướng dẫn:</span>
@@ -93,25 +93,25 @@
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" value="A" />
-                            <label class="form-check-label" for="answer1" th:text= "${question.answerA}"></label>
+                            <label class="form-check-label" for="answer1" th:text="${question.answerA}"></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" value="B" />
-                            <label class="form-check-label" for="answer2" th:text= "${question.answerB}"></label>
+                            <label class="form-check-label" for="answer2" th:text="${question.answerB}"></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" value="C" />
-                            <label class="form-check-label" for="answer3" th:text= "${question.answerC}"></label>
+                            <label class="form-check-label" for="answer3" th:text="${question.answerC}"></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" value="D" />
-                            <label class="form-check-label" for="answer4" th:text= "${question.answerD}"></label>
+                            <label class="form-check-label" for="answer4" th:text="${question.answerD}"></label>
                           </div>
                         </li>
                       </ul>
@@ -119,24 +119,23 @@
                     <div class="question__submit">
                       <button type="submit" id="btn-submit-answer" class="btn btn-lg btn__default">Xác nhận</button>
                     </div>
-                </div>
+                  </div>
                 </form>
                 <div class="question__footer">
                   <div class="question__navigator">
-                  
-                  <form action="/backQuestion" method="get">
-                    <span class="question__prev js-prev-q">
-                      <button class="fa fa-chevron-left" aria-hidden="true" formaction="/backQuestion">Câu trước</button>
-                    </span>
-					</form>
-					
-					<form action="/nextQuestion" method="get">
-                    
-                    <span class="question__next  js-next-q">
-                      <button class="fa fa-chevron-right" aria-hidden="true" formaction="/nextQuestion">Câu kế</button>
-                    </span>
-                    
+
+                    <form action="/backQuestion" method="get">
+                      <span class="question__prev js-prev-q">
+                        <button class="fa fa-chevron-left" aria-hidden="true" formaction="/backQuestion">Câu trước</button>
+                      </span>
                     </form>
+
+                    <form action="/nextQuestion" method="get">
+                      <span class="question__next  js-next-q">
+                        <button class="fa fa-chevron-right" aria-hidden="true" formaction="/nextQuestion">Câu kế</button>
+                      </span>
+                    </form>
+                    
                   </div>
                 </div>
               </div>

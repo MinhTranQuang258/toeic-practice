@@ -22,8 +22,8 @@ import com.tqminh.vn.toeicpractice.services.PhotoService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 import org.springframework.stereotype.Controller;
 
-@RestController
-//@Controller
+//@RestController
+@Controller
 public class TestController {
 	
 	@Autowired
