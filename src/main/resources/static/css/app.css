@@ -331,9 +331,10 @@ label {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: 100vh;
+    padding: 50px 0;
+    min-height: 93vh;
     background-color: #6db22f; }
-  /* line 22, ../scss/pages/_question.scss */
+  /* line 24, ../scss/pages/_question.scss */
   .question__header {
     background-color: #6db22f;
     min-height: 100px;
@@ -349,11 +350,11 @@ label {
             flex-direction: column;
     padding: 15px 0 30px;
     border-radius: 20px; }
-  /* line 31, ../scss/pages/_question.scss */
+  /* line 33, ../scss/pages/_question.scss */
   .question__details {
     color: white;
     display: block; }
-  /* line 35, ../scss/pages/_question.scss */
+  /* line 37, ../scss/pages/_question.scss */
   .question__media {
     width: 80%;
     margin-top: 30px;
@@ -366,34 +367,34 @@ label {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-    /* line 41, ../scss/pages/_question.scss */
+    /* line 43, ../scss/pages/_question.scss */
     .question__media img {
       max-height: 200px;
       border: 3px solid #fff;
       margin-left: 30px; }
-  /* line 47, ../scss/pages/_question.scss */
+  /* line 49, ../scss/pages/_question.scss */
   .question__paragraph {
     margin-bottom: 30px;
     padding: 15px 30px; }
-    /* line 50, ../scss/pages/_question.scss */
+    /* line 52, ../scss/pages/_question.scss */
     .question__paragraph h5 {
       color: #fff; }
-  /* line 54, ../scss/pages/_question.scss */
+  /* line 56, ../scss/pages/_question.scss */
   .question__body {
     min-height: 300px;
     padding: 30px 50px 50px; }
-  /* line 58, ../scss/pages/_question.scss */
+  /* line 60, ../scss/pages/_question.scss */
   .question__instructions {
     margin-bottom: 20px; }
-    /* line 60, ../scss/pages/_question.scss */
+    /* line 62, ../scss/pages/_question.scss */
     .question__instructions-text {
       font-style: italic; }
-      /* line 62, ../scss/pages/_question.scss */
+      /* line 64, ../scss/pages/_question.scss */
       .question__instructions-text--fill {
         background-color: #6db22f;
         color: white;
         padding: 3px; }
-  /* line 69, ../scss/pages/_question.scss */
+  /* line 71, ../scss/pages/_question.scss */
   .question__answers {
     padding: 15px;
     margin-bottom: 20px;
@@ -403,7 +404,7 @@ label {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-  /* line 76, ../scss/pages/_question.scss */
+  /* line 78, ../scss/pages/_question.scss */
   .question__choice {
     font-size: 17px;
     margin-bottom: 15px;
@@ -416,10 +417,10 @@ label {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
-    /* line 82, ../scss/pages/_question.scss */
+    /* line 84, ../scss/pages/_question.scss */
     .question__choice:last-child {
       margin-bottom: 0; }
-  /* line 86, ../scss/pages/_question.scss */
+  /* line 88, ../scss/pages/_question.scss */
   .question__submit {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -430,15 +431,15 @@ label {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; }
-  /* line 91, ../scss/pages/_question.scss */
+  /* line 93, ../scss/pages/_question.scss */
   .question__footer {
     background-color: #6db22f;
     min-height: 50px; }
-  /* line 95, ../scss/pages/_question.scss */
+  /* line 97, ../scss/pages/_question.scss */
   .question__navigator {
     position: relative;
     width: 100%; }
-    /* line 98, ../scss/pages/_question.scss */
+    /* line 100, ../scss/pages/_question.scss */
     .question__navigator-button {
       min-height: 50px;
       min-width: 100px;
@@ -446,12 +447,12 @@ label {
       background-color: #6db22f;
       border: none;
       cursor: pointer; }
-    /* line 106, ../scss/pages/_question.scss */
+    /* line 108, ../scss/pages/_question.scss */
     .question__navigator-prev {
       position: absolute;
       left: 0;
       right: auto; }
-    /* line 111, ../scss/pages/_question.scss */
+    /* line 113, ../scss/pages/_question.scss */
     .question__navigator-next {
       position: absolute;
       left: auto;
