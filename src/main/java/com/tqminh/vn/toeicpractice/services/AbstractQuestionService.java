@@ -18,14 +18,17 @@ import com.tqminh.vn.toeicpractice.configuration.GeneralConfiguration;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
-import com.tqminh.vn.toeicpractice.model.list.MCQuestionList;
-import com.tqminh.vn.toeicpractice.model.list.PQuestionList;
+import com.tqminh.vn.toeicpractice.model.task.AbstractQuestionList;
+import com.tqminh.vn.toeicpractice.model.task.MCQuestionList;
+import com.tqminh.vn.toeicpractice.model.task.PQuestionList;
 import com.tqminh.vn.toeicpractice.repositories.MCQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
 
 public abstract class AbstractQuestionService {
+    
+    private double score;
 	
 	@Autowired
 	private MCQuestionWrapperRepository mcQuestionRepository;
@@ -34,12 +37,8 @@ public abstract class AbstractQuestionService {
 	private PQuestionWrapperRepository pQuestionRepository;
 	
 	@Autowired
-	@Qualifier("MCQuestionListCache")
-	private QuestionListCache<MCQuestionList> mcCache;
-	
-	@Autowired
-	@Qualifier("PQuestionListCache")
-	private QuestionListCache<PQuestionList> pCache;
+	@Qualifier("QuestionListCacheImpl")
+	private QuestionListCache<AbstractQuestionList> questionCache; 
 	
 	@Autowired
 	@Qualifier("IndexCache")
@@ -92,7 +91,7 @@ public abstract class AbstractQuestionService {
 	
 	protected Integer nextQuestion(String username, Integer typeQuestion) throws Exception{
 		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-			MCQuestionList mcQuestionList= mcCache.getQuestionList(username);
+			MCQuestionList mcQuestionList= (MCQuestionList) questionCache.getQuestionList(username);
 			int concurrentIndex= mcQuestionList.getConcurrentIndex();
 			
 			if(isCheckNextQuestionIndex(concurrentIndex, typeQuestion)) {
@@ -104,7 +103,7 @@ public abstract class AbstractQuestionService {
 			}
 		}
 		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-			PQuestionList pQuestionList= pCache.getQuestionList(username);
+			PQuestionList pQuestionList= (PQuestionList) questionCache.getQuestionList(username);
 			int concurrentIndex= pQuestionList.getConcurrentIndex();
 			
 			if(isCheckNextQuestionIndex(concurrentIndex, typeQuestion)) {
@@ -120,7 +119,7 @@ public abstract class AbstractQuestionService {
 	
 	protected Integer previousQuestion(String username, Integer typeQuestion) throws Exception{
 		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-			MCQuestionList mcQuestionList= mcCache.getQuestionList(username);
+			MCQuestionList mcQuestionList= (MCQuestionList) questionCache.getQuestionList(username);
 			int concurrentIndex= mcQuestionList.getConcurrentIndex();
 			
 			if(isCheckPreviousQuestionIndex(concurrentIndex, typeQuestion)) {
@@ -132,7 +131,7 @@ public abstract class AbstractQuestionService {
 			}
 		}
 		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-			PQuestionList pQuestionList= pCache.getQuestionList(username);
+			PQuestionList pQuestionList= (PQuestionList) questionCache.getQuestionList(username);
 			int concurrentIndex= pQuestionList.getConcurrentIndex();
 			
 			if(isCheckPreviousQuestionIndex(concurrentIndex, typeQuestion)) {
@@ -163,39 +162,32 @@ public abstract class AbstractQuestionService {
 		return null;
 	}
 	
+	
 	private MultipleChoiceQuestion loadMCQuestions(String username, int index) throws Exception{
-		MultipleChoiceQuestion question= loadMCQuestionList(username).getQuestions().get(index);
+	    MCQuestionList mcQuestionList= (MCQuestionList)questionCache.getQuestionList(username);
+		MultipleChoiceQuestion question= (MultipleChoiceQuestion) mcQuestionList.getQuestions().get(index);
 		return question;
 	}
 	
 	private PhotoQuestion loadPQuestions(String username, int index) throws Exception{
-		PhotoQuestion question= loadPQuestionList(username).getQuestions().get(index);
+		PQuestionList pQuestionList= (PQuestionList)questionCache.getQuestionList(username);
+		PhotoQuestion question= pQuestionList.getQuestions().get(index);
 		return question;
-	}
-	
-	private MCQuestionList loadMCQuestionList(String username) {
-		MCQuestionList questionList= mcCache.getQuestionList(username);
-		return questionList;
-	}
-	
-	private PQuestionList loadPQuestionList(String username) {
-		PQuestionList questionList= pCache.getQuestionList(username);
-		return questionList;
 	}
 	
 	protected void saveCache(String username, Integer typeQuestion, int index) throws Exception {
 		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-			if(!mcCache.isCheckUsername(username)) {
+			if(!questionCache.isCheckUsername(username)) {
 				MCQuestionList questionList= getMCQuestionList(username, typeQuestion);
 				questionList.setConcurrentIndex(index);
-				mcCache.putQuestionList(username, questionList);
+				questionCache.putQuestionList(username, questionList);
 			}
 		}
 		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION){
-			if(!pCache.isCheckUsername(username)) {
+			if(!questionCache.isCheckUsername(username)) {
 				PQuestionList questionList= getPQuestionList(username, typeQuestion);
 				questionList.setConcurrentIndex(index);
-				pCache.putQuestionList(username, questionList);
+				questionCache.putQuestionList(username, questionList);
 			}
 		}	
 	}
@@ -217,8 +209,8 @@ public abstract class AbstractQuestionService {
 				list.add(questionWrapper.getMultipleChoiceQuestion());
 			}
 		}
-		MCQuestionList questions= new MCQuestionList(list);
-		return questions;
+		AbstractQuestionList questions= new MCQuestionList(list);
+		return (MCQuestionList) questions;
 	}
 	
 	private PQuestionList getPQuestionList(String username, Integer typeQuestion) throws Exception{
@@ -239,8 +231,8 @@ public abstract class AbstractQuestionService {
 			}
 		}
 
-		PQuestionList questions= new PQuestionList(list);
-		return questions;
+		AbstractQuestionList questions= new PQuestionList(list);
+		return (PQuestionList) questions;
 	}
 	
 	protected Queue<AbstractQuestion> loadQuestionList(String username, int typeQuestion){
@@ -323,14 +315,50 @@ public abstract class AbstractQuestionService {
 	private void removeCache(String username, Integer typeQuestion) {
 		indexCache.removeIndex(username);
 		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-			mcCache.removeQuestionList(username);
+			questionCache.removeQuestionList(username);
 		}
 		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-			pCache.removeQuestionList(username);
+			questionCache.removeQuestionList(username);
 		}
 	}
 	
+	private String getSelection(String selection, AbstractQuestion question) {
+	    
+	    if(selection.equals("A")) {
+	        
+	        return question.getAnswerA();
+	    }
+	    else if (selection.equals("B")) {
+	        
+	        return question.getAnswerB();
+        }
+	    else if (selection.equals("C")) {
+	        
+	        return question.getAnswerC();
+        }
+	    else {
+	        return question.getAnswerD();
+        }
+	}
+	
+	private boolean isCheckSelection(String selection, AbstractQuestion question) {
+	    if(question.getAnswerTrue().equals(getSelection(selection, question))) {
+	        return true;
+	    }
+	    else {
+	        return false;
+	    }
+	}
+	
+	protected void validate(String selection, AbstractQuestion question, String username) {
+	    if(isCheckSelection(selection, question)) {
+	        score = score + 1;
+	        questionCache.getQuestionList(username).setScore(score); 
+	    }
+	}
+	
 	protected void submit(String username, Integer typeQuestion) {
+	    score= 0;
 		removeCache(username, typeQuestion);
 	}
 }

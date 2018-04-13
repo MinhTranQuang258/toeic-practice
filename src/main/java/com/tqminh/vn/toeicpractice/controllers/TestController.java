@@ -22,8 +22,8 @@ import com.tqminh.vn.toeicpractice.services.PhotoService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 import org.springframework.stereotype.Controller;
 
-//@RestController
-@Controller
+@RestController
+//@Controller
 public class TestController {
 	
 	@Autowired
@@ -45,11 +45,12 @@ public class TestController {
 	@RequestMapping("/save")
 	public String save() {
 		MultipleChoiceQuestion question= new MultipleChoiceQuestion();
-		question.setAnswerA("1");
-		question.setAnswerB("2");
-		question.setAnswerC("3");
-		question.setAnswerD("4");
-		question.setDetailQuestion("12345");
+		question.setAnswerA("a");
+		question.setAnswerB("b");
+		question.setAnswerC("c");
+		question.setAnswerD("d");
+		question.setDetailQuestion("abcd");
+		question.setAnswerTrue("b");
 		mcQuestionService.insertQuestion(question);
 		return "Done";
 	}
@@ -117,11 +118,6 @@ public class TestController {
 		return "adminQuestionReading";
 	}
         
-    
-    @RequestMapping(value= "/grammar", method= RequestMethod.GET)
-	public String showQuestionGrammar() {
-		return "userGrammar";
-	}
 	
     @RequestMapping(value= "/listening", method= RequestMethod.GET)
 	public String showQuestionListening() {

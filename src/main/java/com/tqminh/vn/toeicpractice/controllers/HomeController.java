@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.model.Account;
 import com.tqminh.vn.toeicpractice.services.impl.AccountServiceImpl;
 
@@ -21,7 +22,7 @@ public class HomeController {
 	@RequestMapping(value= {"/displayLogin", "/"}, method= RequestMethod.GET)
     public String displayLogin(Model model) {
 		model.addAttribute("account", new Account());
-        return "login";
+        return Constant.Page.LOGIN_PAGE;
     }
 	
 	@RequestMapping(value= {"/login"}, method= RequestMethod.POST)

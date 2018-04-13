@@ -20,7 +20,7 @@ public interface QuestionService<T extends AbstractQuestion> {
 	
 	T getQuestion(String username, int index) throws Exception;
 	
-	double validateQuestion();
+	void validateQuestion(String username, AbstractQuestion question, String selection) throws Exception;
 	
 	void submit(String username);
 	

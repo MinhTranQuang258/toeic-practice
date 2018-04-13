@@ -1,10 +1,11 @@
-package com.tqminh.vn.toeicpractice.model.list;
+package com.tqminh.vn.toeicpractice.model.task;
 
 import java.util.List;
 
+import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 
-public class MCQuestionList {
+public class MCQuestionList extends AbstractQuestionList{
 	
 	private int concurrentIndex;
 	
@@ -34,16 +35,13 @@ public class MCQuestionList {
 		this.concurrentIndex = concurrentIndex;
 		this.questions = questions;
 	}
+	
+	@Override
+    public List<? extends AbstractQuestion> getQuestions() {
+        return questions;
+    }
 
-	public List<MultipleChoiceQuestion> getQuestions() {
-		return questions;
-	}
-
-	public void setQuestions(List<MultipleChoiceQuestion> questions) {
-		this.questions = questions;
-	}
-
-	public double getScore() {
+    public double getScore() {
 		return score;
 	}
 

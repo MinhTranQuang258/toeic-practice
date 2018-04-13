@@ -32,7 +32,7 @@ public class PhotoQuestion extends AbstractQuestion {
 	}
 	
 	@Override
-	protected String getDetailQuestion() {
+	public String getDetailQuestion() {
 		return this.getPhoto();
 	}
 

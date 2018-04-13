@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.common.TypeDefinition;
 import com.tqminh.vn.toeicpractice.configuration.GeneralConfiguration;
+import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
@@ -104,14 +105,16 @@ implements QuestionService<PhotoQuestion>, PhotoService{
 	public int previousQuestion(String username) throws Exception {
 		return super.previousQuestion(username, TypeDefinition.PHOTO_QUESTION);
 	}
-
+	
 	@Override
-	public double validateQuestion() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public void validateQuestion(
+        String username,
+        AbstractQuestion question,
+        String selection) throws Exception {
+        
+    }
 
-	@Override
+    @Override
 	public PhotoQuestion getQuestion(String username, int index) throws Exception {
 		try {
 			return (PhotoQuestion) super.getQuestion(username, index, TypeDefinition.PHOTO_QUESTION);

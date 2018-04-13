@@ -1,11 +1,11 @@
-package com.tqminh.vn.toeicpractice.model.list;
+package com.tqminh.vn.toeicpractice.model.task;
 
 import java.util.List;
 
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 
 
-public class PQuestionList {
+public class PQuestionList extends AbstractQuestionList{
 	
 	private int concurrentIndex;
 	
@@ -24,10 +24,6 @@ public class PQuestionList {
 
 	public List<PhotoQuestion> getQuestions() {
 		return questions;
-	}
-
-	public void setQuestions(List<PhotoQuestion> questions) {
-		this.questions = questions;
 	}
 
 	public int getConcurrentIndex() {

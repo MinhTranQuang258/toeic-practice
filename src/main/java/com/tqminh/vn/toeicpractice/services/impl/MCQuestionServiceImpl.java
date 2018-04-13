@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.common.TypeDefinition;
+import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.repositories.MCQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
@@ -76,9 +77,8 @@ public class MCQuestionServiceImpl extends AbstractQuestionService implements Qu
     }
 
     @Override
-	public double validateQuestion() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void validateQuestion(String username, AbstractQuestion question, String selection) {
+		super.validate(selection, question, username);
 	}
 
 	@Override
