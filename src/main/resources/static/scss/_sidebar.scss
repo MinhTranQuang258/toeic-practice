@@ -17,7 +17,7 @@ $sidebar-item-bg: #d7ffbd;
   width: 220px;
   transition: .5s width;
   background-color: white;
-  min-height: 100vh;
+  min-height: 93vh;
   @media (max-width: 767px) {
     display: none;
     position: fixed;
@@ -36,6 +36,16 @@ $sidebar-item-bg: #d7ffbd;
     &--sub {
       display: none;
       background-color: $sidebar-sub-bg;
+      & a {
+        padding-left: 50px;
+        color: #fff;
+        &:hover {
+          transition: .3s;
+          text-decoration: none;
+          color: $sidebar-link-hover-cl;
+          background-color: $sidebar-link-hover-bg;
+        }
+      }
     }
   }
   &__item {
@@ -52,15 +62,17 @@ $sidebar-item-bg: #d7ffbd;
     position: relative;
     padding: 16px;
     line-height: 24px;
-    &:hover {
-      transition: .3s;
-      text-decoration: none;
-      color: $sidebar-link-hover-cl;
-      background-color: $sidebar-link-hover-bg;
-    }
+    font-weight: 700;
     @media (max-width: 767px) {
       padding: 16px 30px;
     }
+    &:hover {
+      transition: .3s;
+      text-decoration: none;
+      color: #6db22f;
+      background-color: $sidebar-link-hover-bg;
+    }
+
   }
   &__icon {
     font-size: 15px;

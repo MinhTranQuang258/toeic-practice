@@ -175,7 +175,7 @@ label {
   -webkit-transition: .5s width;
   transition: .5s width;
   background-color: white;
-  min-height: 100vh; }
+  min-height: 93vh; }
   @media (max-width: 767px) {
     /* line 13, ../scss/_sidebar.scss */
     .sidebar {
@@ -198,13 +198,24 @@ label {
     .sidebar__list--sub {
       display: none;
       background-color: #67ae3d; }
-  /* line 41, ../scss/_sidebar.scss */
+      /* line 39, ../scss/_sidebar.scss */
+      .sidebar__list--sub a {
+        padding-left: 50px;
+        color: #fff; }
+        /* line 42, ../scss/_sidebar.scss */
+        .sidebar__list--sub a:hover {
+          -webkit-transition: .3s;
+          transition: .3s;
+          text-decoration: none;
+          color: #495057;
+          background-color: transparent; }
+  /* line 51, ../scss/_sidebar.scss */
   .sidebar__item {
     position: relative; }
-    /* line 43, ../scss/_sidebar.scss */
+    /* line 53, ../scss/_sidebar.scss */
     .sidebar__item:not(:last-of-type) {
       border-bottom: 1px solid rgba(73, 80, 87, 0.2); }
-  /* line 47, ../scss/_sidebar.scss */
+  /* line 57, ../scss/_sidebar.scss */
   .sidebar__link {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -214,28 +225,29 @@ label {
     background-color: transparent;
     position: relative;
     padding: 16px;
-    line-height: 24px; }
-    /* line 55, ../scss/_sidebar.scss */
+    line-height: 24px;
+    font-weight: 700; }
+    @media (max-width: 767px) {
+      /* line 57, ../scss/_sidebar.scss */
+      .sidebar__link {
+        padding: 16px 30px; } }
+    /* line 69, ../scss/_sidebar.scss */
     .sidebar__link:hover {
       -webkit-transition: .3s;
       transition: .3s;
       text-decoration: none;
-      color: #495057;
+      color: #6db22f;
       background-color: transparent; }
-    @media (max-width: 767px) {
-      /* line 47, ../scss/_sidebar.scss */
-      .sidebar__link {
-        padding: 16px 30px; } }
-  /* line 65, ../scss/_sidebar.scss */
+  /* line 77, ../scss/_sidebar.scss */
   .sidebar__icon {
     font-size: 15px;
     line-height: 22px;
     margin-right: 8px; }
-  /* line 71, ../scss/_sidebar.scss */
+  /* line 83, ../scss/_sidebar.scss */
   .sidebar__item {
     font-size: 17px;
     color: #479c0e; }
-  /* line 76, ../scss/_sidebar.scss */
+  /* line 88, ../scss/_sidebar.scss */
   .sidebar__text--sub {
     display: none;
     color: #000;
@@ -243,11 +255,11 @@ label {
     padding: 12.5px;
     text-align: center; }
     @media (max-width: 767px) {
-      /* line 76, ../scss/_sidebar.scss */
+      /* line 88, ../scss/_sidebar.scss */
       .sidebar__text--sub {
         display: block; } }
     @media (max-width: 575px) {
-      /* line 76, ../scss/_sidebar.scss */
+      /* line 88, ../scss/_sidebar.scss */
       .sidebar__text--sub {
         display: none; } }
 
