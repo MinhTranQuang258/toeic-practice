@@ -47,6 +47,7 @@ public class AdminController {
 		String username= (String)session.getAttribute("username");
 		List<MCQuestionWrapper> questions= mcQuestionWrapperService.findAllQuestionWarraper(username);
 		model.addAttribute("questions", questions);
+		model.addAttribute("question", new Question());
 		return Constant.Page.ADMIN_EDIT_PAGE;
 	}
 	
@@ -105,10 +106,20 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value= "/insertMCQuestion", method= RequestMethod.POST)
-    public String insertMCQuestion(@ModelAttribute("question") Question question, Model model, HttpServletRequest request) {
+    public String insertMCQuestion(@ModelAttribute("question") Question question, HttpServletRequest request) {
 	    String radio= request.getParameter("rightAnswer");
 	    MultipleChoiceQuestion multipleChoiceQuestion= (MultipleChoiceQuestion)prepareQuestion(radio, question);
 	    mcQuestionService.insertQuestion(multipleChoiceQuestion);
         return "redirect:/displayAdminAddGrammar";
     }
+	
+	@RequestMapping(value= "/updateMCQuestion", method= RequestMethod.POST)
+	public String updateQuestion(@ModelAttribute("question") Question question, HttpSession session, HttpServletRequest request) {
+		System.out.println("minh");
+		String radio= request.getParameter("rightAnswer");
+		String username= (String)session.getAttribute("username");
+		AbstractQuestion multipleChoiceQuestion= prepareQuestion(radio, question);
+		mcQuestionService.updateQuestion(1, multipleChoiceQuestion, username);
+		return "redirect:/adminEdit";
+	}
 }

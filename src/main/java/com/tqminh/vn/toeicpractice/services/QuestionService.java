@@ -7,9 +7,9 @@ public interface QuestionService<T extends AbstractQuestion> {
 	
 	String insertQuestion(T question);
 	
-	T updateQuestion(long id);
+	void updateQuestion(long id, AbstractQuestion question, String username);
 	
-	T deleteQuestion(long id);
+	void deleteQuestion(long id, String username);
 	
 	int countQuestion();
 	

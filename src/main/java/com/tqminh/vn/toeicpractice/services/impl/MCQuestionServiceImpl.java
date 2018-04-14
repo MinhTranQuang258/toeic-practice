@@ -76,14 +76,13 @@ implements QuestionService<MultipleChoiceQuestion>{
 	}
 
 	@Override
-	public MultipleChoiceQuestion updateQuestion(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateQuestion(long id, AbstractQuestion question, String username) {
+		super.updateQuestion(id, question, username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 
 	@Override
-	public MultipleChoiceQuestion deleteQuestion(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}	
+	public void deleteQuestion(long id, String username) {
+		super.deleteQuestion(id, TypeDefinition.MULTIPLE_CHOICE_QUESTION, username);
+	}
+	
 }

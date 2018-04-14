@@ -12,7 +12,7 @@ public class Constant {
 	
 	public static class NativeQuery {
 		
-		public static final String FIND_ALL_QUESTION= "SELECT * FROM mcquestion_wrapper";
+		public static final String FIND_ALL_QUESTION= "SELECT * FROM mcquestion_wrapper ORDER BY id";
 		
 		public static final String FIND_ACCOUNT_BY_USER_NAME_AND_PASSWORD = "SELECT * FROM account_wrapper WHERE account ->> 'username' = ?1 AND account ->> 'password' = ?2";
 		

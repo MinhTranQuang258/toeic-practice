@@ -235,6 +235,19 @@ public abstract class AbstractQuestionService {
 		return (PQuestionList) questions;
 	}
 	
+	
+	protected void deleteQuestion(long id, int questionType, String username) {
+		if(!isCheckAdmin(username)) {
+	        return;
+	    }
+	    if(questionType == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+            mcQuestionRepository.delete(id);
+        }
+        else if (questionType == TypeDefinition.PHOTO_QUESTION) {
+            pQuestionRepository.delete(id);
+        }
+	}
+	
 	protected List<MCQuestionWrapper> findAllQuestions(String username){
 	    if(!isCheckAdmin(username)) {
 	        return null;
