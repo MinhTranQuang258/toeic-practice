@@ -1,7 +1,6 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +14,9 @@ import com.tqminh.vn.toeicpractice.services.AbstractQuestionService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Service("MCQuestionService")
-public class MCQuestionServiceImpl extends AbstractQuestionService implements QuestionService<MultipleChoiceQuestion>{
-
+public class MCQuestionServiceImpl extends AbstractQuestionService 
+implements QuestionService<MultipleChoiceQuestion>{
+	
 	@Override
 	public void submit(String username) {
 		super.submit(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
@@ -37,7 +37,7 @@ public class MCQuestionServiceImpl extends AbstractQuestionService implements Qu
 	
 	@Override
 	public MultipleChoiceQuestion getQuestion(String username, int index) throws Exception {
-		return (MultipleChoiceQuestion) super.getQuestion("admin", index, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
+		return (MultipleChoiceQuestion) super.getQuestion(username, index, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
 
 	@Override
@@ -58,18 +58,12 @@ public class MCQuestionServiceImpl extends AbstractQuestionService implements Qu
 		}
 		return "";
 	}
-	
-	@Override
-    public List<MultipleChoiceQuestion> loadQuestionList(String username) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     @Override
 	public int countQuestion() {
 		return super.countQuestion(TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
-	
+
 	@Override
     public MultipleChoiceQuestion findQuestion(String username, long id) {
         // TODO Auto-generated method stub

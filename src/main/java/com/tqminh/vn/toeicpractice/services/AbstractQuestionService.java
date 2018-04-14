@@ -3,7 +3,6 @@ package com.tqminh.vn.toeicpractice.services;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Random;
 import java.util.Set;
 
@@ -29,7 +28,7 @@ import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
 public abstract class AbstractQuestionService {
     
     private double score;
-	
+    
 	@Autowired
 	private MCQuestionWrapperRepository mcQuestionRepository;
 	
@@ -92,6 +91,7 @@ public abstract class AbstractQuestionService {
 	protected Integer nextQuestion(String username, Integer typeQuestion) throws Exception{
 		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
 			MCQuestionList mcQuestionList= (MCQuestionList) questionCache.getQuestionList(username);
+			System.out.println(mcQuestionList);
 			int concurrentIndex= mcQuestionList.getConcurrentIndex();
 			
 			if(isCheckNextQuestionIndex(concurrentIndex, typeQuestion)) {
@@ -235,22 +235,12 @@ public abstract class AbstractQuestionService {
 		return (PQuestionList) questions;
 	}
 	
-	protected Queue<AbstractQuestion> loadQuestionList(String username, int typeQuestion){
-	    if(isCheckAdmin(username)) {
+	protected List<MCQuestionWrapper> findAllQuestions(String username){
+	    if(!isCheckAdmin(username)) {
 	        return null;
 	    }
-	    List<AbstractQuestion> mcQuestionList= new LinkedList<>();
-	    if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-	        
-	        List<MCQuestionWrapper> list= (List<MCQuestionWrapper>) mcQuestionRepository.findAll();
-	        for (MCQuestionWrapper mcQuestionWrapper : list) {
-                mcQuestionList.add(mcQuestionWrapper.getMultipleChoiceQuestion());
-            }
-	    }
-	    else if (typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-            
-        }
-	    return null;
+        List<MCQuestionWrapper> list= mcQuestionRepository.findAllQuestionList();
+        return list;
 	}
 	
 	protected AbstractQuestion findQuestion(String username, long id, Integer questionType) throws Exception{
@@ -273,6 +263,7 @@ public abstract class AbstractQuestionService {
 	        return true;
 	    }
 	    else {
+	    	System.out.println(false);
             return false;
         }
 	}

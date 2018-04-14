@@ -26,8 +26,8 @@ public class QuestionListCacheImpl implements QuestionListCache<AbstractQuestion
     private Map<String,AbstractQuestionList> map= new HashMap<>();
 
     @Override
-    public void putQuestionList(String username, AbstractQuestionList mcQuestionList) {
-        map.put(username, mcQuestionList);
+    public void putQuestionList(String username, AbstractQuestionList questionList) {
+        map.put(username, questionList);
     }
 
     @Override

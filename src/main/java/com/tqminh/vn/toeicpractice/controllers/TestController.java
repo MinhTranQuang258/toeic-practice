@@ -45,12 +45,12 @@ public class TestController {
 	@RequestMapping("/save")
 	public String save() {
 		MultipleChoiceQuestion question= new MultipleChoiceQuestion();
-		question.setAnswerA("a");
-		question.setAnswerB("b");
-		question.setAnswerC("c");
-		question.setAnswerD("d");
-		question.setDetailQuestion("abcd");
-		question.setAnswerTrue("b");
+		question.setAnswerA("1");
+		question.setAnswerB("2");
+		question.setAnswerC("3");
+		question.setAnswerD("4");
+		question.setDetailQuestion("1234");
+		question.setAnswerTrue("1");
 		mcQuestionService.insertQuestion(question);
 		return "Done";
 	}

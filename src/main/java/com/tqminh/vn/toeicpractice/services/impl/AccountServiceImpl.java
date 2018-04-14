@@ -35,7 +35,7 @@ public class AccountServiceImpl implements AccountService{
 						accountWrapperRepository.findAccountByUserAndPassword(username, password);
 				if(accountWrapper != null) {
 					accountCache.put(username, account);
-					return Page.ADMIN_ADD_PAGE;
+					return Page.USER_HOME_PAGE;
 				}
 			}
 		}catch (Exception e) {

@@ -1,5 +1,8 @@
 package com.tqminh.vn.toeicpractice.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,6 +35,8 @@ public class QuetionController {
 	@Autowired
 	private AccountService accountService;
 	
+	private Map<String, Object> map= new HashMap<>();
+	
 	@RequestMapping(value= "/logOut", method= RequestMethod.GET)
 	public String logOut(HttpSession session, Model model) {
 		String username= (String) session.getAttribute("username");
@@ -41,49 +45,39 @@ public class QuetionController {
 		return "login";
 	}
 	
-	@RequestMapping(value= "/grammer", method= RequestMethod.GET)
+	@RequestMapping(value= "/grammar", method= RequestMethod.GET)
 	public String getGrammer(Model model, HttpSession session) throws Exception {
 		String username= (String)session.getAttribute("username");
-		MultipleChoiceQuestion MultipleChoiceQuestion= mcQuestionService.getQuestion(username, 1);
-		model.addAttribute("question", MultipleChoiceQuestion);
+		MultipleChoiceQuestion question= mcQuestionService.getQuestion(username, 1);
+		model.addAttribute("question", question);
+		map.put("question", question);
 		return Constant.Page.USER_GRAMMER_PAGE;
 	}
 	
 	@RequestMapping(value= "/validate" , method= RequestMethod.POST)
-    public void validate(@ModelAttribute("question") MultipleChoiceQuestion multipleChoiceQuestion, HttpServletRequest servletRequest, HttpSession session) throws Exception {
-        String username= (String)session.getAttribute("username");
+    public String validate(HttpServletRequest servletRequest, HttpSession session) throws Exception {
+		String username= (String)session.getAttribute("username");
         String selection= servletRequest.getParameter("answerGroup");
-        mcQuestionService.validateQuestion(username, multipleChoiceQuestion, selection);
+        AbstractQuestion question= (AbstractQuestion) map.get("question");
+        mcQuestionService.validateQuestion(username, question, selection);
+        return "redirect:/next";
     }
 	
-	@RequestMapping(value= "/photo", method= RequestMethod.GET)
-	public String getPhoto(Model model) {
-	    return null;
+	@RequestMapping(value= "/next", method= RequestMethod.GET)
+	public String nextQuestion(HttpSession session, Model model) throws Exception {
+		String username= (String) session.getAttribute("username");
+		int index= mcQuestionService.nextQuestion(username);
+		MultipleChoiceQuestion question= mcQuestionService.getQuestion(username, index);
+		
+		model.addAttribute("question", question);
+		map.put("question", question);
+		return Constant.Page.USER_GRAMMER_PAGE;
 	}
 	
-//	@RequestMapping(value= "/nextQuestion", method= RequestMethod.GET)
-//	public String nextQuestion(HttpSession session, Model model) throws Exception {
-//	    try {
-//	    	String username= (String)session.getAttribute("username");
-//			int index = mcQuestionService.nextQuestion(username);
-//			model.addAttribute("question", mcQuestionService.getQuestion(username, index));
-//			return Constant.Page.USER_GRAMMER_PAGE;
-//		} catch (Exception e) {
-//			throw e;
-//		}
-//	}
-//	
-//	@RequestMapping(value= "/backQuestion", method= RequestMethod.GET)
-//    public String backQuestion(HttpSession session, Model model) throws Exception{
-//        try {
-//        	String username= (String)session.getAttribute("username");
-//			int index = mcQuestionService.previousQuestion(username);
-//			model.addAttribute("question", mcQuestionService.getQuestion(username, index));
-//			return Constant.Page.USER_GRAMMER_PAGE;
-//		} catch (Exception e) {
-//			throw e;
-//		}
-//    }
+	@RequestMapping(value= "/photo", method= RequestMethod.GET)
+	public String getPhoto() {
+	    return null;
+	}
 	
 	@RequestMapping(value= "/submit", method= RequestMethod.POST)
 	public void submit() {

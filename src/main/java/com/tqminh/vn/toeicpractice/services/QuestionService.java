@@ -1,6 +1,5 @@
 package com.tqminh.vn.toeicpractice.services;
 
-import java.util.List;
 
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 
@@ -25,6 +24,4 @@ public interface QuestionService<T extends AbstractQuestion> {
 	void submit(String username);
 	
 	T findQuestion(String username, long id);
-	
-	List<T> loadQuestionList(String username);
 }

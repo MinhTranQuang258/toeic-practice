@@ -82,7 +82,7 @@
           <div class="container-fluid">
             <div class="row question__container">
               <div class="question col-lg-8">
-                <form method="post" th:action="@{/validate}">
+                <form method="POST" th:action="@{/validate}">
                   <div class="question__header">
                     <h3 class="question__details" th:text= "${question.detailQuestion}">
                       <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
@@ -102,26 +102,26 @@
                       <ul class="question__answers-list">
                         <li class="question__choice">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="answerGroup" value="A" />
-                            <label class="form-check-label" for="answer1" th:text="${question.answerA}"></label>
+                            <input class="form-check-input" type="radio" name="answerGroup" value="A" th:value= "${question.answerA}" />
+                            <label class="form-check-label" for="answer1" th:text="${question.answerA}"> </label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" value="B" />
-                            <label class="form-check-label" for="answer2" th:text="${question.answerB}"></label>
+                            <label class="form-check-label" for="answer2" th:text="${question.answerB}" ></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" value="C" />
-                            <label class="form-check-label" for="answer3" th:text="${question.answerC}"></label>
+                            <label class="form-check-label" for="answer3" th:text="${question.answerC}" ></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" value="D" />
-                            <label class="form-check-label" for="answer4" th:text="${question.answerD}"></label>
+                            <label class="form-check-label" for="answer4" th:text="${question.answerD}" ></label>
                           </div>
                         </li>
                       </ul>

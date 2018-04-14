@@ -1,6 +1,9 @@
 package com.tqminh.vn.toeicpractice.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,7 +18,9 @@ import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.model.mapping.Question;
+import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
+import com.tqminh.vn.toeicpractice.services.QuestionWrapperService;
 
 @Controller
 public class AdminController {
@@ -23,23 +28,29 @@ public class AdminController {
     @Autowired
     @Qualifier("MCQuestionService")
     private QuestionService<MultipleChoiceQuestion> mcQuestionService;
+    
+    @Autowired
+    @Qualifier("MCQuestionWrapperService")
+    private QuestionWrapperService mcQuestionWrapperService;
 
     @Autowired
     @Qualifier("PQuestionService")
     private QuestionService<PhotoQuestion> pQuestionService;
 	
-	@RequestMapping(value= "/displayAdmin", method= RequestMethod.GET)
-	public String displayAdminPage(Model model) {
-		model.addAttribute("question", new Question());
+	@RequestMapping(value= "/admin", method= RequestMethod.GET)
+	public String displayAdminPage() {
 		return Constant.Page.ADMIN_HOME_PAGE;
 	}
 	
-	@RequestMapping(value= "/displayAdminEdit", method= RequestMethod.GET)
-	public String displayAdminEditPage() {
+	@RequestMapping(value= "/adminEdit", method= RequestMethod.GET)
+	public String displayAdminEditPage(Model model, HttpSession session) {
+		String username= (String)session.getAttribute("username");
+		List<MCQuestionWrapper> questions= mcQuestionWrapperService.findAllQuestionWarraper(username);
+		model.addAttribute("questions", questions);
 		return Constant.Page.ADMIN_EDIT_PAGE;
 	}
 	
-	@RequestMapping(value= "/displayAdminAdd", method= RequestMethod.GET)
+	@RequestMapping(value= "/adminAdd", method= RequestMethod.GET)
 	public String displayAdminAddPage() {
 	    return Constant.Page.ADMIN_ADD;
 	}
@@ -98,6 +109,6 @@ public class AdminController {
 	    String radio= request.getParameter("rightAnswer");
 	    MultipleChoiceQuestion multipleChoiceQuestion= (MultipleChoiceQuestion)prepareQuestion(radio, question);
 	    mcQuestionService.insertQuestion(multipleChoiceQuestion);
-        return displayAdminAddGrammarPage(model);
+        return "redirect:/displayAdminAddGrammar";
     }
 }

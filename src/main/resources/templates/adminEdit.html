@@ -129,65 +129,15 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
+                      <tr th:each ="question : ${questions}">
+                        <th th:utext= "${question.getId()}"/>
                         <td>Listen</td>
-                        <td>ABC</td>
-                        <td>A</td>
-                        <td>B</td>
-                        <td>C</td>
-                        <td>D</td>
-                        <td>A</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Listen</td>
-                        <td>ABC</td>
-                        <td>A</td>
-                        <td>B</td>
-                        <td>C</td>
-                        <td>D</td>
-                        <td>A</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Listen</td>
-                        <td>ABC</td>
-                        <td>A</td>
-                        <td>B</td>
-                        <td>C</td>
-                        <td>D</td>
-                        <td>A</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>Listen</td>
-                        <td>ABC</td>
-                        <td>A</td>
-                        <td>B</td>
-                        <td>C</td>
-                        <td>D</td>
-                        <td>A</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Listen</td>
-                        <td>ABC</td>
-                        <td>A</td>
-                        <td>B</td>
-                        <td>C</td>
-                        <td>D</td>
-                        <td>A</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>Listen</td>
-                        <td>ABC</td>
-                        <td>A</td>
-                        <td>B</td>
-                        <td>C</td>
-                        <td>D</td>
-                        <td>A</td>
+                        <td th:utext= "${question.getMultipleChoiceQuestion().getDetailQuestion()}"/>
+                        <td th:utext= "${question.getMultipleChoiceQuestion().getAnswerA()}"/>
+                        <td th:utext= "${question.getMultipleChoiceQuestion().getAnswerB()}"/>
+                        <td th:utext= "${question.getMultipleChoiceQuestion().getAnswerC()}"/>
+                        <td th:utext= "${question.getMultipleChoiceQuestion().getAnswerD()}"/>
+                        <td th:utext= "${question.getMultipleChoiceQuestion().getDetailQuestion()}"/>
                       </tr>
                     </tbody>
                   </table>

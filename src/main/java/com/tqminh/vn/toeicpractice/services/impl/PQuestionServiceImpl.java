@@ -2,7 +2,6 @@ package com.tqminh.vn.toeicpractice.services.impl;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -85,11 +84,7 @@ implements QuestionService<PhotoQuestion>, PhotoService{
 		return null;
 	}
 
-	@Override
-    public List<PhotoQuestion> loadQuestionList(String username) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	
 
     @Override
 	public int countQuestion() {
