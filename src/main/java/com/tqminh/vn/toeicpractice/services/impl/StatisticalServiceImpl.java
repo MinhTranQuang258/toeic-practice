@@ -52,7 +52,7 @@ public class StatisticalServiceImpl implements StatisticalService{
 
     @Override
     public Result getResultByUsername(String username, String date) throws SQLException{
-        ResultWrapper resultWrapper= repository.findResultByUsername(date, username);
+        ResultWrapper resultWrapper= repository.findResultByDateAndUsername(date, username);
         return resultWrapper.getResult();
     }
 }

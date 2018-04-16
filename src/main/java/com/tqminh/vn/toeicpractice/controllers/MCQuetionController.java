@@ -15,35 +15,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
-import com.tqminh.vn.toeicpractice.model.Account;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
-import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
-import com.tqminh.vn.toeicpractice.services.AccountService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Controller
-public class QuetionController {
+public class MCQuetionController {
+    
+    private Map<String, Object> map= new HashMap<>();
 	
 	@Autowired
 	@Qualifier("MCQuestionService")
 	private QuestionService<MultipleChoiceQuestion> mcQuestionService;
 
-	@Autowired
-	@Qualifier("PQuestionService")
-	private QuestionService<PhotoQuestion> pQuestionService;
-	
-	@Autowired
-	private AccountService accountService;
-	
-	private Map<String, Object> map= new HashMap<>();
-	
-	@RequestMapping(value= "/logOut", method= RequestMethod.GET)
-	public String logOut(HttpSession session, Model model) {
-		String username= (String) session.getAttribute("username");
-		accountService.logout(username);
-		model.addAttribute("account", new Account());
-		return "login";
-	}
 	
 	@RequestMapping(value= "/grammar", method= RequestMethod.GET)
 	public String getGrammer(Model model, HttpSession session) throws Exception {
@@ -60,27 +43,24 @@ public class QuetionController {
         String selection= servletRequest.getParameter("answerGroup");
         AbstractQuestion question= (AbstractQuestion) map.get("question");
         mcQuestionService.validateQuestion(username, question, selection);
+        
         return "redirect:/next";
     }
 	
-	@RequestMapping(value= "/next", method= RequestMethod.GET)
+	@RequestMapping(value= "/nextMCQuestion", method= RequestMethod.GET)
 	public String nextQuestion(HttpSession session, Model model) throws Exception {
 		String username= (String) session.getAttribute("username");
 		int index= mcQuestionService.nextQuestion(username);
+		
 		MultipleChoiceQuestion question= mcQuestionService.getQuestion(username, index);
 		
 		model.addAttribute("question", question);
 		map.put("question", question);
 		return Constant.Page.USER_GRAMMER_PAGE;
 	}
-	
-	@RequestMapping(value= "/photo", method= RequestMethod.GET)
-	public String getPhoto() {
+
+	@RequestMapping(value= "/submitMCQuestion", method= RequestMethod.POST)
+	public String submit() {
 	    return null;
-	}
-	
-	@RequestMapping(value= "/submit", method= RequestMethod.POST)
-	public void submit() {
-	    
 	}
 }

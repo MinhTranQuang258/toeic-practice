@@ -60,10 +60,10 @@ public class AccountServiceImpl implements AccountService{
 	}
 	
 	private boolean isCheckRegister(Account account) {
-	    if(account.getName() == null || account.getAge() == 0 || account.getPassword() == null){
+	    if(account.getName().isEmpty() || account.getAge() == 0 || account.getPassword().isEmpty()){
 	        return false;
 	    }
-	    else if (accountWrapperRepository.findAccountByUsername(account.getUsername())!= null) {
+	    else if (accountWrapperRepository.findAccountByUsername(account.getUsername()) != null) {
 	        return false;
 	    }
 	    else {

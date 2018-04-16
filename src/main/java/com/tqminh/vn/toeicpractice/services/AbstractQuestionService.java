@@ -1,5 +1,11 @@
 package com.tqminh.vn.toeicpractice.services;
 
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +14,6 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-
 import com.tqminh.vn.toeicpractice.cache.IndexCache;
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
 import com.tqminh.vn.toeicpractice.common.Constant;
@@ -17,13 +22,16 @@ import com.tqminh.vn.toeicpractice.configuration.GeneralConfiguration;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
+import com.tqminh.vn.toeicpractice.model.Result;
 import com.tqminh.vn.toeicpractice.model.task.AbstractQuestionList;
 import com.tqminh.vn.toeicpractice.model.task.MCQuestionList;
 import com.tqminh.vn.toeicpractice.model.task.PQuestionList;
 import com.tqminh.vn.toeicpractice.repositories.MCQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
+import com.tqminh.vn.toeicpractice.repositories.ResultWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
+import com.tqminh.vn.toeicpractice.repositories.entities.ResultWrapper;
 
 public abstract class AbstractQuestionService {
     
@@ -34,6 +42,9 @@ public abstract class AbstractQuestionService {
 	
 	@Autowired
 	private PQuestionWrapperRepository pQuestionRepository;
+	
+	@Autowired
+	private ResultWrapperRepository resultRepository;
 	
 	@Autowired
 	@Qualifier("QuestionListCacheImpl")
@@ -361,8 +372,45 @@ public abstract class AbstractQuestionService {
 	    }
 	}
 	
-	protected void submit(String username, Integer typeQuestion) {
-	    score= 0;
-		removeCache(username, typeQuestion);
+	private String getTimestamp() {
+	    Timestamp timestamp= new Timestamp(System.currentTimeMillis());
+	    return timestamp.toString();
+	}
+	
+	private String getDate() throws ParseException {
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    Date dateWithoutTime = sdf.parse(sdf.format(new Date()));
+	    return dateWithoutTime.toString();
+	}
+	
+	private ResultWrapper saveResult(String date, String username, double score, String timestamp) throws SQLException {
+	    if(resultRepository.findResultByDateAndUsername(timestamp, username) == null) {
+	        Result result= new Result(username, timestamp, date);
+	        ResultWrapper resultWrapper= new ResultWrapper(result);
+            return resultRepository.save(resultWrapper);
+	    }
+	    else {
+	        ResultWrapper resultWrapper= resultRepository.findResultByDateAndUsername(date, username);
+	        resultWrapper.getResult().getMultipleChoices().add(score);
+	        return resultRepository.save(resultWrapper);
+	    }
+	}
+	
+	protected void submit(String username, Integer typeQuestion) throws ParseException, SQLException {
+	    try {
+	        AbstractQuestionList abstractQuestionList= questionCache.getQuestionList(username);
+	        double score= abstractQuestionList.getScore();
+	        String timestamp= getTimestamp();
+	        String date= getDate();
+	        saveResult(date, username, score, timestamp);
+	        score= 0;
+	        removeCache(username, typeQuestion);
+        }
+        catch (ParseException e) {
+            throw e;
+        }
+	    catch (SQLException ex) {
+	        throw ex;
+	    }
 	}
 }

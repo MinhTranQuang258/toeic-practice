@@ -44,4 +44,15 @@ public class ResultWrapper {
 	public ResultWrapper() {
 		super();
 	}
+
+    public ResultWrapper(Result result) {
+        super();
+        this.result = result;
+    }
+
+    public ResultWrapper(long id, Result result) {
+        super();
+        this.id = id;
+        this.result = result;
+    }
 }

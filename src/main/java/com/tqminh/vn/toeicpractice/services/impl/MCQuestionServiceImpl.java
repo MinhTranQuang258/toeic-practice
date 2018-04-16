@@ -2,6 +2,9 @@ package com.tqminh.vn.toeicpractice.services.impl;
 
 
 
+import java.sql.SQLException;
+import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +19,6 @@ import com.tqminh.vn.toeicpractice.services.QuestionService;
 @Service("MCQuestionService")
 public class MCQuestionServiceImpl extends AbstractQuestionService 
 implements QuestionService<MultipleChoiceQuestion>{
-	
-	@Override
-	public void submit(String username) {
-		super.submit(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
-	}
 
 	@Autowired
 	private MCQuestionWrapperRepository repository;
@@ -63,6 +61,19 @@ implements QuestionService<MultipleChoiceQuestion>{
 	public int countQuestion() {
 		return super.countQuestion(TypeDefinition.MULTIPLE_CHOICE_QUESTION);
 	}
+    
+    @Override
+    public void submit(String username) throws ParseException, SQLException{
+        try {
+            super.submit(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
+        }
+        catch (ParseException e) {
+            throw e;
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
 
 	@Override
     public MultipleChoiceQuestion findQuestion(String username, long id) {

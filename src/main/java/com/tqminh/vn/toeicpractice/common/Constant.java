@@ -11,6 +11,10 @@ public class Constant {
 	public final static String JSON_RESULT= "com.tqminh.vn.toeicpractice.model.Result";
 	
 	public static class NativeQuery {
+	    
+	    public static final String FIND_RESULTS_BY_DATE_AND_USERNAME= "SELECT * FROM result_wrapper WHERE result ->> 'date' = ?1 && result ->> 'username' = ?2";
+	    
+	    public static final String FIND_RESULTS_BY_DATE= "SELECT * FROM result_wrapper WHERE result ->> 'date' = ?1";
 		
 		public static final String FIND_ALL_QUESTION= "SELECT * FROM mcquestion_wrapper ORDER BY id";
 		
@@ -25,7 +29,6 @@ public class Constant {
 		public static final String COUNT_PQUESTION_BY_ID = "SELECT COUNT(id) FROM pquestion_wrapper";
 		
 		public static final String COUNT_DUPLICATED_FOLDER= "SELECT COUNT(id) FROM pquestion_wrapper WHERE photo_question ->> 'folderName' = ?1";
-		
 	}
 	
 	public static class Notification {

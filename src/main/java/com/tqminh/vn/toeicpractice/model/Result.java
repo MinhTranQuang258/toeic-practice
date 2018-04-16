@@ -5,9 +5,11 @@ import java.util.List;
 
 public class Result {
 	
-	private String name;
+	private String username;
 	
 	private String date;
+	
+	private String timestamp;
 	
 	private List<Double> multipleChoices;
 	
@@ -22,16 +24,25 @@ public class Result {
 		photos= new ArrayList<>();
 	}
 
-	public String getName() {
-		return name;
+	public Result(String username, String date, String timestamp) {
+        super();
+        this.username = username;
+        this.date = date;
+        multipleChoices= new ArrayList<>();
+        sentences= new ArrayList<>();
+        photos= new ArrayList<>();
+    }
+
+    public String getUsername() {
+		return username;
 	}
 
 	public String getDate() {
 		return date;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public void setDate(String date) {
@@ -66,4 +77,12 @@ public class Result {
 	public void setPhotos(List<Double> photos) {
 		this.photos = photos;
 	}
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
 }
