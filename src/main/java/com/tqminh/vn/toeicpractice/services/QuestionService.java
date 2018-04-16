@@ -1,6 +1,9 @@
 package com.tqminh.vn.toeicpractice.services;
 
 
+import java.sql.SQLException;
+import java.text.ParseException;
+
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 
 public interface QuestionService<T extends AbstractQuestion> {
@@ -21,7 +24,7 @@ public interface QuestionService<T extends AbstractQuestion> {
 	
 	void validateQuestion(String username, AbstractQuestion question, String selection) throws Exception;
 	
-	void submit(String username);
+	void submit(String username) throws ParseException, SQLException;
 	
 	T findQuestion(String username, long id);
 }

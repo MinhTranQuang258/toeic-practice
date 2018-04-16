@@ -26,7 +26,7 @@ import com.tqminh.vn.toeicpractice.repositories.ResultWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.ResultWrapper;
 import com.tqminh.vn.toeicpractice.services.StatisticalService;
 
-@Service
+@Service("StatisticalService")
 public class StatisticalServiceImpl implements StatisticalService{
 
     @Autowired

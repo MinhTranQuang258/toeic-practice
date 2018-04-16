@@ -378,7 +378,7 @@ public abstract class AbstractQuestionService {
 	}
 	
 	private String getDate() throws ParseException {
-	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 	    Date dateWithoutTime = sdf.parse(sdf.format(new Date()));
 	    return dateWithoutTime.toString();
 	}

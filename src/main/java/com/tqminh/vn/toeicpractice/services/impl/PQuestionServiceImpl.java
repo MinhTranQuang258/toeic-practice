@@ -2,6 +2,8 @@ package com.tqminh.vn.toeicpractice.services.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -157,7 +159,15 @@ implements QuestionService<PhotoQuestion>, PhotoService{
 	}
 
 	@Override
-	public void submit(String username) {
-		super.submit(username, TypeDefinition.PHOTO_QUESTION);
+	public void submit(String username) throws ParseException, SQLException {
+		try {
+            super.submit(username, TypeDefinition.PHOTO_QUESTION);
+        }
+        catch (ParseException e) {
+            throw e;
+        }
+        catch (SQLException e) {
+            throw e;
+        }
 	}
 }

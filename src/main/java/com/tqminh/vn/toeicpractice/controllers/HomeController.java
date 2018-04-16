@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.model.Account;
-import com.tqminh.vn.toeicpractice.services.impl.AccountServiceImpl;
+import com.tqminh.vn.toeicpractice.services.AccountService;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	private AccountServiceImpl accountService;
+	private AccountService accountService;
 	
 	@RequestMapping(value= {"/displayLogin", "/"}, method= RequestMethod.GET)
     public String displayLogin(Model model) {
@@ -30,6 +30,14 @@ public class HomeController {
 		httpSession.setAttribute("username", account.getUsername());
 		String page= accountService.loginAccount(account);
 		return page;
+    }
+	
+	@RequestMapping(value= "/logout", method= RequestMethod.GET)
+    public String logOut(HttpSession session, Model model) {
+        String username= (String) session.getAttribute("username");
+        accountService.logout(username);
+        model.addAttribute("account", new Account());
+        return "login";
     }
 	
 }
