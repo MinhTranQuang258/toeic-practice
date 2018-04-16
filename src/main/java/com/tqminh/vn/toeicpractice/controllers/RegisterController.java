@@ -19,21 +19,18 @@ public class RegisterController {
 	@Autowired
 	private AccountService accountService;
 	
-	@Autowired
-	private HomeController homeController;
-	
 	@RequestMapping(value= "/displayRegister", method= RequestMethod.GET)
 	public String displayRegister(Model model) {
 		model.addAttribute("register", new Register());
 		return "register";
 	}
 	
+	
 	@RequestMapping(value= "/register", method= RequestMethod.POST)
-	public String register(@ModelAttribute("register")Register register, HttpSession httpSession, Model model) {
+	public String register(@ModelAttribute("register")Register register, HttpSession httpSession) {
 		Account account= new Account(register.getName(), register.getAge(), register.getUsername(), register.getPassword());
 		if(register.getPassword().equals(register.getRepassword())) {
-			accountService.registerAccount(account);
-			return homeController.displayLogin(model);
+			return accountService.registerAccount(account);
 		}
 		else {
 //			TODO: handling when re-password incorrectly.

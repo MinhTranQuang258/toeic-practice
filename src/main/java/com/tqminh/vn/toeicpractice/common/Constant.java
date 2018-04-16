@@ -14,7 +14,9 @@ public class Constant {
 		
 		public static final String FIND_ALL_QUESTION= "SELECT * FROM mcquestion_wrapper ORDER BY id";
 		
-		public static final String FIND_ACCOUNT_BY_USER_NAME_AND_PASSWORD = "SELECT * FROM account_wrapper WHERE account ->> 'username' = ?1 AND account ->> 'password' = ?2";
+		public static final String FIND_ACCOUNT_BY_USERNAME= "SELECT * FROM account_wrapper WHERE account ->> 'username' = ?1";
+		
+		public static final String FIND_ACCOUNT_BY_USERNAME_AND_PASSWORD = "SELECT * FROM account_wrapper WHERE account ->> 'username' = ?1 AND account ->> 'password' = ?2";
 		
 		public static final String FIND_QUESTION_BY_INDEX = "SELECT * FROM mcquestion_wrapper WHERE id = ?1";
 		

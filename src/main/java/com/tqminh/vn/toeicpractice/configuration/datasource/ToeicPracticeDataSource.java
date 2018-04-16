@@ -18,8 +18,6 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.apache.tomcat.jdbc.pool.ConnectionPool;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import com.tqminh.vn.toeicpractice.configuration.datasource.core.AbstractDataSourceConfiguration;

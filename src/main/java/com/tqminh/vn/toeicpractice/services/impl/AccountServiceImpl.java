@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tqminh.vn.toeicpractice.cache.AccountCache;
-import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.common.Constant.Admin;
 import com.tqminh.vn.toeicpractice.common.Constant.Page;
 import com.tqminh.vn.toeicpractice.model.Account;
@@ -59,17 +58,38 @@ public class AccountServiceImpl implements AccountService{
 	public void logout(String username) {
 		accountCache.removeObject(username);
 	}
+	
+	private boolean isCheckRegister(Account account) {
+	    if(account.getName() == null || account.getAge() == 0 || account.getPassword() == null){
+	        return false;
+	    }
+	    else if (accountWrapperRepository.findAccountByUsername(account.getUsername())!= null) {
+	        return false;
+	    }
+	    else {
+            return true;
+        }
+	}
+	
+	private String checkNulledRegister(AccountWrapper accountWrapper) {
+	    if(accountWrapper == null) {
+	        return "redirect:/displayRegister";
+	    }
+	    else {
+	        return "redirect:/displayLogin";
+	    }
+	}
 
 	@Override
 	public String registerAccount(Account account) {
-		AccountWrapper accountWrapper= new AccountWrapper(account);
-		AccountWrapper newAccountWrapper= accountWrapperRepository.save(accountWrapper);
-		if(newAccountWrapper != null) {
-			return Constant.Notification.REGISTERED_SUCCESS;
-		}
-		else {
-			return Constant.Notification.REGISTRATION_FAILED;
-		}
+	    if(!isCheckRegister(account)) {
+	        return "redirect:/displayRegister";
+	    }
+	    else {
+	        AccountWrapper accountWrapper= new AccountWrapper(account);
+	        AccountWrapper newAccountWrapper= accountWrapperRepository.save(accountWrapper);
+	        return checkNulledRegister(newAccountWrapper);
+	    }
 	}
 
 	@Override
