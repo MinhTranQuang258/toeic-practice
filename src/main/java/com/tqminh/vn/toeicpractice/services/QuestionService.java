@@ -10,9 +10,9 @@ public interface QuestionService<T extends AbstractQuestion> {
 	
 	String insertQuestion(T question);
 	
-	void updateQuestion(long id, AbstractQuestion question, String username);
+	void updateQuestion(long id, AbstractQuestion question, String username) throws SQLException;
 	
-	void deleteQuestion(long id, String username);
+	void deleteQuestion(long id, String username) throws SQLException;
 	
 	int countQuestion();
 	

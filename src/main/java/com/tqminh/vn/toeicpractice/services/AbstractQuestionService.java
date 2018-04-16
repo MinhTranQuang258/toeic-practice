@@ -18,7 +18,6 @@ import com.tqminh.vn.toeicpractice.cache.IndexCache;
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.common.TypeDefinition;
-import com.tqminh.vn.toeicpractice.configuration.GeneralConfiguration;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
@@ -54,8 +53,8 @@ public abstract class AbstractQuestionService {
 	@Qualifier("IndexCache")
 	private IndexCache<Long> indexCache;
 	
-	@Autowired
-	private GeneralConfiguration configuration;
+//	@Autowired
+//	private GeneralConfiguration configuration;
 	
 	private Boolean isCheckNextQuestionIndex(int index, Integer typeQuestion) throws NullPointerException{
 		switch (typeQuestion) {
@@ -99,94 +98,104 @@ public abstract class AbstractQuestionService {
 		}
 	}
 	
-	protected Integer nextQuestion(String username, Integer typeQuestion) throws Exception{
-		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-			MCQuestionList mcQuestionList= (MCQuestionList) questionCache.getQuestionList(username);
-			System.out.println(mcQuestionList);
-			int concurrentIndex= mcQuestionList.getConcurrentIndex();
-			
-			if(isCheckNextQuestionIndex(concurrentIndex, typeQuestion)) {
-			    mcQuestionList.setConcurrentIndex(concurrentIndex + 1);
-				return mcQuestionList.getConcurrentIndex();
+	protected Integer nextQuestion(String username, Integer typeQuestion) throws NullPointerException, SQLException{
+		try {
+			if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+				MCQuestionList mcQuestionList= (MCQuestionList) questionCache.getQuestionList(username);
+				int concurrentIndex= mcQuestionList.getConcurrentIndex();
+				
+				if(isCheckNextQuestionIndex(concurrentIndex, typeQuestion)) {
+				    mcQuestionList.setConcurrentIndex(concurrentIndex + 1);
+					return mcQuestionList.getConcurrentIndex();
+				}
+				else {
+				    return mcQuestionList.getConcurrentIndex();
+				}
 			}
-			else {
-			    return mcQuestionList.getConcurrentIndex();
+			else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
+				PQuestionList pQuestionList= (PQuestionList) questionCache.getQuestionList(username);
+				int concurrentIndex= pQuestionList.getConcurrentIndex();
+				
+				if(isCheckNextQuestionIndex(concurrentIndex, typeQuestion)) {
+				    pQuestionList.setConcurrentIndex(concurrentIndex + 1);
+					return pQuestionList.getConcurrentIndex();
+				}
+				else {
+				    return pQuestionList.getConcurrentIndex();
+				}
 			}
-		}
-		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-			PQuestionList pQuestionList= (PQuestionList) questionCache.getQuestionList(username);
-			int concurrentIndex= pQuestionList.getConcurrentIndex();
-			
-			if(isCheckNextQuestionIndex(concurrentIndex, typeQuestion)) {
-			    pQuestionList.setConcurrentIndex(concurrentIndex + 1);
-				return pQuestionList.getConcurrentIndex();
-			}
-			else {
-			    return pQuestionList.getConcurrentIndex();
-			}
+		} catch (Exception e) {
+			throw e;
 		}
 		return null;
 	}
 	
-	protected Integer previousQuestion(String username, Integer typeQuestion) throws Exception{
-		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-			MCQuestionList mcQuestionList= (MCQuestionList) questionCache.getQuestionList(username);
-			int concurrentIndex= mcQuestionList.getConcurrentIndex();
-			
-			if(isCheckPreviousQuestionIndex(concurrentIndex, typeQuestion)) {
-			    mcQuestionList.setConcurrentIndex(concurrentIndex - 1);
-				return mcQuestionList.getConcurrentIndex();
+	protected Integer previousQuestion(String username, Integer typeQuestion) throws NullPointerException, SQLException{
+		try {
+			if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+				MCQuestionList mcQuestionList= (MCQuestionList) questionCache.getQuestionList(username);
+				int concurrentIndex= mcQuestionList.getConcurrentIndex();
+				
+				if(isCheckPreviousQuestionIndex(concurrentIndex, typeQuestion)) {
+				    mcQuestionList.setConcurrentIndex(concurrentIndex - 1);
+					return mcQuestionList.getConcurrentIndex();
+				}
+				else {
+				    return mcQuestionList.getConcurrentIndex();
+				}
 			}
-			else {
-			    return mcQuestionList.getConcurrentIndex();
+			else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
+				PQuestionList pQuestionList= (PQuestionList) questionCache.getQuestionList(username);
+				int concurrentIndex= pQuestionList.getConcurrentIndex();
+				
+				if(isCheckPreviousQuestionIndex(concurrentIndex, typeQuestion)) {
+				    pQuestionList.setConcurrentIndex(concurrentIndex - 1);
+					return pQuestionList.getConcurrentIndex();
+				}
+				else {
+				    return pQuestionList.getConcurrentIndex();
+				}
 			}
-		}
-		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-			PQuestionList pQuestionList= (PQuestionList) questionCache.getQuestionList(username);
-			int concurrentIndex= pQuestionList.getConcurrentIndex();
-			
-			if(isCheckPreviousQuestionIndex(concurrentIndex, typeQuestion)) {
-			    pQuestionList.setConcurrentIndex(concurrentIndex - 1);
-				return pQuestionList.getConcurrentIndex();
-			}
-			else {
-			    return pQuestionList.getConcurrentIndex();
-			}
+		} catch (Exception e) {
+			throw e;
 		}
 		return null;
 	}
 	
 	protected AbstractQuestion getQuestion(String username, int index, Integer typeQuestion) throws Exception{
-		try {
-			if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-				saveCache(username, typeQuestion, index);
-				return loadMCQuestions(username, index);
-			}
-			else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-				saveCache(username, typeQuestion, index);
-				return loadPQuestions(username, index);
-			}
+		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+			saveCache(username, typeQuestion, index);
+			return loadMCQuestions(username, index);
 		}
-		catch (Exception e) {
-			throw e;
+		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
+			saveCache(username, typeQuestion, index);
+			return loadPQuestions(username, index);
 		}
 		return null;
 	}
 	
 	
 	private MultipleChoiceQuestion loadMCQuestions(String username, int index) throws Exception{
-	    MCQuestionList mcQuestionList= (MCQuestionList)questionCache.getQuestionList(username);
-		MultipleChoiceQuestion question= (MultipleChoiceQuestion) mcQuestionList.getQuestions().get(index);
-		return question;
+		try {
+			MCQuestionList mcQuestionList= (MCQuestionList)questionCache.getQuestionList(username);
+			MultipleChoiceQuestion question= (MultipleChoiceQuestion) mcQuestionList.getQuestions().get(index);
+			return question;
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 	
 	private PhotoQuestion loadPQuestions(String username, int index) throws Exception{
-		PQuestionList pQuestionList= (PQuestionList)questionCache.getQuestionList(username);
-		PhotoQuestion question= pQuestionList.getQuestions().get(index);
-		return question;
+		try {
+			PQuestionList pQuestionList= (PQuestionList)questionCache.getQuestionList(username);
+			PhotoQuestion question= pQuestionList.getQuestions().get(index);
+			return question;
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 	
-	protected void saveCache(String username, Integer typeQuestion, int index) throws Exception {
+	private void saveCache(String username, Integer typeQuestion, int index) throws Exception {
 		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
 			if(!questionCache.isCheckUsername(username)) {
 				MCQuestionList questionList= getMCQuestionList(username, typeQuestion);
@@ -203,68 +212,81 @@ public abstract class AbstractQuestionService {
 		}	
 	}
 	
-	private MCQuestionList getMCQuestionList(String username, Integer typeQuestion) throws Exception{
-		Random random= new Random();
-		List<MultipleChoiceQuestion> list= new LinkedList<>();
-		Set<Long> set= new HashSet<>();
-		int count = countQuestion(typeQuestion);
-		indexCache.setIndex(username, set);
-		
-		while(list.size() <= Constant.QuestionLimit.MC_QUESTION_LIMIT) {
-			long index= random.nextInt(count);
-			if(!indexCache.isCheckIndex(username, index)) {
-				continue;
+	private MCQuestionList getMCQuestionList(String username, Integer typeQuestion) throws NullPointerException, SQLException{
+		try {
+			Random random= new Random();
+			List<MultipleChoiceQuestion> list= new LinkedList<>();
+			Set<Long> set= new HashSet<>();
+			int count = countQuestion(typeQuestion);
+			indexCache.setIndex(username, set);
+			
+			while(list.size() <= Constant.QuestionLimit.MC_QUESTION_LIMIT) {
+				long index= random.nextInt(count);
+				if(!indexCache.isCheckIndex(username, index)) {
+					continue;
+				}
+				else {
+					MCQuestionWrapper questionWrapper= mcQuestionRepository.findOne(index);
+					list.add(questionWrapper.getMultipleChoiceQuestion());
+				}
 			}
-			else {
-				MCQuestionWrapper questionWrapper= mcQuestionRepository.findOne(index);
-				list.add(questionWrapper.getMultipleChoiceQuestion());
-			}
+			AbstractQuestionList questions= new MCQuestionList(list);
+			return (MCQuestionList) questions;
+		} catch (Exception e) {
+			throw e;
 		}
-		AbstractQuestionList questions= new MCQuestionList(list);
-		return (MCQuestionList) questions;
 	}
 	
-	private PQuestionList getPQuestionList(String username, Integer typeQuestion) throws Exception{
-		Random random= new Random();
-		List<PhotoQuestion> list= new LinkedList<>();
-		Set<Long> set= new HashSet<>();
-		int count = countQuestion(typeQuestion);
-		indexCache.setIndex(username, set);
-		
-		while(list.size() == Constant.QuestionLimit.MC_QUESTION_LIMIT) {
-			long index= random.nextInt(count);
-			if(!indexCache.isCheckIndex(username, index)) {
-				continue;
+	private PQuestionList getPQuestionList(String username, Integer typeQuestion) throws NullPointerException, SQLException{
+		try {
+			Random random= new Random();
+			List<PhotoQuestion> list= new LinkedList<>();
+			Set<Long> set= new HashSet<>();
+			int count = countQuestion(typeQuestion);
+			indexCache.setIndex(username, set);
+			
+			while(list.size() == Constant.QuestionLimit.MC_QUESTION_LIMIT) {
+				long index= random.nextInt(count);
+				if(!indexCache.isCheckIndex(username, index)) {
+					continue;
+				}
+				else {
+					PQuestionWrapper questionWrapper= pQuestionRepository.findOne(index);
+					list.add(questionWrapper.getPhotoQuestion());
+				}
 			}
-			else {
-				PQuestionWrapper questionWrapper= pQuestionRepository.findOne(index);
-				list.add(questionWrapper.getPhotoQuestion());
-			}
-		}
 
-		AbstractQuestionList questions= new PQuestionList(list);
-		return (PQuestionList) questions;
+			AbstractQuestionList questions= new PQuestionList(list);
+			return (PQuestionList) questions;
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 	
 	
-	protected void deleteQuestion(long id, int questionType, String username) {
+	protected void deleteQuestion(long id, int questionType, String username) throws SQLException {
+		
 		if(!isCheckAdmin(username)) {
 	        return;
 	    }
 	    if(questionType == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-            mcQuestionRepository.delete(id);
+	    	mcQuestionRepository.delete(id);
         }
         else if (questionType == TypeDefinition.PHOTO_QUESTION) {
             pQuestionRepository.delete(id);
         }
 	}
 	
-	protected List<MCQuestionWrapper> findAllQuestions(String username){
+	protected List<MCQuestionWrapper> findAllQuestions(String username) throws NullPointerException, SQLException{
 	    if(!isCheckAdmin(username)) {
 	        return null;
 	    }
-        List<MCQuestionWrapper> list= mcQuestionRepository.findAllQuestionList();
-        return list;
+	    try {
+	    	List<MCQuestionWrapper> list= mcQuestionRepository.findAllQuestionList();
+	    	return list;
+	    } catch (Exception e) {
+			throw e;
+		}
 	}
 	
 	protected AbstractQuestion findQuestion(String username, long id, Integer questionType) throws Exception{
@@ -292,24 +314,24 @@ public abstract class AbstractQuestionService {
         }
 	}
 	
-	protected void updateQuestion(long id, AbstractQuestion question, String username, int questionType) {
-	    if(!isCheckAdmin(username)) {
-	        return;
-	    }
-	    if(questionType == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-	        MultipleChoiceQuestion multipleChoiceQuestion= (MultipleChoiceQuestion)question;
-	        MCQuestionWrapper questionWrapper= new MCQuestionWrapper(id, multipleChoiceQuestion);
-	        mcQuestionRepository.save(questionWrapper);
-	    }
-        else if (questionType == TypeDefinition.PHOTO_QUESTION) {
-            PhotoQuestion photoQuestion= (PhotoQuestion) question;
-            PQuestionWrapper questionWrapper= new PQuestionWrapper(id, photoQuestion);
-            pQuestionRepository.save(questionWrapper);
-        }
-	}
-	
-	protected void DeteleQuestion(long id) {
-	    
+	protected void updateQuestion(long id, AbstractQuestion question, String username, int questionType) throws NullPointerException, SQLException {
+		try {
+			if(!isCheckAdmin(username)) {
+		        return;
+		    }
+		    if(questionType == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
+		        MultipleChoiceQuestion multipleChoiceQuestion= (MultipleChoiceQuestion)question;
+		        MCQuestionWrapper questionWrapper= new MCQuestionWrapper(id, multipleChoiceQuestion);
+		        mcQuestionRepository.save(questionWrapper);
+		    }
+	        else if (questionType == TypeDefinition.PHOTO_QUESTION) {
+	            PhotoQuestion photoQuestion= (PhotoQuestion) question;
+	            PQuestionWrapper questionWrapper= new PQuestionWrapper(id, photoQuestion);
+	            pQuestionRepository.save(questionWrapper);
+	        }
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 	
 	protected int countQuestion(Integer questionType) {
@@ -338,7 +360,6 @@ public abstract class AbstractQuestionService {
 	}
 	
 	private String getSelection(String selection, AbstractQuestion question) {
-	    
 	    if(selection.equals("A")) {
 	        
 	        return question.getAnswerA();

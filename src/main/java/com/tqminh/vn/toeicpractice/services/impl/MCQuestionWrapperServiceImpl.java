@@ -1,5 +1,6 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import com.tqminh.vn.toeicpractice.services.QuestionWrapperService;
 public class MCQuestionWrapperServiceImpl extends AbstractQuestionService implements QuestionWrapperService{
 
 	@Override
-	public List<MCQuestionWrapper> findAllQuestionWarraper(String username) {
+	public List<MCQuestionWrapper> findAllQuestionWarraper(String username) throws NullPointerException, SQLException {
 		return super.findAllQuestions(username);
 	}
 	

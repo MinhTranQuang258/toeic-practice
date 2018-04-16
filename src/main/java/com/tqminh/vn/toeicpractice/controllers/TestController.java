@@ -13,17 +13,13 @@ import com.tqminh.vn.toeicpractice.model.Account;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.repositories.AccountWrapperRepository;
-import com.tqminh.vn.toeicpractice.repositories.MCQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
-import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.PhotoService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
-import org.springframework.stereotype.Controller;
 
 @RestController
-//@Controller
 public class TestController {
 	
 	@Autowired
@@ -33,8 +29,8 @@ public class TestController {
 	@Autowired
 	private AccountWrapperRepository aRepo;
 	
-	@Autowired
-	private MCQuestionWrapperRepository mCQuestionWrapperRepository;
+//	@Autowired
+//	private MCQuestionWrapperRepository mCQuestionWrapperRepository;
 	
 	@Autowired
 	private PQuestionWrapperRepository pQuestionWrapperRepository;

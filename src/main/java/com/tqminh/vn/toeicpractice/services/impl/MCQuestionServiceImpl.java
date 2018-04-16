@@ -87,13 +87,23 @@ implements QuestionService<MultipleChoiceQuestion>{
 	}
 
 	@Override
-	public void updateQuestion(long id, AbstractQuestion question, String username) {
-		super.updateQuestion(id, question, username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
+	public void updateQuestion(long id, AbstractQuestion question, String username) throws SQLException {
+		try {
+			super.updateQuestion(id, question, username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
+		} catch (NullPointerException e) {
+			throw e;
+		} catch (SQLException e) {
+			throw e;
+		}
 	}
 
 	@Override
-	public void deleteQuestion(long id, String username) {
-		super.deleteQuestion(id, TypeDefinition.MULTIPLE_CHOICE_QUESTION, username);
+	public void deleteQuestion(long id, String username) throws SQLException {
+		try {
+			super.deleteQuestion(id, TypeDefinition.MULTIPLE_CHOICE_QUESTION, username);
+		} catch (SQLException e) {
+			throw e;
+		}
 	}
 	
 }

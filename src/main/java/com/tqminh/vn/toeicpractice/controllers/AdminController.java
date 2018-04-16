@@ -1,5 +1,6 @@
 package com.tqminh.vn.toeicpractice.controllers;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +46,14 @@ public class AdminController {
 	@RequestMapping(value= "/adminEdit", method= RequestMethod.GET)
 	public String displayAdminEditPage(Model model, HttpSession session) {
 		String username= (String)session.getAttribute("username");
-		List<MCQuestionWrapper> questions= mcQuestionWrapperService.findAllQuestionWarraper(username);
+		List<MCQuestionWrapper> questions = null;
+		try {
+			questions = mcQuestionWrapperService.findAllQuestionWarraper(username);
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("questions", questions);
 		model.addAttribute("question", new Question());
 		return Constant.Page.ADMIN_EDIT_PAGE;
@@ -105,6 +113,17 @@ public class AdminController {
 	    
 	}
 	
+	@RequestMapping(value= "/deleteQuestion", method= RequestMethod.POST)
+	public String deteleQuestion(HttpSession session) {
+		String username= (String)session.getAttribute("username");
+		try {
+			mcQuestionService.deleteQuestion(4, username);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "redirect:/adminEdit";
+	}
+	
 	@RequestMapping(value= "/insertMCQuestion", method= RequestMethod.POST)
     public String insertMCQuestion(@ModelAttribute("question") Question question, HttpServletRequest request) {
 	    String radio= request.getParameter("rightAnswer");
@@ -119,7 +138,11 @@ public class AdminController {
 		String radio= request.getParameter("rightAnswer");
 		String username= (String)session.getAttribute("username");
 		AbstractQuestion multipleChoiceQuestion= prepareQuestion(radio, question);
-		mcQuestionService.updateQuestion(1, multipleChoiceQuestion, username);
+		try {
+			mcQuestionService.updateQuestion(1, multipleChoiceQuestion, username);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return "redirect:/adminEdit";
 	}
 }
