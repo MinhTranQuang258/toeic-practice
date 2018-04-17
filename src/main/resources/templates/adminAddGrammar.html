@@ -21,7 +21,7 @@
             <!-- <img src="" alt=""> -->
           </div>
           <div class="header__user-name">
-            <p class="header__user-text">Username</p>
+            <p class="header__user-text"></p>
           </div>
         </div>
         <div class="header__setting col-lg-9">
@@ -88,7 +88,7 @@
                 </a>
               </li>
               <li class="sidebar__item">
-                <a href="/displayAdminEdit" class="sidebar__link sidebar--sub__link">
+                <a href="/adminEdit" class="sidebar__link sidebar--sub__link">
                   <i class="fa fa-eraser" aria-hidden="true"></i>
                   Chỉnh sửa câu hỏi
                 </a>
@@ -104,7 +104,6 @@
             <div class="row question__container">
               <div class="admin col-lg-11 p-5">
 
-                <form action="">
                   <div class="admin__question-option row">
                     <!-- <div class="form-group col-lg-3">
                       <label>Loại câu hỏi: </label>
@@ -116,8 +115,9 @@
                       </select>
                     </div> -->
                   </div>
+                  
+                  <form th:object="${question}" method="POST">
                   <div class="admin__question px-5 py-3">
-                    <form th:object="${question}" method="POST">
                       <div class="admin__section">
                         <div class="form-group">
                           <textarea class="form-control" rows="3" th:field="*{detailQuestion}"></textarea>
@@ -162,7 +162,6 @@
 
                         <button type="submit" class="btn btn-lg btn__default" formaction="/insertMCQuestion" formmethod="post">Thêm</button>
                       </div>
-                    </form>
                   </div>
                 </form>
               </div>

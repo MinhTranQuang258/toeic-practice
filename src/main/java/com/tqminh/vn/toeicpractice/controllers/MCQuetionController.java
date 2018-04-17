@@ -44,7 +44,7 @@ public class MCQuetionController {
         AbstractQuestion question= (AbstractQuestion) map.get("question");
         mcQuestionService.validateQuestion(username, question, selection);
         
-        return "redirect:/next";
+        return "redirect:/nextMCQuestion";
     }
 	
 	@RequestMapping(value= "/nextMCQuestion", method= RequestMethod.GET)

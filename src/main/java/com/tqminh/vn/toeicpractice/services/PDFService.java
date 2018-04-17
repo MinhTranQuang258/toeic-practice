@@ -6,10 +6,12 @@ import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 
 public interface PDFService {
 	
-	void loadFile() throws InvalidPasswordException, IOException;
+	void readFile(String patch) throws InvalidPasswordException, IOException;
 	
-	String readFile();
+	void setSortByPosition(boolean newSortByPosition);
 	
+	void setStartPage(int startPageValue);
 	
+	void setEndPage(int endPageValue);
 	
 }

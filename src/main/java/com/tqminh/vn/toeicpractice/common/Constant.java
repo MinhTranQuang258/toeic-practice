@@ -1,3 +1,15 @@
+/*
+ * Class: Constant
+ *
+ * Created on Apr 17, 2018
+ *
+ * (c) Copyright Swiss Post Solution, unpublished work
+ * All use, disclosure, and/or reproduction of this material is prohibited
+ * unless authorized in writing.  All Rights Reserved.
+ * Rights in this program belong to:
+ * Swiss Post Solution.
+ * Floor 4-5-8, ICT Tower, Quang Trung Software City
+ */
 package com.tqminh.vn.toeicpractice.common;
 
 public class Constant {
@@ -46,20 +58,26 @@ public class Constant {
 		
 		public final static String REGISTER_PAGE= "register";
 		
+		
 		public final static String ADMIN_HOME_PAGE= "adminHome";
-		
-		public final static String ADMIN_ADD= "adminAdd";
-		
-		public final static String ADMIN_EDIT_PAGE= "adminEdit";
 		
 		public final static String ADMIN_ADD_PAGE= "adminAdd";
 		
-		public final static String ADMIN_ADD_GRAMMAR= "adminAddGrammar";
+		public final static String ADMIN_EDIT_PAGE= "adminEdit";
+		
+		public final static String ADMIN_ADD_GRAMMAR_PAGE= "adminAddGrammar";
                 
-        public final static String ADMIN_ADD_LISTENING= "adminAddListening";
+        public final static String ADMIN_ADD_LISTENING_PAGE= "adminAddListening";
                 
-        public final static String ADMIN_ADD_READING = "adminAddReading";
+        public final static String ADMIN_ADD_READING_PAGE = "adminAddReading";
 
+        public final static String ADMIN_QUESTION_GRAMMAR_PAGE = "adminQuestionGrammar";
+        
+        public final static String ADMIN_QUESTION_LISTENING_PAGE = "adminQuestionListening";
+        
+        public final static String ADMIN_QUESTION_READING_PAGE = "adminQuestionReading";
+        
+        
         public final static String USER_HOME_PAGE= "userHome";
         
         public final static String USER_GRAMMER_PAGE= "userGrammar";

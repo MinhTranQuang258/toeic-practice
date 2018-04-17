@@ -99,21 +99,21 @@ public class TestController {
 		return "question";
 	}
         
-    @RequestMapping(value= "/admin/grammar", method= RequestMethod.GET)
-	public String showAdminQuestionGrammar() {
-		return "adminQuestionGrammar";
-	}
-	
-    @RequestMapping(value= "/admin/listening", method= RequestMethod.GET)
-	public String showAdminQuestionListening() {
-		return "adminQuestionListening";
-	}
-        
-    @RequestMapping(value= "/admin/reading", method= RequestMethod.GET)
-	public String showAdminQuestionReading() {
-		return "adminQuestionReading";
-	}
-        
+//    @RequestMapping(value= "/admin/grammar", method= RequestMethod.GET)
+//	public String showAdminQuestionGrammar() {
+//		return "adminQuestionGrammar";
+//	}
+//	
+//    @RequestMapping(value= "/admin/listening", method= RequestMethod.GET)
+//	public String showAdminQuestionListening() {
+//		return "adminQuestionListening";
+//	}
+//        
+//    @RequestMapping(value= "/admin/reading", method= RequestMethod.GET)
+//	public String showAdminQuestionReading() {
+//		return "adminQuestionReading";
+//	}
+//        
 	
     @RequestMapping(value= "/listening", method= RequestMethod.GET)
 	public String showQuestionListening() {

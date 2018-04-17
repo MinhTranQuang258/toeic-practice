@@ -1,7 +1,9 @@
 package com.tqminh.vn.toeicpractice.controllers;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,6 +28,8 @@ import com.tqminh.vn.toeicpractice.services.QuestionWrapperService;
 @Controller
 public class AdminController {
     
+    private Map<String, Object> map= new HashMap<>();
+    
     @Autowired
     @Qualifier("MCQuestionService")
     private QuestionService<MultipleChoiceQuestion> mcQuestionService;
@@ -49,38 +53,55 @@ public class AdminController {
 		List<MCQuestionWrapper> questions = null;
 		try {
 			questions = mcQuestionWrapperService.findAllQuestionWarraper(username);
+			model.addAttribute("questions", questions);
+	        model.addAttribute("question", new Question());
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("questions", questions);
-		model.addAttribute("question", new Question());
 		return Constant.Page.ADMIN_EDIT_PAGE;
 	}
 	
 	@RequestMapping(value= "/adminAdd", method= RequestMethod.GET)
 	public String displayAdminAddPage() {
-	    return Constant.Page.ADMIN_ADD;
+	    return Constant.Page.ADMIN_ADD_PAGE;
 	}
 	
 	@RequestMapping(value= "/displayAdminAddGrammar", method= RequestMethod.GET)
 	public String displayAdminAddGrammarPage(Model model) {
 		model.addAttribute("question", new Question());
-		return Constant.Page.ADMIN_ADD_GRAMMAR;
+		return Constant.Page.ADMIN_ADD_GRAMMAR_PAGE;
 	}
         
     @RequestMapping(value= "/displayAdminAddListening", method= RequestMethod.GET)
 	public String displayAdminAddListeningPage(Model model) {
 		model.addAttribute("question", new Question());
-		return Constant.Page.ADMIN_ADD_LISTENING;
+		return Constant.Page.ADMIN_ADD_LISTENING_PAGE;
 	}
 	
     @RequestMapping(value= "/displayAdminAddReading", method= RequestMethod.GET)
 	public String displayAdminAddReadingPage(Model model) {
 		model.addAttribute("question", new Question());
-		return Constant.Page.ADMIN_ADD_READING;
+		return Constant.Page.ADMIN_ADD_READING_PAGE;
 	}
+    
+    @RequestMapping(value= "/admin/grammar", method= RequestMethod.GET)
+    public String displayAdminQuestionGrammar(Model model, HttpSession session) {
+        String username= (String)session.getAttribute("username");
+        MultipleChoiceQuestion question;
+        try {
+            question = mcQuestionService.getQuestion(username, 1);
+            model.addAttribute("question", question);
+            map.put("question", question);
+        }
+        catch (Exception e) {
+
+            e.printStackTrace();
+        }
+        
+        return Constant.Page.ADMIN_QUESTION_GRAMMAR_PAGE;
+    }
         
 	@RequestMapping(value= "/insertPQuestion", method= RequestMethod.POST)
 	public void insertPQuestion() {
@@ -145,4 +166,31 @@ public class AdminController {
 		}
 		return "redirect:/adminEdit";
 	}
+	
+	@RequestMapping(value= "/admin/validate" , method= RequestMethod.POST)
+    public String validate(HttpServletRequest servletRequest, HttpSession session) throws Exception {
+        String username= (String)session.getAttribute("username");
+        String selection= servletRequest.getParameter("answerGroup");
+        AbstractQuestion question= (AbstractQuestion) map.get("question");
+        mcQuestionService.validateQuestion(username, question, selection);
+        
+        return "redirect:/admin/nextMCQuestion";
+    }
+	
+	@RequestMapping(value= "/admin/nextMCQuestion", method= RequestMethod.GET)
+    public String nextQuestion(HttpSession session, Model model) throws Exception {
+        String username= (String) session.getAttribute("username");
+        int index= mcQuestionService.nextQuestion(username);
+        
+        MultipleChoiceQuestion question= mcQuestionService.getQuestion(username, index);
+        
+        model.addAttribute("question", question);
+        map.put("question", question);
+        return Constant.Page.ADMIN_QUESTION_GRAMMAR_PAGE;
+    }
+	
+	@RequestMapping(value= "/admin/submitMCQuestion", method= RequestMethod.POST)
+    public String submit() {
+        return null;
+    }
 }
