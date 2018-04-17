@@ -1,7 +1,7 @@
 /*
- * Class: PhotoQuestionController
+ * Class: PQuestionController
  *
- * Created on Apr 16, 2018
+ * Created on Apr 17, 2018
  *
  * (c) Copyright Swiss Post Solution, unpublished work
  * All use, disclosure, and/or reproduction of this material is prohibited
@@ -13,19 +13,16 @@
 package com.tqminh.vn.toeicpractice.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Controller
-public class PhotoQuestionController {
-
-    @Autowired
-    @Qualifier("PQuestionService")
-    private QuestionService<PhotoQuestion> pQuestionService;    
+public class PQuestionController {
     
+    @Autowired
+    private QuestionService<PhotoQuestion> questionService;
     
     
 }

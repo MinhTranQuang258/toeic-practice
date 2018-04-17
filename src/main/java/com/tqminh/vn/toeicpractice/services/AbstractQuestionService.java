@@ -163,12 +163,11 @@ public abstract class AbstractQuestionService {
 	}
 	
 	protected AbstractQuestion getQuestion(String username, int index, Integer typeQuestion) throws Exception{
+	    saveCache(username, typeQuestion, index);
 		if(typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-			saveCache(username, typeQuestion, index);
 			return loadMCQuestions(username, index);
 		}
 		else if(typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-			saveCache(username, typeQuestion, index);
 			return loadPQuestions(username, index);
 		}
 		return null;

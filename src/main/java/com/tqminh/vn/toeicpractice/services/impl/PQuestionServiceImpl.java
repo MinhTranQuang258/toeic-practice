@@ -76,13 +76,11 @@ implements QuestionService<PhotoQuestion>, PhotoService{
 	
 	@Override
 	public void updateQuestion(long id, AbstractQuestion question, String username) {
-		// TODO Auto-generated method stub
 		
 	}
 	
 	@Override
 	public void deleteQuestion(long id, String username) {
-		// TODO Auto-generated method stub
 		
 	}
 
