@@ -27,13 +27,22 @@
         <div class="header__setting col-lg-9">
           <ul class="nav justify-content-end">
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                Settings
-              </a>
+              <div class="btn-group">
+                <button type="button" class="btn btn__default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Thiết lập
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Thay đổi mật khẩu</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Thiết lập khác</a>
+                </div>
+              </div>
             </li>
             <li class="nav-item">
-              <a href="/logout" class="nav-link">
-                Logout
+              <a href="/logout" class="btn btn__default">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Đăng xuất
               </a>
             </li>
           </ul>

@@ -26,13 +26,9 @@
                   <label for="username" class="login__text">Username:</label>
                   <input type="text" th:field="*{username}" class="form-control" />
                 </div>
-                <div class="form-group">
+                <div class="form-group  m--bottom-10">
                   <label for="password" class="login__text">Password:</label>
                   <input type="password" th:field="*{password}" class="form-control" />
-                </div>
-                <div class="flex m--bottom-10">
-                  <input type="checkbox" id="rememberChbox" class="checkbox m--right-5 form-check-input" />
-                  <label for="rememberChbox" class="login__text form-check-label">Remember me</label>
                 </div>
                 <input type="submit" value="Login" class="btn btn-lg btn__default" />
               </form>

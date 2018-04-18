@@ -20,13 +20,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
-  /* line 8, ../scss/_layout.scss */
-  .page-header .btn {
-    margin-left: 10px; }
-    /* line 10, ../scss/_layout.scss */
-    .page-header .btn:hover {
-      color: #fff; }
-/* line 15, ../scss/_layout.scss */
+/* line 9, ../scss/_layout.scss */
 .page-main {
   padding: 0; }
 
@@ -190,7 +184,7 @@ label {
 .header__user-name p {
   color: #6db22f;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   text-transform: uppercase;
   margin-bottom: 0; }
 /* line 16, ../scss/_header.scss */

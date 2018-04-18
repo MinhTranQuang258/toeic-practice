@@ -27,13 +27,22 @@
         <div class="header__setting col-lg-9">
           <ul class="nav justify-content-end">
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                Settings
-              </a>
+              <div class="btn-group">
+                <button type="button" class="btn btn__default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Thiết lập
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Thay đổi mật khẩu</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Thiết lập khác</a>
+                </div>
+              </div>
             </li>
             <li class="nav-item">
-              <a href="/logout" class="nav-link">
-                Logout
+              <a href="/logout" class="btn btn__default">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Đăng xuất
               </a>
             </li>
           </ul>
@@ -84,7 +93,7 @@
               <div class="question col-lg-8">
                 <form method="POST" th:action="@{/validate}">
                   <div class="question__header">
-                    <h3 class="question__details" th:text= "${question.detailQuestion}">
+                    <h3 class="question__details" th:text="${question.detailQuestion}">
                       <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
                     </h3>
                   </div>
@@ -102,26 +111,26 @@
                       <ul class="question__answers-list">
                         <li class="question__choice">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="answerGroup" value="A"/>
+                            <input class="form-check-input" type="radio" name="answerGroup" value="A" />
                             <label class="form-check-label" for="answer1" th:text="${question.answerA}"> </label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" value="B" />
-                            <label class="form-check-label" for="answer2" th:text="${question.answerB}" ></label>
+                            <label class="form-check-label" for="answer2" th:text="${question.answerB}"></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" value="C" />
-                            <label class="form-check-label" for="answer3" th:text="${question.answerC}" ></label>
+                            <label class="form-check-label" for="answer3" th:text="${question.answerC}"></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="answerGroup" value="D" />
-                            <label class="form-check-label" for="answer4" th:text="${question.answerD}" ></label>
+                            <label class="form-check-label" for="answer4" th:text="${question.answerD}"></label>
                           </div>
                         </li>
                       </ul>
