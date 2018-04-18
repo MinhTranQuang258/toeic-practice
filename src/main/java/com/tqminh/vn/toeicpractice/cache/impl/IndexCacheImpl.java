@@ -11,9 +11,14 @@ import com.tqminh.vn.toeicpractice.cache.IndexCache;
 @Component("IndexCache")
 public class IndexCacheImpl implements IndexCache<Long>{
 
-	private Map<String, Set<Long>> indexMap= new HashMap<>();
+	private Map<String, Set<Long>> indexMap;
 
-	@Override
+	public IndexCacheImpl() {
+        super();
+        indexMap= new HashMap<>();
+    }
+
+    @Override
 	public boolean isCheckIndex(String username, long index) {
 		if(index == 0) {
 			return false;

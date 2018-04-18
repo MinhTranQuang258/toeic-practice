@@ -23,7 +23,12 @@ import com.tqminh.vn.toeicpractice.model.task.AbstractQuestionList;
 @Component("QuestionListCacheImpl")
 public class QuestionListCacheImpl implements QuestionListCache<AbstractQuestionList>{
 
-    private Map<String,AbstractQuestionList> map= new HashMap<>();
+    private Map<String,AbstractQuestionList> map;
+    
+    public QuestionListCacheImpl() {
+        super();
+        map= new HashMap<>();
+    }
 
     @Override
     public void putQuestionList(String username, AbstractQuestionList questionList) {

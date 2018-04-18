@@ -8,7 +8,7 @@ import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 
 public interface QuestionService<T extends AbstractQuestion> {
 	
-	String insertQuestion(T question);
+	void insertQuestion(T question) throws NullPointerException, SQLException;
 	
 	void updateQuestion(long id, AbstractQuestion question, String username) throws SQLException;
 	
