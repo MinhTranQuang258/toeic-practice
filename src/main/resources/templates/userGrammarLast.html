@@ -21,9 +21,7 @@
             <!-- <img src="" alt=""> -->
           </div>
           <div class="header__user-name">
-            <form action="">
-              <p class="header__user-text"></p>
-            </form>
+            <p class="header__user-text">Username</p>
           </div>
         </div>
         <div class="header__setting col-lg-9">
@@ -66,51 +64,24 @@
             <ul class="sidebar__list sidebar__list--sub">
 
               <li class="sidebar__item">
-                <a href="/admin/listening" class="sidebar__link sidebar--sub__link">
+                <a href="/listening" class="sidebar__link sidebar--sub__link">
                   <i class="fa fa-headphones" aria-hidden="true"></i>
                   Nghe
                 </a>
               </li>
               <li class="sidebar__item">
-                <a href="/admin/grammar" class="sidebar__link sidebar--sub__link">
+                <a href="/grammar" class="sidebar__link sidebar--sub__link">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                   Ngữ pháp
                 </a>
               </li>
               <li class="sidebar__item">
-                <a href="/admin/reading" class="sidebar__link sidebar--sub__link">
+                <a href="/reading" class="sidebar__link sidebar--sub__link">
                   <i class="fa fa-book" aria-hidden="true"></i>
                   Đọc
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="sidebar__item">
-            <a href="#" class="js-sidebar-item  sidebar__link">
-              <i class="fa fa-wrench" aria-hidden="true"></i>
-              Quản lý
-            </a>
-            <ul class="sidebar__list sidebar__list--sub">
-
-              <li class="sidebar__item">
-                <a href="/adminAdd" class="sidebar__link sidebar--sub__link">
-                  <i class="fa fa-plus" aria-hidden="true"></i>
-                  Thêm câu hỏi
-                </a>
-              </li>
-              <li class="sidebar__item">
-                <a href="/adminEdit" class="sidebar__link sidebar--sub__link">
-                  <i class="fa fa-eraser" aria-hidden="true"></i>
-                  Chỉnh sửa câu hỏi
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="sidebar__item">
-            <a href="/admin/leaderboard" class="js-sidebar-item  sidebar__link">
-              <i class="fa fa-trophy" aria-hidden="true"></i>
-              Thống kê
-            </a>
           </li>
         </ul>
       </nav>
@@ -120,12 +91,12 @@
           <div class="container-fluid">
             <div class="row question__container">
               <div class="question col-lg-8">
-                <div class="question__header">
-                  <h3 class="question__details" th:text="${question.detailQuestion}">
-                    <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
-                  </h3>
-                </div>
-                <form method="POST">
+                <form method="POST" th:action="@{/validate}">
+                  <div class="question__header">
+                    <h3 class="question__details" th:text="${question.detailQuestion}">
+                      <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
+                    </h3>
+                  </div>
                   <div class="question__body">
                     <div class="question__instructions">
                       <small class="question__instructions-text">
@@ -136,63 +107,59 @@
                         Chọn câu trả lời đúng nhất và gửi đáp án bằng cách nhấn vào nút "Xác nhận" bên dưới.
                       </small>
                     </div>
-
                     <div class="question__answers">
                       <ul class="question__answers-list">
                         <li class="question__choice">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="answerGroup" id="answer1" value="value1" />
-                            <label class="form-check-label" for="answer1" th:text="${question.answerA}"></label>
+                            <input class="form-check-input" type="radio" name="answerGroup" value="A" />
+                            <label class="form-check-label" for="answer1" th:text="${question.answerA}"> </label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="answerGroup" id="answer2" value="value2" />
+                            <input class="form-check-input" type="radio" name="answerGroup" value="B" />
                             <label class="form-check-label" for="answer2" th:text="${question.answerB}"></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="answerGroup" id="answer3" value="value3" />
+                            <input class="form-check-input" type="radio" name="answerGroup" value="C" />
                             <label class="form-check-label" for="answer3" th:text="${question.answerC}"></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="answerGroup" id="answer4" value="value4" />
+                            <input class="form-check-input" type="radio" name="answerGroup" value="D" />
                             <label class="form-check-label" for="answer4" th:text="${question.answerD}"></label>
                           </div>
                         </li>
                       </ul>
                     </div>
-
                     <div class="question__submit">
-                      <button type="submit" id="btn-submit-answer" class="btn btn-lg btn__default" formaction="/admin/validate">Xác nhận</button>
+                      <button type="submit" id="btn-submit-answer" class="btn btn-lg btn__default">Kết thúc</button>
                     </div>
                   </div>
-
-                  <div class="question__footer">
-
-                    <div class="question__navigator">
-
-                      <div class="question__navigator-prev">
-                        <button class="question__navigator-button js-prev-q" aria-hidden="true" formaction="/backMCQuestion">
+                </form>
+                <div class="question__footer">
+                  <div class="question__navigator">
+                    <div class="question__navigator-prev">
+                      <form action="/backQuestion" method="get">
+                        <button class="question__navigator-button js-prev-q" aria-hidden="true">
                           <i class="fa fa-arrow-left" aria-hidden="true"></i>
                           Câu trước
                         </button>
-                      </div>
-
-                      <div class="question__navigator-next">
-                        <button class="question__navigator-button js-next-q" aria-hidden="true" formaction="/nextMCQuestion">
+                      </form>
+                    </div>
+                    <div class="question__navigator-next">
+                      <form action="/nextQuestion" method="get">
+                        <button class="question__navigator-button js-next-q" aria-hidden="true">
                           Câu kế
                           <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         </button>
-                      </div>
-
+                      </form>
                     </div>
-
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
