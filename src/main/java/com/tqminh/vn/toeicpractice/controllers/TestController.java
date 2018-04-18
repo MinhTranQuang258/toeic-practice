@@ -18,8 +18,10 @@ import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
 import com.tqminh.vn.toeicpractice.services.PhotoService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
+import org.springframework.stereotype.Controller;
 
-@RestController
+//@RestController
+@Controller
 public class TestController {
 	
 	@Autowired
@@ -114,6 +116,10 @@ public class TestController {
 //		return "adminQuestionReading";
 //	}
 //        
+        @RequestMapping(value= "/admin/leaderboard", method= RequestMethod.GET)
+	public String showAdminQuestionReading() {
+		return "leaderboard";
+	}
 	
     @RequestMapping(value= "/listening", method= RequestMethod.GET)
 	public String showQuestionListening() {

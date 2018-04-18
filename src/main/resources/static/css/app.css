@@ -10,7 +10,25 @@
 /* line 2, ../scss/_layout.scss */
 .page-header {
   min-height: 70px;
-  border: 1px solid #000; }
+  border-bottom: 1px solid rgba(73, 80, 87, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  /* line 8, ../scss/_layout.scss */
+  .page-header .btn {
+    margin-left: 10px; }
+    /* line 10, ../scss/_layout.scss */
+    .page-header .btn:hover {
+      color: #fff; }
+/* line 15, ../scss/_layout.scss */
+.page-main {
+  padding: 0; }
 
 /* line 2, ../scss/_reset.scss */
 p,
@@ -167,6 +185,20 @@ label {
 /* line 30, ../scss/_things.scss */
 .dash {
   color: #6db22f; }
+
+/* line 7, ../scss/_header.scss */
+.header__user-name p {
+  color: #6db22f;
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 0; }
+/* line 16, ../scss/_header.scss */
+.header .btn {
+  margin-left: 10px; }
+  /* line 18, ../scss/_header.scss */
+  .header .btn:hover {
+    color: #fff; }
 
 /* line 13, ../scss/_sidebar.scss */
 .sidebar {
@@ -346,9 +378,6 @@ label {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     padding: 50px 0;
     min-height: 93vh;
     background-color: #6db22f; }
@@ -500,5 +529,25 @@ label {
     margin-top: 30px;
     padding-bottom: 20px;
     border-bottom: 1px solid #ced4da; }
+
+/* line 2, ../scss/pages/_leaderboard.scss */
+.leaderboard__header {
+  margin-bottom: 30px; }
+  /* line 5, ../scss/pages/_leaderboard.scss */
+  .leaderboard__header h2 {
+    color: #6DB22F;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 50px; }
+/* line 12, ../scss/pages/_leaderboard.scss */
+.leaderboard__online {
+  color: #6DB22F;
+  font-weight: 700; }
+/* line 16, ../scss/pages/_leaderboard.scss */
+.leaderboard__caption {
+  color: #6DB22F;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px; }
 
 /*# sourceMappingURL=app.css.map */

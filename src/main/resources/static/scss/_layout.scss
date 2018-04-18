@@ -1,6 +1,18 @@
 .page {
   &-header {
     min-height: 70px;
-    border: 1px solid #000;
+    border-bottom: 1px solid rgba(73, 80, 87, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & .btn {
+      margin-left: 10px;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  &-main {
+    padding: 0;
   }
 }

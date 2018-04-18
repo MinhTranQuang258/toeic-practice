@@ -1,0 +1,22 @@
+.header {
+  &__user {
+    &-avatar {
+
+    }
+    &-name {
+      & p {
+        color: #6db22f;
+        font-weight: 700;
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-bottom: 0;
+      }
+    }
+  }
+  & .btn {
+    margin-left: 10px;
+    &:hover {
+      color: #fff;
+    }
+  }
+}

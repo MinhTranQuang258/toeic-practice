@@ -1,0 +1,22 @@
+.leaderboard {
+  &__header {
+    // border: 1px solid #000;
+    margin-bottom: 30px;
+    & h2 {
+      color: #6DB22F;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+    }
+  }
+  &__online {
+    color: #6DB22F;
+    font-weight: 700;
+  }
+  &__caption {
+    color: #6DB22F;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
