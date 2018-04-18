@@ -39,7 +39,7 @@ implements QuestionService<MultipleChoiceQuestion>{
 	}
 
 	@Override
-	public String insertQuestion(MultipleChoiceQuestion question) {
+	public void insertQuestion(MultipleChoiceQuestion question) {
 		try {
 			if(question != null) {
 				MCQuestionWrapper questionWrapper= new MCQuestionWrapper(question);
@@ -54,7 +54,6 @@ implements QuestionService<MultipleChoiceQuestion>{
 		} catch (Exception e) {
 			throw e;
 		}
-		return "";
 	}
 
     @Override

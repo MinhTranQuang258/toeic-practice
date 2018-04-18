@@ -55,4 +55,5 @@ public class StatisticalServiceImpl implements StatisticalService{
         ResultWrapper resultWrapper= repository.findResultByDateAndUsername(date, username);
         return resultWrapper.getResult();
     }
+    
 }

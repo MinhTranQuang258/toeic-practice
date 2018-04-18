@@ -40,7 +40,7 @@ implements QuestionService<PhotoQuestion>, PhotoService{
 	}
 	
 	@Override
-	public String insertQuestion(PhotoQuestion question) {
+	public void insertQuestion(PhotoQuestion question) throws NullPointerException, SQLException{
 		try {
 			if(isCheckQuestionInfo(question)) {
 				PQuestionWrapper questionWrapper= new PQuestionWrapper(question);
@@ -55,7 +55,6 @@ implements QuestionService<PhotoQuestion>, PhotoService{
 		} catch (Exception e) {
 			throw e;
 		}
-		return null;
 	}
 	
 	private boolean isCheckQuestionInfo(PhotoQuestion photoQuestion) {
@@ -75,13 +74,26 @@ implements QuestionService<PhotoQuestion>, PhotoService{
 	}
 	
 	@Override
-	public void updateQuestion(long id, AbstractQuestion question, String username) {
-		
+	public void updateQuestion(long id, AbstractQuestion question, String username) throws SQLException {
+		try {
+            super.updateQuestion(id, question, username, TypeDefinition.PHOTO_QUESTION);
+        }
+        catch (NullPointerException e) {
+            throw e;
+        }
+        catch (SQLException e) {
+            throw e;
+        }
 	}
 	
 	@Override
-	public void deleteQuestion(long id, String username) {
-		
+	public void deleteQuestion(long id, String username) throws SQLException {
+		try {
+            super.deleteQuestion(id, TypeDefinition.PHOTO_QUESTION, username);
+        }
+        catch (SQLException e) {
+            throw e;
+        }
 	}
 
 	@Override
