@@ -208,7 +208,28 @@
                     <div class="float-right mt-5">
                       <button type="reset" class="btn btn-lg btn__default" formaction="/adminEdit" formmethod="post">Nhập lại</button>
                       <button type="submit" class="btn btn-lg btn__default" formaction="/updateMCQuestion" formmethod="post">Sửa</button>
-                      <button type="button" class="btn btn-lg btn__default" formaction="/deleteQuestion" formmethod="post">Xóa câu hỏi này</button>
+                      <button type="button" class="btn btn-lg btn__default" data-toggle="modal" data-target="#removeQModal">Xóa câu hỏi</button>
+
+                      <div class="modal fade" id="removeQModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Xóa câu hỏi</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nhập id câu hỏi cần xóa" />
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-lg btn__default" formaction="/deleteQuestion" formmethod="post">Xác nhận xóa</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -222,6 +243,8 @@
 
 
   <script type="text/javascript" th:src="@{/webjars/jquery/jquery-3.3.1.js}"></script>
+  <script type="text/javascript" th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js}"></script>
+  <script type="text/javascript" th:src="@{/webjars/bootstrap/bootstrap.min.js}"></script>
   <script type="text/javascript" th:src="@{/js/admin.js}"></script>
   <script type="text/javascript" th:src="@{/js/app.js}"></script>
 </body>
