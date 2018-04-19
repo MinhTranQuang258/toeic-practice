@@ -8,6 +8,8 @@
       border: 3px dashed #6db22f;
       padding-top: 20px;
       padding-bottom: 20px;
+      display: flex;
+      align-items: center;
     }
     &-list {
       & .list {
