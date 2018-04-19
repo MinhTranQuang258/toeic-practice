@@ -17,6 +17,7 @@ import com.tqminh.vn.toeicpractice.cache.IndexCache;
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.common.TypeDefinition;
+import com.tqminh.vn.toeicpractice.configuration.GeneralConfiguration;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
@@ -52,8 +53,8 @@ public abstract class AbstractQuestionService {
 	@Qualifier("IndexCache")
 	private IndexCache<Long> indexCache;
 	
-//	@Autowired
-//	private GeneralConfiguration configuration;
+	@Autowired
+	private GeneralConfiguration configuration;
 	
 	private Boolean isCheckNextQuestionIndex(int index, Integer typeQuestion) throws NullPointerException{
 		switch (typeQuestion) {
@@ -218,7 +219,7 @@ public abstract class AbstractQuestionService {
 			int count = countQuestion(typeQuestion);
 			indexCache.setIndex(username, set);
 			
-			while(list.size() <= Constant.QuestionLimit.MC_QUESTION_LIMIT) {
+			while(list.size() <= configuration.getMaxMCQuestion()) {
 				long index= random.nextInt(count);
 				if(!indexCache.isCheckIndex(username, index)) {
 					continue;
@@ -243,7 +244,7 @@ public abstract class AbstractQuestionService {
 			int count = countQuestion(typeQuestion);
 			indexCache.setIndex(username, set);
 			
-			while(list.size() == Constant.QuestionLimit.MC_QUESTION_LIMIT) {
+			while(list.size() == configuration.getMaxPQuestion()) {
 				long index= random.nextInt(count);
 				if(!indexCache.isCheckIndex(username, index)) {
 					continue;
@@ -405,6 +406,7 @@ public abstract class AbstractQuestionService {
 	private ResultWrapper saveResult(String date, String username, double score, String timestamp) throws SQLException {
 	    if(resultRepository.findResultByDateAndUsername(timestamp, username) == null) {
 	        Result result= new Result(username, timestamp, date);
+	        result.getSentences().add(score);
 	        ResultWrapper resultWrapper= new ResultWrapper(result);
             return resultRepository.save(resultWrapper);
 	    }

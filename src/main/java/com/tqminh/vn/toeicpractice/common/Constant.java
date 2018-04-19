@@ -24,7 +24,7 @@ public class Constant {
 	
 	public static class NativeQuery {
 	    
-	    public static final String FIND_RESULTS_BY_DATE_AND_USERNAME= "SELECT * FROM result_wrapper WHERE result ->> 'date' = ?1 && result ->> 'username' = ?2";
+	    public static final String FIND_RESULTS_BY_DATE_AND_USERNAME= "SELECT * FROM result_wrapper WHERE result ->> 'date' = ?1 AND result ->> 'username' = ?2";
 	    
 	    public static final String FIND_RESULTS_BY_DATE= "SELECT * FROM result_wrapper WHERE result ->> 'date' = ?1";
 		

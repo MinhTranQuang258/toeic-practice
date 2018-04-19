@@ -70,6 +70,6 @@ public class MCQuetionController {
         catch (ParseException | SQLException e) {
             e.printStackTrace();
         }
-	    return "redirect:/";
+	    return Constant.Page.USER_HOME_PAGE;
 	}
 }

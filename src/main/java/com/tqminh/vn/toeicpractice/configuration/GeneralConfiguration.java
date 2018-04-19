@@ -13,7 +13,7 @@ public class GeneralConfiguration {
     private int maxMCQuestion;
     
     @Value("${app.configuration.limited.p.question}")
-    private int minPQuestion;
+    private int maxPQuestion;
 
 //    @Value("${app.configuration.pdf.patch}")
     private String pdfPatch;
@@ -42,11 +42,11 @@ public class GeneralConfiguration {
 		this.maxMCQuestion = maxMCQuestion;
 	}
 
-	public int getMinPQuestion() {
-		return minPQuestion;
+	public int getMaxPQuestion() {
+		return maxPQuestion;
 	}
 
-	public void setMinPQuestion(int minPQuestion) {
-		this.minPQuestion = minPQuestion;
+	public void setMaxPQuestion(int maxPQuestion) {
+		this.maxPQuestion = maxPQuestion;
 	}
 }

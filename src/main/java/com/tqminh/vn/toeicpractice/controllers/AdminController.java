@@ -199,6 +199,6 @@ public class AdminController extends AstractController{
         catch (ParseException | SQLException e) {
             e.printStackTrace();
         }
-        return "redirect:/";
+        return "redirect:/admin";
     }
 }
