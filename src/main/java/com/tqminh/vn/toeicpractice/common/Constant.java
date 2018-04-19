@@ -66,12 +66,14 @@ public class Constant {
 		public final static String ADMIN_EDIT_PAGE= "adminEdit";
 		
 		public final static String ADMIN_ADD_GRAMMAR_PAGE= "adminAddGrammar";
-                
+		
         public final static String ADMIN_ADD_LISTENING_PAGE= "adminAddListening";
                 
         public final static String ADMIN_ADD_READING_PAGE = "adminAddReading";
 
         public final static String ADMIN_QUESTION_GRAMMAR_PAGE = "adminQuestionGrammar";
+        
+        public final static String ADMIN_QUESTION_GRAMMAR_LAST_PAGE = "adminQuestionGrammarLast";
         
         public final static String ADMIN_QUESTION_LISTENING_PAGE = "adminQuestionListening";
         
@@ -80,7 +82,9 @@ public class Constant {
         
         public final static String USER_HOME_PAGE= "userHome";
         
-        public final static String USER_GRAMMER_PAGE= "userGrammar";
+        public final static String USER_GRAMMAR_PAGE= "userGrammar";
+        
+        public final static String USER_GRAMMAR_LAST_PAGE= "userGrammarLast";
         
 	}
 	

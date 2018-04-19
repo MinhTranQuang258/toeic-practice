@@ -1,6 +1,7 @@
 package com.tqminh.vn.toeicpractice.controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -49,7 +50,12 @@ public class TestController {
 		question.setAnswerD("4");
 		question.setDetailQuestion("1234");
 		question.setAnswerTrue("1");
-		mcQuestionService.insertQuestion(question);
+		try {
+            mcQuestionService.insertQuestion(question);
+        }
+        catch (NullPointerException | SQLException e) {
+            e.printStackTrace();
+        }
 		return "Done";
 	}
 	

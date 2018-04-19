@@ -1,5 +1,7 @@
 package com.tqminh.vn.toeicpractice.controllers;
 
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +36,7 @@ public class MCQuetionController {
 		MultipleChoiceQuestion question= mcQuestionService.getQuestion(username, 1);
 		model.addAttribute("question", question);
 		map.put("question", question);
-		return Constant.Page.USER_GRAMMER_PAGE;
+		return Constant.Page.USER_GRAMMAR_PAGE;
 	}
 	
 	@RequestMapping(value= "/validate" , method= RequestMethod.POST)
@@ -56,11 +58,18 @@ public class MCQuetionController {
 		
 		model.addAttribute("question", question);
 		map.put("question", question);
-		return Constant.Page.USER_GRAMMER_PAGE;
+		return Constant.Page.USER_GRAMMAR_PAGE;
 	}
 
 	@RequestMapping(value= "/submitMCQuestion", method= RequestMethod.POST)
-	public String submit() {
-	    return null;
+	public String submit(HttpSession session) {
+	    String username= (String) session.getAttribute("username");
+	    try {
+            mcQuestionService.submit(username);
+        }
+        catch (ParseException | SQLException e) {
+            e.printStackTrace();
+        }
+	    return "redirect:/";
 	}
 }
