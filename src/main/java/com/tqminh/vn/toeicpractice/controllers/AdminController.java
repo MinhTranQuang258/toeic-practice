@@ -215,14 +215,19 @@ public class AdminController extends AstractController {
     public String validate(
         final HttpServletRequest servletRequest,
         final HttpSession session,
-        final Model model) throws Exception {
+        final Model model) {
         String username = (String) session.getAttribute("username");
         String selection = servletRequest.getParameter("answerGroup");
         if (selection == null) {
             return this.displayAdminQuestionGrammarAgain(model);
         }
         AbstractQuestion question = (AbstractQuestion) this.map.get("question");
-        this.mcQuestionService.validateQuestion(username, question, selection);
+        try {
+            this.mcQuestionService.validateQuestion(username, question, selection);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return "redirect:/admin/nextMCQuestion";
     }

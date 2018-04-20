@@ -16,11 +16,15 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.model.Result;
@@ -40,11 +44,28 @@ public class StatisticalController {
             List<Result> results= statisticalService.getTopTenScore(LocalDate.now().toString());
             
             for (Result result : results) {
-                result.getUsername();
+                result.getMultipleChoices();
             }
             
             model.addAttribute("concurrentUser", concurrentUser);
             model.addAttribute("results", results);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Constant.Page.DASH_BOARD_PAGE;
+    }
+    
+    @RequestMapping(value= "/admin/search", method= RequestMethod.GET)
+    public String searchResult(@RequestParam String search, Model model) {
+        try {
+            Result result = statisticalService.getResultByUsername(search, LocalDate.now().toString());
+            if(result != null) {
+                model.addAttribute("results", result);
+            }
+            else {
+                return "redirect:/admin/statistication";
+            }
         }
         catch (SQLException e) {
             e.printStackTrace();

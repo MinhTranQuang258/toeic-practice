@@ -21,7 +21,7 @@
             <!-- <img src="" alt=""> -->
           </div>
           <div class="header__user-name">
-            <p class="header__user-text" th:text="${account.username}"></p>
+            <p class="header__user-text"></p>
           </div>
         </div>
         <div class="header__setting col-lg-9">
@@ -136,7 +136,7 @@
                       </ul>
                     </div>
                     <div class="question__submit">
-                      <button type="submit" id="btn-submit-answer" class="btn btn-lg btn__default" formaction="/validate">Xác nhận</button>
+                      <button type="submit" id="btn-submit-answer" class="btn btn-lg btn__default" formaction="/validate" formmethod="post">Xác nhận</button>
                     </div>
                   </div>
                 </form>

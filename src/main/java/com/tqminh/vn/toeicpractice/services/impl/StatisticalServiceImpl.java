@@ -45,7 +45,12 @@ public class StatisticalServiceImpl implements StatisticalService {
             throws SQLException {
         ResultWrapper resultWrapper = this.repository
             .findResultByDateAndUsername(date, username);
-        return resultWrapper.getResult();
+        if(isCheckResult(resultWrapper)) {
+            return resultWrapper.getResult();
+        }
+        else {
+            return null;
+        }
     }
 
     @Override
@@ -56,6 +61,15 @@ public class StatisticalServiceImpl implements StatisticalService {
             results.add(resultWrapper.getResult());
         }
         return results;
+    }
+    
+    private boolean isCheckResult(ResultWrapper result) {
+        if(result == null) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
 }
