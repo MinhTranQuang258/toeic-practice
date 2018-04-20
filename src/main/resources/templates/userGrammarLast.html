@@ -123,20 +123,20 @@
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="answerGroup" id="answer3" value="valueC" />
+                            <input class="form-check-input" type="radio" name="answerGroup" id="answer3" value="C" />
                             <label class="form-check-label" for="answer3" th:text="${question.answerC}"></label>
                           </div>
                         </li>
                         <li class="question__choice">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="answerGroup" id="answer4" value="valueD" />
+                            <input class="form-check-input" type="radio" name="answerGroup" id="answer4" value="D" />
                             <label class="form-check-label" for="answer4" th:text="${question.answerD}"></label>
                           </div>
                         </li>
                       </ul>
                     </div>
                     <div class="question__submit">
-                      <button type="submit" id="btn-submit-answer" class="btn btn-lg btn__default">Kết thúc</button>
+                      <button type="submit" id="btn-submit-answer" class="btn btn-lg btn__default" formaction="/submitMCQuestion">Kết thúc</button>
                     </div>
                   </div>
                 </form>
