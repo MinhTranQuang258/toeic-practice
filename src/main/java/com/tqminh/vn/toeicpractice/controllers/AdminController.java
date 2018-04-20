@@ -112,8 +112,9 @@ public class AdminController extends AstractController{
 	}
 	
 	@RequestMapping(value= "/deleteQuestion", method= RequestMethod.POST)
-	public String deteleQuestion(HttpSession session) {
+	public String deteleQuestion(HttpSession session, HttpServletRequest request) {
 		String username= (String)session.getAttribute("username");
+		System.out.println(request.getAttribute("delete"));
 		try {
 			mcQuestionService.deleteQuestion(4, username);
 		} catch (SQLException e) {

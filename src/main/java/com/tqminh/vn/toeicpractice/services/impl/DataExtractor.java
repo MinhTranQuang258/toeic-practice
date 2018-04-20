@@ -25,6 +25,7 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.TextPosition;
 import org.springframework.stereotype.Component;
 
+import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.services.PDFService;
 
 @Component
@@ -43,9 +44,15 @@ public class DataExtractor extends PDFTextStripper implements PDFService{
     @Override
     protected void writeString(String text, List<TextPosition> textPositions)
             throws IOException {
-        
+        System.out.println(text);
     }
     
+    @Override
+    public AbstractQuestion viewQuestion(String s) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
     @Override
     public void setSortByPosition(boolean newSortByPosition) {
         super.setSortByPosition(newSortByPosition);

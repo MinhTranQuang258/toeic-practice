@@ -3,9 +3,8 @@ package com.tqminh.vn.toeicpractice.services;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
+
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -400,7 +399,6 @@ public abstract class AbstractQuestionService {
 	
 	private String getDate() throws ParseException {
 	    LocalDate localDate= LocalDate.now();
-	    System.out.println("Date:" + localDate);
 	    return localDate.toString();
 	}
 	

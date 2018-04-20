@@ -76,7 +76,7 @@ implements QuestionService<MultipleChoiceQuestion>{
 
 	@Override
     public MultipleChoiceQuestion findQuestion(String username, long id) {
-        // TODO Auto-generated method stub
+        // TODO: Implement find the question by id.
         return null;
     }
 

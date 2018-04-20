@@ -139,7 +139,7 @@
                   </form>
                 </div>
 
-                <!-- <div class="admin__question-list">
+                <div class="admin__question-list">
                   <table class="table list">
                     <caption>Danh sách câu hỏi</caption>
                     <thead>
@@ -165,7 +165,7 @@
                       </tr>
                     </tbody>
                   </table>
-                </div> -->
+                </div>
 
                 <div class="admin__question">
                   <form th:object="${question}" method="post">
@@ -232,7 +232,7 @@
                             </div>
                             <div class="modal-body">
                               <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nhập id câu hỏi cần xóa" />
+                                <input type="text" class="form-control" placeholder="Nhập id câu hỏi cần xóa" name="delete"/>
                               </div>
                             </div>
                             <div class="modal-footer">
