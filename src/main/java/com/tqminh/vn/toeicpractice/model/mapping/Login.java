@@ -1,24 +1,24 @@
 package com.tqminh.vn.toeicpractice.model.mapping;
 
 public class Login {
-    
-        private String username;
-    
-        private String password;
-    
-        public String getUsername() {
-		return username;
-	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    private String password;
 
-	public String getPassword() {
-		return password;
-	}
+    private String username;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getPassword() {
+        return this.password;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void setPassword(final String password) {
+        this.password = password;
+    }
+
+    public void setUsername(final String username) {
+        this.username = username;
+    }
 }

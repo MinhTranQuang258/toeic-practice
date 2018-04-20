@@ -1,7 +1,5 @@
 package com.tqminh.vn.toeicpractice.services.impl;
 
-
-
 import java.sql.SQLException;
 import java.text.ParseException;
 
@@ -17,52 +15,88 @@ import com.tqminh.vn.toeicpractice.services.AbstractQuestionService;
 import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Service("MCQuestionService")
-public class MCQuestionServiceImpl extends AbstractQuestionService 
-implements QuestionService<MultipleChoiceQuestion>{
+public class MCQuestionServiceImpl extends AbstractQuestionService
+        implements QuestionService<MultipleChoiceQuestion> {
 
-	@Autowired
-	private MCQuestionWrapperRepository repository;
-	
-	@Override
-	public int nextQuestion(String username) throws Exception {
-		return super.nextQuestion(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
-	}
-
-	@Override
-	public int previousQuestion(String username) throws Exception {
-		return super.previousQuestion(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
-	}
-	
-	@Override
-	public MultipleChoiceQuestion getQuestion(String username, int index) throws Exception {
-		return (MultipleChoiceQuestion) super.getQuestion(username, index, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
-	}
-
-	@Override
-	public void insertQuestion(MultipleChoiceQuestion question) {
-		try {
-			if(question != null) {
-				MCQuestionWrapper questionWrapper= new MCQuestionWrapper(question);
-				MCQuestionWrapper wrapper= repository.save(questionWrapper);
-				if(wrapper == null) {
-					throw new NullPointerException("Can't insert the mutilple-choice question.");
-				}
-			}
-			else {
-				throw new NullPointerException();
-			}
-		} catch (Exception e) {
-			throw e;
-		}
-	}
+    @Autowired
+    private MCQuestionWrapperRepository repository;
 
     @Override
-	public int countQuestion() {
-		return super.countQuestion(TypeDefinition.MULTIPLE_CHOICE_QUESTION);
-	}
-    
+    public int countQuestion() {
+        return super.countQuestion(TypeDefinition.MULTIPLE_CHOICE_QUESTION);
+    }
+
     @Override
-    public void submit(String username) throws ParseException, SQLException{
+    public void deleteQuestion(final long id, final String username)
+            throws SQLException {
+        try {
+            super.deleteQuestion(
+                id,
+                TypeDefinition.MULTIPLE_CHOICE_QUESTION,
+                username);
+        }
+        catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    @Override
+    public MultipleChoiceQuestion findQuestion(
+        final String username,
+        final long id) {
+        // TODO: Implement find the question by id.
+        return null;
+    }
+
+    @Override
+    public MultipleChoiceQuestion getQuestion(
+        final String username,
+        final int index) throws Exception {
+        return (MultipleChoiceQuestion) super.getQuestion(
+            username,
+            index,
+            TypeDefinition.MULTIPLE_CHOICE_QUESTION);
+    }
+
+    @Override
+    public void insertQuestion(final MultipleChoiceQuestion question) {
+        try {
+            if (question != null) {
+                MCQuestionWrapper questionWrapper = new MCQuestionWrapper(
+                    question);
+                MCQuestionWrapper wrapper = this.repository
+                    .save(questionWrapper);
+                if (wrapper == null) {
+                    throw new NullPointerException(
+                        "Can't insert the mutilple-choice question.");
+                }
+            }
+            else {
+                throw new NullPointerException();
+            }
+        }
+        catch (Exception e) {
+            throw e;
+        }
+    }
+
+    @Override
+    public int nextQuestion(final String username) throws Exception {
+        return super.nextQuestion(
+            username,
+            TypeDefinition.MULTIPLE_CHOICE_QUESTION);
+    }
+
+    @Override
+    public int previousQuestion(final String username) throws Exception {
+        return super.previousQuestion(
+            username,
+            TypeDefinition.MULTIPLE_CHOICE_QUESTION);
+    }
+
+    @Override
+    public void submit(final String username)
+            throws ParseException, SQLException {
         try {
             super.submit(username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
         }
@@ -74,35 +108,32 @@ implements QuestionService<MultipleChoiceQuestion>{
         }
     }
 
-	@Override
-    public MultipleChoiceQuestion findQuestion(String username, long id) {
-        // TODO: Implement find the question by id.
-        return null;
+    @Override
+    public void updateQuestion(
+        final long id,
+        final AbstractQuestion question,
+        final String username) throws SQLException {
+        try {
+            super.updateQuestion(
+                id,
+                question,
+                username,
+                TypeDefinition.MULTIPLE_CHOICE_QUESTION);
+        }
+        catch (NullPointerException e) {
+            throw e;
+        }
+        catch (SQLException e) {
+            throw e;
+        }
     }
 
     @Override
-	public void validateQuestion(String username, AbstractQuestion question, String selection) {
-		super.validate(selection, question, username);
-	}
+    public void validateQuestion(
+        final String username,
+        final AbstractQuestion question,
+        final String selection) {
+        super.validate(selection, question, username);
+    }
 
-	@Override
-	public void updateQuestion(long id, AbstractQuestion question, String username) throws SQLException {
-		try {
-			super.updateQuestion(id, question, username, TypeDefinition.MULTIPLE_CHOICE_QUESTION);
-		} catch (NullPointerException e) {
-			throw e;
-		} catch (SQLException e) {
-			throw e;
-		}
-	}
-
-	@Override
-	public void deleteQuestion(long id, String username) throws SQLException {
-		try {
-			super.deleteQuestion(id, TypeDefinition.MULTIPLE_CHOICE_QUESTION, username);
-		} catch (SQLException e) {
-			throw e;
-		}
-	}
-	
 }

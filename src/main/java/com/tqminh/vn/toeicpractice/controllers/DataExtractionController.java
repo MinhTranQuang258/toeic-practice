@@ -24,21 +24,21 @@ import com.tqminh.vn.toeicpractice.services.PDFService;
 
 @RestController
 public class DataExtractionController {
-    
+
+    @Autowired
+    private GeneralConfiguration configuration;
+
     @Autowired
     private PDFService extractor;
-    
-    @Autowired
-    private GeneralConfiguration configuration;  
-    
-    @RequestMapping(value= "/extract", method= RequestMethod.GET)
+
+    @RequestMapping(value = "/extract", method = RequestMethod.GET)
     public String extractDataFromPDF() {
         try {
-            extractor.readFile(configuration.getPdfPatch());
+            this.extractor.readFile(this.configuration.getPdfPatch());
         }
         catch (IOException e) {
             e.printStackTrace();
         }
         return null;
-    } 
+    }
 }

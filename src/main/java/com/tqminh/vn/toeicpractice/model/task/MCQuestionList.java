@@ -5,47 +5,51 @@ import java.util.List;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 
-public class MCQuestionList extends AbstractQuestionList{
-	
-	private int concurrentIndex;
-	
-	private double score;
-	
-	private List<MultipleChoiceQuestion> questions;
+public class MCQuestionList extends AbstractQuestionList {
 
-	public int getConcurrentIndex() {
-		return concurrentIndex;
-	}
+    private int concurrentIndex;
 
-	public void setConcurrentIndex(int concurrentIndex) {
-		this.concurrentIndex = concurrentIndex;
-	}
+    private List<MultipleChoiceQuestion> questions;
 
-	public MCQuestionList() {
-		super();
-	}
-	
-	public MCQuestionList(List<MultipleChoiceQuestion> questions) {
-		super();
-		this.questions = questions;
-	}
+    private double score;
 
-	public MCQuestionList(int concurrentIndex, List<MultipleChoiceQuestion> questions) {
-		super();
-		this.concurrentIndex = concurrentIndex;
-		this.questions = questions;
-	}
-	
-	@Override
-    public List<? extends AbstractQuestion> getQuestions() {
-        return questions;
+    public MCQuestionList() {
+        super();
     }
 
-    public double getScore() {
-		return score;
-	}
+    public MCQuestionList(final int concurrentIndex,
+            final List<MultipleChoiceQuestion> questions) {
+        super();
+        this.concurrentIndex = concurrentIndex;
+        this.questions = questions;
+    }
 
-	public void setScore(double score) {
-		this.score = score;
-	}
+    public MCQuestionList(final List<MultipleChoiceQuestion> questions) {
+        super();
+        this.questions = questions;
+    }
+
+    @Override
+    public int getConcurrentIndex() {
+        return this.concurrentIndex;
+    }
+
+    @Override
+    public List<? extends AbstractQuestion> getQuestions() {
+        return this.questions;
+    }
+
+    @Override
+    public double getScore() {
+        return this.score;
+    }
+
+    public void setConcurrentIndex(final int concurrentIndex) {
+        this.concurrentIndex = concurrentIndex;
+    }
+
+    @Override
+    public void setScore(final double score) {
+        this.score = score;
+    }
 }

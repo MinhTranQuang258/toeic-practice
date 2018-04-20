@@ -12,8 +12,6 @@
  */
 package com.tqminh.vn.toeicpractice.configuration.datasource.core;
 
-public class ToeicPracticeProperties extends AbstractJpaProperties{
+public class ToeicPracticeProperties extends AbstractJpaProperties {
 
-    
-    
 }

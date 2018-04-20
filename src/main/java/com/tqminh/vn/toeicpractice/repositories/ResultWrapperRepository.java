@@ -10,12 +10,13 @@ import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.repositories.entities.ResultWrapper;
 
 @Transactional
-public interface ResultWrapperRepository extends CrudRepository<ResultWrapper, Long>{
-    
-    @Query(nativeQuery= true, value= Constant.NativeQuery.FIND_RESULTS_BY_DATE)
-    List<ResultWrapper> findResultsByDate(String date);
-    
-    @Query(nativeQuery= true, value= Constant.NativeQuery.FIND_RESULTS_BY_DATE_AND_USERNAME)
+public interface ResultWrapperRepository
+        extends CrudRepository<ResultWrapper, Long> {
+
+    @Query(nativeQuery = true, value = Constant.NativeQuery.FIND_RESULTS_BY_DATE_AND_USERNAME)
     ResultWrapper findResultByDateAndUsername(String date, String username);
+
+    @Query(nativeQuery = true, value = Constant.NativeQuery.FIND_RESULTS_BY_DATE)
+    List<ResultWrapper> findResultsByDate(String date);
 
 }

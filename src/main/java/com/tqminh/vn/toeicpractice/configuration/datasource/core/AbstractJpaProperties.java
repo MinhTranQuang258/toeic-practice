@@ -14,7 +14,6 @@ package com.tqminh.vn.toeicpractice.configuration.datasource.core;
 
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 
-
-public class AbstractJpaProperties extends JpaProperties{
+public class AbstractJpaProperties extends JpaProperties {
 
 }

@@ -9,36 +9,36 @@ import com.tqminh.vn.toeicpractice.cache.AccountCache;
 import com.tqminh.vn.toeicpractice.model.Account;
 
 @Component
-public class AccountCacheImpl implements AccountCache<Account>{
-	
-	private Map<String, Account> map;
+public class AccountCacheImpl implements AccountCache<Account> {
 
-	public AccountCacheImpl() {
-		super();
-		map= new HashMap<>();
-	}
-	
-	@Override
-	public Account getObject(String key) {
-		return map.get(key);
-	}
+    private final Map<String, Account> map;
 
-	@Override
-	public void put(String key, Account value) {
-		if((key instanceof String) && (value instanceof Account)) {
-			String k= (String) key;
-			Account account= (Account) value;
-			map.put(k, account);
-		}
-	}
+    public AccountCacheImpl() {
+        super();
+        this.map = new HashMap<>();
+    }
 
-	@Override
-	public void removeObject(String key) {
-		map.remove(key);
-	}
+    @Override
+    public Account getObject(final String key) {
+        return this.map.get(key);
+    }
 
     @Override
     public int getSize() {
-        return map.size();
+        return this.map.size();
+    }
+
+    @Override
+    public void put(final String key, final Account value) {
+        if ((key instanceof String) && (value instanceof Account)) {
+            String k = key;
+            Account account = value;
+            this.map.put(k, account);
+        }
+    }
+
+    @Override
+    public void removeObject(final String key) {
+        this.map.remove(key);
     }
 }

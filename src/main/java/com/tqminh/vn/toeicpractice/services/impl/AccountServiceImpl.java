@@ -12,94 +12,99 @@ import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
 import com.tqminh.vn.toeicpractice.services.AccountService;
 
 @Service
-public class AccountServiceImpl implements AccountService{
+public class AccountServiceImpl implements AccountService {
 
-	@Autowired
-	private AccountWrapperRepository accountWrapperRepository;
-	
-	@Autowired
-	private AccountCache<Account> accountCache;
-	
-  	@Override
-	public String loginAccount(Account account) throws Exception{
-		try {
-			String username= account.getUsername();
-			String password= account.getPassword();
-			if(isAdmin(account)) {
-				accountCache.put(username, account);
-				return Page.ADMIN_HOME_PAGE;
-			}
-			else {
-				AccountWrapper accountWrapper=  
-						accountWrapperRepository.findAccountByUserAndPassword(username, password);
-				if(accountWrapper != null) {
-					accountCache.put(username, account);
-					return Page.USER_HOME_PAGE;
-				}
-			}
-		}catch (Exception e) {
-			throw e;
-		}
-		return null;
-	}
-  	
-  	private Boolean isAdmin(Account account) {
-  		String username= account.getUsername();
-  		String password= account.getPassword();
-  		if(username.equals(Admin.USER_NAME) && password.equals(Admin.PASSWORD)) {
-  			return true;
-  		}
-  		else {
-  			return false;
-  		}
-  	}
-  	
-	@Override
-	public void logout(String username) {
-		accountCache.removeObject(username);
-	}
-	
-	private boolean isCheckRegister(Account account) {
-	    if(account.getName().isEmpty() || account.getAge() == 0 || account.getPassword().isEmpty()){
-	        return false;
-	    }
-	    else if (accountWrapperRepository.findAccountByUsername(account.getUsername()) != null) {
-	        return false;
-	    }
-	    else {
+    @Autowired
+    private AccountCache<Account> accountCache;
+
+    @Autowired
+    private AccountWrapperRepository accountWrapperRepository;
+
+    private String checkNulledRegister(final AccountWrapper accountWrapper) {
+        if (accountWrapper == null) {
+            return "redirect:/displayRegister";
+        }
+        else {
+            return "redirect:/displayLogin";
+        }
+    }
+
+    @Override
+    public void deleteAccount(final long id) {
+        // TODO: This feature will be updated later.
+    }
+
+    private Boolean isAdmin(final Account account) {
+        String username = account.getUsername();
+        String password = account.getPassword();
+        if (username.equals(Admin.USER_NAME)
+                && password.equals(Admin.PASSWORD)) {
             return true;
         }
-	}
-	
-	private String checkNulledRegister(AccountWrapper accountWrapper) {
-	    if(accountWrapper == null) {
-	        return "redirect:/displayRegister";
-	    }
-	    else {
-	        return "redirect:/displayLogin";
-	    }
-	}
+        else {
+            return false;
+        }
+    }
 
-	@Override
-	public String registerAccount(Account account) {
-	    if(!isCheckRegister(account)) {
-	        return "redirect:/displayRegister";
-	    }
-	    else {
-	        AccountWrapper accountWrapper= new AccountWrapper(account);
-	        AccountWrapper newAccountWrapper= accountWrapperRepository.save(accountWrapper);
-	        return checkNulledRegister(newAccountWrapper);
-	    }
-	}
+    private boolean isCheckRegister(final Account account) {
+        if (account.getName().isEmpty() || (account.getAge() == 0)
+                || account.getPassword().isEmpty()) {
+            return false;
+        }
+        else if (this.accountWrapperRepository
+            .findAccountByUsername(account.getUsername()) != null) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 
-	@Override
-	public void updateAccount(long id) {
-		// TODO: This feature will be updated later.
-		
-	}
+    @Override
+    public String loginAccount(final Account account) throws Exception {
+        try {
+            String username = account.getUsername();
+            String password = account.getPassword();
+            if (this.isAdmin(account)) {
+                this.accountCache.put(username, account);
+                return Page.ADMIN_HOME_PAGE;
+            }
+            else {
+                AccountWrapper accountWrapper = this.accountWrapperRepository
+                    .findAccountByUserAndPassword(username, password);
+                if (accountWrapper != null) {
+                    this.accountCache.put(username, account);
+                    return Page.USER_HOME_PAGE;
+                }
+            }
+        }
+        catch (Exception e) {
+            throw e;
+        }
+        return null;
+    }
 
-	@Override
-	public void deleteAccount(long id) {
-		// TODO: This feature will be updated later.
-	}
+    @Override
+    public void logout(final String username) {
+        this.accountCache.removeObject(username);
+    }
+
+    @Override
+    public String registerAccount(final Account account) {
+        if (!this.isCheckRegister(account)) {
+            return "redirect:/displayRegister";
+        }
+        else {
+            AccountWrapper accountWrapper = new AccountWrapper(account);
+            AccountWrapper newAccountWrapper = this.accountWrapperRepository
+                .save(accountWrapper);
+            return this.checkNulledRegister(newAccountWrapper);
+        }
+    }
+
+    @Override
+    public void updateAccount(final long id) {
+        // TODO: This feature will be updated later.
+
+    }
 }

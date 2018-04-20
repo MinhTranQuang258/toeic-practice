@@ -8,11 +8,12 @@ import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
 
 @Transactional
-public interface PQuestionWrapperRepository extends CrudRepository<PQuestionWrapper, Long>{
-	
-	@Query(nativeQuery= true, value= Constant.NativeQuery.COUNT_PQUESTION_BY_ID)
-	int countQuestionById();
-	
-	@Query(nativeQuery= true, value= Constant.NativeQuery.COUNT_DUPLICATED_FOLDER)
-	int countDuplicatedFolder(String folderName);
+public interface PQuestionWrapperRepository
+        extends CrudRepository<PQuestionWrapper, Long> {
+
+    @Query(nativeQuery = true, value = Constant.NativeQuery.COUNT_DUPLICATED_FOLDER)
+    int countDuplicatedFolder(String folderName);
+
+    @Query(nativeQuery = true, value = Constant.NativeQuery.COUNT_PQUESTION_BY_ID)
+    int countQuestionById();
 }

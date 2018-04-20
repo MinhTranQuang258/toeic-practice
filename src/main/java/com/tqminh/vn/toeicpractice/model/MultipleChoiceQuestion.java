@@ -1,25 +1,26 @@
 package com.tqminh.vn.toeicpractice.model;
 
-public class MultipleChoiceQuestion extends AbstractQuestion{
-	
-	private String detailQuestion;
-	
-	private String answerA;
-	
-	private String answerB;
-	
-	private String answerC;
-	
-	private String answerD;
-	
-	private String answerTrue;
+public class MultipleChoiceQuestion extends AbstractQuestion {
 
-	public MultipleChoiceQuestion() {
-		super();
-	}
-	
-	public MultipleChoiceQuestion(String detailQuestion, String answerA,
-            String answerB, String answerC, String answerD, String answerTrue) {
+    private String answerA;
+
+    private String answerB;
+
+    private String answerC;
+
+    private String answerD;
+
+    private String answerTrue;
+
+    private String detailQuestion;
+
+    public MultipleChoiceQuestion() {
+        super();
+    }
+
+    public MultipleChoiceQuestion(final String detailQuestion,
+            final String answerA, final String answerB, final String answerC,
+            final String answerD, final String answerTrue) {
         super();
         this.detailQuestion = detailQuestion;
         this.answerA = answerA;
@@ -29,59 +30,58 @@ public class MultipleChoiceQuestion extends AbstractQuestion{
         this.answerTrue = answerTrue;
     }
 
-	@Override
-	public String getDetailQuestion() {
-		return detailQuestion;
-	}
+    @Override
+    public String getAnswerA() {
+        return this.answerA;
+    }
 
-	@Override
-	public String getAnswerA() {
-		return answerA;
-	}
+    @Override
+    public String getAnswerB() {
+        return this.answerB;
+    }
 
-	@Override
-	public String getAnswerB() {
-		return answerB;
-	}
+    @Override
+    public String getAnswerC() {
+        return this.answerC;
+    }
 
-	@Override
-	public String getAnswerC() {
-		return answerC;
-	}
+    @Override
+    public String getAnswerD() {
+        return this.answerD;
+    }
 
-	@Override
-	public String getAnswerD() {
-		return answerD;
-	}
+    @Override
+    public String getAnswerTrue() {
+        return this.answerTrue;
+    }
 
-	@Override
-	public String getAnswerTrue() {
-		return answerTrue;
-	}
+    @Override
+    public String getDetailQuestion() {
+        return this.detailQuestion;
+    }
 
-	public void setDetailQuestion(String detailQuestion) {
-		this.detailQuestion = detailQuestion;
-	}
+    public void setAnswerA(final String answerA) {
+        this.answerA = answerA;
+    }
 
-	public void setAnswerA(String answerA) {
-		this.answerA = answerA;
-	}
+    public void setAnswerB(final String answerB) {
+        this.answerB = answerB;
+    }
 
-	public void setAnswerB(String answerB) {
-		this.answerB = answerB;
-	}
+    public void setAnswerC(final String answerC) {
+        this.answerC = answerC;
+    }
 
-	public void setAnswerC(String answerC) {
-		this.answerC = answerC;
-	}
+    public void setAnswerD(final String answerD) {
+        this.answerD = answerD;
+    }
 
-	public void setAnswerD(String answerD) {
-		this.answerD = answerD;
-	}
+    public void setAnswerTrue(final String answerTrue) {
+        this.answerTrue = answerTrue;
+    }
 
-	public void setAnswerTrue(String answerTrue) {
-		this.answerTrue = answerTrue;
-	}
-	
-	
+    public void setDetailQuestion(final String detailQuestion) {
+        this.detailQuestion = detailQuestion;
+    }
+
 }

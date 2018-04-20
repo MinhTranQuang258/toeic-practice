@@ -6,7 +6,8 @@ import java.util.List;
 import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 
 public interface QuestionWrapperService {
-	
-	List<MCQuestionWrapper> findAllQuestionWarraper(String username) throws NullPointerException, SQLException;
-	
+
+    List<MCQuestionWrapper> findAllQuestionWarraper(String username)
+            throws NullPointerException, SQLException;
+
 }

@@ -24,5 +24,5 @@ public class StatisticalController {
     @Autowired
     @Qualifier("StatisticalService")
     private StatisticalService statisticalService;
-    
+
 }

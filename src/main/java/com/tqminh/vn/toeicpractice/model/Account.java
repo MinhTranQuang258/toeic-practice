@@ -1,69 +1,70 @@
 package com.tqminh.vn.toeicpractice.model;
 
 public class Account {
-	
-	private String name;
-	
-	private int age;
-	
-	private String username;
-	
-	private String password;
-	
-	public Account() {
-		super();
-	}
 
-	public Account(String username, String password) {
+    private int age;
+
+    private String name;
+
+    private String password;
+
+    private String username;
+
+    public Account() {
+        super();
+    }
+
+    public Account(final String name, final int age, final String username) {
+        super();
+        this.name = name;
+        this.age = age;
+        this.username = username;
+    }
+
+    public Account(final String name, final int age, final String username,
+            final String password) {
+        super();
+        this.name = name;
+        this.age = age;
+        this.username = username;
+        this.password = password;
+    }
+
+    public Account(final String username, final String password) {
         super();
         this.username = username;
         this.password = password;
     }
 
-    public Account(String name, int age, String username) {
-		super();
-		this.name = name;
-		this.age = age;
-		this.username = username;
-	}
+    public int getAge() {
+        return this.age;
+    }
 
-	public Account(String name, int age, String username, String password) {
-		super();
-		this.name = name;
-		this.age = age;
-		this.username = username;
-		this.password = password;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getPassword() {
+        return this.password;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public String getUsername() {
+        return this.username;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public void setAge(final int age) {
+        this.age = age;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setName(final String name) {
+        this.name = name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setPassword(final String password) {
+        this.password = password;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setUsername(final String username) {
+        this.username = username;
+    }
 }

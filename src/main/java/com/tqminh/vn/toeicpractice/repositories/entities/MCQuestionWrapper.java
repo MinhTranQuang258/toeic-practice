@@ -14,46 +14,48 @@ import com.tqminh.vn.toeicpractice.jsontype.JSONType;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 
 @Entity
-@TypeDef(name= "mcjson", typeClass= JSONType.class, parameters= {
-		@Parameter(name= JSONType.CLASS, value= Constant.JSON_MULTIPLE_CHOICE_QUESTION)})
+@TypeDef(name = "mcjson", typeClass = JSONType.class, parameters = {
+    @Parameter(name = JSONType.CLASS, value = Constant.JSON_MULTIPLE_CHOICE_QUESTION) })
 public class MCQuestionWrapper {
-	
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private long id;
-	
-	@Type(type= "mcjson")
-	private MultipleChoiceQuestion multipleChoiceQuestion;
 
-	public long getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-	public MCQuestionWrapper() {
-		super();
-	}
+    @Type(type = "mcjson")
+    private MultipleChoiceQuestion multipleChoiceQuestion;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    public MCQuestionWrapper() {
+        super();
+    }
 
-	public MCQuestionWrapper(long id,
-            MultipleChoiceQuestion multipleChoiceQuestion) {
+    public MCQuestionWrapper(final long id,
+            final MultipleChoiceQuestion multipleChoiceQuestion) {
         super();
         this.id = id;
         this.multipleChoiceQuestion = multipleChoiceQuestion;
     }
 
-    public MCQuestionWrapper(MultipleChoiceQuestion multipleChoiceQuestion) {
-		super();
-		this.multipleChoiceQuestion = multipleChoiceQuestion;
-	}
+    public MCQuestionWrapper(
+            final MultipleChoiceQuestion multipleChoiceQuestion) {
+        super();
+        this.multipleChoiceQuestion = multipleChoiceQuestion;
+    }
 
-	public MultipleChoiceQuestion getMultipleChoiceQuestion() {
-		return multipleChoiceQuestion;
-	}
+    public long getId() {
+        return this.id;
+    }
 
-	public void setMultipleChoiceQuestion(MultipleChoiceQuestion multipleChoiceQuestion) {
-		this.multipleChoiceQuestion = multipleChoiceQuestion;
-	}
+    public MultipleChoiceQuestion getMultipleChoiceQuestion() {
+        return this.multipleChoiceQuestion;
+    }
+
+    public void setId(final long id) {
+        this.id = id;
+    }
+
+    public void setMultipleChoiceQuestion(
+        final MultipleChoiceQuestion multipleChoiceQuestion) {
+        this.multipleChoiceQuestion = multipleChoiceQuestion;
+    }
 }

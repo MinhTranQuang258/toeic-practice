@@ -1,99 +1,100 @@
 package com.tqminh.vn.toeicpractice.model;
 
 public class PhotoQuestion extends AbstractQuestion {
-	
-	private String photo;
-	
-	private String folderName;
-	
-	private String answerA;
-	
-	private String answerB;
-	
-	private String answerC;
-	
-	private String answerD;
-	
-	private String answerTrue;
 
-	public PhotoQuestion(String photo, String answerA, String answerB, String answerC, String answerD,
-			String answerTrue) {
-		super();
-		this.photo = photo;
-		this.answerA = answerA;
-		this.answerB = answerB;
-		this.answerC = answerC;
-		this.answerD = answerD;
-		this.answerTrue = answerTrue;
-	}
-	
-	public PhotoQuestion() {
-		super();
-	}
-	
-	@Override
-	public String getDetailQuestion() {
-		return this.getPhoto();
-	}
+    private String answerA;
 
-	private String getPhoto() {
-		return photo;
-	}
+    private String answerB;
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
+    private String answerC;
 
-	@Override
-	public String getAnswerA() {
-		return answerA;
-	}
+    private String answerD;
 
-	public void setAnswerA(String answerA) {
-		this.answerA = answerA;
-	}
+    private String answerTrue;
 
-	@Override
-	public String getAnswerB() {
-		return answerB;
-	}
+    private String folderName;
 
-	public void setAnswerB(String answerB) {
-		this.answerB = answerB;
-	}
+    private String photo;
 
-	@Override
-	public String getAnswerC() {
-		return answerC;
-	}
-
-	public void setAnswerC(String answerC) {
-		this.answerC = answerC;
-	}
-
-	@Override
-	public String getAnswerD() {
-		return answerD;
-	}
-
-	public void setAnswerD(String answerD) {
-		this.answerD = answerD;
-	}
-
-	@Override
-	public String getAnswerTrue() {
-		return answerTrue;
-	}
-
-	public void setAnswerTrue(String answerTrue) {
-		this.answerTrue = answerTrue;
-	}
-
-    public String getFolderName() {
-        return folderName;
+    public PhotoQuestion() {
+        super();
     }
 
-    public void setFolderName(String folderName) {
+    public PhotoQuestion(final String photo, final String answerA,
+            final String answerB, final String answerC, final String answerD,
+            final String answerTrue) {
+        super();
+        this.photo = photo;
+        this.answerA = answerA;
+        this.answerB = answerB;
+        this.answerC = answerC;
+        this.answerD = answerD;
+        this.answerTrue = answerTrue;
+    }
+
+    @Override
+    public String getAnswerA() {
+        return this.answerA;
+    }
+
+    @Override
+    public String getAnswerB() {
+        return this.answerB;
+    }
+
+    @Override
+    public String getAnswerC() {
+        return this.answerC;
+    }
+
+    @Override
+    public String getAnswerD() {
+        return this.answerD;
+    }
+
+    @Override
+    public String getAnswerTrue() {
+        return this.answerTrue;
+    }
+
+    @Override
+    public String getDetailQuestion() {
+        return this.getPhoto();
+    }
+
+    public String getFolderName() {
+        return this.folderName;
+    }
+
+    private String getPhoto() {
+        return this.photo;
+    }
+
+    public void setAnswerA(final String answerA) {
+        this.answerA = answerA;
+    }
+
+    public void setAnswerB(final String answerB) {
+        this.answerB = answerB;
+    }
+
+    public void setAnswerC(final String answerC) {
+        this.answerC = answerC;
+    }
+
+    public void setAnswerD(final String answerD) {
+        this.answerD = answerD;
+    }
+
+    public void setAnswerTrue(final String answerTrue) {
+        this.answerTrue = answerTrue;
+    }
+
+    public void setFolderName(final String folderName) {
         this.folderName = folderName;
+    }
+
+    public void setPhoto(final String photo) {
+        this.photo = photo;
     }
 }

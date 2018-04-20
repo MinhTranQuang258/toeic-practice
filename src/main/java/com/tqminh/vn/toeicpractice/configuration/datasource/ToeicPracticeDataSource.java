@@ -22,25 +22,13 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import com.tqminh.vn.toeicpractice.configuration.datasource.core.AbstractDataSourceConfiguration;
 
-public class ToeicPracticeDataSource extends AbstractDataSourceConfiguration{
-    
-//    @Autowired
-//    private JpaProperties jpaProperties;
+public class ToeicPracticeDataSource extends AbstractDataSourceConfiguration {
 
-    @Override
-    public ConnectionPool jmxPool(DataSource dataSource) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    //    @Autowired
+    //    private JpaProperties jpaProperties;
 
     @Override
     public DataSource dataSource() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    protected LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -59,6 +47,18 @@ public class ToeicPracticeDataSource extends AbstractDataSourceConfiguration{
 
     @Override
     protected Map<String, Properties> getProperties() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public ConnectionPool jmxPool(final DataSource dataSource) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    protected LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
         // TODO Auto-generated method stub
         return null;
     }

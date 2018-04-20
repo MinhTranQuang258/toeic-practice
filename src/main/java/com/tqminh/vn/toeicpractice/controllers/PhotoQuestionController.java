@@ -24,8 +24,6 @@ public class PhotoQuestionController {
 
     @Autowired
     @Qualifier("PQuestionService")
-    private QuestionService<PhotoQuestion> pQuestionService;    
-    
-    
-    
+    private QuestionService<PhotoQuestion> pQuestionService;
+
 }

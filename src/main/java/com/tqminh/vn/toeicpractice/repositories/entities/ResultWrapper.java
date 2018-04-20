@@ -14,45 +14,45 @@ import com.tqminh.vn.toeicpractice.jsontype.JSONType;
 import com.tqminh.vn.toeicpractice.model.Result;
 
 @Entity
-@TypeDef(name= "rsjson", typeClass= JSONType.class, parameters= {
-		@Parameter(name= JSONType.CLASS, value= Constant.JSON_RESULT)})
+@TypeDef(name = "rsjson", typeClass = JSONType.class, parameters = {
+    @Parameter(name = JSONType.CLASS, value = Constant.JSON_RESULT) })
 public class ResultWrapper {
-	
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private long id;
-	
-	@Type(type= "rsjson")
-	private Result result;
 
-	public long getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    @Type(type = "rsjson")
+    private Result result;
 
-	public Result getResult() {
-		return result;
-	}
+    public ResultWrapper() {
+        super();
+    }
 
-	public void setResult(Result result) {
-		this.result = result;
-	}
+    public ResultWrapper(final long id, final Result result) {
+        super();
+        this.id = id;
+        this.result = result;
+    }
 
-	public ResultWrapper() {
-		super();
-	}
-
-    public ResultWrapper(Result result) {
+    public ResultWrapper(final Result result) {
         super();
         this.result = result;
     }
 
-    public ResultWrapper(long id, Result result) {
-        super();
+    public long getId() {
+        return this.id;
+    }
+
+    public Result getResult() {
+        return this.result;
+    }
+
+    public void setId(final long id) {
         this.id = id;
+    }
+
+    public void setResult(final Result result) {
         this.result = result;
     }
 }
