@@ -18,6 +18,17 @@ public class MultipleChoiceQuestion extends AbstractQuestion{
 		super();
 	}
 	
+	public MultipleChoiceQuestion(String detailQuestion, String answerA,
+            String answerB, String answerC, String answerD, String answerTrue) {
+        super();
+        this.detailQuestion = detailQuestion;
+        this.answerA = answerA;
+        this.answerB = answerB;
+        this.answerC = answerC;
+        this.answerD = answerD;
+        this.answerTrue = answerTrue;
+    }
+
 	@Override
 	public String getDetailQuestion() {
 		return detailQuestion;
