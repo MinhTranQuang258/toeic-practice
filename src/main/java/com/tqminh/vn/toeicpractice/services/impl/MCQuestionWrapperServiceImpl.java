@@ -10,11 +10,13 @@ import com.tqminh.vn.toeicpractice.services.AbstractQuestionService;
 import com.tqminh.vn.toeicpractice.services.QuestionWrapperService;
 
 @Service("MCQuestionWrapperService")
-public class MCQuestionWrapperServiceImpl extends AbstractQuestionService implements QuestionWrapperService{
+public class MCQuestionWrapperServiceImpl extends AbstractQuestionService
+        implements QuestionWrapperService {
 
-	@Override
-	public List<MCQuestionWrapper> findAllQuestionWarraper(String username) throws NullPointerException, SQLException {
-		return super.findAllQuestions(username);
-	}
-	
+    @Override
+    public List<MCQuestionWrapper> findAllQuestionWarraper(
+        final String username) throws NullPointerException, SQLException {
+        return super.findAllQuestions(username);
+    }
+
 }

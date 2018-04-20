@@ -12,27 +12,28 @@
  */
 package com.tqminh.vn.toeicpractice.controllers;
 
-
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.mapping.Question;
 
 public abstract class AstractController {
-    
-    protected AbstractQuestion prepareQuestion(String radio, Question question) {
-        MultipleChoiceQuestion multipleChoiceQuestion= new MultipleChoiceQuestion();
+
+    protected AbstractQuestion prepareQuestion(
+        final String radio,
+        final Question question) {
+        MultipleChoiceQuestion multipleChoiceQuestion = new MultipleChoiceQuestion();
         multipleChoiceQuestion.setDetailQuestion(question.getDetailQuestion());
         multipleChoiceQuestion.setAnswerA(question.getAnswerA());
         multipleChoiceQuestion.setAnswerB(question.getAnswerB());
         multipleChoiceQuestion.setAnswerC(question.getAnswerC());
         multipleChoiceQuestion.setAnswerD(question.getAnswerD());
-        if(radio.equals("A")) {
+        if (radio.equals("A")) {
             multipleChoiceQuestion.setAnswerTrue(question.getAnswerA());
             return multipleChoiceQuestion;
         }
-        else if(radio.equals("B")) {
+        else if (radio.equals("B")) {
             multipleChoiceQuestion.setAnswerTrue(question.getAnswerB());
-            return multipleChoiceQuestion;    
+            return multipleChoiceQuestion;
         }
         else if (radio.equals("C")) {
             multipleChoiceQuestion.setAnswerTrue(question.getAnswerC());
@@ -43,5 +44,5 @@ public abstract class AstractController {
             return multipleChoiceQuestion;
         }
     }
-    
+
 }

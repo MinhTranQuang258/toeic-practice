@@ -1,54 +1,54 @@
 package com.tqminh.vn.toeicpractice.model.mapping;
 
 public class Register {
-	
-	private String name;
-	
-	private int age;
 
-	private String username;
-	
-	private String password;
-	
-	private String repassword;
+    private int age;
 
-	public String getName() {
-		return name;
-	}
+    private String name;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private String password;
 
-	public int getAge() {
-		return age;
-	}
+    private String repassword;
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    private String username;
 
-	public String getUsername() {
-		return username;
-	}
+    public int getAge() {
+        return this.age;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return this.password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getRepassword() {
+        return this.repassword;
+    }
 
-	public String getRepassword() {
-		return repassword;
-	}
+    public String getUsername() {
+        return this.username;
+    }
 
-	public void setRepassword(String repassword) {
-		this.repassword = repassword;
-	}
+    public void setAge(final int age) {
+        this.age = age;
+    }
+
+    public void setName(final String name) {
+        this.name = name;
+    }
+
+    public void setPassword(final String password) {
+        this.password = password;
+    }
+
+    public void setRepassword(final String repassword) {
+        this.repassword = repassword;
+    }
+
+    public void setUsername(final String username) {
+        this.username = username;
+    }
 }

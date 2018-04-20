@@ -1,74 +1,74 @@
 package com.tqminh.vn.toeicpractice.model.mapping;
 
 public class Question {
-	
+
+    private String answerA;
+
+    private String answerB;
+
+    private String answerC;
+
+    private String answerD;
+
+    private String answerTrue;
+
     private String detailQuestion;
-	
-	private String answerA;
-	
-	private String answerB;
-	
-	private String answerC;
-	
-	private String answerD;
-	
-	private String answerTrue;
-	
-	private int temporary;
 
-	public String getDetailQuestion() {
-		return detailQuestion;
-	}
+    private int temporary;
 
-	public void setDetailQuestion(String detailQuestion) {
-		this.detailQuestion = detailQuestion;
-	}
+    public String getAnswerA() {
+        return this.answerA;
+    }
 
-	public String getAnswerA() {
-		return answerA;
-	}
+    public String getAnswerB() {
+        return this.answerB;
+    }
 
-	public void setAnswerA(String answerA) {
-		this.answerA = answerA;
-	}
+    public String getAnswerC() {
+        return this.answerC;
+    }
 
-	public String getAnswerB() {
-		return answerB;
-	}
+    public String getAnswerD() {
+        return this.answerD;
+    }
 
-	public void setAnswerB(String answerB) {
-		this.answerB = answerB;
-	}
+    public String getAnswerTrue() {
+        return this.answerTrue;
+    }
 
-	public String getAnswerC() {
-		return answerC;
-	}
+    public String getDetailQuestion() {
+        return this.detailQuestion;
+    }
 
-	public void setAnswerC(String answerC) {
-		this.answerC = answerC;
-	}
+    public int getTemporary() {
+        return this.temporary;
+    }
 
-	public String getAnswerD() {
-		return answerD;
-	}
+    public void setAnswerA(final String answerA) {
+        this.answerA = answerA;
+    }
 
-	public void setAnswerD(String answerD) {
-		this.answerD = answerD;
-	}
+    public void setAnswerB(final String answerB) {
+        this.answerB = answerB;
+    }
 
-	public String getAnswerTrue() {
-		return answerTrue;
-	}
+    public void setAnswerC(final String answerC) {
+        this.answerC = answerC;
+    }
 
-	public void setAnswerTrue(String answerTrue) {
-		this.answerTrue = answerTrue;
-	}
+    public void setAnswerD(final String answerD) {
+        this.answerD = answerD;
+    }
 
-	public int getTemporary() {
-		return temporary;
-	}
+    public void setAnswerTrue(final String answerTrue) {
+        this.answerTrue = answerTrue;
+    }
 
-	public void setTemporary(int temporary) {
-		this.temporary = temporary;
-	}
+    public void setDetailQuestion(final String detailQuestion) {
+        this.detailQuestion = detailQuestion;
+    }
+
+    public void setTemporary(final int temporary) {
+        this.temporary = temporary;
+    }
 }

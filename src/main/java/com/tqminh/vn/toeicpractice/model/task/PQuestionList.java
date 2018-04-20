@@ -4,41 +4,44 @@ import java.util.List;
 
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 
+public class PQuestionList extends AbstractQuestionList {
 
-public class PQuestionList extends AbstractQuestionList{
-	
-	private int concurrentIndex;
-	
-	private double score;
-	
-	private List<PhotoQuestion> questions;
+    private int concurrentIndex;
 
-	public PQuestionList() {
-		super();
-	}
-	
-	public PQuestionList(List<PhotoQuestion> questions) {
-		super();
-		this.questions = questions;
-	}
+    private List<PhotoQuestion> questions;
 
-	public List<PhotoQuestion> getQuestions() {
-		return questions;
-	}
+    private double score;
 
-	public int getConcurrentIndex() {
-		return concurrentIndex;
-	}
+    public PQuestionList() {
+        super();
+    }
 
-	public void setConcurrentIndex(int concurrentIndex) {
-		this.concurrentIndex = concurrentIndex;
-	}
+    public PQuestionList(final List<PhotoQuestion> questions) {
+        super();
+        this.questions = questions;
+    }
 
-	public double getScore() {
-		return score;
-	}
+    @Override
+    public int getConcurrentIndex() {
+        return this.concurrentIndex;
+    }
 
-	public void setScore(double score) {
-		this.score = score;
-	}
+    @Override
+    public List<PhotoQuestion> getQuestions() {
+        return this.questions;
+    }
+
+    @Override
+    public double getScore() {
+        return this.score;
+    }
+
+    public void setConcurrentIndex(final int concurrentIndex) {
+        this.concurrentIndex = concurrentIndex;
+    }
+
+    @Override
+    public void setScore(final double score) {
+        this.score = score;
+    }
 }

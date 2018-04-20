@@ -14,39 +14,39 @@ import com.tqminh.vn.toeicpractice.jsontype.JSONType;
 import com.tqminh.vn.toeicpractice.model.Account;
 
 @Entity
-@TypeDef(name= "json", typeClass= JSONType.class, parameters= {
-		@Parameter(name= JSONType.CLASS, value= Constant.JSON_ACCOUNT)})
+@TypeDef(name = "json", typeClass = JSONType.class, parameters = {
+    @Parameter(name = JSONType.CLASS, value = Constant.JSON_ACCOUNT) })
 public class AccountWrapper {
-	
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private long id;
-	
-	@Type(type= "json")
-	private Account account;
 
-	public AccountWrapper() {
-		super();
-	}
-	
-	public AccountWrapper(Account account) {
-		super();
-		this.account = account;
-	}
+    @Type(type = "json")
+    private Account account;
 
-	public long getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-	public void setId(long id) {
-		this.id = id;
-	}
-	
-	public Account getAccount() {
-		return account;
-	}
+    public AccountWrapper() {
+        super();
+    }
 
-	public void setAccount(Account account) {
-		this.account = account;
-	}
+    public AccountWrapper(final Account account) {
+        super();
+        this.account = account;
+    }
+
+    public Account getAccount() {
+        return this.account;
+    }
+
+    public long getId() {
+        return this.id;
+    }
+
+    public void setAccount(final Account account) {
+        this.account = account;
+    }
+
+    public void setId(final long id) {
+        this.id = id;
+    }
 }

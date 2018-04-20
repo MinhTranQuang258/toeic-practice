@@ -9,30 +9,30 @@ import org.springframework.stereotype.Component;
 import com.tqminh.vn.toeicpractice.cache.IndexCache;
 
 @Component("IndexCache")
-public class IndexCacheImpl implements IndexCache<Long>{
+public class IndexCacheImpl implements IndexCache<Long> {
 
-	private Map<String, Set<Long>> indexMap;
+    private final Map<String, Set<Long>> indexMap;
 
-	public IndexCacheImpl() {
+    public IndexCacheImpl() {
         super();
-        indexMap= new HashMap<>();
+        this.indexMap = new HashMap<>();
     }
 
     @Override
-	public boolean isCheckIndex(String username, long index) {
-		if(index == 0) {
-			return false;
-		}
-		return indexMap.get(username).add(index);
-	}
+    public boolean isCheckIndex(final String username, final long index) {
+        if (index == 0) {
+            return false;
+        }
+        return this.indexMap.get(username).add(index);
+    }
 
-	@Override
-	public void setIndex(String username, Set<Long> set) {
-		indexMap.put(username, set);
-	}
+    @Override
+    public void removeIndex(final String username) {
+        this.indexMap.remove(username);
+    }
 
-	@Override
-	public void removeIndex(String username) {
-		indexMap.remove(username);
-	}
+    @Override
+    public void setIndex(final String username, final Set<Long> set) {
+        this.indexMap.put(username, set);
+    }
 }

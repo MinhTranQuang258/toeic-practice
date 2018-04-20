@@ -27,33 +27,35 @@ import com.tqminh.vn.toeicpractice.repositories.entities.ResultWrapper;
 import com.tqminh.vn.toeicpractice.services.StatisticalService;
 
 @Service("StatisticalService")
-public class StatisticalServiceImpl implements StatisticalService{
+public class StatisticalServiceImpl implements StatisticalService {
 
     @Autowired
     private AccountCache<Account> cache;
-    
+
     @Autowired
     private ResultWrapperRepository repository;
-    
+
     @Override
-    public List<Result> getTopTenScore(String date) throws SQLException{
-        List<ResultWrapper> lists= repository.findResultsByDate(date);
-        List<Result> results= new ArrayList<Result>();
+    public int getConcurrentUser() throws SQLException {
+        return this.cache.getSize();
+    }
+
+    @Override
+    public Result getResultByUsername(final String username, final String date)
+            throws SQLException {
+        ResultWrapper resultWrapper = this.repository
+            .findResultByDateAndUsername(date, username);
+        return resultWrapper.getResult();
+    }
+
+    @Override
+    public List<Result> getTopTenScore(final String date) throws SQLException {
+        List<ResultWrapper> lists = this.repository.findResultsByDate(date);
+        List<Result> results = new ArrayList<>();
         for (ResultWrapper resultWrapper : lists) {
             results.add(resultWrapper.getResult());
         }
         return results;
     }
 
-    @Override
-    public int getConcurrentUser() throws SQLException{
-        return cache.getSize();
-    }
-
-    @Override
-    public Result getResultByUsername(String username, String date) throws SQLException{
-        ResultWrapper resultWrapper= repository.findResultByDateAndUsername(date, username);
-        return resultWrapper.getResult();
-    }
-    
 }

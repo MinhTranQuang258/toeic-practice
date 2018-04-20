@@ -5,48 +5,48 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GeneralConfiguration {
-    
-    @Value("${app.configuration.photo.patch}")
-    private String photoPath;
-    
+
     @Value("${app.configuration.limited.mc.question}")
     private int maxMCQuestion;
-    
+
     @Value("${app.configuration.limited.p.question}")
     private int maxPQuestion;
 
     @Value("${app.configuration.pdf.patch}")
     private String pdfPatch;
 
-    public String getPdfPatch() {
-        return pdfPatch;
+    @Value("${app.configuration.photo.patch}")
+    private String photoPath;
+
+    public int getMaxMCQuestion() {
+        return this.maxMCQuestion;
     }
 
-    public void setPdfPatch(String pdfPatch) {
-        this.pdfPatch = pdfPatch;
+    public int getMaxPQuestion() {
+        return this.maxPQuestion;
+    }
+
+    public String getPdfPatch() {
+        return this.pdfPatch;
     }
 
     public String getPhotoPath() {
-		return photoPath;
-	}
+        return this.photoPath;
+    }
 
-	public void setPhotoPath(String photoPath) {
-		this.photoPath = photoPath;
-	}
+    public void setMaxMCQuestion(final int maxMCQuestion) {
+        this.maxMCQuestion = maxMCQuestion;
+    }
 
-	public int getMaxMCQuestion() {
-		return maxMCQuestion;
-	}
+    public void setMaxPQuestion(final int maxPQuestion) {
+        this.maxPQuestion = maxPQuestion;
+    }
 
-	public void setMaxMCQuestion(int maxMCQuestion) {
-		this.maxMCQuestion = maxMCQuestion;
-	}
+    public void setPdfPatch(final String pdfPatch) {
+        this.pdfPatch = pdfPatch;
+    }
 
-	public int getMaxPQuestion() {
-		return maxPQuestion;
-	}
-
-	public void setMaxPQuestion(int maxPQuestion) {
-		this.maxPQuestion = maxPQuestion;
-	}
+    public void setPhotoPath(final String photoPath) {
+        this.photoPath = photoPath;
+    }
 }

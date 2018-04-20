@@ -8,11 +8,14 @@ import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.repositories.entities.AccountWrapper;
 
 @Transactional
-public interface AccountWrapperRepository extends CrudRepository<AccountWrapper, Long>{
-	
-	@Query(nativeQuery= true, value= Constant.NativeQuery.FIND_ACCOUNT_BY_USERNAME_AND_PASSWORD)
-	AccountWrapper findAccountByUserAndPassword(String username, String password);
+public interface AccountWrapperRepository
+        extends CrudRepository<AccountWrapper, Long> {
 
-	@Query(nativeQuery= true, value=Constant.NativeQuery.FIND_ACCOUNT_BY_USERNAME)
-	AccountWrapper findAccountByUsername(String username);
+    @Query(nativeQuery = true, value = Constant.NativeQuery.FIND_ACCOUNT_BY_USERNAME_AND_PASSWORD)
+    AccountWrapper findAccountByUserAndPassword(
+        String username,
+        String password);
+
+    @Query(nativeQuery = true, value = Constant.NativeQuery.FIND_ACCOUNT_BY_USERNAME)
+    AccountWrapper findAccountByUsername(String username);
 }

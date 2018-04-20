@@ -21,33 +21,36 @@ import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
 import com.tqminh.vn.toeicpractice.model.task.AbstractQuestionList;
 
 @Component("QuestionListCacheImpl")
-public class QuestionListCacheImpl implements QuestionListCache<AbstractQuestionList>{
+public class QuestionListCacheImpl
+        implements QuestionListCache<AbstractQuestionList> {
 
-    private Map<String,AbstractQuestionList> map;
-    
+    private final Map<String, AbstractQuestionList> map;
+
     public QuestionListCacheImpl() {
         super();
-        map= new HashMap<>();
+        this.map = new HashMap<>();
     }
 
     @Override
-    public void putQuestionList(String username, AbstractQuestionList questionList) {
-        map.put(username, questionList);
+    public AbstractQuestionList getQuestionList(final String username) {
+        return this.map.get(username);
     }
 
     @Override
-    public AbstractQuestionList getQuestionList(String username) {
-        return map.get(username);
+    public Boolean isCheckUsername(final String username) {
+        return this.map.containsKey(username);
     }
 
     @Override
-    public AbstractQuestionList removeQuestionList(String username) {
-        return map.remove(username);
+    public void putQuestionList(
+        final String username,
+        final AbstractQuestionList questionList) {
+        this.map.put(username, questionList);
     }
 
     @Override
-    public Boolean isCheckUsername(String username) {
-        return map.containsKey(username);
+    public AbstractQuestionList removeQuestionList(final String username) {
+        return this.map.remove(username);
     }
-    
+
 }

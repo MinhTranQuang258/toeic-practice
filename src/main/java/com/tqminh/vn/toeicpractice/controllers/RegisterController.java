@@ -15,26 +15,28 @@ import com.tqminh.vn.toeicpractice.services.AccountService;
 
 @Controller
 public class RegisterController {
-	
-	@Autowired
-	private AccountService accountService;
-	
-	@RequestMapping(value= "/displayRegister", method= RequestMethod.GET)
-	public String displayRegister(Model model) {
-		model.addAttribute("register", new Register());
-		return "register";
-	}
-	
-	
-	@RequestMapping(value= "/register", method= RequestMethod.POST)
-	public String register(@ModelAttribute("register")Register register, HttpSession httpSession) {
-		Account account= new Account(register.getName(), register.getAge(), register.getUsername(), register.getPassword());
-		if(register.getPassword().equals(register.getRepassword())) {
-			return accountService.registerAccount(account);
-		}
-		else {
-		    return "redirect:/displayRegister";
-		}
-	}
-	
+
+    @Autowired
+    private AccountService accountService;
+
+    @RequestMapping(value = "/displayRegister", method = RequestMethod.GET)
+    public String displayRegister(final Model model) {
+        model.addAttribute("register", new Register());
+        return "register";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(
+        @ModelAttribute("register") final Register register,
+        final HttpSession httpSession) {
+        Account account = new Account(register.getName(), register.getAge(),
+            register.getUsername(), register.getPassword());
+        if (register.getPassword().equals(register.getRepassword())) {
+            return this.accountService.registerAccount(account);
+        }
+        else {
+            return "redirect:/displayRegister";
+        }
+    }
+
 }

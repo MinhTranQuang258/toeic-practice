@@ -15,29 +15,32 @@ import com.tqminh.vn.toeicpractice.services.AccountService;
 
 @Controller
 public class HomeController {
-	
-	@Autowired
-	private AccountService accountService;
-	
-	@RequestMapping(value= {"/displayLogin", "/"}, method= RequestMethod.GET)
-    public String displayLogin(Model model) {
-		model.addAttribute("account", new Account());
+
+    @Autowired
+    private AccountService accountService;
+
+    @RequestMapping(value = { "/displayLogin",
+        "/" }, method = RequestMethod.GET)
+    public String displayLogin(final Model model) {
+        model.addAttribute("account", new Account());
         return Constant.Page.LOGIN_PAGE;
     }
-	
-	@RequestMapping(value= {"/login"}, method= RequestMethod.POST)
-    public String login(@ModelAttribute("account") Account account, HttpSession httpSession) throws Exception {
-		httpSession.setAttribute("username", account.getUsername());
-		String page= accountService.loginAccount(account);
-		return page;
+
+    @RequestMapping(value = { "/login" }, method = RequestMethod.POST)
+    public String login(
+        @ModelAttribute("account") final Account account,
+        final HttpSession httpSession) throws Exception {
+        httpSession.setAttribute("username", account.getUsername());
+        String page = this.accountService.loginAccount(account);
+        return page;
     }
-	
-	@RequestMapping(value= "/logout", method= RequestMethod.GET)
-    public String logOut(HttpSession session, Model model) {
-        String username= (String) session.getAttribute("username");
-        accountService.logout(username);
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logOut(final HttpSession session, final Model model) {
+        String username = (String) session.getAttribute("username");
+        this.accountService.logout(username);
         model.addAttribute("account", new Account());
         return "login";
     }
-	
+
 }

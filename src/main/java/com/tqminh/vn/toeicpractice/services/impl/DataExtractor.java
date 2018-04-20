@@ -29,58 +29,60 @@ import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.services.PDFService;
 
 @Component
-public class DataExtractor extends PDFTextStripper implements PDFService{
-    
-    private Writer writer;
-    
+public class DataExtractor extends PDFTextStripper implements PDFService {
+
     private String patch;
+
+    private final Writer writer;
 
     public DataExtractor() throws IOException {
         super();
-        writer= new OutputStreamWriter(new ByteArrayOutputStream());
+        this.writer = new OutputStreamWriter(new ByteArrayOutputStream());
     }
-    
+
+    private File loadFile() throws InvalidPasswordException, IOException {
+        File file = new File(this.patch);
+        return file;
+    }
+
+    private void processDocument()
+            throws InvalidPasswordException, IOException {
+        PDDocument document = PDDocument.load(this.loadFile());
+        super.writeText(document, this.writer);
+    }
 
     @Override
-    protected void writeString(String text, List<TextPosition> textPositions)
-            throws IOException {
-        System.out.println(text);
+    public void readFile(final String patch)
+            throws InvalidPasswordException, IOException {
+        this.patch = patch;
+        this.processDocument();
     }
-    
+
     @Override
-    public AbstractQuestion viewQuestion(String s) {
+    public void setEndPage(final int endPageValue) {
+        super.setEndPage(endPageValue);
+    }
+
+    @Override
+    public void setSortByPosition(final boolean newSortByPosition) {
+        super.setSortByPosition(newSortByPosition);
+    }
+
+    @Override
+    public void setStartPage(final int startPageValue) {
+        super.setStartPage(startPageValue);
+    }
+
+    @Override
+    public AbstractQuestion viewQuestion(final String s) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public void setSortByPosition(boolean newSortByPosition) {
-        super.setSortByPosition(newSortByPosition);
+    protected void writeString(
+        final String text,
+        final List<TextPosition> textPositions) throws IOException {
+        System.out.println(text);
     }
-    
-    @Override
-    public void setStartPage(int startPageValue) {
-        super.setStartPage(startPageValue);
-    }
-    
-    @Override
-    public void setEndPage(int endPageValue) {
-        super.setEndPage(endPageValue);
-    }
-
-    private File loadFile() throws InvalidPasswordException, IOException {
-        File file= new File(patch);
-        return file;
-    }
-    
-    private void processDocument() throws InvalidPasswordException, IOException {
-        PDDocument document = PDDocument.load(loadFile());
-        super.writeText(document, writer);
-    }
-
-    @Override
-    public void readFile(String patch) throws InvalidPasswordException, IOException {
-        this.patch= patch; 
-        processDocument();
-    }    
 }

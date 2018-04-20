@@ -20,9 +20,9 @@ import com.tqminh.vn.toeicpractice.services.QuestionService;
 
 @Controller
 public class PQuestionController {
-    
+
+    @SuppressWarnings("unused")
     @Autowired
     private QuestionService<PhotoQuestion> questionService;
-    
-    
+
 }

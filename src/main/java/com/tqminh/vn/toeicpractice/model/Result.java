@@ -4,97 +4,94 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Result {
-	
-	private String username;
-	
-	private String date;
-	
-	private String timestamp;
-	
-	private List<Double> multipleChoices;
-	
-	private List<Double> sentences;
-	
-	private List<Double> photos;
-	
-	public Result() {
-		super();
-		multipleChoices= new ArrayList<>();
-		sentences= new ArrayList<>();
-		photos= new ArrayList<>();
-	}
 
-	public Result(String username, String date, String timestamp) {
+    private String date;
+
+    private List<Double> multipleChoices;
+
+    private List<Double> photos;
+
+    private List<Double> sentences;
+
+    private String timestamp;
+
+    private String username;
+
+    public Result() {
+        super();
+        this.multipleChoices = new ArrayList<>();
+        this.sentences = new ArrayList<>();
+        this.photos = new ArrayList<>();
+    }
+
+    public Result(final String username, final String date,
+            final String timestamp) {
         super();
         this.username = username;
         this.date = date;
-        this.timestamp= timestamp;
-        multipleChoices= new ArrayList<>();
-        sentences= new ArrayList<>();
-        photos= new ArrayList<>();
+        this.timestamp = timestamp;
+        this.multipleChoices = new ArrayList<>();
+        this.sentences = new ArrayList<>();
+        this.photos = new ArrayList<>();
     }
-	
-    public Result(String username, String date, String timestamp, List<Double> multipleChoices, List<Double> sentences,
-			List<Double> photos) {
-		super();
-		this.username = username;
-		this.date = date;
-		this.timestamp = timestamp;
-		this.multipleChoices = multipleChoices;
-		this.sentences = sentences;
-		this.photos = photos;
-	}
 
-	public String getUsername() {
-		return username;
-	}
+    public Result(final String username, final String date,
+            final String timestamp, final List<Double> multipleChoices,
+            final List<Double> sentences, final List<Double> photos) {
+        super();
+        this.username = username;
+        this.date = date;
+        this.timestamp = timestamp;
+        this.multipleChoices = multipleChoices;
+        this.sentences = sentences;
+        this.photos = photos;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public String getDate() {
+        return this.date;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public List<Double> getMultipleChoices() {
+        return this.multipleChoices;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public List<Double> getPhotos() {
+        return this.photos;
+    }
 
-
-	public List<Double> getMultipleChoices() {
-		return multipleChoices;
-	}
-
-
-	public void setMultipleChoices(List<Double> multipleChoices) {
-		this.multipleChoices = multipleChoices;
-	}
-
-
-	public List<Double> getSentences() {
-		return sentences;
-	}
-
-
-	public void setSentences(List<Double> sentences) {
-		this.sentences = sentences;
-	}
-
-
-	public List<Double> getPhotos() {
-		return photos;
-	}
-
-	public void setPhotos(List<Double> photos) {
-		this.photos = photos;
-	}
+    public List<Double> getSentences() {
+        return this.sentences;
+    }
 
     public String getTimestamp() {
-        return timestamp;
+        return this.timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void setDate(final String date) {
+        this.date = date;
+    }
+
+    public void setMultipleChoices(final List<Double> multipleChoices) {
+        this.multipleChoices = multipleChoices;
+    }
+
+    public void setPhotos(final List<Double> photos) {
+        this.photos = photos;
+    }
+
+    public void setSentences(final List<Double> sentences) {
+        this.sentences = sentences;
+    }
+
+    public void setTimestamp(final String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public void setUsername(final String username) {
+        this.username = username;
     }
 }
