@@ -12,15 +12,33 @@
  */
 package com.tqminh.vn.toeicpractice.controllers;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.tqminh.vn.toeicpractice.services.impl.DataExtractor;
+import com.tqminh.vn.toeicpractice.configuration.GeneralConfiguration;
+import com.tqminh.vn.toeicpractice.services.PDFService;
 
-@Controller
+@RestController
 public class DataExtractionController {
     
     @Autowired
-    private DataExtractor extractor;
+    private PDFService extractor;
     
+    @Autowired
+    private GeneralConfiguration configuration;  
+    
+    @RequestMapping(value= "/extract", method= RequestMethod.GET)
+    public String extractDataFromPDF() {
+        try {
+            extractor.readFile(configuration.getPdfPatch());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    } 
 }

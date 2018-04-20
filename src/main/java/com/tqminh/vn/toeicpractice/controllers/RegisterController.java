@@ -33,10 +33,8 @@ public class RegisterController {
 			return accountService.registerAccount(account);
 		}
 		else {
-//			TODO: handling when re-password incorrectly.
-//			return "";
+		    return "redirect:/displayRegister";
 		}
-		return null;
 	}
 	
 }

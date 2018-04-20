@@ -15,7 +15,7 @@ public class GeneralConfiguration {
     @Value("${app.configuration.limited.p.question}")
     private int maxPQuestion;
 
-//    @Value("${app.configuration.pdf.patch}")
+    @Value("${app.configuration.pdf.patch}")
     private String pdfPatch;
 
     public String getPdfPatch() {

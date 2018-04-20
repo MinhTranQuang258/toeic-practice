@@ -3,8 +3,8 @@ package com.tqminh.vn.toeicpractice.services;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -387,7 +387,7 @@ public abstract class AbstractQuestionService {
 	
 	protected void validate(String selection, AbstractQuestion question, String username) {
 	    if(isCheckSelection(selection, question)) {
-	        score = score + 1;
+	    	score = score + 1;
 	        questionCache.getQuestionList(username).setScore(score); 
 	    }
 	}
@@ -398,22 +398,27 @@ public abstract class AbstractQuestionService {
 	}
 	
 	private String getDate() throws ParseException {
-	    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-	    Date dateWithoutTime = sdf.parse(sdf.format(new Date()));
-	    return dateWithoutTime.toString();
+	    LocalDate localDate= LocalDate.now();
+	    return localDate.toString();
 	}
 	
 	private ResultWrapper saveResult(String date, String username, double score, String timestamp) throws SQLException {
-	    if(resultRepository.findResultByDateAndUsername(timestamp, username) == null) {
-	        Result result= new Result(username, timestamp, date);
-	        result.getSentences().add(score);
-	        ResultWrapper resultWrapper= new ResultWrapper(result);
-            return resultRepository.save(resultWrapper);
+		ResultWrapper resultWrapper= resultRepository.findResultByDateAndUsername(date, username);
+	    if(resultWrapper == null) {
+	        Result result= new Result(username, date, timestamp);
+	        result.getMultipleChoices().add(score);
+	        ResultWrapper wrapper= new ResultWrapper(result);
+	        wrapper = resultRepository.save(wrapper);
+	        return wrapper;
 	    }
 	    else {
-	        ResultWrapper resultWrapper= resultRepository.findResultByDateAndUsername(date, username);
-	        resultWrapper.getResult().getMultipleChoices().add(score);
-	        return resultRepository.save(resultWrapper);
+	    	Result temporary= resultWrapper.getResult();
+	    	temporary.getMultipleChoices().add(score);
+	        Result result= new Result(temporary.getUsername(), temporary.getDate(), temporary.getTimestamp(),
+	        		temporary.getMultipleChoices(), temporary.getSentences(), temporary.getPhotos());
+	    	ResultWrapper wrapper= new ResultWrapper(resultWrapper.getId(), result);
+	    	wrapper = resultRepository.save(wrapper);
+	        return wrapper;
 	    }
 	}
 	
@@ -427,11 +432,8 @@ public abstract class AbstractQuestionService {
 	        score= 0;
 	        removeCache(username, typeQuestion);
         }
-        catch (ParseException e) {
+        catch (Exception e) {
             throw e;
         }
-	    catch (SQLException ex) {
-	        throw ex;
-	    }
 	}
 }

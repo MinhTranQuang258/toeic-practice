@@ -28,12 +28,24 @@ public class Result {
         super();
         this.username = username;
         this.date = date;
+        this.timestamp= timestamp;
         multipleChoices= new ArrayList<>();
         sentences= new ArrayList<>();
         photos= new ArrayList<>();
     }
+	
+    public Result(String username, String date, String timestamp, List<Double> multipleChoices, List<Double> sentences,
+			List<Double> photos) {
+		super();
+		this.username = username;
+		this.date = date;
+		this.timestamp = timestamp;
+		this.multipleChoices = multipleChoices;
+		this.sentences = sentences;
+		this.photos = photos;
+	}
 
-    public String getUsername() {
+	public String getUsername() {
 		return username;
 	}
 
