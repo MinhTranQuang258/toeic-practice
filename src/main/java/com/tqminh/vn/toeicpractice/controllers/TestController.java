@@ -22,7 +22,7 @@ public class TestController {
     public void save() {
         for (int i = 0; i < 11; i++) {
             MultipleChoiceQuestion multipleChoiceQuestion = new MultipleChoiceQuestion(
-                "Câu " + 1, "1", "2", "3", "4", "1");
+                "Câu " + i, "1", "2", "3", "4", "1");
             try {
                 this.mcQuestionService.insertQuestion(multipleChoiceQuestion);
             }
