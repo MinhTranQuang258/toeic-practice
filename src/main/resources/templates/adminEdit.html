@@ -106,7 +106,7 @@
             </ul>
           </li>
           <li class="sidebar__item">
-            <a href="/admin/leaderboard" class="js-sidebar-item  sidebar__link">
+            <a href="/admin/statistication" class="js-sidebar-item  sidebar__link">
               <i class="fa fa-trophy" aria-hidden="true"></i>
               Thống kê
             </a>
@@ -140,7 +140,33 @@
                   </form>
                 </div>
 
-              
+              <div class="admin__question-list">
+                  <table class="table list">
+                    <caption>Danh sách câu hỏi</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Câu hỏi</th>
+                        <th scope="col">Đáp án A</th>
+                        <th scope="col">Đáp án B</th>
+                        <th scope="col">Đáp án C</th>
+                        <th scope="col">Đáp án D</th>
+                        <th scope="col">Đáp án đúng</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr th:each="question : ${questions}">
+                        <th th:utext="${question.getId()}" />
+                        <td th:utext="${question.getMultipleChoiceQuestion().getDetailQuestion()}" />
+                        <td th:utext="${question.getMultipleChoiceQuestion().getAnswerA()}" />
+                        <td th:utext="${question.getMultipleChoiceQuestion().getAnswerB()}" />
+                        <td th:utext="${question.getMultipleChoiceQuestion().getAnswerC()}" />
+                        <td th:utext="${question.getMultipleChoiceQuestion().getAnswerD()}" />
+                        <td th:utext="${question.getMultipleChoiceQuestion().getAnswerTrue()}" />
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
 
                 <div class="admin__question">
                   <form th:object="${question}" method="post">

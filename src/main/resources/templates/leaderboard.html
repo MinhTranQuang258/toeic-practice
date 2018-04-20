@@ -107,7 +107,7 @@
             </ul>
           </li>
           <li class="sidebar__item">
-            <a href="/admin/leaderboard" class="js-sidebar-item  sidebar__link">
+            <a href="/admin/statistication" class="js-sidebar-item  sidebar__link">
               <i class="fa fa-trophy" aria-hidden="true"></i>
               Thống kê
             </a>
@@ -116,6 +116,7 @@
       </nav>
 
       <main class="page-main col-lg-9">
+      <form method="get">
         <div class="main">
           <div class="container-fluid">
             <div class="row question__container">
@@ -134,50 +135,32 @@
                       </p>
                     </div>
                     <div class="leaderboard__search offset-lg-6 col-md-3">
-                      <form action="">
                         <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Nhập username" />
+                          <input type="text" class="form-control" placeholder="Nhập username" name="search"/>
                           <div class="input-group-append">
                             <button type="submit" id="btn-submit-search" class="btn btn__default">
                               <i class="fa fa-search" aria-hidden="true"></i>
                             </button>
                           </div>
                         </div>
-                      </form>
                     </div>
                   </div>
                 </div>
                 <div class="leaderboard__body">
                   <h2 class="leaderboard__caption">TOP 10</h2>
                   <table class="table list">
-                    <!-- <caption>TOP 10</caption> -->
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">Ngày</th>
                         <th scope="col">Username</th>
                         <th scope="col">Điểm</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <!-- <tr th:each="question : ${questions}">
-                        <th th:utext="${question.getId()}" />
-                        <td th:utext="${question.getMultipleChoiceQuestion().getDetailQuestion()}" />
-                        <td th:utext="${question.getMultipleChoiceQuestion().getAnswerA()}" />
-                      </tr> -->
-                      <tr>
-                        <th>1</th>
-                        <td>User1</td>
-                        <td>100</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>User1</td>
-                        <td>100</td>
-                      </tr>
-                      <tr>
-                        <th>1</th>
-                        <td>User1</td>
-                        <td>100</td>
+                      <tr th:each="result : ${results}">
+                        <th th:utext="${result.getDate()}" />
+                        <td th:utext="${result.getUsername()}" />
+                        <td th:utext="${result.getMultipleChoices().get(result.getMultipleChoices().size())}" />
                       </tr>
                     </tbody>
                   </table>
@@ -186,6 +169,7 @@
             </div>
           </div>
         </div>
+        </form>
       </main>
     </div>
   </div>

@@ -12,17 +12,44 @@
  */
 package com.tqminh.vn.toeicpractice.controllers;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tqminh.vn.toeicpractice.common.Constant;
+import com.tqminh.vn.toeicpractice.model.Result;
 import com.tqminh.vn.toeicpractice.services.StatisticalService;
 
 @Controller
 public class StatisticalController {
-
+    
     @Autowired
     @Qualifier("StatisticalService")
     private StatisticalService statisticalService;
+    
+    @RequestMapping(value="/admin/statistication")
+    public String displayStatistication(Model model) {
+        try {
+            int concurrentUser= statisticalService.getConcurrentUser();
+            List<Result> results= statisticalService.getTopTenScore(LocalDate.now().toString());
+            
+            for (Result result : results) {
+                result.getUsername();
+            }
+            
+            model.addAttribute("concurrentUser", concurrentUser);
+            model.addAttribute("results", results);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Constant.Page.DASH_BOARD_PAGE;
+    }
 
 }
