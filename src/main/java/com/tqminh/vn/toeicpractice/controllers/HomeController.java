@@ -32,7 +32,12 @@ public class HomeController {
         final HttpSession httpSession) throws Exception {
         httpSession.setAttribute("username", account.getUsername());
         String page = this.accountService.loginAccount(account);
-        return page;
+        if(page.equals(Constant.Page.USER_HOME_PAGE)) {
+            return "redirect:/user";
+        }
+        else {
+            return "redirect:/admin";
+        }
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
