@@ -40,6 +40,7 @@ public class MCQuetionController {
         MultipleChoiceQuestion question = this.mcQuestionService
             .getQuestion(username, 1);
         model.addAttribute("question", question);
+        model.addAttribute("name", username);
         this.map.put("question", question);
         return Constant.Page.USER_GRAMMAR_PAGE;
     }

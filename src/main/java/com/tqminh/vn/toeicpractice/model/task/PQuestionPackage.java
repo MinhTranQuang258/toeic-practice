@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 
-public class PQuestionList extends AbstractQuestionList {
+public class PQuestionPackage extends AbstractQuestionPackage {
 
     private int concurrentIndex;
 
@@ -12,11 +12,11 @@ public class PQuestionList extends AbstractQuestionList {
 
     private double score;
 
-    public PQuestionList() {
+    public PQuestionPackage() {
         super();
     }
 
-    public PQuestionList(final List<PhotoQuestion> questions) {
+    public PQuestionPackage(final List<PhotoQuestion> questions) {
         super();
         this.questions = questions;
     }

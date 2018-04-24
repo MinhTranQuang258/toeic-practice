@@ -15,24 +15,30 @@ package com.tqminh.vn.toeicpractice.cache.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Component;
 
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
-import com.tqminh.vn.toeicpractice.model.task.AbstractQuestionList;
+import com.tqminh.vn.toeicpractice.model.task.AbstractQuestionPackage;
 
 @Component("QuestionListCacheImpl")
 public class QuestionListCacheImpl
-        implements QuestionListCache<AbstractQuestionList> {
+        implements QuestionListCache<AbstractQuestionPackage> {
 
-    private final Map<String, AbstractQuestionList> map;
-
-    public QuestionListCacheImpl() {
-        super();
+    private Map<String, AbstractQuestionPackage> map;
+    
+    @PostConstruct
+    private void initialize() {
         this.map = new HashMap<>();
     }
 
+    public QuestionListCacheImpl() {
+        super();
+    }
+
     @Override
-    public AbstractQuestionList getQuestionList(final String username) {
+    public AbstractQuestionPackage getQuestionList(final String username) {
         return this.map.get(username);
     }
 
@@ -44,12 +50,12 @@ public class QuestionListCacheImpl
     @Override
     public void putQuestionList(
         final String username,
-        final AbstractQuestionList questionList) {
+        final AbstractQuestionPackage questionList) {
         this.map.put(username, questionList);
     }
 
     @Override
-    public AbstractQuestionList removeQuestionList(final String username) {
+    public AbstractQuestionPackage removeQuestionList(final String username) {
         return this.map.remove(username);
     }
 

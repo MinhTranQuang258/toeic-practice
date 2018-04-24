@@ -16,7 +16,7 @@ import java.util.List;
 
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 
-public abstract class AbstractQuestionList {
+public abstract class AbstractQuestionPackage {
 
     public abstract int getConcurrentIndex();
 
@@ -26,5 +26,4 @@ public abstract class AbstractQuestionList {
 
     public abstract void setScore(double score);
 
-    //    public abstract void setQuestions(List<? extends AbstractQuestion> questions);
 }

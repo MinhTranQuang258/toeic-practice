@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Component;
 
 import com.tqminh.vn.toeicpractice.cache.IndexCache;
@@ -11,11 +13,15 @@ import com.tqminh.vn.toeicpractice.cache.IndexCache;
 @Component("IndexCache")
 public class IndexCacheImpl implements IndexCache<Long> {
 
-    private final Map<String, Set<Long>> indexMap;
+    private Map<String, Set<Long>> indexMap;
+    
+    @PostConstruct
+    private void initialize() {
+        this.indexMap = new HashMap<>();
+    }
 
     public IndexCacheImpl() {
         super();
-        this.indexMap = new HashMap<>();
     }
 
     @Override

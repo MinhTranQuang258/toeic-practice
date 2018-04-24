@@ -22,9 +22,9 @@ import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 import com.tqminh.vn.toeicpractice.model.PhotoQuestion;
 import com.tqminh.vn.toeicpractice.model.Result;
-import com.tqminh.vn.toeicpractice.model.task.AbstractQuestionList;
-import com.tqminh.vn.toeicpractice.model.task.MCQuestionList;
-import com.tqminh.vn.toeicpractice.model.task.PQuestionList;
+import com.tqminh.vn.toeicpractice.model.task.AbstractQuestionPackage;
+import com.tqminh.vn.toeicpractice.model.task.MCQuestionPackge;
+import com.tqminh.vn.toeicpractice.model.task.PQuestionPackage;
 import com.tqminh.vn.toeicpractice.repositories.MCQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.PQuestionWrapperRepository;
 import com.tqminh.vn.toeicpractice.repositories.ResultWrapperRepository;
@@ -49,7 +49,7 @@ public abstract class AbstractQuestionService {
 
     @Autowired
     @Qualifier("QuestionListCacheImpl")
-    private QuestionListCache<AbstractQuestionList> questionCache;
+    private QuestionListCache<AbstractQuestionPackage> questionCache;
 
     @Autowired
     private ResultWrapperRepository resultRepository;
@@ -128,7 +128,7 @@ public abstract class AbstractQuestionService {
         return localDate.toString();
     }
 
-    private MCQuestionList getMCQuestionList(
+    private MCQuestionPackge getMCQuestionList(
         final String username,
         final Integer typeQuestion) throws NullPointerException, SQLException {
         try {
@@ -149,15 +149,15 @@ public abstract class AbstractQuestionService {
                     list.add(questionWrapper.getMultipleChoiceQuestion());
                 }
             }
-            AbstractQuestionList questions = new MCQuestionList(list);
-            return (MCQuestionList) questions;
+            AbstractQuestionPackage questions = new MCQuestionPackge(list);
+            return (MCQuestionPackge) questions;
         }
         catch (Exception e) {
             throw e;
         }
     }
 
-    private PQuestionList getPQuestionList(
+    private PQuestionPackage getPQuestionList(
         final String username,
         final Integer typeQuestion) throws NullPointerException, SQLException {
         try {
@@ -179,8 +179,8 @@ public abstract class AbstractQuestionService {
                 }
             }
 
-            AbstractQuestionList questions = new PQuestionList(list);
-            return (PQuestionList) questions;
+            AbstractQuestionPackage questions = new PQuestionPackage(list);
+            return (PQuestionPackage) questions;
         }
         catch (Exception e) {
             throw e;
@@ -298,7 +298,7 @@ public abstract class AbstractQuestionService {
         final String username,
         final int index) throws Exception {
         try {
-            MCQuestionList mcQuestionList = (MCQuestionList) this.questionCache
+            MCQuestionPackge mcQuestionList = (MCQuestionPackge) this.questionCache
                 .getQuestionList(username);
             MultipleChoiceQuestion question = (MultipleChoiceQuestion) mcQuestionList
                 .getQuestions().get(index);
@@ -312,7 +312,7 @@ public abstract class AbstractQuestionService {
     private PhotoQuestion loadPQuestions(final String username, final int index)
             throws Exception {
         try {
-            PQuestionList pQuestionList = (PQuestionList) this.questionCache
+            PQuestionPackage pQuestionList = (PQuestionPackage) this.questionCache
                 .getQuestionList(username);
             PhotoQuestion question = pQuestionList.getQuestions().get(index);
             return question;
@@ -327,7 +327,7 @@ public abstract class AbstractQuestionService {
         final Integer typeQuestion) throws NullPointerException, SQLException {
         try {
             if (typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-                MCQuestionList mcQuestionList = (MCQuestionList) this.questionCache
+                MCQuestionPackge mcQuestionList = (MCQuestionPackge) this.questionCache
                     .getQuestionList(username);
                 int concurrentIndex = mcQuestionList.getConcurrentIndex();
 
@@ -341,7 +341,7 @@ public abstract class AbstractQuestionService {
                 }
             }
             else if (typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-                PQuestionList pQuestionList = (PQuestionList) this.questionCache
+                PQuestionPackage pQuestionList = (PQuestionPackage) this.questionCache
                     .getQuestionList(username);
                 int concurrentIndex = pQuestionList.getConcurrentIndex();
 
@@ -366,7 +366,7 @@ public abstract class AbstractQuestionService {
         final Integer typeQuestion) throws NullPointerException, SQLException {
         try {
             if (typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
-                MCQuestionList mcQuestionList = (MCQuestionList) this.questionCache
+                MCQuestionPackge mcQuestionList = (MCQuestionPackge) this.questionCache
                     .getQuestionList(username);
                 int concurrentIndex = mcQuestionList.getConcurrentIndex();
 
@@ -381,7 +381,7 @@ public abstract class AbstractQuestionService {
                 }
             }
             else if (typeQuestion == TypeDefinition.PHOTO_QUESTION) {
-                PQuestionList pQuestionList = (PQuestionList) this.questionCache
+                PQuestionPackage pQuestionList = (PQuestionPackage) this.questionCache
                     .getQuestionList(username);
                 int concurrentIndex = pQuestionList.getConcurrentIndex();
 
@@ -420,7 +420,7 @@ public abstract class AbstractQuestionService {
         final int index) throws Exception {
         if (typeQuestion == TypeDefinition.MULTIPLE_CHOICE_QUESTION) {
             if (!this.questionCache.isCheckUsername(username)) {
-                MCQuestionList questionList = this
+                MCQuestionPackge questionList = this
                     .getMCQuestionList(username, typeQuestion);
                 questionList.setConcurrentIndex(index);
                 this.questionCache.putQuestionList(username, questionList);
@@ -428,7 +428,7 @@ public abstract class AbstractQuestionService {
         }
         else if (typeQuestion == TypeDefinition.PHOTO_QUESTION) {
             if (!this.questionCache.isCheckUsername(username)) {
-                PQuestionList questionList = this
+                PQuestionPackage questionList = this
                     .getPQuestionList(username, typeQuestion);
                 questionList.setConcurrentIndex(index);
                 this.questionCache.putQuestionList(username, questionList);
@@ -467,7 +467,7 @@ public abstract class AbstractQuestionService {
     protected void submit(final String username, final Integer typeQuestion)
             throws ParseException, SQLException {
         try {
-            AbstractQuestionList abstractQuestionList = this.questionCache
+            AbstractQuestionPackage abstractQuestionList = this.questionCache
                 .getQuestionList(username);
             double score = abstractQuestionList.getScore();
             String timestamp = this.getTimestamp();

@@ -15,6 +15,8 @@ public class PhotoQuestion extends AbstractQuestion {
     private String folderName;
 
     private String photo;
+    
+    private String sound;
 
     public PhotoQuestion() {
         super();
@@ -30,6 +32,20 @@ public class PhotoQuestion extends AbstractQuestion {
         this.answerC = answerC;
         this.answerD = answerD;
         this.answerTrue = answerTrue;
+    }
+
+    public PhotoQuestion(String answerA, String answerB, String answerC,
+            String answerD, String answerTrue, String folderName, String photo,
+            String sound) {
+        super();
+        this.answerA = answerA;
+        this.answerB = answerB;
+        this.answerC = answerC;
+        this.answerD = answerD;
+        this.answerTrue = answerTrue;
+        this.folderName = folderName;
+        this.photo = photo;
+        this.sound = sound;
     }
 
     @Override
@@ -96,5 +112,13 @@ public class PhotoQuestion extends AbstractQuestion {
 
     public void setPhoto(final String photo) {
         this.photo = photo;
+    }
+
+    public String getSound() {
+        return sound;
+    }
+
+    public void setSound(String sound) {
+        this.sound = sound;
     }
 }

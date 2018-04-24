@@ -5,7 +5,7 @@ import java.util.List;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
 import com.tqminh.vn.toeicpractice.model.MultipleChoiceQuestion;
 
-public class MCQuestionList extends AbstractQuestionList {
+public class MCQuestionPackge extends AbstractQuestionPackage {
 
     private int concurrentIndex;
 
@@ -13,18 +13,18 @@ public class MCQuestionList extends AbstractQuestionList {
 
     private double score;
 
-    public MCQuestionList() {
+    public MCQuestionPackge() {
         super();
     }
 
-    public MCQuestionList(final int concurrentIndex,
+    public MCQuestionPackge(final int concurrentIndex,
             final List<MultipleChoiceQuestion> questions) {
         super();
         this.concurrentIndex = concurrentIndex;
         this.questions = questions;
     }
 
-    public MCQuestionList(final List<MultipleChoiceQuestion> questions) {
+    public MCQuestionPackge(final List<MultipleChoiceQuestion> questions) {
         super();
         this.questions = questions;
     }
