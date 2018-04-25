@@ -180,17 +180,22 @@ label {
 .dash {
   color: #6db22f; }
 
-/* line 7, ../scss/_header.scss */
-.header__user-name p {
-  color: #6db22f;
-  font-weight: 700;
-  font-size: 20px;
-  text-transform: uppercase;
-  margin-bottom: 0; }
-/* line 16, ../scss/_header.scss */
+/* line 6, ../scss/_header.scss */
+.header__user-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  /* line 8, ../scss/_header.scss */
+  .header__user-name p {
+    color: #6db22f;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 0; }
+/* line 17, ../scss/_header.scss */
 .header .btn {
   margin-left: 10px; }
-  /* line 18, ../scss/_header.scss */
+  /* line 19, ../scss/_header.scss */
   .header .btn:hover {
     color: #fff; }
 
