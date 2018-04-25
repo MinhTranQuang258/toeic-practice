@@ -21,6 +21,7 @@
             <!-- <img src="" alt=""> -->
           </div>
           <div class="header__user-name">
+            <p class="header__user-text">Username: </p>
             <p class="header__user-text">ADMIN</p>
           </div>
         </div>
@@ -114,59 +115,59 @@
       </nav>
 
       <main class="page-main col-lg-9">
-      <form method="get">
-        <div class="main">
-          <div class="container-fluid">
-            <div class="row question__container">
-              <div class="admin leaderboard col-lg-11 p-5">
-                <div class="leaderboard__header">
-                  <h2>
-                    <i class="fa fa-trophy" aria-hidden="true"></i>
-                    Thống kê
-                  </h2>
-                  <div class="row">
-                    <div class="col-md-3">
-                      <p class="leaderboard__online">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        <span ></span>
-                        User đang online
-                      </p>
-                    </div>
-                    <div class="leaderboard__search offset-lg-6 col-md-3">
+        <form method="get">
+          <div class="main">
+            <div class="container-fluid">
+              <div class="row question__container">
+                <div class="admin leaderboard col-lg-11 p-5">
+                  <div class="leaderboard__header">
+                    <h2>
+                      <i class="fa fa-trophy" aria-hidden="true"></i>
+                      Thống kê
+                    </h2>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <p class="leaderboard__online">
+                          <i class="fa fa-users" aria-hidden="true"></i>
+                          <span></span>
+                          User đang online
+                        </p>
+                      </div>
+                      <div class="leaderboard__search offset-lg-6 col-md-3">
                         <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Nhập username" name="search"/>
+                          <input type="text" class="form-control" placeholder="Nhập username" name="search" />
                           <div class="input-group-append">
                             <button type="submit" id="btn-submit-search" class="btn btn__default" formaction="/admin/search">
                               <i class="fa fa-search" aria-hidden="true"></i>
                             </button>
                           </div>
                         </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="leaderboard__body">
-                  <h2 class="leaderboard__caption">TOP 10</h2>
-                  <table class="table list">
-                    <thead>
-                      <tr>
-                        <th scope="col">Ngày</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Điểm</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr th:each="result : ${results}">
-                        <th th:utext="${result.getDate()}" />
-                        <td th:utext="${result.getUsername()}" />
-                        <td th:utext="${result.getMultipleChoices()}" />
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div class="leaderboard__body">
+                    <h2 class="leaderboard__caption">TOP 10</h2>
+                    <table class="table list">
+                      <thead>
+                        <tr>
+                          <th scope="col">Ngày</th>
+                          <th scope="col">Username</th>
+                          <th scope="col">Điểm</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="result : ${results}">
+                          <th th:utext="${result.getDate()}" />
+                          <td th:utext="${result.getUsername()}" />
+                          <td th:utext="${result.getMultipleChoices()}" />
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         </form>
       </main>
     </div>
