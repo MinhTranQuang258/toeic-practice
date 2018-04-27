@@ -14,11 +14,6 @@ import com.tqminh.vn.toeicpractice.model.Account;
 public class AccountCacheImpl implements AccountCache<Account> {
 
     private Map<String, Account> map;
-    
-    @PostConstruct
-    private void initialize() {
-        this.map = new HashMap<>();
-    }
 
     public AccountCacheImpl() {
         super();
@@ -32,6 +27,11 @@ public class AccountCacheImpl implements AccountCache<Account> {
     @Override
     public int getSize() {
         return this.map.size();
+    }
+
+    @PostConstruct
+    private void initialize() {
+        this.map = new HashMap<>();
     }
 
     @Override

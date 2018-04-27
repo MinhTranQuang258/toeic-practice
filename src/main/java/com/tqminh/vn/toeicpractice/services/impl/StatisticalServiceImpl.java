@@ -45,7 +45,7 @@ public class StatisticalServiceImpl implements StatisticalService {
             throws SQLException {
         ResultWrapper resultWrapper = this.repository
             .findResultByDateAndUsername(date, username);
-        if(isCheckResult(resultWrapper)) {
+        if (this.isCheckResult(resultWrapper)) {
             return resultWrapper.getResult();
         }
         else {
@@ -62,9 +62,9 @@ public class StatisticalServiceImpl implements StatisticalService {
         }
         return results;
     }
-    
-    private boolean isCheckResult(ResultWrapper result) {
-        if(result == null) {
+
+    private boolean isCheckResult(final ResultWrapper result) {
+        if (result == null) {
             return false;
         }
         else {

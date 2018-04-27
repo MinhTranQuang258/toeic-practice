@@ -30,21 +30,22 @@ import com.tqminh.vn.toeicpractice.services.StatisticalService;
 
 @Controller
 public class StatisticalController {
-    
+
     @Autowired
     @Qualifier("StatisticalService")
     private StatisticalService statisticalService;
-    
-    @RequestMapping(value="/admin/statistication")
-    public String displayStatistication(Model model) {
+
+    @RequestMapping(value = "/admin/statistication")
+    public String displayStatistication(final Model model) {
         try {
-            int concurrentUser= statisticalService.getConcurrentUser();
-            List<Result> results= statisticalService.getTopTenScore(LocalDate.now().toString());
-            
+            int concurrentUser = this.statisticalService.getConcurrentUser();
+            List<Result> results = this.statisticalService
+                .getTopTenScore(LocalDate.now().toString());
+
             for (Result result : results) {
                 result.getMultipleChoices();
             }
-            
+
             model.addAttribute("concurrentUser", concurrentUser);
             model.addAttribute("results", results);
         }
@@ -53,12 +54,15 @@ public class StatisticalController {
         }
         return Constant.Page.DASH_BOARD_PAGE;
     }
-    
-    @RequestMapping(value= "/admin/search", method= RequestMethod.GET)
-    public String searchResult(@RequestParam String search, Model model) {
+
+    @RequestMapping(value = "/admin/search", method = RequestMethod.GET)
+    public String searchResult(
+        @RequestParam final String search,
+        final Model model) {
         try {
-            Result result = statisticalService.getResultByUsername(search, LocalDate.now().toString());
-            if(result != null) {
+            Result result = this.statisticalService
+                .getResultByUsername(search, LocalDate.now().toString());
+            if (result != null) {
                 model.addAttribute("results", result);
             }
             else {

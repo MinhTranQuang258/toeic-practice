@@ -24,7 +24,6 @@ public interface MCQuestionWrapperRepository
     @Query(nativeQuery = true, value = Constant.NativeQuery.COUNT_MCQUESTION_BY_ID)
     int countQuestionById();
 
-
     /**
      * Find all question list.
      *

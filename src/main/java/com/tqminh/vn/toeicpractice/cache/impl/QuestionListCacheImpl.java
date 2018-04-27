@@ -27,11 +27,6 @@ public class QuestionListCacheImpl
         implements QuestionListCache<AbstractQuestionPackage> {
 
     private Map<String, AbstractQuestionPackage> map;
-    
-    @PostConstruct
-    private void initialize() {
-        this.map = new HashMap<>();
-    }
 
     public QuestionListCacheImpl() {
         super();
@@ -40,6 +35,11 @@ public class QuestionListCacheImpl
     @Override
     public AbstractQuestionPackage getQuestionList(final String username) {
         return this.map.get(username);
+    }
+
+    @PostConstruct
+    private void initialize() {
+        this.map = new HashMap<>();
     }
 
     @Override

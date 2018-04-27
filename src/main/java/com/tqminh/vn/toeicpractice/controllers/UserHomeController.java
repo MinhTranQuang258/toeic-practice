@@ -24,10 +24,12 @@ import com.tqminh.vn.toeicpractice.common.Constant;
 @Controller
 public class UserHomeController {
 
-    @RequestMapping(value= "/user", method= RequestMethod.GET)
-    public String displayUserHome(HttpSession session, Model model) {
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String displayUserHome(
+        final HttpSession session,
+        final Model model) {
         model.addAttribute("name", session.getAttribute("username"));
         return Constant.Page.USER_HOME_PAGE;
     }
-    
+
 }

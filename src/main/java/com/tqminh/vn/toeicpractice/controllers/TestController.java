@@ -18,14 +18,25 @@ import com.tqminh.vn.toeicpractice.services.QuestionService;
 public class TestController {
 
     @Autowired
-    @Qualifier("MCQuestionService")
-    private QuestionService<MultipleChoiceQuestion> mcQuestionService;
-    
-    @Autowired
     private GeneralConfiguration configuration;
 
     @Autowired
     private PDFService extractor;
+
+    @Autowired
+    @Qualifier("MCQuestionService")
+    private QuestionService<MultipleChoiceQuestion> mcQuestionService;
+
+    @RequestMapping(value = "/demoExtract", method = RequestMethod.GET)
+    public String demoExtractDataFromPDF() {
+        try {
+            this.extractor.readFile(this.configuration.getPdfPatch());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public void save() {
@@ -39,16 +50,5 @@ public class TestController {
                 e.printStackTrace();
             }
         }
-    }
-
-    @RequestMapping(value = "/demoExtract", method = RequestMethod.GET)
-    public String demoExtractDataFromPDF() {
-        try {
-            this.extractor.readFile(this.configuration.getPdfPatch());
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

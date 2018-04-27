@@ -24,27 +24,15 @@ import com.tqminh.vn.toeicpractice.services.QuestionService;
 @Controller
 public class MCQuetionController {
 
-    private final Map<String, Object> map = new HashMap<>();
-    
     @Autowired
     private GeneralConfiguration generalConfiguration;
+
+    private final Map<String, Object> map = new HashMap<>();
 
     @Autowired
     @Qualifier("MCQuestionService")
     private QuestionService<MultipleChoiceQuestion> mcQuestionService;
 
-    @RequestMapping(value = "/grammar", method = RequestMethod.GET)
-    public String getGrammer(final Model model, final HttpSession session)
-            throws Exception {
-        String username = (String) session.getAttribute("username");
-        MultipleChoiceQuestion question = this.mcQuestionService
-            .getQuestion(username, 1);
-        model.addAttribute("question", question);
-        model.addAttribute("name", username);
-        this.map.put("question", question);
-        return Constant.Page.USER_GRAMMAR_PAGE;
-    }
-    
     private String displayQuestionGrammarAgain(final Model model) {
         MultipleChoiceQuestion question;
         try {
@@ -57,25 +45,17 @@ public class MCQuetionController {
         }
         return Constant.Page.USER_GRAMMAR_PAGE;
     }
-    
-    @RequestMapping(value = "/validate", method = RequestMethod.POST)
-    public String validateQuestion(final HttpServletRequest servletRequest,
-        final HttpSession session,
-        final Model model) {
-        String username = (String) session.getAttribute("username");
-        String selection = servletRequest.getParameter("answerGroup");
-        if (selection == null) {
-            return this.displayQuestionGrammarAgain(model);
-        }
-        AbstractQuestion question = (AbstractQuestion) this.map.get("question");
-        try {
-            this.mcQuestionService.validateQuestion(username, question, selection);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        return "redirect:/nextMCQuestion";
+    @RequestMapping(value = "/grammar", method = RequestMethod.GET)
+    public String getGrammer(final Model model, final HttpSession session)
+            throws Exception {
+        String username = (String) session.getAttribute("username");
+        MultipleChoiceQuestion question = this.mcQuestionService
+            .getQuestion(username, 1);
+        model.addAttribute("question", question);
+        model.addAttribute("name", username);
+        this.map.put("question", question);
+        return Constant.Page.USER_GRAMMAR_PAGE;
     }
 
     @RequestMapping(value = "/nextMCQuestion", method = RequestMethod.GET)
@@ -106,5 +86,27 @@ public class MCQuetionController {
             e.printStackTrace();
         }
         return "redirect:/user";
+    }
+
+    @RequestMapping(value = "/validate", method = RequestMethod.POST)
+    public String validateQuestion(
+        final HttpServletRequest servletRequest,
+        final HttpSession session,
+        final Model model) {
+        String username = (String) session.getAttribute("username");
+        String selection = servletRequest.getParameter("answerGroup");
+        if (selection == null) {
+            return this.displayQuestionGrammarAgain(model);
+        }
+        AbstractQuestion question = (AbstractQuestion) this.map.get("question");
+        try {
+            this.mcQuestionService
+                .validateQuestion(username, question, selection);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "redirect:/nextMCQuestion";
     }
 }

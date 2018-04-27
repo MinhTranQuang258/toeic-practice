@@ -80,6 +80,8 @@ public class Constant {
 
         public final static String ADMIN_QUESTION_READING_PAGE = "adminQuestionReading";
 
+        public final static String DASH_BOARD_PAGE = "leaderboard";
+
         public final static String LOGIN_PAGE = "login";
 
         public final static String REGISTER_PAGE = "register";
@@ -89,9 +91,6 @@ public class Constant {
         public final static String USER_GRAMMAR_PAGE = "userGrammar";
 
         public final static String USER_HOME_PAGE = "userHome";
-        
-        
-        public final static String DASH_BOARD_PAGE= "leaderboard";
 
     }
 

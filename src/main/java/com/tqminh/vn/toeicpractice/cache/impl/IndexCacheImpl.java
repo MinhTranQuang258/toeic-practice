@@ -14,14 +14,14 @@ import com.tqminh.vn.toeicpractice.cache.IndexCache;
 public class IndexCacheImpl implements IndexCache<Long> {
 
     private Map<String, Set<Long>> indexMap;
-    
-    @PostConstruct
-    private void initialize() {
-        this.indexMap = new HashMap<>();
-    }
 
     public IndexCacheImpl() {
         super();
+    }
+
+    @PostConstruct
+    private void initialize() {
+        this.indexMap = new HashMap<>();
     }
 
     @Override

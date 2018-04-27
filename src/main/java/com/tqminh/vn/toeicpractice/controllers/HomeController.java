@@ -32,10 +32,10 @@ public class HomeController {
         final HttpSession httpSession) throws Exception {
         httpSession.setAttribute("username", account.getUsername());
         String page = this.accountService.loginAccount(account);
-        if(page == null) {
-        	return "redirect:/";
+        if (page == null) {
+            return "redirect:/";
         }
-        else if(page.equals(Constant.Page.USER_HOME_PAGE)) {
+        else if (page.equals(Constant.Page.USER_HOME_PAGE)) {
             return "redirect:/user";
         }
         else {

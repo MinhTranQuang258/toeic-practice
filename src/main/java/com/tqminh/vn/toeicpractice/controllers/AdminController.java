@@ -54,7 +54,7 @@ public class AdminController extends AstractController {
         final @RequestParam String detele) throws ParseException {
         String username = (String) session.getAttribute("username");
         try {
-            long id= Long.parseLong(detele);
+            long id = Long.parseLong(detele);
             this.mcQuestionService.deleteQuestion(id, username);
         }
         catch (SQLException e) {
@@ -204,7 +204,7 @@ public class AdminController extends AstractController {
         AbstractQuestion multipleChoiceQuestion = this
             .prepareQuestion(radio, question);
         try {
-            long id= Long.parseLong(update);
+            long id = Long.parseLong(update);
             this.mcQuestionService
                 .updateQuestion(id, multipleChoiceQuestion, username);
         }
@@ -226,7 +226,8 @@ public class AdminController extends AstractController {
         }
         AbstractQuestion question = (AbstractQuestion) this.map.get("question");
         try {
-            this.mcQuestionService.validateQuestion(username, question, selection);
+            this.mcQuestionService
+                .validateQuestion(username, question, selection);
         }
         catch (Exception e) {
             e.printStackTrace();
