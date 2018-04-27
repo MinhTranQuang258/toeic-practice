@@ -32,30 +32,46 @@ import com.tqminh.vn.toeicpractice.repositories.entities.MCQuestionWrapper;
 import com.tqminh.vn.toeicpractice.repositories.entities.PQuestionWrapper;
 import com.tqminh.vn.toeicpractice.repositories.entities.ResultWrapper;
 
+/**
+ * The Class AbstractQuestionService.
+ */
 public abstract class AbstractQuestionService {
 
+    /** The configuration. */
     @Autowired
     private GeneralConfiguration configuration;
 
+    /** The index cache. */
     @Autowired
     @Qualifier("IndexCache")
     private IndexCache<Long> indexCache;
 
+    /** The mc question repository. */
     @Autowired
     private MCQuestionWrapperRepository mcQuestionRepository;
 
+    /** The p question repository. */
     @Autowired
     private PQuestionWrapperRepository pQuestionRepository;
 
+    /** The question cache. */
     @Autowired
     @Qualifier("QuestionListCacheImpl")
     private QuestionListCache<AbstractQuestionPackage> questionCache;
 
+    /** The result repository. */
     @Autowired
     private ResultWrapperRepository resultRepository;
 
+    /** The score. */
     private double score;
 
+    /**
+     * Count question.
+     *
+     * @param questionType the question type
+     * @return the int
+     */
     protected int countQuestion(final Integer questionType) {
         int count = 0;
         try {
@@ -72,6 +88,14 @@ public abstract class AbstractQuestionService {
         return count;
     }
 
+    /**
+     * Delete question.
+     *
+     * @param id the id
+     * @param questionType the question type
+     * @param username the username
+     * @throws SQLException the SQL exception
+     */
     protected void deleteQuestion(
         final long id,
         final int questionType,
@@ -88,6 +112,14 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Find all questions.
+     *
+     * @param username the username
+     * @return the list
+     * @throws NullPointerException the null pointer exception
+     * @throws SQLException the SQL exception
+     */
     protected List<MCQuestionWrapper> findAllQuestions(final String username)
             throws NullPointerException, SQLException {
         if (!this.isCheckAdmin(username)) {
@@ -103,6 +135,15 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Find question.
+     *
+     * @param username the username
+     * @param id the id
+     * @param questionType the question type
+     * @return the abstract question
+     * @throws Exception the exception
+     */
     protected AbstractQuestion findQuestion(
         final String username,
         final long id,
@@ -123,11 +164,26 @@ public abstract class AbstractQuestionService {
         return null;
     }
 
+    /**
+     * Gets the date.
+     *
+     * @return the date
+     * @throws ParseException the parse exception
+     */
     private String getDate() throws ParseException {
         LocalDate localDate = LocalDate.now();
         return localDate.toString();
     }
 
+    /**
+     * Gets the MC question list.
+     *
+     * @param username the username
+     * @param typeQuestion the type question
+     * @return the MC question list
+     * @throws NullPointerException the null pointer exception
+     * @throws SQLException the SQL exception
+     */
     private MCQuestionPackge getMCQuestionList(
         final String username,
         final Integer typeQuestion) throws NullPointerException, SQLException {
@@ -157,6 +213,15 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Gets the p question list.
+     *
+     * @param username the username
+     * @param typeQuestion the type question
+     * @return the p question list
+     * @throws NullPointerException the null pointer exception
+     * @throws SQLException the SQL exception
+     */
     private PQuestionPackage getPQuestionList(
         final String username,
         final Integer typeQuestion) throws NullPointerException, SQLException {
@@ -187,6 +252,15 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Gets the question.
+     *
+     * @param username the username
+     * @param index the index
+     * @param typeQuestion the type question
+     * @return the question
+     * @throws Exception the exception
+     */
     protected AbstractQuestion getQuestion(
         final String username,
         final int index,
@@ -201,6 +275,13 @@ public abstract class AbstractQuestionService {
         return null;
     }
 
+    /**
+     * Gets the selection.
+     *
+     * @param selection the selection
+     * @param question the question
+     * @return the selection
+     */
     private String getSelection(
         final String selection,
         final AbstractQuestion question) {
@@ -221,11 +302,22 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Gets the timestamp.
+     *
+     * @return the timestamp
+     */
     private String getTimestamp() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         return timestamp.toString();
     }
 
+    /**
+     * Checks if is check admin.
+     *
+     * @param username the username
+     * @return true, if is check admin
+     */
     private boolean isCheckAdmin(final String username) {
         if (username.equals(Constant.Admin.USER_NAME)) {
             return true;
@@ -236,6 +328,14 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Checks if is check next question index.
+     *
+     * @param index the index
+     * @param typeQuestion the type question
+     * @return the boolean
+     * @throws NullPointerException the null pointer exception
+     */
     private Boolean isCheckNextQuestionIndex(
         final int index,
         final Integer typeQuestion) throws NullPointerException {
@@ -259,6 +359,14 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Checks if is check previous question index.
+     *
+     * @param index the index
+     * @param typeQuestion the type question
+     * @return the boolean
+     * @throws NullPointerException the null pointer exception
+     */
     private Boolean isCheckPreviousQuestionIndex(
         final int index,
         final Integer typeQuestion) throws NullPointerException {
@@ -282,6 +390,13 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Checks if is check selection.
+     *
+     * @param selection the selection
+     * @param question the question
+     * @return true, if is check selection
+     */
     private boolean isCheckSelection(
         final String selection,
         final AbstractQuestion question) {
@@ -294,6 +409,14 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Load MC questions.
+     *
+     * @param username the username
+     * @param index the index
+     * @return the multiple choice question
+     * @throws Exception the exception
+     */
     private MultipleChoiceQuestion loadMCQuestions(
         final String username,
         final int index) throws Exception {
@@ -309,6 +432,14 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Load P questions.
+     *
+     * @param username the username
+     * @param index the index
+     * @return the photo question
+     * @throws Exception the exception
+     */
     private PhotoQuestion loadPQuestions(final String username, final int index)
             throws Exception {
         try {
@@ -322,6 +453,15 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Next question.
+     *
+     * @param username the username
+     * @param typeQuestion the type question
+     * @return the integer
+     * @throws NullPointerException the null pointer exception
+     * @throws SQLException the SQL exception
+     */
     protected Integer nextQuestion(
         final String username,
         final Integer typeQuestion) throws NullPointerException, SQLException {
@@ -361,6 +501,15 @@ public abstract class AbstractQuestionService {
         return null;
     }
 
+    /**
+     * Previous question.
+     *
+     * @param username the username
+     * @param typeQuestion the type question
+     * @return the integer
+     * @throws NullPointerException the null pointer exception
+     * @throws SQLException the SQL exception
+     */
     protected Integer previousQuestion(
         final String username,
         final Integer typeQuestion) throws NullPointerException, SQLException {
@@ -402,6 +551,12 @@ public abstract class AbstractQuestionService {
         return null;
     }
 
+    /**
+     * Removes the cache.
+     *
+     * @param username the username
+     * @param typeQuestion the type question
+     */
     private void removeCache(
         final String username,
         final Integer typeQuestion) {
@@ -414,6 +569,14 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Save cache.
+     *
+     * @param username the username
+     * @param typeQuestion the type question
+     * @param index the index
+     * @throws Exception the exception
+     */
     private void saveCache(
         final String username,
         final Integer typeQuestion,
@@ -436,6 +599,16 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Save result.
+     *
+     * @param date the date
+     * @param username the username
+     * @param score the score
+     * @param timestamp the timestamp
+     * @return the result wrapper
+     * @throws SQLException the SQL exception
+     */
     private ResultWrapper saveResult(
         final String date,
         final String username,
@@ -464,6 +637,14 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Submit.
+     *
+     * @param username the username
+     * @param typeQuestion the type question
+     * @throws ParseException the parse exception
+     * @throws SQLException the SQL exception
+     */
     protected void submit(final String username, final Integer typeQuestion)
             throws ParseException, SQLException {
         try {
@@ -481,6 +662,16 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Update question.
+     *
+     * @param id the id
+     * @param question the question
+     * @param username the username
+     * @param questionType the question type
+     * @throws NullPointerException the null pointer exception
+     * @throws SQLException the SQL exception
+     */
     protected void updateQuestion(
         final long id,
         final AbstractQuestion question,
@@ -508,6 +699,13 @@ public abstract class AbstractQuestionService {
         }
     }
 
+    /**
+     * Validate.
+     *
+     * @param selection the selection
+     * @param question the question
+     * @param username the username
+     */
     protected void validate(
         final String selection,
         final AbstractQuestion question,
