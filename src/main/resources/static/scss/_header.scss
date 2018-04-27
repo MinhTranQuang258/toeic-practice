@@ -4,13 +4,14 @@
 
     }
     &-name {
-      display: flex;
+      // display: flex;
       & p {
         color: #6db22f;
         font-weight: 700;
         font-size: 20px;
         text-transform: uppercase;
         margin-bottom: 0;
+        display: inline;
       }
     }
   }
