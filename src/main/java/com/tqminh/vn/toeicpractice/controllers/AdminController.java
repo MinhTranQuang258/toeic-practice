@@ -16,7 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.tqminh.vn.toeicpractice.common.Constant;
 import com.tqminh.vn.toeicpractice.configuration.GeneralConfiguration;
 import com.tqminh.vn.toeicpractice.model.AbstractQuestion;
@@ -50,11 +52,11 @@ public class AdminController extends AstractController {
     @RequestMapping(value = "/deleteQuestion", method = RequestMethod.POST)
     public String deteleQuestion(
         final HttpSession session,
-        final HttpServletRequest request) {
+        final @RequestParam String detele) throws ParseException {
         String username = (String) session.getAttribute("username");
-        System.out.println(request.getAttribute("delete"));
         try {
-            this.mcQuestionService.deleteQuestion(4, username);
+            long id= Long.parseLong(detele);
+            this.mcQuestionService.deleteQuestion(id, username);
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -196,14 +198,16 @@ public class AdminController extends AstractController {
     public String updateQuestion(
         @ModelAttribute("question") final Question question,
         final HttpSession session,
-        final HttpServletRequest request) {
+        final HttpServletRequest request,
+        final @RequestParam String update) {
         String radio = request.getParameter("rightAnswer");
         String username = (String) session.getAttribute("username");
         AbstractQuestion multipleChoiceQuestion = this
             .prepareQuestion(radio, question);
         try {
+            long id= Long.parseLong(update);
             this.mcQuestionService
-                .updateQuestion(1, multipleChoiceQuestion, username);
+                .updateQuestion(id, multipleChoiceQuestion, username);
         }
         catch (SQLException e) {
             e.printStackTrace();
