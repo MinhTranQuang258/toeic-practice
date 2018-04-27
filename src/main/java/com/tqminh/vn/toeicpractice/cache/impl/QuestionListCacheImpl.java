@@ -20,7 +20,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 import com.tqminh.vn.toeicpractice.cache.QuestionListCache;
-import com.tqminh.vn.toeicpractice.model.task.AbstractQuestionPackage;
+import com.tqminh.vn.toeicpractice.model.packages.AbstractQuestionPackage;
 
 @Component("QuestionListCacheImpl")
 public class QuestionListCacheImpl

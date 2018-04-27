@@ -41,8 +41,8 @@ public class TestController {
         }
     }
 
-    @RequestMapping(value = "/extract", method = RequestMethod.GET)
-    public String extractDataFromPDF() {
+    @RequestMapping(value = "/demoExtract", method = RequestMethod.GET)
+    public String demoExtractDataFromPDF() {
         try {
             this.extractor.readFile(this.configuration.getPdfPatch());
         }

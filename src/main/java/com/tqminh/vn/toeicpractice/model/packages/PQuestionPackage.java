@@ -1,4 +1,4 @@
-package com.tqminh.vn.toeicpractice.model.task;
+package com.tqminh.vn.toeicpractice.model.packages;
 
 import java.util.List;
 

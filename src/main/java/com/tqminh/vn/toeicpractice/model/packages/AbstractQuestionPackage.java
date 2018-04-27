@@ -10,7 +10,7 @@
  * Swiss Post Solution.
  * Floor 4-5-8, ICT Tower, Quang Trung Software City
  */
-package com.tqminh.vn.toeicpractice.model.task;
+package com.tqminh.vn.toeicpractice.model.packages;
 
 import java.util.List;
 
